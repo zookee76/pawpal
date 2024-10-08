@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -19,13 +20,24 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun MainScreen() {
-        Button(
-            onClick = {
-                // Intent to launch WelcomeActivity
-                startActivity(Intent(this@MainActivity, WelcomeActivity::class.java))
+        Column {
+            Button(
+                onClick = {
+                    // Intent to launch WelcomeActivity
+                    startActivity(Intent(this@MainActivity, WelcomeActivity::class.java))
+                }
+            ) {
+                Text(text = "Go to Welcome Screen")
             }
-        ) {
-            Text(text = "Go to Welcome Screen")
+
+            Button(
+                onClick = {
+                    // Test the Home Dashboard only
+                    startActivity(Intent(this@MainActivity, phomedashboard::class.java))
+                }
+            ) {
+                Text(text = "Home Dashboard")
+            }
         }
     }
 

@@ -14,6 +14,9 @@
         tools:targetApi="31">
         <activity android:name=".WelcomeActivity" />
         <activity
+            android:name=".phomedashboard"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
