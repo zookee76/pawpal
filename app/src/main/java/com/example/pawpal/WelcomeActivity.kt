@@ -99,7 +99,7 @@ fun Welcome(modifier: Modifier = Modifier) {
             contentDescription = "Pet Image",
             modifier = Modifier
                 .align(Alignment.TopStart)
-                .offset(x = 0.dp, y = 240.dp)
+                .offset(x = 0.dp, y = 200.dp)
         )
     }
 }
