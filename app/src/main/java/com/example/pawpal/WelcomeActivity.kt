@@ -99,7 +99,7 @@ fun Welcome(modifier: Modifier = Modifier) {
             contentDescription = "Pet Image",
             modifier = Modifier
                 .align(Alignment.TopStart)
-                .offset(x = 62.dp, y = 380.dp)
+                .offset(x = 0.dp, y = 200.dp)
         )
     }
 }
@@ -110,8 +110,8 @@ fun Image(modifier: Modifier = Modifier) {
         horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally),
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
-            .requiredWidth(305.dp)
-            .requiredHeight(303.dp)
+            .requiredWidth(10.dp)
+            .requiredHeight(10.dp)
             .clip(shape = RoundedCornerShape(30.dp))
             .background(color = Color(0xffd7d9e0))
     ) {
