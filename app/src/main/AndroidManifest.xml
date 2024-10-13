@@ -15,6 +15,8 @@
         <activity android:name=".welcome" android:exported="false"/>
         <activity android:name=".welcomeaccess" android:exported="false"/>
         <activity android:name=".welcomegetstarted" android:exported="false"/>
+        <activity android:name=".welcomerole" android:exported="false"/>
+
         <activity
             android:name=".phomedashboard"
             android:exported="false" />
