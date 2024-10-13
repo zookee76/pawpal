@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pawpal"
         tools:targetApi="31">
-        <activity android:name=".WelcomeActivity" />
+        <activity android:name=".welcome" android:exported="false"/>
         <activity
             android:name=".phomedashboard"
             android:exported="false" />
