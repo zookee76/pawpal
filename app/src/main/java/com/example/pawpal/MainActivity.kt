@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
             Button(
                 onClick = {
                     // Intent to launch WelcomeActivity
-                    startActivity(Intent(this@MainActivity, WelcomeActivity::class.java))
+                    startActivity(Intent(this@MainActivity, welcome::class.java))
                 }
             ) {
                 Text(text = "Go to Welcome Screen")
