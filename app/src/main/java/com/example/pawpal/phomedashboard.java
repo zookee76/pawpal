@@ -3,8 +3,17 @@ package com.example.pawpal;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class phomedashboard extends AppCompatActivity {
+
+    private RecyclerView rvDietMedList;
+    private dietmedAdapter adapter;
+    private List<dietmed> dietmedList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,16 +22,18 @@ public class phomedashboard extends AppCompatActivity {
         setContentView(R.layout.activity_phomedashboard);
 
         // RecyclerView Handle
-        /*
-        RecyclerView medlist = findViewById(R.id.rv_medlist);
+        rvDietMedList = findViewById(R.id.rv_medlist);
+        rvDietMedList.setLayoutManager(new LinearLayoutManager(this));
 
-        List<DietaryMedItem> medItem = new ArrayList<>();
-        medItem.add(new DietaryMedItem(R.drawable.fiimage, "Add 1 teaspoon of Coconut Oil to food for skin health.nDosage: Once daily.", "Date: 2024-10-02 | Time: 8:00 AM"));
+        dietmedList = new ArrayList<>();
+        loadDietMedications();
 
-        DietaryMedAdapter adapter = new DietaryMedAdapter(this, medItem);
-        medlist.setLayoutManager(new LinearLayoutManager(this));
-        medlist.setAdapter(adapter);
+        adapter = new dietmedAdapter(this, dietmedList);
+        rvDietMedList.setAdapter(adapter);
+    }
 
-         */
+    private void loadDietMedications(){
+        dietmedList.add(new dietmed(R.drawable.fiimage, "Aspirin", "10-09-2024, 08:00 AM"));
+        dietmedList.add(new dietmed(R.drawable.fiimage, "Antibiotic", "11-09-2024, 10:00 AM"));
     }
 }

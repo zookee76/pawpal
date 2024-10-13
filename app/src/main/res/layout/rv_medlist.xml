@@ -3,20 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_medlist"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        app:cardBackgroundColor="#D6EAFC"
         app:cardCornerRadius="25dp">
 
         <LinearLayout
             android:id="@+id/layout_meditem"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#D6EAFC"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="10dp">
 

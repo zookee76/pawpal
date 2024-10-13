@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
 
     // Jetpack Compose dependencies
     implementation(libs.androidx.compose.ui)
@@ -66,4 +67,5 @@ dependencies {
 
     // Optional: UI tooling for debugging previews
     debugImplementation(libs.androidx.compose.ui.tooling)
+
 }
