@@ -5,8 +5,22 @@
     android:layout_height="match_parent"
     android:background="#FFFBEC">
 
+    <TextView
+        android:id="@+id/tv_welcome2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to PawPal!"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo2" />
+
     <ImageView
-        android:id="@+id/iv_logo"
+        android:id="@+id/iv_logo2"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:scaleType="centerCrop"
@@ -17,48 +31,34 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/fiimage" />
 
-    <TextView
-        android:id="@+id/tv_welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello, Pal!"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
-
     <RelativeLayout
-        android:id="@+id/rl_login"
+        android:id="@+id/rl_clinicregister"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_welcome">
+        app:layout_constraintTop_toBottomOf="@+id/tv_welcome2">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cv_body"
+            android:id="@+id/cv_clinicregister"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="#D6EAFC"
             app:cardCornerRadius="25dp">
 
             <LinearLayout
-                android:id="@+id/layout_body"
+                android:id="@+id/layout_clinicregisterbody"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/layout_login"
+                    android:id="@+id/layout_clinicregister"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
                     android:layout_marginTop="50dp"
                     android:layout_marginRight="25dp"
@@ -66,24 +66,69 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/tv_logincredentials"
+                        android:id="@+id/tv_clinicfullname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:text="Email Address or Username"
+                        android:text="Full Name"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/text_logincredentials"
+                        android:id="@+id/text_fullname"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
+                        android:layout_marginBottom="15dp"
                         android:background="@color/white"
                         android:ems="10"
-                        android:inputType="text" />
+                        android:hint="First Name, Middle Initial, Last Name"
+                        android:inputType="text"
+                        android:paddingLeft="5dp"
+                        android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/tv_loginpw"
+                        android:id="@+id/tv_clinicemailadd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="Email Address"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/text_clinicemailadd"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@color/white"
+                        android:ems="10"
+                        android:hint="name@gmail.com"
+                        android:inputType="text|textEmailAddress"
+                        android:paddingLeft="5dp"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_clinicname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="Clinic Name"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/text_clinicname"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@color/white"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:paddingLeft="5dp"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_clinicpassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
@@ -92,7 +137,7 @@
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/text_loginpw"
+                        android:id="@+id/text_clinicpassword"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginBottom="15dp"
@@ -103,22 +148,22 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/tv_forgotpw"
+                        android:id="@+id/tv_termspolicy"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:text="Forgot password?"
-                        android:textAlignment="textEnd"
+                        android:layout_marginTop="10dp"
+                        android:text="By continuing you agree to Terms of Use and Privacy Policy"
+                        android:textAlignment="center"
                         android:textSize="14sp" />
 
                     <Button
-                        android:id="@+id/btn_login"
+                        android:id="@+id/btn_signup"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:backgroundTint="#0C439E"
-                        android:text="LOG IN"
+                        android:text="SIGN UP"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -142,16 +187,16 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Don't have an account? "
+                android:text="Already have an account? "
                 android:textAlignment="textEnd" />
 
             <TextView
-                android:id="@+id/tv_register"
+                android:id="@+id/tv_cliniclogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:clickable="true"
-                android:text="Sign Up"
+                android:text="Login Here"
                 android:textAlignment="textStart"
                 android:textColor="#05837F"
                 android:textStyle="bold" />

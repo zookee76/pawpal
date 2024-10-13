@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
 
             Button(
                 onClick = {
-                    // Test the Home Dashboard only
+                    // Test the Home Dashboard only delete when main pages are available
                     startActivity(Intent(this@MainActivity, phomedashboard::class.java))
                 }
             ) {
@@ -41,11 +41,20 @@ class MainActivity : ComponentActivity() {
 
             Button(
                 onClick = {
-                    // Test the Home Dashboard only
+                    // Test the Pet Login only delete when main pages are available
                     startActivity(Intent(this@MainActivity, pregister::class.java))
                 }
             ) {
                 Text(text = "Pet Register")
+            }
+
+            Button(
+                onClick = {
+                    // Test the Clinic Login only delete when main pages are available
+                    startActivity(Intent(this@MainActivity, cregister::class.java))
+                }
+            ) {
+                Text(text = "Clinic Register")
             }
         }
     }

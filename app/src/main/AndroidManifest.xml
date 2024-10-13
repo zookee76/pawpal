@@ -23,6 +23,12 @@
             android:name=".plogin"
             android:exported="false" />
         <activity
+            android:name=".cregister"
+            android:exported="false" />
+        <activity
+            android:name=".clogin"
+            android:exported="false" />
+        <activity
             android:name=".pforgotpw"
             android:exported="false" />
         <activity
