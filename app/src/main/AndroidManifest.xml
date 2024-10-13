@@ -13,6 +13,8 @@
         android:theme="@style/Theme.Pawpal"
         tools:targetApi="31">
         <activity android:name=".welcome" android:exported="false"/>
+        <activity android:name=".welcomeaccess" android:exported="false"/>
+        <activity android:name=".welcomegetstarted" android:exported="false"/>
         <activity
             android:name=".phomedashboard"
             android:exported="false" />
