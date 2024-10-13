@@ -67,7 +67,7 @@
             android:backgroundTint="#C78AD1"
             android:orientation="vertical"
             android:paddingBottom="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintBottom_toTopOf="@+id/layout_petnavigation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_header">
@@ -297,7 +297,7 @@
             <LinearLayout
                 android:id="@+id/layout_medication"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp">
@@ -336,7 +336,7 @@
                 <LinearLayout
                     android:id="@+id/layout_medbody"
                     android:layout_width="match_parent"
-                    android:layout_height="220dp"
+                    android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -353,12 +353,63 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/layout_petnavigation"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"></LinearLayout>
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_home"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:contentDescription="home"
+                android:contextClickable="true"
+                android:padding="7dp"
+                app:srcCompat="@drawable/home" />
+
+            <ImageView
+                android:id="@+id/iv_calendar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:contentDescription="calendar"
+                android:padding="10dp"
+                app:srcCompat="@drawable/calendar" />
+
+            <ImageView
+                android:id="@+id/iv_pets"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:contentDescription="pets"
+                app:srcCompat="@drawable/paw" />
+
+            <ImageView
+                android:id="@+id/iv_files"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:contentDescription="files"
+                android:padding="10dp"
+                app:srcCompat="@drawable/file" />
+
+            <ImageView
+                android:id="@+id/iv_userprofile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:contentDescription="userprofile"
+                android:padding="10dp"
+                app:srcCompat="@drawable/profile" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>
