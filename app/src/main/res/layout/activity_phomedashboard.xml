@@ -22,7 +22,7 @@
             android:paddingBottom="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
@@ -34,23 +34,26 @@
                 android:adjustViewBounds="false"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0"
-                app:round="60dp"
+                app:round="30dp"
                 app:srcCompat="@drawable/cat" />
 
             <TextView
                 android:id="@+id/tv_name"
-                android:layout_width="302dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hello, Name"
+                android:textAlignment="textStart"
                 android:textColor="#0C439E"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.074"
                 app:layout_constraintStart_toEndOf="@+id/iv_profile"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.558" />
@@ -94,7 +97,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.35"
-                    app:round="100dp"
+                    app:round="75dp"
                     app:srcCompat="@drawable/cat" />
 
                 <TextView
@@ -114,8 +117,8 @@
 
                 <androidx.constraintlayout.utils.widget.ImageFilterView
                     android:id="@+id/img_right"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -123,7 +126,7 @@
                     app:layout_constraintStart_toEndOf="@+id/img_center"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.417"
-                    app:round="100dp"
+                    app:round="40dp"
                     app:srcCompat="@drawable/dog" />
 
                 <TextView
@@ -142,8 +145,8 @@
 
                 <androidx.constraintlayout.utils.widget.ImageFilterView
                     android:id="@+id/img_left"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/img_center"
@@ -151,7 +154,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.417"
-                    app:round="100dp"
+                    app:round="40dp"
                     app:srcCompat="@drawable/cat2" />
 
                 <TextView
@@ -294,7 +297,7 @@
             <LinearLayout
                 android:id="@+id/layout_medication"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="250dp"
                 android:orientation="vertical"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp">
@@ -333,14 +336,15 @@
                 <LinearLayout
                     android:id="@+id/layout_medbody"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    >
+                    android:layout_height="220dp"
+                    android:orientation="vertical">
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_medlist"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/rv_medlist"/>
+                        android:visibility="visible"
+                        tools:visibility="visible" />
                 </LinearLayout>
 
 
