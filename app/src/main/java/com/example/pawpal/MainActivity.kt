@@ -38,6 +38,15 @@ class MainActivity : ComponentActivity() {
             ) {
                 Text(text = "Home Dashboard")
             }
+
+            Button(
+                onClick = {
+                    // Test the Home Dashboard only
+                    startActivity(Intent(this@MainActivity, pregister::class.java))
+                }
+            ) {
+                Text(text = "Pet Register")
+            }
         }
     }
 

@@ -61,7 +61,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
-            android:id="@+id/layout_body"
+            android:id="@+id/cv_body"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:backgroundTint="#C78AD1"

@@ -17,6 +17,12 @@
             android:name=".phomedashboard"
             android:exported="false" />
         <activity
+            android:name=".pregister"
+            android:exported="false" />
+        <activity
+            android:name=".plogin"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
