@@ -23,6 +23,9 @@
             android:name=".plogin"
             android:exported="false" />
         <activity
+            android:name=".pforgotpw"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

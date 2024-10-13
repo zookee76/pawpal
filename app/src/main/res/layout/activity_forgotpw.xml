@@ -1,44 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_setuppw"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/iv_logo"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/fiimage" />
+    android:layout_height="match_parent"
+    android:background="#FFFBEC">
 
     <TextView
-        android:id="@+id/tv_welcome"
+        android:id="@+id/tv_setuppw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello, Pal!"
+        android:layout_marginBottom="50dp"
+        android:text="Setup New Password"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="28sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.079" />
 
     <RelativeLayout
-        android:id="@+id/rl_login"
+        android:id="@+id/layout_setuppw"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="75dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_welcome">
+        app:layout_constraintTop_toBottomOf="@+id/tv_setuppw">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_body"
@@ -54,9 +48,9 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/layout_login"
+                    android:id="@+id/layout_register"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
                     android:layout_marginTop="50dp"
                     android:layout_marginRight="25dp"
@@ -64,33 +58,33 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/tv_logincredentials"
+                        android:id="@+id/tv_newpwemailadd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:text="Email Address or Username"
+                        android:text="Email Address"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/text_logincredentials"
+                        android:id="@+id/text_newpwemailadd"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:background="@color/white"
                         android:ems="10"
-                        android:inputType="text" />
+                        android:inputType="text|textEmailAddress" />
 
                     <TextView
-                        android:id="@+id/tv_loginpw"
+                        android:id="@+id/tv_oldpw"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:text="Password"
+                        android:text="Old Password"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/text_loginpw"
+                        android:id="@+id/text_oldpw"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginBottom="15dp"
@@ -101,22 +95,33 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/tv_forgotpw"
+                        android:id="@+id/tv_newpw"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:text="Forgot password?"
-                        android:textAlignment="textEnd"
-                        android:textSize="14sp" />
+                        android:layout_marginBottom="5dp"
+                        android:text="New Password"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/text_newpw"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@color/white"
+                        android:ems="10"
+                        android:inputType="text|textPassword"
+                        android:paddingLeft="5dp"
+                        android:textSize="16sp" />
 
                     <Button
-                        android:id="@+id/btn_login"
-                        android:layout_width="150dp"
+                        android:id="@+id/btn_newpw"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:backgroundTint="#0C439E"
-                        android:text="LOG IN"
+                        android:text="Create New Password"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -133,27 +138,7 @@
             android:elevation="2dp"
             android:gravity="bottom|center"
             android:orientation="horizontal"
-            android:paddingBottom="20dp">
-
-            <TextView
-                android:id="@+id/tv_footer"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Don't have an account? "
-                android:textAlignment="textEnd" />
-
-            <TextView
-                android:id="@+id/tv_register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:text="Sign Up"
-                android:textAlignment="textStart"
-                android:textColor="#05837F"
-                android:textStyle="bold" />
-        </LinearLayout>
+            android:paddingBottom="20dp" />
 
     </RelativeLayout>
 

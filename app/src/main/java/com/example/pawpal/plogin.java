@@ -14,12 +14,21 @@ public class plogin extends AppCompatActivity {
 
         setContentView(R.layout.activity_petlogin);
         TextView tvregister = findViewById(R.id.tv_register);
+        TextView forgotpw = findViewById(R.id.tv_forgotpw);
 
         tvregister.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(plogin.this, pregister.class);
+                startActivity(intent);
+            }
+        });
+
+        forgotpw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(plogin.this, pforgotpw.class);
                 startActivity(intent);
             }
         });
