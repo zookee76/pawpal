@@ -1,7 +1,6 @@
 package com.example.pawpal;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,27 +12,28 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class phomedashboard extends AppCompatActivity {
+public class petspage extends AppCompatActivity {
 
-    private RecyclerView rvDietMedList;
-    private dietmedAdapter adapter;
-    private List<dietmed> dietmedList;
+    private RecyclerView rvPets;
+    private petAdapter adapter;
+    private List<pets> petsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_phomedashboard);
+        setContentView(R.layout.activity_mypets);
 
         // RecyclerView Handle
-        rvDietMedList = findViewById(R.id.rv_medlist);
-        rvDietMedList.setLayoutManager(new LinearLayoutManager(this));
 
-        dietmedList = new ArrayList<>();
-        loadDietMedications();
+        rvPets = findViewById(R.id.rv_pets);
+        rvPets.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter = new dietmedAdapter(this, dietmedList);
-        rvDietMedList.setAdapter(adapter);
+        petsList = new ArrayList<>();
+        loadPets();
+
+        adapter = new petAdapter(this, petsList);
+        rvPets.setAdapter(adapter);
 
         //Navigation Handle
         ImageView home, calendar, pets, files, profile;
@@ -47,7 +47,7 @@ public class phomedashboard extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(phomedashboard.this, phomedashboard.class);
+                Intent intent = new Intent(petspage.this, phomedashboard.class);
                 startActivity(intent);
             }
         });
@@ -55,7 +55,7 @@ public class phomedashboard extends AppCompatActivity {
         pets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(phomedashboard.this, petspage.class);
+                Intent intent = new Intent(petspage.this, petspage.class);
                 startActivity(intent);
             }
         });
@@ -63,8 +63,10 @@ public class phomedashboard extends AppCompatActivity {
         // Add links to remaining navigation pages (calendar, files, profile)
     }
 
-    private void loadDietMedications(){
-        dietmedList.add(new dietmed(R.drawable.fiimage, "Aspirin", "10-09-2024, 08:00 AM"));
-        dietmedList.add(new dietmed(R.drawable.fiimage, "Antibiotic", "11-09-2024, 10:00 AM"));
+    private void loadPets(){
+        // sample data for pets
+        petsList.add(new pets("Callie", "Domestic Short Hair", "Female", 4, R.drawable.cat2));
+        petsList.add(new pets("Casper", "Domestic Short Hair", "Male", 3, R.drawable.cat2));
+        petsList.add(new pets("Tyler", "Persian Cat", "Male", 3, R.drawable.cat2));
     }
 }
