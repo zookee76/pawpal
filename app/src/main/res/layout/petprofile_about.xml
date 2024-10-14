@@ -90,7 +90,7 @@
                     android:id="@+id/casperImageView"
                     android:layout_width="match_parent"
                     android:layout_height="239dp"
-                    android:contentDescription="casper image"
+                    android:contentDescription="casper pet profile image"
                     android:background="@drawable/casper"
                     android:scaleType="centerCrop"/>
 
@@ -98,8 +98,7 @@
                     android:id="@+id/rectangle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignParentLeft="true"
-
+                    android:layout_alignParentLeft="true"/>
 
             </FrameLayout>
 
@@ -165,3 +164,4 @@
                 app:srcCompat="@drawable/profile" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
