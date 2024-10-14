@@ -27,6 +27,9 @@
             android:name=".userprofilepage"
             android:exported="false" />
         <activity
+            android:name=".editprofilepage"
+            android:exported="false" />
+        <activity
             android:name=".pregister"
             android:exported="false" />
         <activity

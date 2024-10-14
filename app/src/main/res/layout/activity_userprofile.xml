@@ -152,24 +152,24 @@
                 android:layout_height="275dp">
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/iv_arrowfbacks"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="28dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_arrowfaqs"
                     app:layout_constraintVertical_bias="0.251"
                     app:srcCompat="@drawable/arrowright" />
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/iv_arrowfaqs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:layout_marginEnd="28dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_arrowpw"
                     app:srcCompat="@drawable/arrowright" />
 
                 <androidx.constraintlayout.utils.widget.ImageFilterButton
@@ -233,7 +233,7 @@
                     android:textAlignment="textStart"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView3"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_arrowfbacks"
                     app:layout_constraintHorizontal_bias="0.08"
                     app:layout_constraintStart_toEndOf="@+id/iv_feedbacksettings"
                     app:layout_constraintTop_toBottomOf="@+id/tv_faqs" />
@@ -262,7 +262,7 @@
                     android:textAlignment="textStart"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView4"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_arrowfaqs"
                     app:layout_constraintHorizontal_bias="0.246"
                     app:layout_constraintStart_toEndOf="@+id/iv_faqsettings"
                     app:layout_constraintTop_toBottomOf="@+id/tv_changepw" />
@@ -276,7 +276,7 @@
                     android:textAlignment="textStart"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_arrowpw"
                     app:layout_constraintHorizontal_bias="0.108"
                     app:layout_constraintStart_toEndOf="@+id/iv_pwsetting"
                     app:layout_constraintTop_toBottomOf="@+id/tv_editprofile" />
@@ -290,13 +290,13 @@
                     android:textAlignment="textStart"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_arrowprofile"
                     app:layout_constraintHorizontal_bias="0.078"
                     app:layout_constraintStart_toEndOf="@+id/iv_profilesetting"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/iv_arrowprofile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -306,13 +306,13 @@
                     app:srcCompat="@drawable/arrowright" />
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/iv_arrowpw"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="28dp"
                     android:layout_marginEnd="28dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_arrowprofile"
                     app:srcCompat="@drawable/arrowright" />
 
                 <ImageView

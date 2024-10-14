@@ -3,60 +3,35 @@ package com.example.pawpal;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class userprofilepage extends AppCompatActivity {
-
-
+public class editprofilepage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_userprofile);
+        setContentView(R.layout.activity_editprofile);
 
-        //Back Handle
+        //Save and Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
         TextView backTxt = findViewById(R.id.tv_back);
+        Button save = findViewById(R.id.btn_save);
 
         View.OnClickListener backListnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, phomedashboard.class);
+                Intent intent = new Intent(editprofilepage.this, userprofilepage.class);
                 startActivity(intent);
             }
         };
-
-        // Logout Handle
-        TextView logout = findViewById(R.id.tv_logout);
-        ImageView logoutimg =  findViewById(R.id.iv_logout);
-
-        View.OnClickListener logoutLstnr = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, plogin.class);
-                startActivity(intent);
-            }
-        };
-
-        // Edit Handle
-        ImageView editprofile = findViewById(R.id.iv_arrowprofile);
-
-        editprofile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, editprofilepage.class);
-                startActivity(intent);
-            }
-        });
-
-        logout.setOnClickListener(logoutLstnr);
-        logoutimg.setOnClickListener(logoutLstnr);
 
         backImg.setOnClickListener(backListnr);
         backTxt.setOnClickListener(backListnr);
+        save.setOnClickListener(backListnr);
 
         //Navigation Handle
         ImageView home, calendar, pets, files, profile;
@@ -70,7 +45,7 @@ public class userprofilepage extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, phomedashboard.class);
+                Intent intent = new Intent(editprofilepage.this, phomedashboard.class);
                 startActivity(intent);
             }
         });
@@ -78,7 +53,7 @@ public class userprofilepage extends AppCompatActivity {
         pets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, petspage.class);
+                Intent intent = new Intent(editprofilepage.this, petspage.class);
                 startActivity(intent);
             }
         });
@@ -86,7 +61,7 @@ public class userprofilepage extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, userprofilepage.class);
+                Intent intent = new Intent(editprofilepage.this, userprofilepage.class);
                 startActivity(intent);
             }
         });
