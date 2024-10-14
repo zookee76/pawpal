@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/petprofile_about"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFBEC">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/petprofile_sublayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_petprofileheader"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                android:id="@+id/tv_petprofile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pet Profile"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.744" />
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="18dp"
+                android:layout_height="20dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_back"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.7"
+                app:srcCompat="@drawable/backicon" />
+
+            <TextView
+                android:id="@+id/tv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_petprofile"
+                app:layout_constraintHorizontal_bias="0.153"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.705" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="413dp"
+            android:layout_height="227dp"
+            app:layout_constraintBottom_toTopOf="@+id/layout_petnavigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_petprofileheader"
+            app:layout_constraintVertical_bias="0.0">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/casperImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="239dp"
+                    android:contentDescription="casper image"
+                    android:background="@drawable/casper"
+                    android:scaleType="centerCrop"/>
+
+                <View
+                    android:id="@+id/rectangle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+
+
+            </FrameLayout>
+
+
+        </ScrollView>
+        <LinearLayout
+            android:id="@+id/layout_petnavigation"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_home"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:contentDescription="home"
+                android:contextClickable="false"
+                android:padding="7dp"
+                app:srcCompat="@drawable/home" />
+
+            <ImageView
+                android:id="@+id/iv_calendar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:contentDescription="calendar"
+                android:padding="10dp"
+                app:srcCompat="@drawable/calendar" />
+
+            <ImageView
+                android:id="@+id/iv_pets"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:contentDescription="pets"
+                app:srcCompat="@drawable/paw" />
+
+            <ImageView
+                android:id="@+id/iv_files"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:contentDescription="files"
+                android:padding="10dp"
+                app:srcCompat="@drawable/file" />
+
+            <ImageView
+                android:id="@+id/iv_userprofile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:contentDescription="userprofile"
+                android:padding="10dp"
+                app:srcCompat="@drawable/profile" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
