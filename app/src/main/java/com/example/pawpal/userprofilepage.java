@@ -4,35 +4,33 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-import java.util.List;
+public class userprofilepage extends AppCompatActivity {
 
-public class phomedashboard extends AppCompatActivity {
-
-    private RecyclerView rvDietMedList;
-    private dietmedAdapter adapter;
-    private List<dietmed> dietmedList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_phomedashboard);
+        setContentView(R.layout.activity_userprofile);
 
-        // RecyclerView Handle
-        rvDietMedList = findViewById(R.id.rv_medlist);
-        rvDietMedList.setLayoutManager(new LinearLayoutManager(this));
+        //Back Handle
+        ImageView backImg = findViewById(R.id.iv_back);
+        TextView backTxt = findViewById(R.id.tv_back);
 
-        dietmedList = new ArrayList<>();
-        loadDietMedications();
+        View.OnClickListener backListnr = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(userprofilepage.this, phomedashboard.class);
+                startActivity(intent);
+            }
+        };
 
-        adapter = new dietmedAdapter(this, dietmedList);
-        rvDietMedList.setAdapter(adapter);
+        backImg.setOnClickListener(backListnr);
+        backTxt.setOnClickListener(backListnr);
 
         //Navigation Handle
         ImageView home, calendar, pets, files, profile;
@@ -46,7 +44,7 @@ public class phomedashboard extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(phomedashboard.this, phomedashboard.class);
+                Intent intent = new Intent(userprofilepage.this, phomedashboard.class);
                 startActivity(intent);
             }
         });
@@ -54,7 +52,7 @@ public class phomedashboard extends AppCompatActivity {
         pets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(phomedashboard.this, petspage.class);
+                Intent intent = new Intent(userprofilepage.this, petspage.class);
                 startActivity(intent);
             }
         });
@@ -62,16 +60,10 @@ public class phomedashboard extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(phomedashboard.this, userprofilepage.class);
+                Intent intent = new Intent(userprofilepage.this, userprofilepage.class);
                 startActivity(intent);
             }
         });
-
         // Add links to remaining navigation pages (calendar, files)
-    }
-
-    private void loadDietMedications(){
-        dietmedList.add(new dietmed(R.drawable.fiimage, "Aspirin", "10-09-2024, 08:00 AM"));
-        dietmedList.add(new dietmed(R.drawable.fiimage, "Antibiotic", "11-09-2024, 10:00 AM"));
     }
 }

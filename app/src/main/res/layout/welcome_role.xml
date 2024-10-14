@@ -58,6 +58,8 @@
                     android:id="@+id/petownerimg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:contentDescription="petowner"
                     app:srcCompat="@drawable/petowner" />
 
                 <TextView
@@ -66,10 +68,11 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
+                    android:clickable="true"
                     android:text="I am a Pet Owner"
-                    android:textSize="24sp"
                     android:textColor="#0C439E"
-                    android:textStyle="bold"/>
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
@@ -93,6 +96,8 @@
                     android:id="@+id/clinicownerimg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:contentDescription="clinicowner"
                     app:srcCompat="@drawable/clinicowner" />
 
                 <TextView
@@ -101,10 +106,11 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
+                    android:clickable="true"
                     android:text="I am a Clinic Owner"
-                    android:textSize="24sp"
                     android:textColor="#0C439E"
-                    android:textStyle="bold"/>
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>

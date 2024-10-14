@@ -30,32 +30,6 @@ class MainActivity : ComponentActivity() {
                 Text(text = "Go to Welcome Screen")
             }
 
-            Button(
-                onClick = {
-                    // Test the Home Dashboard only delete when main pages are available
-                    startActivity(Intent(this@MainActivity, phomedashboard::class.java))
-                }
-            ) {
-                Text(text = "Home Dashboard")
-            }
-
-            Button(
-                onClick = {
-                    // Test the Pet Login only delete when main pages are available
-                    startActivity(Intent(this@MainActivity, pregister::class.java))
-                }
-            ) {
-                Text(text = "Pet Register")
-            }
-
-            Button(
-                onClick = {
-                    // Test the Clinic Login only delete when main pages are available
-                    startActivity(Intent(this@MainActivity, cregister::class.java))
-                }
-            ) {
-                Text(text = "Clinic Register")
-            }
         }
     }
 

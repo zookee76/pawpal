@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_mypets"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFBEC">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mypets_sublayout"
@@ -42,12 +43,12 @@
                 app:layout_constraintVertical_bias="0.744" />
 
             <ImageView
-                android:id="@+id/iv_arrow"
+                android:id="@+id/iv_back"
                 android:layout_width="18dp"
                 android:layout_height="20dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView2"
+                app:layout_constraintEnd_toStartOf="@+id/tv_back"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -55,7 +56,7 @@
                 app:srcCompat="@drawable/backicon" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/tv_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Back"
@@ -72,76 +73,91 @@
             android:id="@+id/sv_mypets"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:padding="20dp"
             app:layout_constraintBottom_toTopOf="@+id/layout_petnavigation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_mypetsheader">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_pets"
+            <LinearLayout
+                android:id="@+id/layout_mypets"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/view_line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#D9D9D9" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_pets"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
         </ScrollView>
 
         <LinearLayout
             android:id="@+id/layout_petnavigation"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
                 android:id="@+id/iv_home"
-                app:srcCompat="@drawable/home"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:clickable="true"
                 android:contentDescription="home"
                 android:contextClickable="true"
-                android:padding="7dp" />
+                android:padding="7dp"
+                app:srcCompat="@drawable/home" />
 
             <ImageView
                 android:id="@+id/iv_calendar"
-                app:srcCompat="@drawable/calendar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:clickable="true"
                 android:contentDescription="calendar"
-                android:padding="10dp" />
+                android:padding="10dp"
+                app:srcCompat="@drawable/calendar" />
 
             <ImageView
                 android:id="@+id/iv_pets"
-                app:srcCompat="@drawable/paw"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:clickable="true"
-                android:contentDescription="pets" />
+                android:contentDescription="pets"
+                app:srcCompat="@drawable/paw" />
 
             <ImageView
                 android:id="@+id/iv_files"
-                app:srcCompat="@drawable/file"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:clickable="true"
                 android:contentDescription="files"
-                android:padding="10dp" />
+                android:padding="10dp"
+                app:srcCompat="@drawable/file" />
 
             <ImageView
                 android:id="@+id/iv_userprofile"
-                app:srcCompat="@drawable/profile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:clickable="true"
                 android:contentDescription="userprofile"
-                android:padding="10dp" />
+                android:padding="10dp"
+                app:srcCompat="@drawable/profile" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>

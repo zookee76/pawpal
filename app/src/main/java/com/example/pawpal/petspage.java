@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,6 +24,21 @@ public class petspage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_mypets);
+
+        //Back Handle
+        ImageView backImg = findViewById(R.id.iv_back);
+        TextView backTxt = findViewById(R.id.tv_back);
+
+        View.OnClickListener backListnr = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(petspage.this, phomedashboard.class);
+                startActivity(intent);
+            }
+        };
+
+        backImg.setOnClickListener(backListnr);
+        backTxt.setOnClickListener(backListnr);
 
         // RecyclerView Handle
 
@@ -60,7 +76,16 @@ public class petspage extends AppCompatActivity {
             }
         });
 
-        // Add links to remaining navigation pages (calendar, files, profile)
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(petspage.this, userprofilepage.class);
+                startActivity(intent);
+            }
+        });
+
+        // Add links to remaining navigation pages (calendar, files)
+
     }
 
     private void loadPets(){
