@@ -227,7 +227,7 @@
                                         android:id="@+id/rectangle1"
                                         android:layout_width="240dp"
                                         android:layout_height="20dp"
-                                        android:layout_marginLeft="26dp"
+                                        android:layout_marginLeft="71dp"
                                         android:background="@drawable/rectangle2"/>
                                 </LinearLayout>
 
@@ -250,16 +250,32 @@
                                         android:id="@+id/rectangle2"
                                         android:layout_width="240dp"
                                         android:layout_height="20dp"
+                                        android:layout_marginLeft="76dp"
+                                        android:background="@drawable/rectangle2"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:gravity="center_vertical"
+                                    android:layout_marginBottom="8dp">
+
+                                    <TextView
+                                        android:id="@+id/docvetname1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Veterinarian:"
+                                        android:textColor="#646A7A"
+                                        android:textSize="14sp" />
+
+                                    <View
+                                        android:id="@+id/rectangle3"
+                                        android:layout_width="240dp"
+                                        android:layout_height="20dp"
                                         android:layout_marginLeft="26dp"
                                         android:background="@drawable/rectangle2"/>
                                 </LinearLayout>
-                                <TextView
-                                    android:id="@+id/docvetname1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Veterinarian:"
-                                    android:textColor="#646A7A"
-                                    android:textSize="14sp" />
 
                                 <LinearLayout
                                     android:id="@+id/medcard1footer"
@@ -282,7 +298,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="8dp"
-                                        android:text="Download"
+                                        android:text="Upload a file"
                                         android:textColor="@color/black"
                                         android:textSize="12.5sp"
                                         android:textStyle="bold"
@@ -335,29 +351,74 @@
                                 android:orientation="vertical"
                                 android:padding="15dp">
 
-                                <TextView
-                                    android:id="@+id/doctype2"
-                                    android:layout_width="wrap_content"
+                                <LinearLayout
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Type:"
-                                    android:textColor="#646A7A"
-                                    android:textSize="14sp" />
+                                    android:orientation="horizontal"
+                                    android:gravity="center_vertical"
+                                    android:layout_marginBottom="8dp">
 
-                                <TextView
-                                    android:id="@+id/docdate2"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Date"
-                                    android:textColor="#646A7A"
-                                    android:textSize="14sp" />
+                                    <TextView
+                                        android:id="@+id/doctype2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Type:"
+                                        android:textColor="#646A7A"
+                                        android:textSize="14sp" />
 
-                                <TextView
-                                    android:id="@+id/docvetname2"
-                                    android:layout_width="wrap_content"
+                                    <View
+                                        android:id="@+id/rectangle4"
+                                        android:layout_width="240dp"
+                                        android:layout_height="20dp"
+                                        android:layout_marginLeft="71dp"
+                                        android:background="@drawable/rectangle2"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Veterinarian:"
-                                    android:textColor="#646A7A"
-                                    android:textSize="14sp" />
+                                    android:orientation="horizontal"
+                                    android:gravity="center_vertical"
+                                    android:layout_marginBottom="8dp">
+
+                                    <TextView
+                                        android:id="@+id/docdate2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Date"
+                                        android:textColor="#646A7A"
+                                        android:textSize="14sp" />
+
+                                    <View
+                                        android:id="@+id/rectangle5"
+                                        android:layout_width="240dp"
+                                        android:layout_height="20dp"
+                                        android:layout_marginLeft="76dp"
+                                        android:background="@drawable/rectangle2"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:gravity="center_vertical"
+                                    android:layout_marginBottom="8dp">
+
+                                    <TextView
+                                        android:id="@+id/docvetname2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Veterinarian:"
+                                        android:textColor="#646A7A"
+                                        android:textSize="14sp" />
+
+                                    <View
+                                        android:id="@+id/rectangle6"
+                                        android:layout_width="240dp"
+                                        android:layout_height="20dp"
+                                        android:layout_marginLeft="26dp"
+                                        android:background="@drawable/rectangle2"/>
+                                </LinearLayout>
 
                                 <LinearLayout
                                     android:id="@+id/medcard2footer"
@@ -380,7 +441,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="8dp"
-                                        android:text="Download"
+                                        android:text="Upload a file"
                                         android:textColor="@color/black"
                                         android:textSize="12.5sp"
                                         android:textStyle="bold"
