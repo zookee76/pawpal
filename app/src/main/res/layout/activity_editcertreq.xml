@@ -19,7 +19,7 @@
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_consolidatedheader"
+                android:id="@+id/layout_editcertheader"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:orientation="horizontal"
@@ -34,10 +34,10 @@
                 app:layout_constraintVertical_bias="0.0">
 
                 <TextView
-                    android:id="@+id/tv_consolidatedsummary"
+                    android:id="@+id/tv_certreq"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Records Summary"
+                    android:text="Certificate Request"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -68,7 +68,7 @@
                     android:text="Back"
                     android:textColor="@color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_consolidatedsummary"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_certreq"
                     app:layout_constraintHorizontal_bias="0.153"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -99,7 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="10dp"
+                    app:cardCornerRadius="15dp"
                     android:elevation="4dp">
 
                     <LinearLayout
@@ -131,11 +131,11 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/medicalDocumentsRecyclerView"
+                    android:id="@+id/editCertRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    tools:listitem="@layout/rv_consolrecordscard" />
+                    tools:listitem="@layout/rv_editcertreq" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

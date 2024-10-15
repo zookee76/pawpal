@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">pawpal</string>
+
+    <string-array name="status_array">
+        <item>Select a status</item>
+        <item>Pending</item>
+        <item>Approved</item>
+        <item>Rejected</item>
+    </string-array>
 </resources>
