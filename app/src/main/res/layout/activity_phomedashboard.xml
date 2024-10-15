@@ -40,7 +40,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0"
                 app:round="30dp"
-                app:srcCompat="@drawable/cat" />
+                app:srcCompat="@drawable/ashley" />
 
             <TextView
                 android:id="@+id/tv_name"
@@ -103,13 +103,13 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.35"
                         app:round="75dp"
-                        app:srcCompat="@drawable/cat" />
+                        app:srcCompat="@drawable/casper" />
 
                     <TextView
                         android:id="@+id/tv_center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Name"
+                        android:text="Casper"
                         android:textAlignment="center"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -132,13 +132,13 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.417"
                         app:round="40dp"
-                        app:srcCompat="@drawable/dog" />
+                        app:srcCompat="@drawable/tyler" />
 
                     <TextView
                         android:id="@+id/tv_right"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Name"
+                        android:text="Tyler"
                         android:textAlignment="center"
                         android:textSize="14sp"
                         android:textStyle="bold"
@@ -160,13 +160,13 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.417"
                         app:round="40dp"
-                        app:srcCompat="@drawable/cat2" />
+                        app:srcCompat="@drawable/callie" />
 
                     <TextView
                         android:id="@+id/tv_left"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Name"
+                        android:text="Callie"
                         android:textAlignment="center"
                         android:textSize="14sp"
                         android:textStyle="bold"

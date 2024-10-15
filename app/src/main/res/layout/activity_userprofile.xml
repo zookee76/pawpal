@@ -113,13 +113,13 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.25"
                         app:round="50dp"
-                        app:srcCompat="@drawable/tyler" />
+                        app:srcCompat="@drawable/ashley" />
 
                     <TextView
                         android:id="@+id/tv_userfullname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Full Name"
+                        android:text="Ashley Corpuz"
                         android:textColor="#0C439E"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -134,7 +134,7 @@
                         android:id="@+id/tv_useremail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="user@gmail.com"
+                        android:text="ashley.corpuz03@gmail.com"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
