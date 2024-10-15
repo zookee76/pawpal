@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/overviewcardbody"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <LinearLayout
+        android:id="@+id/overviewcardimglayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            app:cardCornerRadius="20dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/casper"
+                android:scaleType="centerCrop"/>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:id="@+id/overviewTxtBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12.5dp">
+
+            <TextView
+                android:id="@+id/timeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="9:00AM"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/petName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Pet:"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/petNameText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Callie"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/ownerName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Owner:"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/ownerNameText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Ashley Corpuz"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/appointmentType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Appointment:"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/appointmentTypeText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="General Check-Up"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/veterinarian"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Veterinarian:"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/veterinarianText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Abcdef Ghijklmnop"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ovwcardbtns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp">
+
+        <Button
+            android:id="@+id/reschedbtn"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:text="Reschedule"
+            android:textColor="@color/black"
+            android:textSize="10.5sp"
+            android:textStyle="bold"
+            android:backgroundTint="#D6EAFC"
+            android:layout_weight="1"
+            android:layout_marginRight="15dp"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/cancelbtn"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:text="Cancel"
+            android:textColor="@color/black"
+            android:textSize="10.5sp"
+            android:textStyle="bold"
+            android:backgroundTint="#FCD6D6"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_marginRight="15dp"/>
+
+        <Button
+            android:id="@+id/completebtn"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:text="Complete"
+            android:textColor="@color/black"
+            android:textSize="10.5sp"
+            android:textStyle="bold"
+            android:backgroundTint="#E6FCD6"
+            android:layout_weight="1"
+            android:gravity="center"/>
+    </LinearLayout>
+</LinearLayout>
