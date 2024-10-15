@@ -85,6 +85,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/share" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
@@ -133,7 +134,7 @@
                             android:text="About"
                             android:layout_weight="1"
                             android:textColor="@color/black"
-                            android:textSize="13sp"/>
+                            android:textSize="13sp" />
 
                         <TextView
                             android:id="@+id/medicaldocscategory"
@@ -142,8 +143,7 @@
                             android:text="Medical Documents"
                             android:layout_weight="1"
                             android:textColor="@color/black"
-                            android:textSize="13sp"
-                            android:textStyle="bold"/>
+                            android:textSize="13sp" />
 
                         <TextView
                             android:id="@+id/medicationdietcategory"
@@ -161,11 +161,12 @@
                             android:text="Schedules"
                             android:layout_weight="1"
                             android:textColor="@color/black"
-                            android:textSize="13sp"/>
+                            android:textSize="13sp"
+                            android:textStyle="bold"/>
                     </LinearLayout>
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/medicalDocumentsCard1"
+                        android:id="@+id/scheduleCard1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
@@ -176,23 +177,23 @@
                         app:cardBackgroundColor="@color/white">
 
                         <LinearLayout
-                            android:id="@+id/medcardbody1"
+                            android:id="@+id/schedulebody1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
                             <LinearLayout
-                                android:id="@+id/medcardheader1"
+                                android:id="@+id/scheduleheader1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:padding="10sp"
                                 android:background="#D6EAFC">
 
                                 <TextView
-                                    android:id="@+id/documentTitle1"
+                                    android:id="@+id/scheduleTitle"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Title/Name of Document"
+                                    android:text="Appointment Number: 0001"
                                     android:textColor="#0C439E"
                                     android:textSize="16sp"
                                     android:textStyle="bold"
@@ -200,7 +201,7 @@
                             </LinearLayout>
 
                             <LinearLayout
-                                android:id="@+id/medcard1body"
+                                android:id="@+id/schedulebody"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@color/white"
@@ -208,62 +209,42 @@
                                 android:padding="15dp">
 
                                 <TextView
-                                    android:id="@+id/doctype1"
+                                    android:id="@+id/appointmenttype"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Type:"
+                                    android:text="Appointment Type:"
                                     android:textColor="#646A7A"
                                     android:textSize="14sp" />
 
                                 <TextView
-                                    android:id="@+id/docdate1"
+                                    android:id="@+id/dateandtime"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Date"
+                                    android:text="Date & Time:"
                                     android:textColor="#646A7A"
                                     android:textSize="14sp" />
 
                                 <TextView
-                                    android:id="@+id/docvetname1"
+                                    android:id="@+id/veterinarian"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Veterinarian:"
                                     android:textColor="#646A7A"
                                     android:textSize="14sp" />
 
-                                <LinearLayout
-                                    android:id="@+id/medcard1footer"
-                                    android:layout_width="match_parent"
+                                <TextView
+                                    android:id="@+id/note"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
-
-                                    <TextView
-                                        android:id="@+id/file_name_"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:text="[File Name]"
-                                        android:gravity="center_vertical"
-                                        android:textColor="@color/black"
-                                        android:layout_marginTop="10dp"/>
-
-                                    <Button
-                                        android:id="@+id/downloadButton1"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="8dp"
-                                        android:text="Download"
-                                        android:textColor="@color/black"
-                                        android:textSize="12.5sp"
-                                        android:textStyle="bold"
-                                        android:backgroundTint="#D6EAFC"/>
-                                </LinearLayout>
+                                    android:text="Note:"
+                                    android:textColor="#646A7A"
+                                    android:textSize="14sp" />
                             </LinearLayout>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/medicalDocumentsCard2"
+                        android:id="@+id/scheduleCard2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
@@ -274,23 +255,23 @@
                         app:cardBackgroundColor="@color/white">
 
                         <LinearLayout
-                            android:id="@+id/medcardbody2"
+                            android:id="@+id/schedule2body"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
                             <LinearLayout
-                                android:id="@+id/medcardheader2"
+                                android:id="@+id/scheduleheader2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:padding="10sp"
                                 android:background="#D6EAFC">
 
                                 <TextView
-                                    android:id="@+id/documentTitle2"
+                                    android:id="@+id/scheduleTitle2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Title/Name of Document"
+                                    android:text="Appointment Number: 0002"
                                     android:textColor="#0C439E"
                                     android:textSize="16sp"
                                     android:textStyle="bold"
@@ -298,7 +279,7 @@
                             </LinearLayout>
 
                             <LinearLayout
-                                android:id="@+id/medcard2body"
+                                android:id="@+id/schedulebody2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@color/white"
@@ -306,56 +287,122 @@
                                 android:padding="15dp">
 
                                 <TextView
-                                    android:id="@+id/doctype2"
+                                    android:id="@+id/appointmenttype2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Type:"
+                                    android:text="Appointment Type:"
                                     android:textColor="#646A7A"
                                     android:textSize="14sp" />
 
                                 <TextView
-                                    android:id="@+id/docdate2"
+                                    android:id="@+id/dateandtime2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Date"
+                                    android:text="Date & Time:"
                                     android:textColor="#646A7A"
                                     android:textSize="14sp" />
 
                                 <TextView
-                                    android:id="@+id/docvetname2"
+                                    android:id="@+id/veterinarian2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Veterinarian:"
                                     android:textColor="#646A7A"
                                     android:textSize="14sp" />
 
-                                <LinearLayout
-                                    android:id="@+id/medcard2footer"
-                                    android:layout_width="match_parent"
+                                <TextView
+                                    android:id="@+id/note2"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
+                                    android:text="Note:"
+                                    android:textColor="#646A7A"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
-                                    <TextView
-                                        android:id="@+id/file_name_2"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:text="[File Name]"
-                                        android:gravity="center_vertical"
-                                        android:textColor="@color/black"
-                                        android:layout_marginTop="10dp"/>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/scheduleCard3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="8dp"
+                        android:elevation="4dp"
+                        android:layout_gravity="center_horizontal"
+                        app:cardCornerRadius="22dp"
+                        app:cardBackgroundColor="@color/white">
 
-                                    <Button
-                                        android:id="@+id/downloadButton2"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="8dp"
-                                        android:text="Download"
-                                        android:textColor="@color/black"
-                                        android:textSize="12.5sp"
-                                        android:textStyle="bold"
-                                        android:backgroundTint="#D6EAFC"/>
-                                </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/schedule3body"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:id="@+id/scheduleheader3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="10sp"
+                                android:background="#D6EAFC">
+
+                                <TextView
+                                    android:id="@+id/scheduleTitle3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Vaccination"
+                                    android:textColor="#0C439E"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginLeft="5dp"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/schedulebody3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:orientation="vertical"
+                                android:padding="15dp">
+
+                                <TextView
+                                    android:id="@+id/vaccinationtype"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Vaccination Type:"
+                                    android:textColor="#646A7A"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/date"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Date:"
+                                    android:textColor="#646A7A"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/frequency"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Frequency:"
+                                    android:textColor="#646A7A"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/nextduedate"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Next Due Date:"
+                                    android:textColor="#646A7A"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/status"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Status:"
+                                    android:textColor="#646A7A"
+                                    android:textSize="14sp" />
                             </LinearLayout>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -365,60 +412,60 @@
     </ScrollView>
 
     <LinearLayout
-    android:id="@+id/layout_petnavigation"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:layout_alignParentBottom="true"
-    android:orientation="horizontal"
-    android:background="@color/white">
+        android:id="@+id/layout_petnavigation"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="@color/white">
 
-    <ImageView
-        android:id="@+id/iv_home"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:clickable="true"
-        android:contentDescription="home"
-        android:padding="7dp"
-        app:srcCompat="@drawable/home" />
+        <ImageView
+            android:id="@+id/iv_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:contentDescription="home"
+            android:padding="7dp"
+            app:srcCompat="@drawable/home" />
 
-    <ImageView
-        android:id="@+id/iv_calendar"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:clickable="true"
-        android:contentDescription="calendar"
-        android:padding="10dp"
-        app:srcCompat="@drawable/calendar" />
+        <ImageView
+            android:id="@+id/iv_calendar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:contentDescription="calendar"
+            android:padding="10dp"
+            app:srcCompat="@drawable/calendar" />
 
-    <ImageView
-        android:id="@+id/iv_pets"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:clickable="true"
-        android:contentDescription="pets"
-        app:srcCompat="@drawable/paw" />
+        <ImageView
+            android:id="@+id/iv_pets"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:contentDescription="pets"
+            app:srcCompat="@drawable/paw" />
 
-    <ImageView
-        android:id="@+id/iv_files"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:clickable="true"
-        android:contentDescription="files"
-        android:padding="10dp"
-        app:srcCompat="@drawable/file" />
+        <ImageView
+            android:id="@+id/iv_files"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:contentDescription="files"
+            android:padding="10dp"
+            app:srcCompat="@drawable/file" />
 
-    <ImageView
-        android:id="@+id/iv_userprofile"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:clickable="true"
-        android:contentDescription="userprofile"
-        android:padding="10dp"
-        app:srcCompat="@drawable/profile" />
+        <ImageView
+            android:id="@+id/iv_userprofile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:contentDescription="userprofile"
+            android:padding="10dp"
+            app:srcCompat="@drawable/profile" />
     </LinearLayout>
 </RelativeLayout>
