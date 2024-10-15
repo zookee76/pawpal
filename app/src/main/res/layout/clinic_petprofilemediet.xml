@@ -1,0 +1,560 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFDF4">
+
+    <ScrollView
+        android:id="@+id/scrollable_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layout_petnavigation"
+        android:padding="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_mypetsheader"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+                <TextView
+                    android:id="@+id/tv_petprofile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pet Profile"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.744" />
+
+                <ImageView
+                    android:id="@+id/iv_back"
+                    android:layout_width="18dp"
+                    android:layout_height="20dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_back"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.7"
+                    app:srcCompat="@drawable/backicon" />
+
+                <TextView
+                    android:id="@+id/tv_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Back"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_petprofile"
+                    app:layout_constraintHorizontal_bias="0.153"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.705" />
+
+                <ImageView
+                    android:id="@+id/iv_edit"
+                    android:layout_width="18dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="344dp"
+                    android:layout_marginTop="28dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBaseline_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/edit" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/petImage"
+                android:layout_width="match_parent"
+                android:layout_height="212dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/casper"
+                android:translationY="23dp"
+                android:layout_marginTop="-15dp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/outerCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="6dp"
+                app:cardCornerRadius="30dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/petName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Casper"
+                        android:textSize="35sp"
+                        android:textColor="#0C439E"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/aboutcategory"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="About"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:textSize="13sp"/>
+
+                        <TextView
+                            android:id="@+id/medicaldocscategory"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Medical Documents"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:textSize="13sp"/>
+
+                        <TextView
+                            android:id="@+id/medicationdietcategory"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Medication/Diet"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:textSize="13sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/schedulecategory"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Schedules"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:textSize="13sp"/>
+                    </LinearLayout>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/prescriptionCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="8dp"
+                        android:elevation="4dp"
+                        android:layout_gravity="center_horizontal"
+                        app:cardCornerRadius="22dp"
+                        app:cardBackgroundColor="@color/white">
+
+                        <LinearLayout
+                            android:id="@+id/prescardbody1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:id="@+id/prescardheader1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="10sp"
+                                android:background="#D6EAFC"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/presTitle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Prescription Record Number: 0001"
+                                    android:textColor="#0C439E"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginLeft="5dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Prescription Date: October 9, 2024"
+                                    android:textColor="#0C439E"
+                                    android:layout_marginLeft="5dp"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/prescard1body"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:orientation="vertical"
+                                android:padding="15dp">
+
+                                <TextView
+                                    android:id="@+id/medname1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Medication Name:"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
+
+                                <TextView
+                                    android:id="@+id/medpurpose1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Purpose:"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
+
+                                <TextView
+                                    android:id="@+id/meddosage1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Dosage:"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
+
+                                <TextView
+                                    android:id="@+id/medadministration1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Administration:"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
+
+                                <TextView
+                                    android:id="@+id/medfrequencyduration1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Frequency &amp; Duration"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
+
+                                <Space
+                                    android:layout_width="match_parent"
+                                    android:layout_height="30dp"/>
+
+                                <TextView
+                                    android:id="@+id/mednote1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Note:"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"/>
+
+                                <Space
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/nutritionplancard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="8dp"
+                        android:elevation="4dp"
+                        android:layout_gravity="center_horizontal"
+                        app:cardCornerRadius="22dp"
+                        app:cardBackgroundColor="@color/white">
+
+                        <LinearLayout
+                            android:id="@+id/nutplancardbody"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:id="@+id/nutplanheader"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="10sp"
+                                android:background="#D6EAFC">
+
+                                <TextView
+                                    android:id="@+id/documentTitle2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Nutrition Plan"
+                                    android:textColor="#0C439E"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginLeft="5dp"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/medcard2body"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:orientation="vertical"
+                                android:padding="15dp">
+
+                                <TextView
+                                    android:id="@+id/doctype2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Chicken &amp; Squash"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"/>
+
+                                <TextView
+                                    android:id="@+id/nutplanservingsize"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Serving Size:"
+                                    android:textColor="#646A7A"
+                                    android:textSize="14sp" />
+
+                                <Space
+                                    android:layout_width="match_parent"
+                                    android:layout_height="30dp"/>
+
+                                <TextView
+                                    android:id="@+id/nutrtionfacts"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Nutrition Facts"
+                                    android:textStyle="bold"
+                                    android:textSize="14sp"
+                                    android:textColor="@color/black"/>
+
+                                <LinearLayout
+                                    android:id="@+id/factslayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="10dp"
+                                    android:orientation="horizontal">
+
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/caloriescard"
+                                        android:layout_width="25dp"
+                                        android:layout_height="20dp"
+                                        android:backgroundTint="#0C439E"
+                                        app:cardCornerRadius="15dp"
+                                        android:layout_weight="1"
+                                        android:padding="15dp"
+                                        android:layout_marginEnd="10dp">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:textColor="@color/white"
+                                            android:textStyle="bold"
+                                            android:text="Calories"
+                                            android:textSize="10sp"
+                                            android:gravity="center"/>
+
+                                    </androidx.cardview.widget.CardView>
+
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/proteincard"
+                                        android:layout_width="25dp"
+                                        android:layout_height="20dp"
+                                        android:backgroundTint="#0C439E"
+                                        app:cardCornerRadius="15dp"
+                                        android:layout_weight="1"
+                                        android:padding="15dp"
+                                        android:layout_marginEnd="10dp">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:textColor="@color/white"
+                                            android:textStyle="bold"
+                                            android:text="Protein"
+                                            android:textSize="10sp"
+                                            android:gravity="center"/>
+
+                                    </androidx.cardview.widget.CardView>
+
+                                    <androidx.cardview.widget.CardView
+                                        android:id="@+id/fibercard"
+                                        android:layout_width="25dp"
+                                        android:layout_height="20dp"
+                                        android:backgroundTint="#0C439E"
+                                        app:cardCornerRadius="15dp"
+                                        android:layout_weight="1"
+                                        android:padding="15dp">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:textColor="@color/white"
+                                            android:textStyle="bold"
+                                            android:text="Fiber"
+                                            android:textSize="10sp"
+                                            android:gravity="center"/>
+
+                                    </androidx.cardview.widget.CardView>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/nutplanbody"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/instructionsheader"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Instructions:"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/black"/>
+
+                                    <TextView
+                                        android:id="@+id/step1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="1. Prepare the chicken and squash by cutting it into small pieces."
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/step2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="2. Boil the skinless and boneless chicken until fully cooked. Shred it into small pieces. No seasoning or oil should be added."
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/step3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="3. Steam or boil the peeled squash until soft. Once done, mash it until smooth. No seasoning should be added."
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/step4"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="4. Mix 70% chicken and 30% squash for each meal"
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/step5"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="5. Divide into two meals (morning and evening)"
+                                        />
+
+                                    <Space
+                                        android:layout_width="match_parent"
+                                        android:layout_height="10dp"/>
+
+                                    <TextView
+                                        android:id="@+id/nutplanote"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Note:"
+                                        android:textColor="@color/black"
+                                        android:textStyle="bold"/>
+
+                                    <TextView
+                                        android:id="@+id/nutplanotebody"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="If introducing this diet to Casper for the first time, mix small amounts of the chicken and squash with their current food and increase the new ingredients over 1-2 weeks to avoid digestive upset.
+You can also add taurine and vitamins. Refer to the dosage given by the vet."
+                                        android:textColor="@color/black"/>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/layout_petnavigation"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:contentDescription="home"
+            android:padding="7dp"
+            app:srcCompat="@drawable/home" />
+
+        <ImageView
+            android:id="@+id/iv_calendar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:contentDescription="calendar"
+            android:padding="10dp"
+            app:srcCompat="@drawable/calendar" />
+
+        <ImageView
+            android:id="@+id/iv_pets"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:contentDescription="pets"
+            app:srcCompat="@drawable/paw" />
+
+        <ImageView
+            android:id="@+id/iv_files"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:contentDescription="files"
+            android:padding="10dp"
+            app:srcCompat="@drawable/file" />
+
+        <ImageView
+            android:id="@+id/iv_userprofile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:contentDescription="userprofile"
+            android:padding="10dp"
+            app:srcCompat="@drawable/profile" />
+    </LinearLayout>
+</RelativeLayout>
