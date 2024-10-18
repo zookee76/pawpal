@@ -5,136 +5,117 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
-
-        <View
-            android:id="@+id/rectangle1"
-            android:layout_width="170dp"
-            android:layout_height="159dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/rectangle4"
-            tools:layout_editor_absoluteX="29dp"
-            tools:layout_editor_absoluteY="37dp" />
+    <FrameLayout
+        android:id="@+id/rectangle1"
+        android:layout_width="170dp"
+        android:layout_height="159dp"
+        android:background="@drawable/rectangle4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp">
 
         <TextView
             android:id="@+id/petowner"
-            android:layout_width="127dp"
-            android:layout_height="61dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Pet Owner Management"
             android:textAlignment="center"
             android:textColor="#0C439E"
             android:textSize="20sp"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="50dp"
-            tools:layout_editor_absoluteY="92dp" />
+            android:gravity="center" />
+    </FrameLayout>
 
-        <View
-            android:id="@+id/rectangle2"
-            android:layout_width="170dp"
-            android:layout_height="159dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/rectangle4"
-            tools:layout_editor_absoluteX="214dp"
-            tools:layout_editor_absoluteY="37dp" />
+    <FrameLayout
+        android:id="@+id/rectangle2"
+        android:layout_width="170dp"
+        android:layout_height="159dp"
+        android:background="@drawable/rectangle4"
+        app:layout_constraintTop_toTopOf="@id/rectangle1"
+        app:layout_constraintStart_toEndOf="@id/rectangle1"
+        android:layout_marginStart="16dp">
 
         <TextView
             android:id="@+id/appointment"
-            android:layout_width="127dp"
-            android:layout_height="61dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Appointment Management"
             android:textAlignment="center"
             android:textColor="#0C439E"
             android:textSize="20sp"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="238dp"
-            tools:layout_editor_absoluteY="92dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:gravity="center" />
+    </FrameLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="201dp"
-        tools:ignore="MissingConstraints">
-
-        <View
-            android:id="@+id/rectangle3"
-            android:layout_width="170dp"
-            android:layout_height="159dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/rectangle4"
-            tools:layout_editor_absoluteX="29dp"
-            tools:layout_editor_absoluteY="37dp" />
+    <FrameLayout
+        android:id="@+id/rectangle3"
+        android:layout_width="170dp"
+        android:layout_height="159dp"
+        android:background="@drawable/rectangle4"
+        app:layout_constraintTop_toBottomOf="@id/rectangle1"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp">
 
         <TextView
             android:id="@+id/vaccination"
-            android:layout_width="127dp"
-            android:layout_height="61dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Vaccination Schedule"
             android:textAlignment="center"
             android:textColor="#0C439E"
             android:textSize="20sp"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="50dp"
-            tools:layout_editor_absoluteY="92dp" />
+            android:gravity="center" />
+    </FrameLayout>
 
-        <View
-            android:id="@+id/rectangle4"
-            android:layout_width="170dp"
-            android:layout_height="159dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/rectangle4"
-            tools:layout_editor_absoluteX="214dp"
-            tools:layout_editor_absoluteY="37dp" />
+    <FrameLayout
+        android:id="@+id/rectangle4"
+        android:layout_width="170dp"
+        android:layout_height="159dp"
+        android:background="@drawable/rectangle4"
+        app:layout_constraintTop_toBottomOf="@id/rectangle2"
+        app:layout_constraintStart_toEndOf="@id/rectangle3"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp">
 
         <TextView
             android:id="@+id/medicalrecords"
-            android:layout_width="127dp"
-            android:layout_height="61dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Medical Records"
             android:textAlignment="center"
             android:textColor="#0C439E"
             android:textSize="20sp"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="238dp"
-            tools:layout_editor_absoluteY="92dp" />
+            android:gravity="center" />
+    </FrameLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
+        android:id="@+id/rectangle5"
+        android:layout_width="170dp"
+        android:layout_height="159dp"
+        android:background="@drawable/rectangle4"
+        app:layout_constraintTop_toBottomOf="@id/rectangle3"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/certificate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="201dp">
-
-            <View
-                android:id="@+id/rectangle5"
-                android:layout_width="170dp"
-                android:layout_height="159dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:background="@drawable/rectangle4"
-                tools:layout_editor_absoluteX="29dp"
-                tools:layout_editor_absoluteY="37dp" />
-
-            <TextView
-                android:id="@+id/certificate"
-                android:layout_width="127dp"
-                android:layout_height="61dp"
-                android:text="Certificate Request"
-                android:textAlignment="center"
-                android:textColor="#0C439E"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                tools:layout_editor_absoluteX="50dp"
-                tools:layout_editor_absoluteY="92dp" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+            android:layout_gravity="center"
+            android:text="Certificate Request"
+            android:textAlignment="center"
+            android:textColor="#0C439E"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

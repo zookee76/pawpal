@@ -20,6 +20,11 @@
         <activity android:name=".pabout" android:exported="false"/>
         <activity android:name=".pmediet" android:exported="false"/>
         <activity android:name=".pschedules" android:exported="false"/>
+        <activity android:name=".shareqr" android:exported="false"/>
+        <activity android:name=".changepw" android:exported="false"/>
+        <activity android:name=".consolidatedrecords" android:exported="false"/>
+        <activity android:name=".consolidatedsummary" android:exported="false"/>
+        <activity android:name=".chomedashboard" android:exported="false"/>
 
         <activity
             android:name=".phomedashboard"

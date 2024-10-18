@@ -1,6 +1,7 @@
 package com.example.pawpal;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -43,11 +44,20 @@ public class userprofilepage extends AppCompatActivity {
 
         // Edit Handle
         ImageView editprofile = findViewById(R.id.iv_arrowprofile);
+        ImageView changepw = findViewById(R.id.iv_arrowpw);
 
         editprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(userprofilepage.this, editprofilepage.class);
+                startActivity(intent);
+            }
+        });
+
+        changepw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(userprofilepage.this, changepw.class);
                 startActivity(intent);
             }
         });

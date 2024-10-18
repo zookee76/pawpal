@@ -23,6 +23,7 @@
             android:background="#D6EAFC">
 
             <TextView
+                android:id="@+id/consolrecordtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="[Title/Name of Document]"
@@ -39,33 +40,85 @@
             android:orientation="vertical"
             android:padding="15dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Type:"
-                android:textColor="#646A7A"
-                android:textSize="14sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date"
-                android:textColor="#646A7A"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/doctype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Type:"
+                    android:textColor="#646A7A"
+                    android:textSize="14sp"
+                    android:layout_weight="1"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Veterinarian:"
-                android:textColor="#646A7A"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/doctypetext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#646A7A"
+                    android:textSize="14sp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="File:"
-                android:textColor="#646A7A"
-                android:textSize="14sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/docdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date:"
+                    android:textColor="#646A7A"
+                    android:textSize="14sp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/docdatetext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#646A7A"
+                    android:textSize="14sp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/veterinarian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Veterinarian:"
+                    android:textColor="#646A7A"
+                    android:textSize="14sp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/veterinarianText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#646A7A"
+                    android:textSize="14sp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/docfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="File:"
+                    android:textColor="#646A7A"
+                    android:textSize="14sp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -78,6 +131,7 @@
                     android:layout_weight="1" />
 
                 <Button
+                    android:id="@+id/see_details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"

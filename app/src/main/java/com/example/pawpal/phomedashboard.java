@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,6 +24,34 @@ public class phomedashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_phomedashboard);
+
+        TextView meddiet = findViewById(R.id.tv_alldiet);
+        TextView schedules = findViewById(R.id.tv_allapp);
+        ImageView petImg = findViewById(R.id.img_center);
+
+        petImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(phomedashboard.this, pabout.class);
+                startActivity(intent);
+            }
+        });
+
+        meddiet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(phomedashboard.this, pmediet.class);
+                startActivity(intent);
+            }
+        });
+
+        schedules.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(phomedashboard.this, pschedules.class);
+                startActivity(intent);
+            }
+        });
 
         // RecyclerView Handle
         rvDietMedList = findViewById(R.id.rv_medlist);
@@ -67,12 +96,18 @@ public class phomedashboard extends AppCompatActivity {
             }
         });
 
-        // Add links to remaining navigation pages (calendar, files)
-
         files.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(phomedashboard.this, pmedicaldocs.class);
+                startActivity(intent);
+            }
+        });
+
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(phomedashboard.this, pschedules.class);
                 startActivity(intent);
             }
         });

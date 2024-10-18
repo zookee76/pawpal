@@ -192,7 +192,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
                         android:gravity="center"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:descendantFocusability="blocksDescendants">
 
                         <TextView
                             android:id="@+id/tv_appointment"
@@ -215,7 +216,7 @@
                             android:textAlignment="textEnd"
                             android:textColor="#8E9093"
                             android:textColorLink="#8E9093"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"/>
 
                     </LinearLayout>
 
@@ -328,7 +329,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/tv_allapp2"
+                            android:id="@+id/tv_alldiet"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
