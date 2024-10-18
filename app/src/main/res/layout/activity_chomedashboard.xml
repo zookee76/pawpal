@@ -40,13 +40,13 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0"
                 app:round="30dp"
-                app:srcCompat="@drawable/ashley" />
+                app:srcCompat="@drawable/fiimage" />
 
             <TextView
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hello, Name"
+                android:text="[Clinic Name]"
                 android:textAlignment="textStart"
                 android:textColor="#0C439E"
                 android:textSize="20sp"
@@ -77,109 +77,8 @@
                 android:orientation="vertical"
                 android:paddingBottom="20dp">
 
-                <View
-                    android:id="@+id/view_line"
-                    android:layout_width="wrap_content"
-                    android:layout_height="1dp"
-                    android:background="#D9D9D9" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_pet"
-                    android:layout_width="match_parent"
-                    android:layout_height="245dp"
-                    android:layout_gravity="center"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp">
-
-                    <androidx.constraintlayout.utils.widget.ImageFilterView
-                        android:id="@+id/img_center"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:scaleType="centerCrop"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.497"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.35"
-                        app:round="75dp"
-                        app:srcCompat="@drawable/casper" />
-
-                    <TextView
-                        android:id="@+id/tv_center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Casper"
-                        android:textAlignment="center"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.498"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/img_center"
-                        app:layout_constraintVertical_bias="0.209" />
-
-                    <androidx.constraintlayout.utils.widget.ImageFilterView
-                        android:id="@+id/img_right"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:scaleType="centerCrop"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.555"
-                        app:layout_constraintStart_toEndOf="@+id/img_center"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.417"
-                        app:round="40dp"
-                        app:srcCompat="@drawable/tyler" />
-
-                    <TextView
-                        android:id="@+id/tv_right"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tyler"
-                        android:textAlignment="center"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/img_center"
-                        app:layout_constraintTop_toBottomOf="@+id/img_right"
-                        app:layout_constraintVertical_bias="0.084" />
-
-                    <androidx.constraintlayout.utils.widget.ImageFilterView
-                        android:id="@+id/img_left"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:scaleType="centerCrop"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/img_center"
-                        app:layout_constraintHorizontal_bias="0.257"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.417"
-                        app:round="40dp"
-                        app:srcCompat="@drawable/callie" />
-
-                    <TextView
-                        android:id="@+id/tv_left"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Callie"
-                        android:textAlignment="center"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/img_center"
-                        app:layout_constraintHorizontal_bias="0.397"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/img_left"
-                        app:layout_constraintVertical_bias="0.084" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/medicalDocumentsRecyclerView"
+                    android:id="@+id/actionmenuRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
