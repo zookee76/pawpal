@@ -16,6 +16,10 @@
         <activity android:name=".welcomeaccess" android:exported="false"/>
         <activity android:name=".welcomegetstarted" android:exported="false"/>
         <activity android:name=".welcomerole" android:exported="false"/>
+        <activity android:name=".pmedicaldocs" android:exported="false"/>
+        <activity android:name=".pabout" android:exported="false"/>
+        <activity android:name=".pmediet" android:exported="false"/>
+        <activity android:name=".pschedules" android:exported="false"/>
 
         <activity
             android:name=".phomedashboard"

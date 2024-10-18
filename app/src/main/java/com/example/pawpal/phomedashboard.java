@@ -68,6 +68,14 @@ public class phomedashboard extends AppCompatActivity {
         });
 
         // Add links to remaining navigation pages (calendar, files)
+
+        files.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(phomedashboard.this, pmedicaldocs.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void loadDietMedications(){

@@ -6,16 +6,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class userprofilepage extends AppCompatActivity {
-
+public class pmedicaldocs extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_userprofile);
+        setContentView(R.layout.activity_petprofilemedical);
 
         //Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
@@ -24,39 +24,41 @@ public class userprofilepage extends AppCompatActivity {
         View.OnClickListener backListnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, phomedashboard.class);
+                Intent intent = new Intent(pmedicaldocs.this, phomedashboard.class);
                 startActivity(intent);
             }
         };
 
-        // Logout Handle
-        TextView logout = findViewById(R.id.tv_logout);
-        ImageView logoutimg =  findViewById(R.id.iv_logout);
+        backImg.setOnClickListener(backListnr);
+        backTxt.setOnClickListener(backListnr);
 
-        View.OnClickListener logoutLstnr = new View.OnClickListener() {
+        TextView meddiet = findViewById(R.id.medicationdietcategory);
+        TextView about = findViewById(R.id.aboutcategory);
+        TextView schedules = findViewById(R.id.schedulecategory);
+
+        meddiet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, plogin.class);
-                startActivity(intent);
-            }
-        };
-
-        // Edit Handle
-        ImageView editprofile = findViewById(R.id.iv_arrowprofile);
-
-        editprofile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, editprofilepage.class);
+                Intent intent = new Intent(pmedicaldocs.this, pmediet.class);
                 startActivity(intent);
             }
         });
 
-        logout.setOnClickListener(logoutLstnr);
-        logoutimg.setOnClickListener(logoutLstnr);
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(pmedicaldocs.this, pabout.class);
+                startActivity(intent);
+            }
+        });
 
-        backImg.setOnClickListener(backListnr);
-        backTxt.setOnClickListener(backListnr);
+        schedules.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(pmedicaldocs.this, pschedules.class);
+                startActivity(intent);
+            }
+        });
 
         //Navigation Handle
         ImageView home, calendar, pets, files, profile;
@@ -70,7 +72,7 @@ public class userprofilepage extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, phomedashboard.class);
+                Intent intent = new Intent(pmedicaldocs.this, phomedashboard.class);
                 startActivity(intent);
             }
         });
@@ -78,7 +80,7 @@ public class userprofilepage extends AppCompatActivity {
         pets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, petspage.class);
+                Intent intent = new Intent(pmedicaldocs.this, petspage.class);
                 startActivity(intent);
             }
         });
@@ -86,18 +88,10 @@ public class userprofilepage extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, userprofilepage.class);
+                Intent intent = new Intent(pmedicaldocs.this, userprofilepage.class);
                 startActivity(intent);
             }
         });
         // Add links to remaining navigation pages (calendar, files)
-
-        files.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, pmedicaldocs.class);
-                startActivity(intent);
-            }
-        });
     }
 }
