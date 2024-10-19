@@ -12,20 +12,54 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pawpal"
         tools:targetApi="31">
-        <activity android:name=".welcome" android:exported="false"/>
-        <activity android:name=".welcomeaccess" android:exported="false"/>
-        <activity android:name=".welcomegetstarted" android:exported="false"/>
-        <activity android:name=".welcomerole" android:exported="false"/>
-        <activity android:name=".pmedicaldocs" android:exported="false"/>
-        <activity android:name=".pabout" android:exported="false"/>
-        <activity android:name=".pmediet" android:exported="false"/>
-        <activity android:name=".pschedules" android:exported="false"/>
-        <activity android:name=".shareqr" android:exported="false"/>
-        <activity android:name=".changepw" android:exported="false"/>
-        <activity android:name=".consolidatedrecords" android:exported="false"/>
-        <activity android:name=".consolidatedsummary" android:exported="false"/>
-        <activity android:name=".chomedashboard" android:exported="false"/>
-
+        <activity
+            android:name=".medrecordspage"
+            android:exported="false" />
+        <activity
+            android:name=".vaccinationpage"
+            android:exported="false" />
+        <activity
+            android:name=".appointmentspage"
+            android:exported="false" />
+        <activity
+            android:name=".welcome"
+            android:exported="false" />
+        <activity
+            android:name=".welcomeaccess"
+            android:exported="false" />
+        <activity
+            android:name=".welcomegetstarted"
+            android:exported="false" />
+        <activity
+            android:name=".welcomerole"
+            android:exported="false" />
+        <activity
+            android:name=".pmedicaldocs"
+            android:exported="false" />
+        <activity
+            android:name=".pabout"
+            android:exported="false" />
+        <activity
+            android:name=".pmediet"
+            android:exported="false" />
+        <activity
+            android:name=".pschedules"
+            android:exported="false" />
+        <activity
+            android:name=".shareqr"
+            android:exported="false" />
+        <activity
+            android:name=".changepw"
+            android:exported="false" />
+        <activity
+            android:name=".consolidatedrecords"
+            android:exported="false" />
+        <activity
+            android:name=".consolidatedsummary"
+            android:exported="false" />
+        <activity
+            android:name=".chomedashboard"
+            android:exported="false" />
         <activity
             android:name=".phomedashboard"
             android:exported="false" />

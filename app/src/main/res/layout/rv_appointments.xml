@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_appindiv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_appointment"
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/layout_appointment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/layout_appointmentno"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#D6EAFC"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/tv_appointmentno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="Appointment Number: xxxx"
+                    android:textColor="#0C439E"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_appointmentdeets"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:id="@+id/layout_appfields"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingLeft="20dp">
+
+                    <TextView
+                        android:id="@+id/tv_apppet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pet Name:"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_appowner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Owner Name:"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_apptype"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Appointment Type:"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_appdatetime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date and Time:"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_appvet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Veterinarian:"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_appstatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Status:"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_appdata"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_inpet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Casper" />
+
+                    <TextView
+                        android:id="@+id/tv_inowner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Ashley Corpuz" />
+
+                    <TextView
+                        android:id="@+id/tv_inapptype"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="General Checkup" />
+
+                    <TextView
+                        android:id="@+id/tv_indatetime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Octtober 1, 2024 9AM" />
+
+                    <TextView
+                        android:id="@+id/tv_invet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Dr. Vet" />
+
+                    <TextView
+                        android:id="@+id/tv_instatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Completed" />
+
+                    <Button
+                        android:id="@+id/btn_seedeets"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="#D6EAFC"
+                        android:clickable="true"
+                        android:gravity="fill_vertical"
+                        android:text="See Details"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

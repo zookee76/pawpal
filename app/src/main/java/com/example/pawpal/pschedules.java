@@ -125,7 +125,7 @@ public class pschedules extends AppCompatActivity
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(pschedules.this, pschedules.class);
+                Intent intent = new Intent(pschedules.this, appointmentspage.class);
                 startActivity(intent);
             }
         });

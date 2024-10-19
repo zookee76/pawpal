@@ -35,11 +35,35 @@ public class chomedashboard extends AppCompatActivity {
         adapter = new overviewentryadapter(this, overviewentryList);
         rv_overviewentries.setAdapter(adapter);
 
-        FrameLayout rectangle1 = findViewById(R.id.rectangle1);
-        FrameLayout rectangle2 = findViewById(R.id.rectangle2);
-        FrameLayout rectangle3 = findViewById(R.id.rectangle3);
-        FrameLayout rectangle4 = findViewById(R.id.rectangle4);
-        FrameLayout rectangle5 = findViewById(R.id.rectangle5);
+        FrameLayout rectangle1 = findViewById(R.id.rectangle1); // petownermanagement
+        FrameLayout rectangle2 = findViewById(R.id.rectangle2); // appmanager
+        FrameLayout rectangle3 = findViewById(R.id.rectangle3); // vacc sched
+        FrameLayout rectangle4 = findViewById(R.id.rectangle4); // medrecords
+        FrameLayout rectangle5 = findViewById(R.id.rectangle5); // certreq
+
+        rectangle1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(chomedashboard.this, medrecordspage.class);
+                startActivity(intent);
+            }
+        });
+
+        rectangle2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(chomedashboard.this, appointmentspage.class);
+                startActivity(intent);
+            }
+        });
+
+        rectangle3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(chomedashboard.this, appointmentspage.class);
+                startActivity(intent);
+            }
+        });
 
         rectangle4.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +108,7 @@ public class chomedashboard extends AppCompatActivity {
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(chomedashboard.this, pschedules.class);
+                Intent intent = new Intent(chomedashboard.this, appointmentspage.class);
                 startActivity(intent);
             }
         });

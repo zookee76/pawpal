@@ -6,24 +6,36 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class petspage extends AppCompatActivity {
-
-    private RecyclerView rvPets;
-    private petAdapter adapter;
-    private List<pets> petsList;
+public class vaccinationpage extends AppCompatActivity {
+    private RecyclerView rvVax;
+    private vaxAdapter vaxAdapter;
+    private List<vaccination> vaccinationList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_vaccinationpage);
 
-        setContentView(R.layout.activity_mypets);
+        rvVax = findViewById(R.id.rv_vaccinations);
+        rvVax.setLayoutManager(new LinearLayoutManager(this));
+
+        //Sample Data
+        vaccinationList = new ArrayList<>();
+
+        vaxAdapter = new vaxAdapter(this, vaccinationList);
+        rvVax.setAdapter(vaxAdapter);
 
         //Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
@@ -37,20 +49,6 @@ public class petspage extends AppCompatActivity {
         };
 
 
-        backImg.setOnClickListener(backListnr);
-        backTxt.setOnClickListener(backListnr);
-
-        // RecyclerView Handle
-
-        rvPets = findViewById(R.id.rv_pets);
-        rvPets.setLayoutManager(new LinearLayoutManager(this));
-
-        petsList = new ArrayList<>();
-        loadPets();
-
-        adapter = new petAdapter(this, petsList);
-        rvPets.setAdapter(adapter);
-
         //Navigation Handle
         ImageView home, calendar, pets, files, profile;
         home = findViewById(R.id.iv_home);
@@ -63,7 +61,7 @@ public class petspage extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(petspage.this, phomedashboard.class);
+                Intent intent = new Intent(vaccinationpage.this, chomedashboard.class);
                 startActivity(intent);
             }
         });
@@ -71,27 +69,32 @@ public class petspage extends AppCompatActivity {
         pets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(petspage.this, petspage.class);
-                startActivity(intent);
+                // add here
             }
         });
 
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(petspage.this, userprofilepage.class);
+                // add here
+            }
+        });
+
+        files.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(vaccinationpage.this, consolidatedsummary.class);
                 startActivity(intent);
             }
         });
 
-        // Add links to remaining navigation pages (calendar, files)
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(vaccinationpage.this, appointmentspage.class);
+                startActivity(intent);
+            }
+        });
 
-    }
-
-    private void loadPets(){
-        // sample data for pets
-        petsList.add(new pets("Callie", "Domestic Short Hair", "Female", 4, R.drawable.cat2));
-        petsList.add(new pets("Casper", "Domestic Short Hair", "Male", 3, R.drawable.cat2));
-        petsList.add(new pets("Tyler", "Persian Cat", "Male", 3, R.drawable.cat2));
     }
 }
