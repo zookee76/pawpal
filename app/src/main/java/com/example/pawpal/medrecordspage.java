@@ -91,17 +91,11 @@ public class medrecordspage extends AppCompatActivity {
             }
         });
 
-        pets.setOnClickListener(new View.OnClickListener() {
+        calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // add here
-            }
-        });
-
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // add here
+                Intent intent = new Intent(medrecordspage.this, appointmentspage.class);
+                startActivity(intent);
             }
         });
 
@@ -113,13 +107,11 @@ public class medrecordspage extends AppCompatActivity {
             }
         });
 
-        calendar.setOnClickListener(new View.OnClickListener() {
+        profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(medrecordspage.this, appointmentspage.class);
-                startActivity(intent);
+                // add here
             }
         });
-
     }
 }
