@@ -1,0 +1,30 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF7E6"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/pawpal_logo"
+        android:layout_width="242dp"
+        android:layout_height="238dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/fiimage"
+        android:scaleType="fitCenter" />
+
+    <TextView
+        android:id="@+id/pawpal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pawpal_logo"
+        android:layout_centerHorizontal="true"
+        android:text="PAWPAL"
+        android:textColor="#F39C12"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp" />
+
+</RelativeLayout>
