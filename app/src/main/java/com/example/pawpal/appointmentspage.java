@@ -52,7 +52,6 @@ public class appointmentspage extends AppCompatActivity {
             }
         };
 
-
         //Navigation Handle
         ImageView home, calendar, pets, files, profile;
         home = findViewById(R.id.iv_home);

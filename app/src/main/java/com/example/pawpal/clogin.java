@@ -30,7 +30,7 @@ public class clogin extends AppCompatActivity {
         forgotpw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(clogin.this, pforgotpw.class);
+                Intent intent = new Intent(clogin.this, cforgotpw.class);
                 startActivity(intent);
             }
         });

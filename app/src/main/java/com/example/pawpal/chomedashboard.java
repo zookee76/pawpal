@@ -60,7 +60,7 @@ public class chomedashboard extends AppCompatActivity {
         rectangle3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(chomedashboard.this, appointmentspage.class);
+                Intent intent = new Intent(chomedashboard.this, vaccinationpage.class);
                 startActivity(intent);
             }
         });
