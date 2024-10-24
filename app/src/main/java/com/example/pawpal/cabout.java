@@ -31,16 +31,6 @@ public class cabout extends AppCompatActivity
             }
         };
 
-        View.OnClickListener editListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(cabout.this, editabout.class);
-                startActivity(intent);
-            }
-        };
-
-        editImg.setOnClickListener(editListener);
-
         backImg.setOnClickListener(backListnr);
         backTxt.setOnClickListener(backListnr);
 

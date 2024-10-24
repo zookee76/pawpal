@@ -1,6 +1,7 @@
 package com.example.pawpal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,10 +43,9 @@ public class certReqadapter extends RecyclerView.Adapter<certReqadapter.RequestV
         holder.dateText.setText("Date: " + request.getDate());
         holder.statusText.setText("Status: " + request.getStatus());
 
-        // Set the Edit button functionality (implement as needed)
         holder.editRequestButton.setOnClickListener(v -> {
-            // Handle Edit Request button click
-            // For example, you can open a details activity or dialog
+            Intent intent = new Intent(context, editCert.class);
+            context.startActivity(intent);
         });
     }
 
