@@ -76,6 +76,7 @@ public class phomedashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(phomedashboard.this, phomedashboard.class);
+
                 startActivity(intent);
             }
         });
@@ -84,6 +85,7 @@ public class phomedashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(phomedashboard.this, petspage.class);
+                intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
             }
         });

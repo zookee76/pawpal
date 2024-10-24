@@ -1,6 +1,7 @@
 package com.example.pawpal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +17,18 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.petViewHolder> {
 
     private Context cxt;
     private List<pets> petsList;
+    private String userType; // clinic or pet owner
 
     public petAdapter(Context cxt, List<pets> petsList) {
         this.cxt = cxt;
         this.petsList = petsList;
+        this.userType = "pet owner";
+    }
+
+    public petAdapter(Context cxt, List<pets> petsList, boolean isPetOwner) {
+        this.cxt = cxt;
+        this.petsList = petsList;
+        this.userType = isPetOwner ? "pet owner" : "clinic";
     }
 
     @NonNull
@@ -36,6 +45,15 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.petViewHolder> {
         holder.name.setText(pet.getName());
         holder.age.setText(String.valueOf(pet.getAge()) + " years old");
         holder.sex.setText(pet.getSex());
+
+        if ("clinic".equals((userType))) {
+            holder.itemView.setOnClickListener(view -> {
+                Intent intent = new Intent(cxt, cliniceditabout.class);
+                cxt.startActivity(intent);
+            });
+        } else{
+
+        }
     }
 
     @Override

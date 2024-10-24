@@ -31,6 +31,20 @@ public class medrecordspage extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_clinicmedrecords);
 
+        //Back Handle
+        ImageView backImg = findViewById(R.id.iv_back);
+        TextView backTxt = findViewById(R.id.tv_back);
+
+        View.OnClickListener backListnr = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(medrecordspage.this, chomedashboard.class);
+                medrecordspage.this.startActivity(intent);
+            }
+        };
+        backImg.setOnClickListener(backListnr);
+        backTxt.setOnClickListener(backListnr);
+
         rvOwners = findViewById(R.id.rv_owners);
         rvOwners.setLayoutManager(new LinearLayoutManager(this));
 
@@ -62,17 +76,6 @@ public class medrecordspage extends AppCompatActivity {
         ownerAdapter.groupOwners();
 
         rvOwners.setAdapter(ownerAdapter);
-
-        //Back Handle
-        ImageView backImg = findViewById(R.id.iv_back);
-        TextView backTxt = findViewById(R.id.tv_back);
-
-        View.OnClickListener backListnr = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        };
 
         //Navigation Handle
         ImageView home, calendar, pets, files, profile;

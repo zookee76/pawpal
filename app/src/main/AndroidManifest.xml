@@ -13,6 +13,33 @@
         android:theme="@style/Theme.Pawpal"
         tools:targetApi="31">
         <activity
+            android:name=".editmedicaldocs"
+            android:exported="false" />
+        <activity
+            android:name=".editmedicationdiet"
+            android:exported="false" />
+        <activity
+            android:name=".editschedules"
+            android:exported="false" />
+        <activity
+            android:name=".editclinicabout"
+            android:exported="false" />
+        <activity
+            android:name=".schedules"
+            android:exported="false" />
+        <activity
+            android:name=".medicationdiet"
+            android:exported="false" />
+        <activity
+            android:name=".medicaldocs"
+            android:exported="false" />
+        <activity
+            android:name=".cliniceditabout"
+            android:exported="false" />
+        <activity
+            android:name=".clinicpetlist"
+            android:exported="false" />
+        <activity
             android:name=".certreq"
             android:exported="false" />
         <activity
@@ -95,8 +122,8 @@
             android:exported="false" />
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/Theme.Design.NoActionBar"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

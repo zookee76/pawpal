@@ -1,6 +1,7 @@
 package com.example.pawpal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,13 @@ public class childPetOwnerAdapter extends RecyclerView.Adapter<childPetOwnerAdap
     public void onBindViewHolder(@NonNull ChildViewHolder holder, int position) {
         petOwners owners = petOwnersList.get(position);
         holder.ownerName.setText(owners.getName());
+
+        holder.itemView.setOnClickListener(view -> {
+            Intent intent = new Intent(cxt, petspage.class);
+            intent.putExtra("IS_PET_OWNER", false);
+            intent.putExtra("PETS_PAGE_TITLE", "List of Pets");
+            cxt.startActivity(intent);
+        });
     }
 
     @Override
