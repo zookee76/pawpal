@@ -3,13 +3,13 @@ package com.example.pawpal;
 public class appointment {
     private String appNo, petName, ownerName, appType, appDateTime, appVet, appStatus;
 
-    public appointment(String appVet, String appNo, String petName, String ownerName, String appType, String appDateTime, String appStatus) {
-        this.appVet = appVet;
+    public appointment(String appNo, String petName, String ownerName, String appType, String appDateTime, String appVet, String appStatus) {
         this.appNo = appNo;
         this.petName = petName;
         this.ownerName = ownerName;
         this.appType = appType;
         this.appDateTime = appDateTime;
+        this.appVet = appVet;
         this.appStatus = appStatus;
     }
 

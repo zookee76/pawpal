@@ -33,10 +33,8 @@ public class appointmentspage extends AppCompatActivity {
 
         //Sample Data
         appointmentList = new ArrayList<>();
-        appointmentList.add(new appointment("0001", "Casper", "Ash Corpuz",
-                "General Checkup", "October 1, 2024 9AM", "Dr. Vet", "Completed"));
-        appointmentList.add(new appointment("0002", "Tyler", "Nicole Corpuz",
-                "Vaccination", "October 2, 2024 10AM", "Dr. Whiskers", "Scheduled"));
+        appointmentList.add(new appointment("001", "Casper", "Ashley Corpuz", "General Checkup", "October 1, 2024. 9AM", "Dr. Vet", "Completed"));
+        appointmentList.add(new appointment("002", "Casper", "Ashley Corpuz", "General Checkup", "October 1, 2024. 9AM", "Dr. Vet", "Scheduled"));
 
         appAdapter = new appointmentAdapter(this,appointmentList);
         rvApp.setAdapter(appAdapter);
@@ -51,6 +49,9 @@ public class appointmentspage extends AppCompatActivity {
                 finish();
             }
         };
+
+        backImg.setOnClickListener(backListnr);
+        backTxt.setOnClickListener(backListnr);
 
         //Navigation Handle
         ImageView home, calendar, pets, files, profile;

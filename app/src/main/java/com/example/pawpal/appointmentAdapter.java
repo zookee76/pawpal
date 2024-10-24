@@ -59,12 +59,12 @@ public class appointmentAdapter extends RecyclerView.Adapter<appointmentAdapter.
         public AppViewHolder(@NonNull View itemView) {
             super(itemView);
             appNo = itemView.findViewById(R.id.tv_appointmentno);
-            petName = itemView.findViewById(R.id.tv_apppet);
-            ownerName = itemView.findViewById(R.id.tv_appowner);
-            appType = itemView.findViewById(R.id.tv_apptype);
-            datetime = itemView.findViewById(R.id.tv_appdatetime);
-            vet = itemView.findViewById(R.id.tv_appvet);
-            status = itemView.findViewById(R.id.tv_appstatus);
+            petName = itemView.findViewById(R.id.tv_inpet);
+            ownerName = itemView.findViewById(R.id.tv_inowner);
+            appType = itemView.findViewById(R.id.tv_inapptype);
+            datetime = itemView.findViewById(R.id.tv_indatetime);
+            vet = itemView.findViewById(R.id.tv_invet);
+            status = itemView.findViewById(R.id.tv_instatus);
             seeDeets = itemView.findViewById(R.id.btn_seedeets);
         }
     }
