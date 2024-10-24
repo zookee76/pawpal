@@ -21,7 +21,6 @@ public class editmedicaldocs extends AppCompatActivity {
         //Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
         TextView backTxt = findViewById(R.id.tv_back);
-
         View.OnClickListener backListnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {

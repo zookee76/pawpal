@@ -17,7 +17,6 @@ public class editclinicabout extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_cliniceditabout);
         //Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
