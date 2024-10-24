@@ -73,6 +73,14 @@ public class chomedashboard extends AppCompatActivity {
             }
         });
 
+        rectangle5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(chomedashboard.this, certreq.class);
+                startActivity(intent);
+            }
+        });
+
         //Navigation Handle
         ImageView home, calendar, files, profile;
         home = findViewById(R.id.iv_home);

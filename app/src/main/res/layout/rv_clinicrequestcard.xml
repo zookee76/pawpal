@@ -23,6 +23,7 @@
             android:background="#D6EAFC">
 
             <TextView
+                android:id="@+id/requestNumberText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Request Number: xx"
@@ -40,6 +41,7 @@
             android:padding="15dp">
 
             <TextView
+                android:id="@+id/petNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pet Name:"
@@ -47,6 +49,7 @@
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/ownerNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Owner Name:"
@@ -54,6 +57,7 @@
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/requestTypeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Request Type:"
@@ -61,6 +65,7 @@
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/dateText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Date:"
@@ -68,6 +73,7 @@
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/statusText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Status:"
@@ -85,6 +91,7 @@
                     android:layout_weight="1" />
 
                 <Button
+                    android:id="@+id/editRequestButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
