@@ -9,18 +9,21 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class SplashScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main); // Ensure this references your layout
+        setContentView(layout.splashscreen); // Ensure this references your layout
 
         final ImageView logo = findViewById(R.id.pawpal_logo);
-
+        final TextView pawpal = findViewById(id.pawpal);
         // Load animation
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.smart_animation);
+        //hide pawpal text
+        pawpal.setVisibility(TextView.GONE);
         logo.startAnimation(animation);
 
         // Delay for 2000ms (2 seconds) before navigating
@@ -28,7 +31,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 // Navigate to the welcome activity
-                Intent intent = new Intent(SplashScreen.this, welcome.class);
+                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
                 startActivity(intent);
                 finish(); // Close the current activity
             }

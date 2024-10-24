@@ -13,29 +13,8 @@ import androidx.compose.ui.tooling.preview.Preview
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            MainScreen()
-        }
-    }
 
-    @Composable
-    fun MainScreen() {
-        Column {
-            Button(
-                onClick = {
-                    // Intent to launch WelcomeActivity
-                    startActivity(Intent(this@MainActivity, welcome::class.java))
-                }
-            ) {
-                Text(text = "Go to Welcome Screen")
-            }
-
-        }
-    }
-
-    @Preview
-    @Composable
-    fun PreviewMainScreen() {
-        MainScreen()
+        startActivity(Intent(this, welcome::class.java))
+        finish()
     }
 }
