@@ -12,7 +12,6 @@
         android:pivotX="50%"
         android:pivotY="50%"
         android:duration="1000"/>
-
     <!-- Translate the logo upwards to the top-center position -->
     <translate
         android:fromYDelta="0%p"

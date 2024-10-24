@@ -25,7 +25,6 @@ public class SplashScreen extends AppCompatActivity {
         //hide pawpal text
         pawpal.setVisibility(TextView.GONE);
         logo.startAnimation(animation);
-
         // Delay for 2000ms (2 seconds) before navigating
         new Handler().postDelayed(new Runnable() {
             @Override
