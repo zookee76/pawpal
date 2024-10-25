@@ -1,6 +1,7 @@
 package com.example.pawpal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,9 @@ public class consolidatedrecordadapter extends RecyclerView.Adapter<consolidated
 
         holder.seeDetailsButton.setOnClickListener(v -> {
             // Handle button click (e.g., open details page, etc.)
+            Intent intent = new Intent(context, medicaldocs.class);
+            // Insert logic for handling of data
+            context.startActivity(intent);
         });
     }
 

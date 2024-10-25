@@ -41,7 +41,7 @@ public class vaxAdapter extends RecyclerView.Adapter<vaxAdapter.VaxViewHolder> {
         holder.status.setText(Vaccination.getVaxStatus());
 
         holder.seeDeets.setOnClickListener(view -> {
-            Intent intent = new Intent(cxt, pschedules.class);
+            Intent intent = new Intent(cxt, schedules.class);
             cxt.startActivity(intent);
         });
     }
