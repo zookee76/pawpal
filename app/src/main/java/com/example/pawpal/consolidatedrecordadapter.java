@@ -42,7 +42,7 @@ public class consolidatedrecordadapter extends RecyclerView.Adapter<consolidated
 
         holder.seeDetailsButton.setOnClickListener(v -> {
             // Handle button click (e.g., open details page, etc.)
-            Intent intent = new Intent(context, medicaldocs.class);
+            Intent intent = new Intent(context, pabout.class);
             // Insert logic for handling of data
             context.startActivity(intent);
         });

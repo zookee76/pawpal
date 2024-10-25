@@ -24,11 +24,9 @@ public class shareqr extends AppCompatActivity {
         View.OnClickListener backListnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(shareqr.this, phomedashboard.class);
-                startActivity(intent);
+                finish();
             }
         };
-
         backImg.setOnClickListener(backListnr);
         backTxt.setOnClickListener(backListnr);
 

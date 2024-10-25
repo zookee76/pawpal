@@ -26,8 +26,7 @@ public class pabout extends AppCompatActivity
         View.OnClickListener backListnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(pabout.this, petspage.class);
-                intent.putExtra("IS_PET_OWNER", true);
+                Intent intent = new Intent(pabout.this, phomedashboard.class);
                 startActivity(intent);
             }
         };

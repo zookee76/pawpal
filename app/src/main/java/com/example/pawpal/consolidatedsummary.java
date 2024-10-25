@@ -50,8 +50,9 @@ public class consolidatedsummary extends AppCompatActivity {
         rvConsolidatedRecordList.setAdapter(adapter);
 
         //Navigation Handle
-        ImageView home, calendar, files, profile;
+        ImageView home, calendar, files, profile, pets;
         home = findViewById(R.id.iv_home);
+        pets = findViewById(R.id.iv_pets);
         calendar = findViewById(R.id.iv_calendar);
         files = findViewById((R.id.iv_files));
         profile = findViewById(R.id.iv_userprofile);
@@ -61,6 +62,15 @@ public class consolidatedsummary extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(consolidatedsummary.this, chomedashboard.class);
+                startActivity(intent);
+            }
+        });
+
+        pets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(consolidatedsummary.this, petspage.class);
+                intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
             }
         });
