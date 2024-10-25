@@ -76,16 +76,16 @@
                     android:layout_marginLeft="10dp"/>
 
                 <ImageView
-                    android:id="@+id/iv_share"
-                    android:layout_width="18dp"
-                    android:layout_height="20dp"
+                    android:id="@+id/iv_addcert"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:layout_marginStart="344dp"
                     android:layout_marginTop="28dp"
                     android:scaleType="centerCrop"
                     app:layout_constraintBaseline_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/share" />
+                    app:srcCompat="@drawable/addcert" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
