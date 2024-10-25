@@ -87,6 +87,7 @@ public class vaccinationpage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(vaccinationpage.this, consolidatedsummary.class);
+                intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
             }
         });
@@ -95,6 +96,7 @@ public class vaccinationpage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(vaccinationpage.this, appointmentspage.class);
+                intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
             }
         });

@@ -28,30 +28,9 @@ public class appointmentspage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clinicappointment);
 
-        rvApp = findViewById(R.id.rv_appointments);
-        rvApp.setLayoutManager(new LinearLayoutManager(this));
-
-        //Sample Data
-        appointmentList = new ArrayList<>();
-        appointmentList.add(new appointment("001", "Casper", "Ashley Corpuz", "General Checkup", "October 1, 2024. 9AM", "Dr. Vet", "Completed"));
-        appointmentList.add(new appointment("002", "Casper", "Ashley Corpuz", "General Checkup", "October 1, 2024. 9AM", "Dr. Vet", "Scheduled"));
-
-        appAdapter = new appointmentAdapter(this,appointmentList);
-        rvApp.setAdapter(appAdapter);
-
         //Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
         TextView backTxt = findViewById(R.id.tv_back);
-
-        View.OnClickListener backListnr = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        };
-
-        backImg.setOnClickListener(backListnr);
-        backTxt.setOnClickListener(backListnr);
 
         //Navigation Handle
         ImageView home, calendar, pets, files, profile;
@@ -61,48 +40,131 @@ public class appointmentspage extends AppCompatActivity {
         files = findViewById((R.id.iv_files));
         profile = findViewById(R.id.iv_userprofile);
 
-        //Link to navigation buttons
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(appointmentspage.this, phomedashboard.class);
+        // Recycler view
+        boolean isPetOwner = getIntent().getBooleanExtra("IS_PET_OWNER", false);
+        rvApp = findViewById(R.id.rv_appointments);
+        rvApp.setLayoutManager(new LinearLayoutManager(this));
+        appointmentList = new ArrayList<>();
 
-                startActivity(intent);
-            }
-        });
+        if(isPetOwner){
+            loadappointments();
+            appAdapter = new appointmentAdapter(this,appointmentList);
+            rvApp.setAdapter(appAdapter);
 
-        pets.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(appointmentspage.this, petspage.class);
-                intent.putExtra("IS_PET_OWNER", true);
-                startActivity(intent);
-            }
-        });
+            //back handle for pet owner
+            View.OnClickListener backListnr = new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(appointmentspage.this, phomedashboard.class);
+                    startActivity(intent);
+                }
+            };
+            backImg.setOnClickListener(backListnr);
+            backTxt.setOnClickListener(backListnr);
 
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(appointmentspage.this, userprofilepage.class);
-                startActivity(intent);
-            }
-        });
+            //Link to navigation buttons
+            home.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(appointmentspage.this, phomedashboard.class);
 
-        files.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(appointmentspage.this, consolidatedsummary.class);
-                intent.putExtra("IS_PET_OWNER", true);
-                startActivity(intent);
-            }
-        });
+                    startActivity(intent);
+                }
+            });
 
-        calendar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(appointmentspage.this, appointmentspage.class);
-                startActivity(intent);
-            }
-        });
+            pets.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(appointmentspage.this, petspage.class);
+                    intent.putExtra("IS_PET_OWNER", true);
+                    startActivity(intent);
+                }
+            });
+
+            profile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(appointmentspage.this, userprofilepage.class);
+                    startActivity(intent);
+                }
+            });
+
+            files.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(appointmentspage.this, consolidatedsummary.class);
+                    intent.putExtra("IS_PET_OWNER", true);
+                    startActivity(intent);
+                }
+            });
+
+            calendar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(appointmentspage.this, appointmentspage.class);
+                    startActivity(intent);
+                }
+            });
+        }
+        else{
+            loadclinicappointments();
+            appAdapter = new appointmentAdapter(this, appointmentList, isPetOwner);
+            rvApp.setAdapter(appAdapter);
+
+            // back handle
+            View.OnClickListener backListnr = new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(appointmentspage.this, chomedashboard.class);
+                    startActivity(intent);
+                }
+            };
+            backImg.setOnClickListener(backListnr);
+            backTxt.setOnClickListener(backListnr);
+
+            //Link to navigation buttons
+            home.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(appointmentspage.this, chomedashboard.class);
+                    startActivity(intent);
+                }
+            });
+
+            profile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // no xml pa here?
+                }
+            });
+
+            files.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(appointmentspage.this, consolidatedsummary.class);
+                    intent.putExtra("IS_PET_OWNER", false);
+                    startActivity(intent);
+                }
+            });
+
+            calendar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(appointmentspage.this, appointmentspage.class);
+                    intent.putExtra("IS_PET_OWNER", false);
+                    startActivity(intent);
+                }
+            });
+        }
+    }
+
+    //petowner data
+    private void loadappointments(){
+        appointmentList.add(new appointment("001", "Casper", "Ashley Corpuz", "General Checkup", "October 1, 2024. 9AM", "Dr. Vet", "Completed"));
+    }
+    //clinic data
+    private void loadclinicappointments(){
+        appointmentList.add(new appointment("001", "Casper", "Ashley Corpuz", "General Checkup", "October 1, 2024. 9AM", "Dr. Vet", "Completed"));
+        appointmentList.add(new appointment("002", "Casper", "Ashley Corpuz", "General Checkup", "October 1, 2024. 9AM", "Dr. Vet", "Scheduled"));
     }
 }

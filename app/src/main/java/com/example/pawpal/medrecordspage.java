@@ -97,6 +97,7 @@ public class medrecordspage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(medrecordspage.this, appointmentspage.class);
+                intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
             }
         });
@@ -105,6 +106,7 @@ public class medrecordspage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(medrecordspage.this, consolidatedsummary.class);
+                intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
             }
         });

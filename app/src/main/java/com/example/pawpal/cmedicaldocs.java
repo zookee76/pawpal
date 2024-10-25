@@ -6,19 +6,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-public class medicationdiet extends AppCompatActivity {
+public class cmedicaldocs extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_clinicpetprofilemediet);
+        setContentView(R.layout.activity_clinicpetprofilemedical);
 
         //Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
@@ -27,10 +23,10 @@ public class medicationdiet extends AppCompatActivity {
         View.OnClickListener backListnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(medicationdiet.this, petspage.class);
+                Intent intent = new Intent(cmedicaldocs.this, petspage.class);
                 intent.putExtra("IS_PET_OWNER", false);
                 intent.putExtra("PETS_PAGE_TITLE", "List of Pets");
-                medicationdiet.this.startActivity(intent);
+                cmedicaldocs.this.startActivity(intent);
             }
         };
         backImg.setOnClickListener(backListnr);
@@ -49,7 +45,7 @@ public class medicationdiet extends AppCompatActivity {
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(medicationdiet.this, cliniceditabout.class);
+                Intent intent = new Intent(cmedicaldocs.this, cabout.class);
                 // handle data here
                 startActivity(intent);
             }
@@ -58,7 +54,7 @@ public class medicationdiet extends AppCompatActivity {
         meddocu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(medicationdiet.this, medicaldocs.class);
+                Intent intent = new Intent(cmedicaldocs.this, cmedicaldocs.class);
                 // handle data here
                 startActivity(intent);
             }
@@ -67,7 +63,7 @@ public class medicationdiet extends AppCompatActivity {
         meddiet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(medicationdiet.this, medicationdiet.class);
+                Intent intent = new Intent(cmedicaldocs.this, cmedicationdiet.class);
                 // handle data here
                 startActivity(intent);
             }
@@ -76,7 +72,7 @@ public class medicationdiet extends AppCompatActivity {
         schedules.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(medicationdiet.this, schedules.class);
+                Intent intent = new Intent(cmedicaldocs.this, cschedules.class);
                 // handle data here
                 startActivity(intent);
             }
@@ -85,7 +81,7 @@ public class medicationdiet extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(medicationdiet.this, editmedicationdiet.class);
+                Intent intent = new Intent(cmedicaldocs.this, editmedicaldocs.class);
                 // handle data here
                 startActivity(intent);
             }
@@ -102,7 +98,7 @@ public class medicationdiet extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(medicationdiet.this, chomedashboard.class);
+                Intent intent = new Intent(cmedicaldocs.this, chomedashboard.class);
                 startActivity(intent);
             }
         });
@@ -110,16 +106,15 @@ public class medicationdiet extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(medicationdiet.this, userprofilepage.class);
-                startActivity(intent);
+                // add here
             }
         });
 
         files.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(medicationdiet.this, consolidatedsummary.class);
-                intent.putExtra("IS_PET_OWNER", true);
+                Intent intent = new Intent(cmedicaldocs.this, consolidatedsummary.class);
+                intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
             }
         });
@@ -127,8 +122,8 @@ public class medicationdiet extends AppCompatActivity {
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(medicationdiet.this, appointmentspage.class);
-                intent.putExtra("IS_PET_OWNER", true);
+                Intent intent = new Intent(cmedicaldocs.this, appointmentspage.class);
+                intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
             }
         });

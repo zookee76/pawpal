@@ -100,8 +100,7 @@ public class chomedashboard extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(chomedashboard.this, userprofilepage.class);
-                startActivity(intent);
+                // no xml pa here?
             }
         });
 
@@ -109,6 +108,7 @@ public class chomedashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(chomedashboard.this, consolidatedsummary.class);
+                intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
             }
         });
@@ -117,6 +117,7 @@ public class chomedashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(chomedashboard.this, appointmentspage.class);
+                intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
             }
         });

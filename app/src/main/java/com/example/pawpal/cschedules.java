@@ -8,12 +8,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class cliniceditabout extends AppCompatActivity {
+public class cschedules extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_clinicpetprofileabout);
+
+        setContentView(R.layout.activity_clinicpetprofileschedule);
 
         //Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
@@ -22,10 +23,10 @@ public class cliniceditabout extends AppCompatActivity {
         View.OnClickListener backListnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(cliniceditabout.this, petspage.class);
+                Intent intent = new Intent(cschedules.this, petspage.class);
                 intent.putExtra("IS_PET_OWNER", false);
                 intent.putExtra("PETS_PAGE_TITLE", "List of Pets");
-                cliniceditabout.this.startActivity(intent);
+                cschedules.this.startActivity(intent);
             }
         };
         backImg.setOnClickListener(backListnr);
@@ -44,7 +45,7 @@ public class cliniceditabout extends AppCompatActivity {
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(cliniceditabout.this, cliniceditabout.class);
+                Intent intent = new Intent(cschedules.this, cabout.class);
                 // handle data here
                 startActivity(intent);
             }
@@ -53,7 +54,7 @@ public class cliniceditabout extends AppCompatActivity {
         meddocu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(cliniceditabout.this, medicaldocs.class);
+                Intent intent = new Intent(cschedules.this, cmedicaldocs.class);
                 // handle data here
                 startActivity(intent);
             }
@@ -62,7 +63,7 @@ public class cliniceditabout extends AppCompatActivity {
         meddiet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(cliniceditabout.this, medicationdiet.class);
+                Intent intent = new Intent(cschedules.this, cmedicationdiet.class);
                 // handle data here
                 startActivity(intent);
             }
@@ -71,7 +72,7 @@ public class cliniceditabout extends AppCompatActivity {
         schedules.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(cliniceditabout.this, schedules.class);
+                Intent intent = new Intent(cschedules.this, cschedules.class);
                 // handle data here
                 startActivity(intent);
             }
@@ -80,7 +81,7 @@ public class cliniceditabout extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(cliniceditabout.this, editclinicabout.class);
+                Intent intent = new Intent(cschedules.this, editschedules.class);
                 // handle data here
                 startActivity(intent);
             }
@@ -97,7 +98,7 @@ public class cliniceditabout extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(cliniceditabout.this, chomedashboard.class);
+                Intent intent = new Intent(cschedules.this, chomedashboard.class);
                 startActivity(intent);
             }
         });
@@ -105,15 +106,15 @@ public class cliniceditabout extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(cliniceditabout.this, userprofilepage.class);
-                startActivity(intent);
+                // add here
             }
         });
 
         files.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(cliniceditabout.this, consolidatedsummary.class);
+                Intent intent = new Intent(cschedules.this, consolidatedsummary.class);
+                intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
             }
         });
@@ -121,9 +122,11 @@ public class cliniceditabout extends AppCompatActivity {
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(cliniceditabout.this, appointmentspage.class);
+                Intent intent = new Intent(cschedules.this, appointmentspage.class);
+                intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
             }
         });
+
     }
 }

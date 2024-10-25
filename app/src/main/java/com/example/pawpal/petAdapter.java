@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,9 +46,9 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.petViewHolder> {
         holder.age.setText(String.valueOf(pet.getAge()) + " years old");
         holder.sex.setText(pet.getSex());
 
-        if ("clinic".equals((userType))) {
+        if ("clinic".equals(userType)) {
             holder.itemView.setOnClickListener(view -> {
-                Intent intent = new Intent(cxt, cliniceditabout.class);
+                Intent intent = new Intent(cxt, cabout.class);
                 cxt.startActivity(intent);
             });
         } else{

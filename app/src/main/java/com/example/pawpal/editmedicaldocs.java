@@ -6,11 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class editmedicaldocs extends AppCompatActivity {
 
@@ -24,7 +20,7 @@ public class editmedicaldocs extends AppCompatActivity {
         View.OnClickListener backListnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(editmedicaldocs.this, medicaldocs.class);
+                Intent intent = new Intent(editmedicaldocs.this, cmedicaldocs.class);
                 editmedicaldocs.this.startActivity(intent);
             }
         };
@@ -43,7 +39,7 @@ public class editmedicaldocs extends AppCompatActivity {
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(editmedicaldocs.this, cliniceditabout.class);
+                Intent intent = new Intent(editmedicaldocs.this, cabout.class);
                 // handle data here
                 startActivity(intent);
             }
@@ -52,7 +48,7 @@ public class editmedicaldocs extends AppCompatActivity {
         meddocu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(editmedicaldocs.this, medicaldocs.class);
+                Intent intent = new Intent(editmedicaldocs.this, cmedicaldocs.class);
                 // handle data here
                 startActivity(intent);
             }
@@ -61,7 +57,7 @@ public class editmedicaldocs extends AppCompatActivity {
         meddiet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(editmedicaldocs.this, medicationdiet.class);
+                Intent intent = new Intent(editmedicaldocs.this, cmedicationdiet.class);
                 // handle data here
                 startActivity(intent);
             }
@@ -70,7 +66,7 @@ public class editmedicaldocs extends AppCompatActivity {
         schedules.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(editmedicaldocs.this, schedules.class);
+                Intent intent = new Intent(editmedicaldocs.this, cschedules.class);
                 // handle data here
                 startActivity(intent);
             }
@@ -95,8 +91,7 @@ public class editmedicaldocs extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(editmedicaldocs.this, userprofilepage.class);
-                startActivity(intent);
+                // no xml file
             }
         });
 
@@ -104,6 +99,7 @@ public class editmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editmedicaldocs.this, consolidatedsummary.class);
+                intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
             }
         });
@@ -112,6 +108,7 @@ public class editmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editmedicaldocs.this, appointmentspage.class);
+                intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
             }
         });

@@ -133,6 +133,7 @@ public class phomedashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(phomedashboard.this, appointmentspage.class);
+                intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
             }
         });

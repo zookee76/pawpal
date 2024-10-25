@@ -29,26 +29,6 @@ public class consolidatedsummary extends AppCompatActivity {
         ImageView backImg = findViewById(R.id.iv_back);
         TextView backTxt = findViewById(R.id.tv_back);
 
-        View.OnClickListener backListnr = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(consolidatedsummary.this, chomedashboard.class);
-                startActivity(intent);
-            }
-        };
-
-        backImg.setOnClickListener(backListnr);
-        backTxt.setOnClickListener(backListnr);
-
-        rvConsolidatedRecordList = findViewById(R.id.rv_consolrecordscard);
-        rvConsolidatedRecordList.setLayoutManager(new LinearLayoutManager(this));
-
-        consolidatedrecordsList = new ArrayList<>();
-        loadConsolidatedSummaries();
-
-        adapter = new consolidatedrecordadapter(this, consolidatedrecordsList);
-        rvConsolidatedRecordList.setAdapter(adapter);
-
         //Navigation Handle
         ImageView home, calendar, files, profile, pets;
         home = findViewById(R.id.iv_home);
@@ -57,52 +37,129 @@ public class consolidatedsummary extends AppCompatActivity {
         files = findViewById((R.id.iv_files));
         profile = findViewById(R.id.iv_userprofile);
 
-        //Link to navigation buttons
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(consolidatedsummary.this, chomedashboard.class);
-                startActivity(intent);
-            }
-        });
+        //Recyclerview handle
+        rvConsolidatedRecordList = findViewById(R.id.rv_consolrecordscard);
+        rvConsolidatedRecordList.setLayoutManager(new LinearLayoutManager(this));
+        consolidatedrecordsList = new ArrayList<>();
+        boolean isPetOwner = getIntent().getBooleanExtra("IS_PET_OWNER", false);
 
-        pets.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(consolidatedsummary.this, petspage.class);
-                intent.putExtra("IS_PET_OWNER", true);
-                startActivity(intent);
-            }
-        });
+        if(isPetOwner){
+            loadConsolidatedSummaries();
+            adapter = new consolidatedrecordadapter(this, consolidatedrecordsList);
+            rvConsolidatedRecordList.setAdapter(adapter);
 
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(consolidatedsummary.this, userprofilepage.class);
-                startActivity(intent);
-            }
-        });
+            // backhandle
+            View.OnClickListener backListnr = new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(consolidatedsummary.this, phomedashboard.class);
+                    startActivity(intent);
+                }
+            };
+            backImg.setOnClickListener(backListnr);
+            backTxt.setOnClickListener(backListnr);
 
-        files.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(consolidatedsummary.this, consolidatedsummary.class);
-                intent.putExtra("IS_PET_OWNER", true);
-                startActivity(intent);
-            }
-        });
+            //Link to navigation buttons
+            home.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(consolidatedsummary.this, phomedashboard.class);
+                    startActivity(intent);
+                }
+            });
 
-        calendar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(consolidatedsummary.this, appointmentspage.class);
-                startActivity(intent);
-            }
-        });
+            pets.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(consolidatedsummary.this, petspage.class);
+                    intent.putExtra("IS_PET_OWNER", true);
+                    startActivity(intent);
+                }
+            });
+
+            profile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(consolidatedsummary.this, userprofilepage.class);
+                    startActivity(intent);
+                }
+            });
+
+            files.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(consolidatedsummary.this, consolidatedsummary.class);
+                    intent.putExtra("IS_PET_OWNER", true);
+                    startActivity(intent);
+                }
+            });
+
+            calendar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(consolidatedsummary.this, appointmentspage.class);
+                    intent.putExtra("IS_PET_OWNER", true);
+                    startActivity(intent);
+                }
+            });
+        }
+        else{
+            loadClinicConsoSum();
+            adapter = new consolidatedrecordadapter(this, consolidatedrecordsList, isPetOwner);
+            rvConsolidatedRecordList.setAdapter(adapter);
+
+            // back handle
+            View.OnClickListener backListnr = new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(consolidatedsummary.this, chomedashboard.class);
+                    startActivity(intent);
+                }
+            };
+            backImg.setOnClickListener(backListnr);
+            backTxt.setOnClickListener(backListnr);
+
+            //Link to navigation buttons
+            home.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(consolidatedsummary.this, chomedashboard.class);
+                    startActivity(intent);
+                }
+            });
+
+            profile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //no xml file here
+                }
+            });
+
+            files.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(consolidatedsummary.this, consolidatedsummary.class);
+                    intent.putExtra("IS_PET_OWNER", false);
+                    startActivity(intent);
+                }
+            });
+
+            calendar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(consolidatedsummary.this, appointmentspage.class);
+                    intent.putExtra("IS_PET_OWNER", false);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
     private void loadConsolidatedSummaries() {
         consolidatedrecordsList.add(new consolidatedrecords("Title", "Lab Results", "19/10/2024", "Dr. QuackQuack", "casper_results"));
+    }
+
+    private void loadClinicConsoSum(){
         consolidatedrecordsList.add(new consolidatedrecords("Title", "Lab Results", "19/10/2024", "Dr. QuackQuack", "casper_results"));
         consolidatedrecordsList.add(new consolidatedrecords("Title", "Lab Results", "19/10/2024", "Dr. QuackQuack", "casper_results"));
     }

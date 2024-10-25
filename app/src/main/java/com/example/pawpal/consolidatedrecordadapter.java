@@ -17,10 +17,17 @@ public class consolidatedrecordadapter extends RecyclerView.Adapter<consolidated
 
     private Context context;
     private List<consolidatedrecords> recordsList;
+    private String userType;
 
     public consolidatedrecordadapter(Context context, List<consolidatedrecords> recordsList) {
         this.context = context;
         this.recordsList = recordsList;
+    }
+
+    public consolidatedrecordadapter(Context context, List<consolidatedrecords> recordsList, boolean isPetOwner) {
+        this.context = context;
+        this.recordsList = recordsList;
+        this.userType = isPetOwner ? "pet owner" : "clinic";
     }
 
     @NonNull
@@ -40,12 +47,22 @@ public class consolidatedrecordadapter extends RecyclerView.Adapter<consolidated
         holder.veterinarianText.setText(consolidatedrecord.getVeterinarian());
         holder.fileText.setText(consolidatedrecord.getFile());
 
-        holder.seeDetailsButton.setOnClickListener(v -> {
-            // Handle button click (e.g., open details page, etc.)
-            Intent intent = new Intent(context, pabout.class);
-            // Insert logic for handling of data
-            context.startActivity(intent);
-        });
+        if ("clinic".equals(userType)){
+            holder.seeDetailsButton.setOnClickListener(v -> {
+                // Handle button click (e.g., open details page, etc.)
+                Intent intent = new Intent(context, cabout.class);
+                // Insert logic for handling of data
+                context.startActivity(intent);
+            });
+        }
+        else{
+            holder.seeDetailsButton.setOnClickListener(v -> {
+                // Handle button click (e.g., open details page, etc.)
+                Intent intent = new Intent(context, pabout.class);
+                // Insert logic for handling of data
+                context.startActivity(intent);
+            });
+        }
     }
 
     @Override

@@ -68,8 +68,7 @@ public class certreq extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(certreq.this, userprofilepage.class);
-                startActivity(intent);
+                // add here
             }
         });
 
@@ -77,6 +76,7 @@ public class certreq extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(certreq.this, consolidatedsummary.class);
+                intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
             }
         });
@@ -85,6 +85,7 @@ public class certreq extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(certreq.this, pschedules.class);
+                intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
             }
         });

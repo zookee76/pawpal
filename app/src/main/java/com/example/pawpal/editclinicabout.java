@@ -6,11 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class editclinicabout extends AppCompatActivity {
 
@@ -25,7 +21,7 @@ public class editclinicabout extends AppCompatActivity {
         View.OnClickListener backListnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(editclinicabout.this, cliniceditabout.class);
+                Intent intent = new Intent(editclinicabout.this, cabout.class);
                 editclinicabout.this.startActivity(intent);
             }
         };
@@ -44,7 +40,7 @@ public class editclinicabout extends AppCompatActivity {
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(editclinicabout.this, cliniceditabout.class);
+                Intent intent = new Intent(editclinicabout.this, cabout.class);
                 // handle data here
                 startActivity(intent);
             }
@@ -53,7 +49,7 @@ public class editclinicabout extends AppCompatActivity {
         meddocu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(editclinicabout.this, medicaldocs.class);
+                Intent intent = new Intent(editclinicabout.this, cmedicaldocs.class);
                 // handle data here
                 startActivity(intent);
             }
@@ -62,7 +58,7 @@ public class editclinicabout extends AppCompatActivity {
         meddiet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(editclinicabout.this, medicationdiet.class);
+                Intent intent = new Intent(editclinicabout.this, cmedicationdiet.class);
                 // handle data here
                 startActivity(intent);
             }
@@ -71,8 +67,49 @@ public class editclinicabout extends AppCompatActivity {
         schedules.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(editclinicabout.this, schedules.class);
+                Intent intent = new Intent(editclinicabout.this, cschedules.class);
                 // handle data here
+                startActivity(intent);
+            }
+        });
+
+        //Main Navigation Handle
+        ImageView home, calendar, files, profile;
+        home = findViewById(R.id.iv_home);
+        calendar = findViewById(R.id.iv_calendar);
+        files = findViewById((R.id.iv_files));
+        profile = findViewById(R.id.iv_userprofile);
+
+        //Link to navigation buttons
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(editclinicabout.this, chomedashboard.class);
+                startActivity(intent);
+            }
+        });
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // no xml pa here?
+            }
+        });
+
+        files.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(editclinicabout.this, consolidatedsummary.class);
+                intent.putExtra("IS_PET_OWNER", false);
+                startActivity(intent);
+            }
+        });
+
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(editclinicabout.this, appointmentspage.class);
+                intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
             }
         });

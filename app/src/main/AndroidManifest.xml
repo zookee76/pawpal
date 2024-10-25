@@ -28,16 +28,16 @@
             android:name=".editclinicabout"
             android:exported="false" />
         <activity
-            android:name=".schedules"
+            android:name=".cschedules"
             android:exported="false" />
         <activity
-            android:name=".medicationdiet"
+            android:name=".cmedicationdiet"
             android:exported="false" />
         <activity
-            android:name=".medicaldocs"
+            android:name=".cmedicaldocs"
             android:exported="false" />
         <activity
-            android:name=".cliniceditabout"
+            android:name=".cabout"
             android:exported="false" />
         <activity
             android:name=".clinicpetlist"

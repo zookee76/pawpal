@@ -6,67 +6,82 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class cabout extends AppCompatActivity
-{
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+public class cabout extends AppCompatActivity {
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clinicpetprofileabout);
 
         //Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
         TextView backTxt = findViewById(R.id.tv_back);
 
-        ImageView editImg = findViewById(R.id.iv_edit);
-
         View.OnClickListener backListnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(cabout.this, chomedashboard.class);
-                startActivity(intent);
+                Intent intent = new Intent(cabout.this, petspage.class);
+                intent.putExtra("IS_PET_OWNER", false);
+                intent.putExtra("PETS_PAGE_TITLE", "List of Pets");
+                cabout.this.startActivity(intent);
             }
         };
-
         backImg.setOnClickListener(backListnr);
         backTxt.setOnClickListener(backListnr);
 
-        TextView cmeddiet = findViewById(R.id.medicationdietcategory);
-        TextView cabout = findViewById(R.id.aboutcategory);
-        TextView cschedules = findViewById(R.id.schedulecategory);
-        TextView cmeddocs = findViewById(R.id.medicaldocscategory);
+        // options
+        TextView about, meddocu, meddiet, schedules;
+        ImageView edit;
 
-        cmeddocs.setOnClickListener(new View.OnClickListener() {
+        about = findViewById(R.id.aboutcategory);
+        meddocu = findViewById(R.id.medicaldocscategory);
+        meddiet = findViewById(R.id.medicationdietcategory);
+        schedules = findViewById(R.id.schedulecategory);
+        edit = findViewById(R.id.iv_edit);
+
+        about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(cabout.this, pmedicaldocs.class);
+                Intent intent = new Intent(cabout.this, cabout.class);
+                // handle data here
                 startActivity(intent);
             }
         });
 
-        cmeddiet.setOnClickListener(new View.OnClickListener() {
+        meddocu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(cabout.this, pmediet.class);
+                Intent intent = new Intent(cabout.this, cmedicaldocs.class);
+                // handle data here
                 startActivity(intent);
             }
         });
 
-        cabout.setOnClickListener(new View.OnClickListener() {
+        meddiet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(cabout.this, pabout.class);
+                Intent intent = new Intent(cabout.this, cmedicationdiet.class);
+                // handle data here
                 startActivity(intent);
             }
         });
 
-        cschedules.setOnClickListener(new View.OnClickListener() {
+        schedules.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(cabout.this, pschedules.class);
+                Intent intent = new Intent(cabout.this, cschedules.class);
+                // handle data here
+                startActivity(intent);
+            }
+        });
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(cabout.this, editclinicabout.class);
+                // handle data here
                 startActivity(intent);
             }
         });
@@ -90,8 +105,7 @@ public class cabout extends AppCompatActivity
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(cabout.this, userprofilepage.class);
-                startActivity(intent);
+                // add here
             }
         });
 
@@ -99,6 +113,7 @@ public class cabout extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cabout.this, consolidatedsummary.class);
+                intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
             }
         });
@@ -107,6 +122,7 @@ public class cabout extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cabout.this, appointmentspage.class);
+                intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
             }
         });

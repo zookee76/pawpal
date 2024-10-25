@@ -31,7 +31,6 @@ public class petspage extends AppCompatActivity {
         ImageView backImg = findViewById(R.id.iv_back);
         TextView backTxt = findViewById(R.id.tv_back);
 
-
         //Navigation Handle
         ImageView home, calendar, pets, files, profile;
         home = findViewById(R.id.iv_home);
@@ -40,14 +39,10 @@ public class petspage extends AppCompatActivity {
         files = findViewById((R.id.iv_files));
         profile = findViewById(R.id.iv_userprofile);
 
-
         // RecyclerView Handle
-
         rvPets = findViewById(R.id.rv_pets);
         rvPets.setLayoutManager(new LinearLayoutManager(this));
-
         petsList = new ArrayList<>();
-
         boolean isPetOwner = getIntent().getBooleanExtra("IS_PET_OWNER", false);
 
         if(isPetOwner){
@@ -147,8 +142,7 @@ public class petspage extends AppCompatActivity {
             profile.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(petspage.this, userprofilepage.class);
-                    startActivity(intent);
+                    // add here
                 }
             });
 

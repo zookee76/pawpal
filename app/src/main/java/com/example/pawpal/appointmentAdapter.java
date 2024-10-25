@@ -17,10 +17,17 @@ public class appointmentAdapter extends RecyclerView.Adapter<appointmentAdapter.
 
     public List<appointment> appointmentList;
     public Context cxt;
+    private  String userType;
 
     public appointmentAdapter(Context cxt, List<appointment> appointmentList) {
         this.cxt = cxt;
         this.appointmentList = appointmentList;
+    }
+
+    public appointmentAdapter(Context cxt, List<appointment> appointmentList, boolean isPetOwner) {
+        this.cxt = cxt;
+        this.appointmentList = appointmentList;
+        this.userType = isPetOwner ? "pet owner" : "clinic";
     }
 
     @NonNull
@@ -41,10 +48,17 @@ public class appointmentAdapter extends RecyclerView.Adapter<appointmentAdapter.
         holder.vet.setText(Appointment.getAppVet());
         holder.status.setText(Appointment.getAppStatus());
 
-        holder.seeDeets.setOnClickListener(view -> {
-            Intent intent = new Intent(cxt, pschedules.class);
-            cxt.startActivity(intent);
-        });
+        if("clinic".equals(userType)){
+            holder.seeDeets.setOnClickListener(view -> {
+                Intent intent = new Intent(cxt, cschedules.class);
+                cxt.startActivity(intent);
+            });
+        }else{
+            holder.seeDeets.setOnClickListener(view -> {
+                Intent intent = new Intent(cxt, pschedules.class);
+                cxt.startActivity(intent);
+            });
+        }
     }
 
     @Override
