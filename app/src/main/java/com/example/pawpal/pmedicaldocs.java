@@ -45,7 +45,8 @@ public class pmedicaldocs extends AppCompatActivity {
         View.OnClickListener backListnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(pmedicaldocs.this, phomedashboard.class);
+                Intent intent = new Intent(pmedicaldocs.this, petspage.class);
+                intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
             }
         };
@@ -121,6 +122,7 @@ public class pmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(pmedicaldocs.this, petspage.class);
+                intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
             }
         });
@@ -136,7 +138,8 @@ public class pmedicaldocs extends AppCompatActivity {
         files.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(pmedicaldocs.this, pmedicaldocs.class);
+                Intent intent = new Intent(pmedicaldocs.this, consolidatedsummary.class);
+                intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
             }
         });
@@ -144,7 +147,7 @@ public class pmedicaldocs extends AppCompatActivity {
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(pmedicaldocs.this, pschedules.class);
+                Intent intent = new Intent(pmedicaldocs.this, appointmentspage.class);
                 startActivity(intent);
             }
         });

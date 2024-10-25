@@ -65,7 +65,8 @@ public class appointmentspage extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(appointmentspage.this, chomedashboard.class);
+                Intent intent = new Intent(appointmentspage.this, phomedashboard.class);
+
                 startActivity(intent);
             }
         });
@@ -73,14 +74,17 @@ public class appointmentspage extends AppCompatActivity {
         pets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // add here
+                Intent intent = new Intent(appointmentspage.this, petspage.class);
+                intent.putExtra("IS_PET_OWNER", true);
+                startActivity(intent);
             }
         });
 
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // add here
+                Intent intent = new Intent(appointmentspage.this, userprofilepage.class);
+                startActivity(intent);
             }
         });
 
@@ -88,6 +92,7 @@ public class appointmentspage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(appointmentspage.this, consolidatedsummary.class);
+                intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
             }
         });
@@ -99,7 +104,5 @@ public class appointmentspage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        // Add links to remaining navigation pages (calendar, files)
     }
 }

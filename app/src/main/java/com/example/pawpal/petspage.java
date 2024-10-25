@@ -67,11 +67,12 @@ public class petspage extends AppCompatActivity {
             backImg.setOnClickListener(backListnr);
             backTxt.setOnClickListener(backListnr);
 
-            //Link to navigation buttons (petowner pov)
+            //Link to navigation buttons
             home.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(petspage.this, phomedashboard.class);
+
                     startActivity(intent);
                 }
             });
@@ -79,7 +80,8 @@ public class petspage extends AppCompatActivity {
             pets.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(petspage.this, petspage.class);
+                    Intent intent = new Intent(petspage .this, petspage.class);
+                    intent.putExtra("IS_PET_OWNER", true);
                     startActivity(intent);
                 }
             });
@@ -92,7 +94,22 @@ public class petspage extends AppCompatActivity {
                 }
             });
 
-            // Add links to remaining navigation pages (calendar, files)
+            files.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(petspage.this, consolidatedsummary.class);
+                    intent.putExtra("IS_PET_OWNER", true);
+                    startActivity(intent);
+                }
+            });
+
+            calendar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(petspage.this, appointmentspage.class);
+                    startActivity(intent);
+                }
+            });
 
         }
         else{

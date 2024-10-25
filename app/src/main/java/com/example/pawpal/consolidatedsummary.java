@@ -77,6 +77,7 @@ public class consolidatedsummary extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(consolidatedsummary.this, consolidatedsummary.class);
+                intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
             }
         });
@@ -84,7 +85,7 @@ public class consolidatedsummary extends AppCompatActivity {
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(consolidatedsummary.this, pschedules.class);
+                Intent intent = new Intent(consolidatedsummary.this, appointmentspage.class);
                 startActivity(intent);
             }
         });
