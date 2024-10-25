@@ -54,8 +54,8 @@ public class petspage extends AppCompatActivity {
             loadPets();
             adapter = new petAdapter(this, petsList);
             rvPets.setAdapter(adapter);
-            // back handle
 
+            // back handle
             View.OnClickListener backListnr = new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

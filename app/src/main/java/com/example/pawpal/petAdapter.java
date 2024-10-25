@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -52,7 +53,11 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.petViewHolder> {
                 cxt.startActivity(intent);
             });
         } else{
-
+            //pet user
+            holder.itemView.setOnClickListener(view -> {
+                Intent intent = new Intent(cxt, pabout.class);
+                cxt.startActivity(intent);
+            });
         }
     }
 
