@@ -129,6 +129,7 @@ public class pschedules extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(pschedules.this, appointmentspage.class);
+                intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
             }
         });

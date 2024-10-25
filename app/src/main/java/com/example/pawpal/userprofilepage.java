@@ -116,6 +116,7 @@ public class userprofilepage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(userprofilepage.this, appointmentspage.class);
+                intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
             }
         });

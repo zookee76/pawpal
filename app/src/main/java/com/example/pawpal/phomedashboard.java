@@ -1,12 +1,14 @@
 package com.example.pawpal;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.utils.widget.ImageFilterView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +26,26 @@ public class phomedashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_phomedashboard);
+
+        // multipet dashboard
+        // will change pa should handle the logic for displaying pets based on the number of pets owned
+        ImageFilterView center, left, right;
+        center = findViewById(R.id.img_center);
+        left = findViewById(R.id.img_left);
+        right = findViewById(R.id.img_right);
+
+        View.OnClickListener petListner = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(phomedashboard.this, pabout.class);
+                // Handle passing of specific pet detail
+                startActivity(intent);
+            }
+        };
+
+        center.setOnClickListener(petListner);
+        right.setOnClickListener(petListner);
+        left.setOnClickListener(petListner);
 
         TextView meddiet = findViewById(R.id.tv_alldiet);
         TextView schedules = findViewById(R.id.tv_allapp);

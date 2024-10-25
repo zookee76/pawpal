@@ -119,6 +119,7 @@ public class medicationdiet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(medicationdiet.this, consolidatedsummary.class);
+                intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
             }
         });
@@ -127,6 +128,7 @@ public class medicationdiet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(medicationdiet.this, appointmentspage.class);
+                intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
             }
         });

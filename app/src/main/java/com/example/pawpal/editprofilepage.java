@@ -54,6 +54,7 @@ public class editprofilepage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editprofilepage.this, petspage.class);
+                intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
             }
         });
@@ -65,6 +66,23 @@ public class editprofilepage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        // Add links to remaining navigation pages (calendar, files)
+
+        files.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(editprofilepage.this, consolidatedsummary.class);
+                intent.putExtra("IS_PET_OWNER", true);
+                startActivity(intent);
+            }
+        });
+
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(editprofilepage.this, appointmentspage.class);
+                intent.putExtra("IS_PET_OWNER", true);
+                startActivity(intent);
+            }
+        });
     }
 }
