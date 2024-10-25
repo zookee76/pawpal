@@ -1,6 +1,9 @@
 package com.example.pawpal;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,5 +14,15 @@ public class changepw extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_changepw);
+
+        Button savepw = findViewById(R.id.btn_savepw);
+
+        savepw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(changepw.this, userprofilepage.class);
+                startActivity(intent);
+            }
+        });
     }
 }
