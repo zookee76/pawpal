@@ -131,7 +131,8 @@ public class consolidatedsummary extends AppCompatActivity {
             profile.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //no xml file here
+                    Intent intent = new Intent(consolidatedsummary.this, clinicprofilepage.class);
+                    startActivity(intent);
                 }
             });
 
