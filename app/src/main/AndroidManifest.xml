@@ -130,6 +130,9 @@
             android:name=".pforgotpw"
             android:exported="false" />
         <activity
+            android:name=".cforgotpw"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
