@@ -1,4 +1,6 @@
 # Mobile Development (MOBDEVE) Major Course Output
+**Project Name:** PawPal
+
 **Course:** Bachelor of Science in Information Technology
 
 **Authors:** 
