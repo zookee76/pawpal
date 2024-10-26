@@ -50,7 +50,7 @@ public class consolidatedrecordadapter extends RecyclerView.Adapter<consolidated
         if ("clinic".equals(userType)){
             holder.seeDetailsButton.setOnClickListener(v -> {
                 // Handle button click (e.g., open details page, etc.)
-                Intent intent = new Intent(context, cabout.class);
+                Intent intent = new Intent(context, cmedicaldocs.class);
                 // Insert logic for handling of data
                 context.startActivity(intent);
             });
@@ -58,7 +58,7 @@ public class consolidatedrecordadapter extends RecyclerView.Adapter<consolidated
         else{
             holder.seeDetailsButton.setOnClickListener(v -> {
                 // Handle button click (e.g., open details page, etc.)
-                Intent intent = new Intent(context, pabout.class);
+                Intent intent = new Intent(context, pmedicaldocs.class);
                 // Insert logic for handling of data
                 context.startActivity(intent);
             });
