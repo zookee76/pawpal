@@ -91,7 +91,8 @@ public class editmedicaldocs extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // no xml file
+                Intent intent = new Intent(editmedicaldocs.this, userprofilepage.class);
+                startActivity(intent);
             }
         });
 

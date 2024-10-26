@@ -92,7 +92,8 @@ public class editschedules extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // no xml
+                Intent intent = new Intent(editschedules.this, userprofilepage.class);
+                startActivity(intent);
             }
         });
 

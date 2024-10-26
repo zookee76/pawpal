@@ -92,7 +92,8 @@ public class editclinicabout extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // no xml pa here?
+                Intent intent = new Intent(editclinicabout.this, userprofilepage.class);
+                startActivity(intent);
             }
         });
 

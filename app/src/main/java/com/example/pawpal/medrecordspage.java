@@ -114,7 +114,8 @@ public class medrecordspage extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // add here
+                Intent intent = new Intent(medrecordspage.this, clinicprofilepage.class);
+                startActivity(intent);
             }
         });
     }

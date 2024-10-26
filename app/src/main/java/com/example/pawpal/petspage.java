@@ -142,7 +142,8 @@ public class petspage extends AppCompatActivity {
             profile.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // add here
+                    Intent intent = new Intent(petspage.this, userprofilepage.class);
+                    startActivity(intent);
                 }
             });
 
@@ -173,8 +174,8 @@ public class petspage extends AppCompatActivity {
     // use this when logged as clinic owner
     private void loadpetsperowner(){
         // sample data for pets change  with logic for getting all pets
-        petsList.add(new pets("Callie", "Domestic Short Hair", "Female", 4, R.drawable.cat2));
-        petsList.add(new pets("Casper", "Domestic Short Hair", "Male", 3, R.drawable.cat2));
-        petsList.add(new pets("Tyler", "Persian Cat", "Male", 3, R.drawable.cat2));
+        petsList.add(new pets("Callie", "Domestic Short Hair", "Female", 4, R.drawable.callie));
+        petsList.add(new pets("Casper", "Domestic Short Hair", "Male", 3, R.drawable.casper));
+        petsList.add(new pets("Tyler", "Persian Cat", "Male", 3, R.drawable.tyler));
     }
 }

@@ -92,7 +92,8 @@ public class editmedicationdiet extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // no xml
+                Intent intent = new Intent(editmedicationdiet.this, userprofilepage.class);
+                startActivity(intent);
             }
         });
 

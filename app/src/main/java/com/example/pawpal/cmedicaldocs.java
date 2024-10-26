@@ -106,7 +106,8 @@ public class cmedicaldocs extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // add here
+                Intent intent = new Intent(cmedicaldocs.this, userprofilepage.class);
+                startActivity(intent);
             }
         });
 
