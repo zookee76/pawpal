@@ -11,3 +11,8 @@
 
 Pet owners have view-only access to their pet's medical diagnoses, lab results, and records, with the ability to share records with other veterinarians or co-parent owners by scanning a QR code.
 
+## Installation
+1. Clone the repository
+2. Import the project into Android Studio
+3. Set up necessary SDKs and permissions
+4. Build and run the app on an Android emulator or device
