@@ -126,7 +126,7 @@ public class pabout extends AppCompatActivity
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(pabout.this, pschedules.class);
+                Intent intent = new Intent(pabout.this, appointmentspage.class);
                 startActivity(intent);
             }
         });
