@@ -18,3 +18,6 @@ Pet owners have view-only access to their pet's medical diagnoses, lab results, 
 2. Import the project into Android Studio
 3. Set up necessary SDKs and permissions
 4. Build and run the app on an Android emulator or device
+
+## Figma Prototype
+Check out the **[Figma Prototype](https://www.figma.com/proto/8bRuaazRIw7Ja5Yde9EAJU/%5BMOBDEVE%5D-PawPal?node-id=2064-69&t=bVXvvBbNEpT48YVh-1)** for a detailed view of the UI and app flow
