@@ -21,3 +21,6 @@ Pet owners have view-only access to their pet's medical diagnoses, lab results, 
 
 ## Figma Prototype
 Check out the **[Figma Prototype](https://www.figma.com/proto/8bRuaazRIw7Ja5Yde9EAJU/%5BMOBDEVE%5D-PawPal?node-id=2064-69&t=bVXvvBbNEpT48YVh-1)** for a detailed view of the UI and app flow
+
+## GitHub Repository
+Visit the **[GitHub Repository](https://github.com/zookee76/pawpal)** to access the project files, documentation, and codebase.
