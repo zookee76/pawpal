@@ -1,5 +1,6 @@
 # Mobile Development (MOBDEVE) Major Course Output
 **Course:** Bachelor of Science in Information Technology
+
 **Authors:** 
 - Nicole Ashley Corpuz
 - Javier Del Rosario
