@@ -1,10 +1,9 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFDF4">
+    android:background="#FFFBEC">
 
     <ScrollView
         android:id="@+id/scrollable_content"
@@ -91,18 +90,18 @@
                 android:id="@+id/petImage"
                 android:layout_width="match_parent"
                 android:layout_height="212dp"
+                android:layout_marginTop="-15dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/casper"
-                android:translationY="23dp"
-                android:layout_marginTop="-15dp" />
+                android:translationY="23dp" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/outerCardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="6dp"
-                app:cardCornerRadius="30dp"
-                app:cardBackgroundColor="@color/white">
+                app:cardBackgroundColor="#FFFBEC"
+                app:cardCornerRadius="30dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -114,11 +113,11 @@
                         android:id="@+id/petName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Casper"
-                        android:textSize="35sp"
-                        android:textColor="#0C439E"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="8dp"
+                        android:text="Casper"
+                        android:textColor="#0C439E"
+                        android:textSize="35sp"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -130,38 +129,38 @@
                             android:id="@+id/aboutcategory"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="About"
                             android:layout_weight="1"
+                            android:text="About"
                             android:textColor="@color/black"
-                            android:textSize="13sp"/>
+                            android:textSize="13sp" />
 
                         <TextView
                             android:id="@+id/medicaldocscategory"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Medical Documents"
                             android:layout_weight="1"
+                            android:text="Medical Documents"
                             android:textColor="@color/black"
                             android:textSize="13sp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/medicationdietcategory"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Medication/Diet"
                             android:layout_weight="1"
+                            android:text="Medication/Diet"
                             android:textColor="@color/black"
-                            android:textSize="13sp"/>
+                            android:textSize="13sp" />
 
                         <TextView
                             android:id="@+id/schedulecategory"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Schedules"
                             android:layout_weight="1"
+                            android:text="Schedules"
                             android:textColor="@color/black"
-                            android:textSize="13sp"/>
+                            android:textSize="13sp" />
                     </LinearLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -175,60 +174,60 @@
     </ScrollView>
 
     <LinearLayout
-    android:id="@+id/layout_petnavigation"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:layout_alignParentBottom="true"
-    android:orientation="horizontal"
-    android:background="@color/white">
+        android:id="@+id/layout_petnavigation"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/iv_home"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:clickable="true"
-        android:contentDescription="home"
-        android:padding="7dp"
-        app:srcCompat="@drawable/home" />
+        <ImageView
+            android:id="@+id/iv_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:contentDescription="home"
+            android:padding="7dp"
+            app:srcCompat="@drawable/home" />
 
-    <ImageView
-        android:id="@+id/iv_calendar"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:clickable="true"
-        android:contentDescription="calendar"
-        android:padding="10dp"
-        app:srcCompat="@drawable/calendar" />
+        <ImageView
+            android:id="@+id/iv_calendar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:contentDescription="calendar"
+            android:padding="10dp"
+            app:srcCompat="@drawable/calendar" />
 
-    <ImageView
-        android:id="@+id/iv_pets"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:clickable="true"
-        android:contentDescription="pets"
-        app:srcCompat="@drawable/paw" />
+        <ImageView
+            android:id="@+id/iv_pets"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:contentDescription="pets"
+            app:srcCompat="@drawable/paw" />
 
-    <ImageView
-        android:id="@+id/iv_files"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:clickable="true"
-        android:contentDescription="files"
-        android:padding="10dp"
-        app:srcCompat="@drawable/file" />
+        <ImageView
+            android:id="@+id/iv_files"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:contentDescription="files"
+            android:padding="10dp"
+            app:srcCompat="@drawable/file" />
 
-    <ImageView
-        android:id="@+id/iv_userprofile"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:clickable="true"
-        android:contentDescription="userprofile"
-        android:padding="10dp"
-        app:srcCompat="@drawable/profile" />
+        <ImageView
+            android:id="@+id/iv_userprofile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:contentDescription="userprofile"
+            android:padding="10dp"
+            app:srcCompat="@drawable/profile" />
     </LinearLayout>
 </RelativeLayout>

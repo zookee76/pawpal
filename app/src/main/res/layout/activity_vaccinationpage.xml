@@ -5,7 +5,7 @@
     android:id="@+id/main_vaccination"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFDF4"
+    android:background="#FFFBEC"
     tools:context=".vaccinationpage">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -184,7 +184,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_vaccinations"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                tools:listitem="@layout/rv_vaccination" />
 
         </LinearLayout>
     </ScrollView>
