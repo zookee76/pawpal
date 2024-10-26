@@ -168,7 +168,7 @@ public class petspage extends AppCompatActivity {
     // use this when logged as pet owner
     private void loadPets(){
         // sample data for pets change for getting pets according too pet owner
-        petsList.add(new pets("Callie", "Domestic Short Hair", "Female", 4, R.drawable.cat2));
+        petsList.add(new pets("Casper", "Domestic Short Hair", "Male", 3, R.drawable.casper));
     }
     // use this when logged as clinic owner
     private void loadpetsperowner(){
