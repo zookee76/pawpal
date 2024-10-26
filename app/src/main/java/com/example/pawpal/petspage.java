@@ -150,7 +150,7 @@ public class petspage extends AppCompatActivity {
             profile.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(petspage.this, userprofilepage.class);
+                    Intent intent = new Intent(petspage.this, clinicprofilepage.class);
                     startActivity(intent);
                     finish();
                 }
