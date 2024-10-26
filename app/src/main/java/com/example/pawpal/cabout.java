@@ -123,7 +123,7 @@ public class cabout extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(cabout.this, userprofilepage.class);
+                Intent intent = new Intent(cabout.this, clinicprofilepage.class);
                 startActivity(intent);
                 finish();
             }

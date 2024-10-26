@@ -60,7 +60,7 @@ public class editCert extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(editCert.this, userprofilepage.class);
+                Intent intent = new Intent(editCert.this, clinicprofilepage.class);
                 startActivity(intent);
                 finish();
             }

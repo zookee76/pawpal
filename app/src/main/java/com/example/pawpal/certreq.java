@@ -91,7 +91,7 @@ public class certreq extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(certreq.this, userprofilepage.class);
+                Intent intent = new Intent(certreq.this, clinicprofilepage.class);
                 startActivity(intent);
                 finish();
             }
@@ -110,7 +110,7 @@ public class certreq extends AppCompatActivity {
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(certreq.this, pschedules.class);
+                Intent intent = new Intent(certreq.this, cschedules.class);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
                 finish();

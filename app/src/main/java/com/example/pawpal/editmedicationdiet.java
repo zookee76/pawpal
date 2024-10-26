@@ -105,7 +105,7 @@ public class editmedicationdiet extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(editmedicationdiet.this, userprofilepage.class);
+                Intent intent = new Intent(editmedicationdiet.this, clinicprofilepage.class);
                 startActivity(intent);
                 finish();
             }

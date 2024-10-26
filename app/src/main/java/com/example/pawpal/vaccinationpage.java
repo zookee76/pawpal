@@ -92,7 +92,7 @@ public class vaccinationpage extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(vaccinationpage.this, userprofilepage.class);
+                Intent intent = new Intent(vaccinationpage.this, clinicprofilepage.class);
                 startActivity(intent);
                 finish();
             }

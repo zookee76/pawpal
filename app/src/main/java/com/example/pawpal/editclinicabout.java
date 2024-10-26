@@ -105,7 +105,7 @@ public class editclinicabout extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(editclinicabout.this, userprofilepage.class);
+                Intent intent = new Intent(editclinicabout.this, clinicprofilepage.class);
                 startActivity(intent);
                 finish();
             }
