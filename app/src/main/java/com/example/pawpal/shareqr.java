@@ -62,7 +62,7 @@ public class shareqr extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(shareqr.this, userprofilepage.class);
+                Intent intent = new Intent(shareqr.this, petprofilepage.class);
                 startActivity(intent);
                 finish();
             }

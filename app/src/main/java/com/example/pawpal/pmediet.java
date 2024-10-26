@@ -120,7 +120,7 @@ public class pmediet extends AppCompatActivity
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(pmediet.this, userprofilepage.class);
+                Intent intent = new Intent(pmediet.this, petprofilepage.class);
                 startActivity(intent);
                 finish();
             }

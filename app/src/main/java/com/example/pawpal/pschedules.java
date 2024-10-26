@@ -121,7 +121,7 @@ public class pschedules extends AppCompatActivity
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(pschedules.this, userprofilepage.class);
+                Intent intent = new Intent(pschedules.this, petprofilepage.class);
                 startActivity(intent);
                 finish();
             }

@@ -24,7 +24,7 @@ public class editprofilepage extends AppCompatActivity {
         View.OnClickListener backListnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(editprofilepage.this, userprofilepage.class);
+                Intent intent = new Intent(editprofilepage.this, petprofilepage.class);
                 startActivity(intent);
                 finish();
             }
@@ -65,7 +65,7 @@ public class editprofilepage extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(editprofilepage.this, userprofilepage.class);
+                Intent intent = new Intent(editprofilepage.this, petprofilepage.class);
                 startActivity(intent);
                 finish();
             }

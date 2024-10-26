@@ -88,7 +88,7 @@
             android:name=".shareqr"
             android:exported="false" />
         <activity
-            android:name=".changepw"
+            android:name=".cchangepw"
             android:exported="false" />
         <activity
             android:name=".consolidatedrecords"
@@ -103,7 +103,7 @@
             android:name=".phomedashboard"
             android:exported="false" />
         <activity
-            android:name=".userprofilepage"
+            android:name=".petprofilepage"
             android:exported="false" />
         <activity
             android:name=".editprofilepage"

@@ -1,7 +1,6 @@
 package com.example.pawpal;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class userprofilepage extends AppCompatActivity {
+public class petprofilepage extends AppCompatActivity {
 
 
     @Override
@@ -25,7 +24,7 @@ public class userprofilepage extends AppCompatActivity {
         View.OnClickListener backListnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, phomedashboard.class);
+                Intent intent = new Intent(petprofilepage.this, phomedashboard.class);
                 startActivity(intent);
                 finish();
             }
@@ -38,7 +37,7 @@ public class userprofilepage extends AppCompatActivity {
         View.OnClickListener logoutLstnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, welcomerole.class);
+                Intent intent = new Intent(petprofilepage.this, welcomerole.class);
                 startActivity(intent);
                 finish();
             }
@@ -51,7 +50,7 @@ public class userprofilepage extends AppCompatActivity {
         editprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, editprofilepage.class);
+                Intent intent = new Intent(petprofilepage.this, editprofilepage.class);
                 startActivity(intent);
             }
         });
@@ -59,7 +58,7 @@ public class userprofilepage extends AppCompatActivity {
         changepw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, changepw.class);
+                Intent intent = new Intent(petprofilepage.this, pchangepw.class);
                 startActivity(intent);
                 finish();
             }
@@ -83,7 +82,7 @@ public class userprofilepage extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, phomedashboard.class);
+                Intent intent = new Intent(petprofilepage.this, phomedashboard.class);
 
                 startActivity(intent);
                 finish();
@@ -93,7 +92,7 @@ public class userprofilepage extends AppCompatActivity {
         pets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, petspage.class);
+                Intent intent = new Intent(petprofilepage.this, petspage.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
                 finish();
@@ -103,7 +102,7 @@ public class userprofilepage extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, userprofilepage.class);
+                Intent intent = new Intent(petprofilepage.this, petprofilepage.class);
                 startActivity(intent);
                 finish();
             }
@@ -112,7 +111,7 @@ public class userprofilepage extends AppCompatActivity {
         files.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, consolidatedsummary.class);
+                Intent intent = new Intent(petprofilepage.this, consolidatedsummary.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
                 finish();
@@ -122,7 +121,7 @@ public class userprofilepage extends AppCompatActivity {
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, appointmentspage.class);
+                Intent intent = new Intent(petprofilepage.this, appointmentspage.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
                 finish();

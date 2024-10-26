@@ -1,8 +1,6 @@
 package com.example.pawpal;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -139,7 +137,7 @@ public class pmedicaldocs extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(pmedicaldocs.this, userprofilepage.class);
+                Intent intent = new Intent(pmedicaldocs.this, petprofilepage.class);
                 startActivity(intent);
                 finish();
             }

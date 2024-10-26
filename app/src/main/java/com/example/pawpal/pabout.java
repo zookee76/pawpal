@@ -29,7 +29,7 @@ public class pabout extends AppCompatActivity
                 /*
                 Intent intent = new Intent(pabout.this, phomedashboard.class);
                 startActivity(intent);
-                
+
                  */
                 finish();
             }
@@ -120,7 +120,7 @@ public class pabout extends AppCompatActivity
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(pabout.this, userprofilepage.class);
+                Intent intent = new Intent(pabout.this, petprofilepage.class);
                 startActivity(intent);
                 finish();
             }

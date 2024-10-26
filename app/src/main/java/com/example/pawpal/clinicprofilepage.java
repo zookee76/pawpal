@@ -59,7 +59,7 @@ public class clinicprofilepage extends AppCompatActivity {
         changepw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(clinicprofilepage.this, changepw.class);
+                Intent intent = new Intent(clinicprofilepage.this, cchangepw.class);
                 startActivity(intent);
                 finish();
             }

@@ -83,7 +83,7 @@ public class consolidatedsummary extends AppCompatActivity {
             profile.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(consolidatedsummary.this, userprofilepage.class);
+                    Intent intent = new Intent(consolidatedsummary.this, petprofilepage.class);
                     startActivity(intent);
                     finish();
                 }

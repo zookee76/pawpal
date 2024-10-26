@@ -8,7 +8,7 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class changepw extends AppCompatActivity {
+public class cchangepw extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +20,7 @@ public class changepw extends AppCompatActivity {
         savepw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(changepw.this, userprofilepage.class);
+                Intent intent = new Intent(cchangepw.this, clinicprofilepage.class);
                 startActivity(intent);
                 finish();
             }
