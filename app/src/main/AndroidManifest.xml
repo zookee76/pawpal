@@ -43,7 +43,7 @@
             android:name=".cabout"
             android:exported="false" />
         <activity
-            android:name=".clinicpetlist"
+            android:name=".petspage"
             android:exported="false" />
         <activity
             android:name=".certreq"
