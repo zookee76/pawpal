@@ -122,7 +122,16 @@ public class appointmentspage extends AppCompatActivity {
             backImg.setOnClickListener(backListnr);
             backTxt.setOnClickListener(backListnr);
 
+
             //Link to navigation buttons
+            pets.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(appointmentspage.this, clinicpets.class);
+                    startActivity(intent);
+                }
+            });
+
             home.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

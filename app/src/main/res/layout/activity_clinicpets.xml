@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_mypets"
+    android:id="@+id/main_clinicpets"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFBEC">
+    tools:context=".clinicpets">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mypets_sublayout"
+        android:id="@+id/clinicpets_sublayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_mypetsheader"
+            android:id="@+id/layout_petsheader"
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:orientation="horizontal"
@@ -28,10 +28,10 @@
             app:layout_constraintVertical_bias="0.0">
 
             <TextView
-                android:id="@+id/tv_mypets"
+                android:id="@+id/tv_clinicpets"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="My Pets"
+                android:text="PawPals"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -62,7 +62,7 @@
                 android:text="Back"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tv_mypets"
+                app:layout_constraintEnd_toStartOf="@+id/tv_clinicpets"
                 app:layout_constraintHorizontal_bias="0.153"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -76,12 +76,12 @@
             app:layout_constraintBottom_toTopOf="@+id/layout_petnavigation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_mypetsheader">
+            app:layout_constraintTop_toBottomOf="@+id/layout_petsheader">
 
             <LinearLayout
-                android:id="@+id/layout_mypets"
+                android:id="@+id/layout_clinicpets"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <View
@@ -91,14 +91,14 @@
                     android:background="#D9D9D9" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_pets"
+                    android:id="@+id/rv_clinicpets"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
+                    android:layout_height="match_parent"
+                    android:padding="20dp"
                     tools:itemCount="5"
-                    tools:listitem="@layout/rv_pets">
+                    tools:listitem="@layout/rv_clinicpets"
+                    tools:spanCount="5" />
 
-                </androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>
         </ScrollView>
 
@@ -162,4 +162,4 @@
                 app:srcCompat="@drawable/profile" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

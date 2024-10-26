@@ -120,6 +120,14 @@ public class consolidatedsummary extends AppCompatActivity {
             backTxt.setOnClickListener(backListnr);
 
             //Link to navigation buttons
+            pets.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(consolidatedsummary.this, clinicpets.class);
+                    startActivity(intent);
+                }
+            });
+
             home.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

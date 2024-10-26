@@ -80,11 +80,19 @@ public class medrecordspage extends AppCompatActivity {
         ImageView home, calendar, pets, files, profile;
         home = findViewById(R.id.iv_home);
         calendar = findViewById(R.id.iv_calendar);
-        pets = findViewById(R.id.iv_pets);
         files = findViewById((R.id.iv_files));
         profile = findViewById(R.id.iv_userprofile);
+        pets = findViewById(R.id.iv_pets);
 
         //Link to navigation buttons
+        pets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(medrecordspage.this, clinicpets.class);
+                startActivity(intent);
+            }
+        });
+
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

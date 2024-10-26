@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Pawpal"
         tools:targetApi="31">
         <activity
+            android:name=".clinicpets"
+            android:exported="false" />
+        <activity
             android:name=".addCertRequest"
             android:exported="false" />
         <activity
@@ -98,9 +101,6 @@
             android:exported="false" />
         <activity
             android:name=".phomedashboard"
-            android:exported="false" />
-        <activity
-            android:name=".petspage"
             android:exported="false" />
         <activity
             android:name=".userprofilepage"

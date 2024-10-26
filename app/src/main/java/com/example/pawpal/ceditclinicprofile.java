@@ -39,8 +39,17 @@ public class ceditclinicprofile extends AppCompatActivity {
         calendar = findViewById(R.id.iv_calendar);
         files = findViewById((R.id.iv_files));
         profile = findViewById(R.id.iv_userprofile);
+        pets = findViewById(R.id.iv_pets);
 
         //Link to navigation buttons
+        pets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ceditclinicprofile.this, clinicpets.class);
+                startActivity(intent);
+            }
+        });
+
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

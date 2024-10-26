@@ -74,13 +74,21 @@ public class editmedicationdiet extends AppCompatActivity {
         });
 
         //Navigation Handle
-        ImageView home, calendar, files, profile;
+        ImageView home, calendar, files, profile, pets;
         home = findViewById(R.id.iv_home);
         calendar = findViewById(R.id.iv_calendar);
         files = findViewById((R.id.iv_files));
         profile = findViewById(R.id.iv_userprofile);
+        pets = findViewById(R.id.iv_pets);
 
         //Link to navigation buttons
+        pets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(editmedicationdiet.this, clinicpets.class);
+                startActivity(intent);
+            }
+        });
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

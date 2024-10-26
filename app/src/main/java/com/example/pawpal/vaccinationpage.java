@@ -61,6 +61,14 @@ public class vaccinationpage extends AppCompatActivity {
         profile = findViewById(R.id.iv_userprofile);
 
         //Link to navigation buttons
+        pets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(vaccinationpage.this, clinicpets.class);
+                startActivity(intent);
+            }
+        });
+
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
