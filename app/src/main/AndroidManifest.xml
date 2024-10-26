@@ -109,6 +109,12 @@
             android:name=".editprofilepage"
             android:exported="false" />
         <activity
+            android:name=".clinicprofilepage"
+            android:exported="false" />
+        <activity
+            android:name=".ceditclinicprofile"
+            android:exported="false" />
+        <activity
             android:name=".pregister"
             android:exported="false" />
         <activity

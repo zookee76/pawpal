@@ -100,7 +100,8 @@ public class chomedashboard extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // no xml pa here?
+                Intent intent = new Intent(chomedashboard.this, clinicprofilepage.class);
+                startActivity(intent);
             }
         });
 

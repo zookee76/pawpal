@@ -26,7 +26,7 @@
             android:id="@+id/tv_userprofile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="User Profile"
+            android:text="Clinic Profile"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -58,7 +58,6 @@
             android:text="Back"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_mypets"
             app:layout_constraintHorizontal_bias="0.153"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -151,27 +150,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="275dp">
 
-                <ImageView
-                    android:id="@+id/iv_arrowfbacks"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="28dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_arrowfaqs"
-                    app:layout_constraintVertical_bias="0.251"
-                    app:srcCompat="@drawable/arrowright" />
-
-                <ImageView
-                    android:id="@+id/iv_arrowfaqs"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="28dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_arrowpw"
-                    app:srcCompat="@drawable/arrowright" />
-
                 <androidx.constraintlayout.utils.widget.ImageFilterButton
                     android:id="@+id/iv_profilesetting"
                     android:layout_width="40dp"
@@ -198,46 +176,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/iv_profilesetting"
                     app:srcCompat="@drawable/password" />
 
-                <androidx.constraintlayout.utils.widget.ImageFilterButton
-                    android:id="@+id/iv_faqsettings"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="8dp"
-                    android:backgroundTint="#FFFBEC"
-                    android:scaleType="centerCrop"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.121"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_pwsetting"
-                    app:srcCompat="@drawable/faqs" />
-
-                <androidx.constraintlayout.utils.widget.ImageFilterButton
-                    android:id="@+id/iv_feedbacksettings"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="8dp"
-                    android:backgroundTint="#FFFBEC"
-                    android:scaleType="centerCrop"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.121"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_faqsettings"
-                    app:srcCompat="@drawable/feedback" />
-
-                <TextView
-                    android:id="@+id/tv_feedback"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="Feedback"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@+id/iv_arrowfbacks"
-                    app:layout_constraintHorizontal_bias="0.08"
-                    app:layout_constraintStart_toEndOf="@+id/iv_feedbacksettings"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_faqs" />
-
                 <TextView
                     android:id="@+id/tv_logout"
                     android:layout_width="wrap_content"
@@ -248,24 +186,10 @@
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.055"
+                    app:layout_constraintHorizontal_bias="0.051"
                     app:layout_constraintStart_toEndOf="@+id/iv_logout"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_feedback"
-                    app:layout_constraintVertical_bias="0.6" />
-
-                <TextView
-                    android:id="@+id/tv_faqs"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="Frequently Asked Question"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toStartOf="@+id/iv_arrowfaqs"
-                    app:layout_constraintHorizontal_bias="0.246"
-                    app:layout_constraintStart_toEndOf="@+id/iv_faqsettings"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_changepw" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_changepw"
+                    app:layout_constraintVertical_bias="0.165" />
 
                 <TextView
                     android:id="@+id/tv_changepw"
@@ -321,10 +245,10 @@
                     android:layout_height="40dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.119"
+                    app:layout_constraintHorizontal_bias="0.121"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_feedbacksettings"
-                    app:layout_constraintVertical_bias="0.666"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_pwsetting"
+                    app:layout_constraintVertical_bias="0.086"
                     app:srcCompat="@drawable/logout" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
