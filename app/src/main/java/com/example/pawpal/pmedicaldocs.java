@@ -45,8 +45,12 @@ public class pmedicaldocs extends AppCompatActivity {
         View.OnClickListener backListnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 Intent intent = new Intent(pmedicaldocs.this, phomedashboard.class);
                 startActivity(intent);
+
+                 */
+                finish();
             }
         };
 
@@ -73,6 +77,7 @@ public class pmedicaldocs extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(pmedicaldocs.this, pmedicaldocs.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -81,6 +86,7 @@ public class pmedicaldocs extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(pmedicaldocs.this, pmediet.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -89,6 +95,7 @@ public class pmedicaldocs extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(pmedicaldocs.this, pabout.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -97,6 +104,7 @@ public class pmedicaldocs extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(pmedicaldocs.this, pschedules.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -114,6 +122,7 @@ public class pmedicaldocs extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(pmedicaldocs.this, phomedashboard.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -123,6 +132,7 @@ public class pmedicaldocs extends AppCompatActivity {
                 Intent intent = new Intent(pmedicaldocs.this, petspage.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -131,6 +141,7 @@ public class pmedicaldocs extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(pmedicaldocs.this, userprofilepage.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -140,6 +151,7 @@ public class pmedicaldocs extends AppCompatActivity {
                 Intent intent = new Intent(pmedicaldocs.this, consolidatedsummary.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -149,6 +161,7 @@ public class pmedicaldocs extends AppCompatActivity {
                 Intent intent = new Intent(pmedicaldocs.this, appointmentspage.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
     }

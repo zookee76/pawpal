@@ -26,6 +26,7 @@ public class ceditclinicprofile extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ceditclinicprofile.this, clinicprofilepage.class);
                 startActivity(intent);
+                finish();
             }
         };
 
@@ -47,6 +48,7 @@ public class ceditclinicprofile extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ceditclinicprofile.this, clinicpets.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -55,6 +57,7 @@ public class ceditclinicprofile extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ceditclinicprofile.this, chomedashboard.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -63,6 +66,7 @@ public class ceditclinicprofile extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ceditclinicprofile.this, clinicprofilepage.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -72,6 +76,7 @@ public class ceditclinicprofile extends AppCompatActivity {
                 Intent intent = new Intent(ceditclinicprofile.this, consolidatedsummary.class);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -81,6 +86,7 @@ public class ceditclinicprofile extends AppCompatActivity {
                 Intent intent = new Intent(ceditclinicprofile.this, appointmentspage.class);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
+                finish();
             }
         });
     }

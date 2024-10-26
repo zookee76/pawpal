@@ -39,6 +39,7 @@ public class medrecordspage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(medrecordspage.this, chomedashboard.class);
                 medrecordspage.this.startActivity(intent);
+                finish();
             }
         };
         backImg.setOnClickListener(backListnr);
@@ -90,6 +91,7 @@ public class medrecordspage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(medrecordspage.this, clinicpets.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -98,6 +100,7 @@ public class medrecordspage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(medrecordspage.this, chomedashboard.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -107,6 +110,7 @@ public class medrecordspage extends AppCompatActivity {
                 Intent intent = new Intent(medrecordspage.this, appointmentspage.class);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -116,6 +120,7 @@ public class medrecordspage extends AppCompatActivity {
                 Intent intent = new Intent(medrecordspage.this, consolidatedsummary.class);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -124,6 +129,7 @@ public class medrecordspage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(medrecordspage.this, clinicprofilepage.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

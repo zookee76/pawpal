@@ -24,6 +24,7 @@ public class editCert extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(editCert.this, certreq.class);
                 startActivity(intent);
+                finish();
             }
         };
 
@@ -44,6 +45,7 @@ public class editCert extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(editCert.this, clinicpets.class);
                 startActivity(intent);
+                finish();
             }
         });
         home.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +53,7 @@ public class editCert extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(editCert.this, certreq.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -59,6 +62,7 @@ public class editCert extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(editCert.this, userprofilepage.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -67,6 +71,7 @@ public class editCert extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(editCert.this, consolidatedsummary.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -75,6 +80,7 @@ public class editCert extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(editCert.this, appointmentspage.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

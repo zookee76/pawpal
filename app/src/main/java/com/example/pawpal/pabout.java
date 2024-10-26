@@ -26,8 +26,12 @@ public class pabout extends AppCompatActivity
         View.OnClickListener backListnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 Intent intent = new Intent(pabout.this, phomedashboard.class);
                 startActivity(intent);
+                
+                 */
+                finish();
             }
         };
 
@@ -54,6 +58,7 @@ public class pabout extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pabout.this, pmedicaldocs.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -62,6 +67,7 @@ public class pabout extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pabout.this, pmediet.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -70,6 +76,7 @@ public class pabout extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pabout.this, pabout.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -78,6 +85,7 @@ public class pabout extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pabout.this, pschedules.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -95,6 +103,7 @@ public class pabout extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pabout.this, phomedashboard.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -104,6 +113,7 @@ public class pabout extends AppCompatActivity
                 Intent intent = new Intent(pabout.this, petspage.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -112,6 +122,7 @@ public class pabout extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pabout.this, userprofilepage.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -120,6 +131,7 @@ public class pabout extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pabout.this, consolidatedsummary.class);
                 intent.putExtra("IS_PET_OWNER", true);
+                finish();
             }
         });
 
@@ -128,6 +140,7 @@ public class pabout extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pabout.this, appointmentspage.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

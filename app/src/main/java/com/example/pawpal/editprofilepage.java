@@ -26,6 +26,7 @@ public class editprofilepage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(editprofilepage.this, userprofilepage.class);
                 startActivity(intent);
+                finish();
             }
         };
 
@@ -47,6 +48,7 @@ public class editprofilepage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(editprofilepage.this, phomedashboard.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -56,6 +58,7 @@ public class editprofilepage extends AppCompatActivity {
                 Intent intent = new Intent(editprofilepage.this, petspage.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -64,6 +67,7 @@ public class editprofilepage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(editprofilepage.this, userprofilepage.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -73,6 +77,7 @@ public class editprofilepage extends AppCompatActivity {
                 Intent intent = new Intent(editprofilepage.this, consolidatedsummary.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -82,6 +87,7 @@ public class editprofilepage extends AppCompatActivity {
                 Intent intent = new Intent(editprofilepage.this, appointmentspage.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
     }

@@ -24,6 +24,7 @@ public class clogin extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(clogin.this, cregister.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -39,7 +40,10 @@ public class clogin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(clogin.this, chomedashboard.class);
+                // ends all previous acts and making the dashboard as root of the stack
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
+                finish();
             }
         });
     }

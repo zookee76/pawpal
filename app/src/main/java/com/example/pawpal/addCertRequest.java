@@ -22,8 +22,9 @@ public class addCertRequest extends AppCompatActivity {
         View.OnClickListener backListnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(addCertRequest.this, addCertRequest.class);
+                Intent intent = new Intent(addCertRequest.this, certreq.class);
                 startActivity(intent);
+                finish();
             }
         };
 
@@ -43,6 +44,7 @@ public class addCertRequest extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(addCertRequest.this, chomedashboard.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -51,6 +53,7 @@ public class addCertRequest extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(addCertRequest.this, userprofilepage.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -60,6 +63,7 @@ public class addCertRequest extends AppCompatActivity {
                 Intent intent = new Intent(addCertRequest.this, consolidatedsummary.class);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -69,6 +73,7 @@ public class addCertRequest extends AppCompatActivity {
                 Intent intent = new Intent(addCertRequest.this, pschedules.class);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
+                finish();
             }
         });
     }

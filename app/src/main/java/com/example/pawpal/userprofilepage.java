@@ -27,6 +27,7 @@ public class userprofilepage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(userprofilepage.this, phomedashboard.class);
                 startActivity(intent);
+                finish();
             }
         };
 
@@ -37,8 +38,9 @@ public class userprofilepage extends AppCompatActivity {
         View.OnClickListener logoutLstnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(userprofilepage.this, plogin.class);
+                Intent intent = new Intent(userprofilepage.this, welcomerole.class);
                 startActivity(intent);
+                finish();
             }
         };
 
@@ -59,6 +61,7 @@ public class userprofilepage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(userprofilepage.this, changepw.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -83,6 +86,7 @@ public class userprofilepage extends AppCompatActivity {
                 Intent intent = new Intent(userprofilepage.this, phomedashboard.class);
 
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -92,6 +96,7 @@ public class userprofilepage extends AppCompatActivity {
                 Intent intent = new Intent(userprofilepage.this, petspage.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -100,6 +105,7 @@ public class userprofilepage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(userprofilepage.this, userprofilepage.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -109,6 +115,7 @@ public class userprofilepage extends AppCompatActivity {
                 Intent intent = new Intent(userprofilepage.this, consolidatedsummary.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -118,6 +125,7 @@ public class userprofilepage extends AppCompatActivity {
                 Intent intent = new Intent(userprofilepage.this, appointmentspage.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
     }

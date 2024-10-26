@@ -100,6 +100,7 @@ public class phomedashboard extends AppCompatActivity {
                 Intent intent = new Intent(phomedashboard.this, phomedashboard.class);
 
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -109,6 +110,7 @@ public class phomedashboard extends AppCompatActivity {
                 Intent intent = new Intent(phomedashboard.this, petspage.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -117,6 +119,7 @@ public class phomedashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(phomedashboard.this, userprofilepage.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -126,6 +129,7 @@ public class phomedashboard extends AppCompatActivity {
                 Intent intent = new Intent(phomedashboard.this, consolidatedsummary.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -135,6 +139,7 @@ public class phomedashboard extends AppCompatActivity {
                 Intent intent = new Intent(phomedashboard.this, appointmentspage.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
     }

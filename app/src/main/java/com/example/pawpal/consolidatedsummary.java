@@ -54,6 +54,7 @@ public class consolidatedsummary extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(consolidatedsummary.this, phomedashboard.class);
                     startActivity(intent);
+                    finish();
                 }
             };
             backImg.setOnClickListener(backListnr);
@@ -65,6 +66,7 @@ public class consolidatedsummary extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(consolidatedsummary.this, phomedashboard.class);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -74,6 +76,7 @@ public class consolidatedsummary extends AppCompatActivity {
                     Intent intent = new Intent(consolidatedsummary.this, petspage.class);
                     intent.putExtra("IS_PET_OWNER", true);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -82,6 +85,7 @@ public class consolidatedsummary extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(consolidatedsummary.this, userprofilepage.class);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -91,6 +95,7 @@ public class consolidatedsummary extends AppCompatActivity {
                     Intent intent = new Intent(consolidatedsummary.this, consolidatedsummary.class);
                     intent.putExtra("IS_PET_OWNER", true);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -100,6 +105,7 @@ public class consolidatedsummary extends AppCompatActivity {
                     Intent intent = new Intent(consolidatedsummary.this, appointmentspage.class);
                     intent.putExtra("IS_PET_OWNER", true);
                     startActivity(intent);
+                    finish();
                 }
             });
         }
@@ -114,6 +120,7 @@ public class consolidatedsummary extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(consolidatedsummary.this, chomedashboard.class);
                     startActivity(intent);
+                    finish();
                 }
             };
             backImg.setOnClickListener(backListnr);
@@ -125,6 +132,7 @@ public class consolidatedsummary extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(consolidatedsummary.this, clinicpets.class);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -133,6 +141,7 @@ public class consolidatedsummary extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(consolidatedsummary.this, chomedashboard.class);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -141,6 +150,7 @@ public class consolidatedsummary extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(consolidatedsummary.this, clinicprofilepage.class);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -150,6 +160,7 @@ public class consolidatedsummary extends AppCompatActivity {
                     Intent intent = new Intent(consolidatedsummary.this, consolidatedsummary.class);
                     intent.putExtra("IS_PET_OWNER", false);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -159,6 +170,7 @@ public class consolidatedsummary extends AppCompatActivity {
                     Intent intent = new Intent(consolidatedsummary.this, appointmentspage.class);
                     intent.putExtra("IS_PET_OWNER", false);
                     startActivity(intent);
+                    finish();
                 }
             });
         }

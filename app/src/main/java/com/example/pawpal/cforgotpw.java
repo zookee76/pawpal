@@ -22,6 +22,7 @@ public class cforgotpw extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(cforgotpw.this, clogin.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

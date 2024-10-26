@@ -95,6 +95,7 @@ public class chomedashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(chomedashboard.this, clinicpets.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -103,6 +104,7 @@ public class chomedashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(chomedashboard.this, chomedashboard.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -111,6 +113,7 @@ public class chomedashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(chomedashboard.this, clinicprofilepage.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -120,6 +123,7 @@ public class chomedashboard extends AppCompatActivity {
                 Intent intent = new Intent(chomedashboard.this, consolidatedsummary.class);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -129,6 +133,7 @@ public class chomedashboard extends AppCompatActivity {
                 Intent intent = new Intent(chomedashboard.this, appointmentspage.class);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
+                finish();
             }
         });
     }

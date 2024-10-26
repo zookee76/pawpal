@@ -26,8 +26,12 @@ public class pmediet extends AppCompatActivity
         View.OnClickListener backListnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 Intent intent = new Intent(pmediet.this, phomedashboard.class);
                 startActivity(intent);
+
+                 */
+                finish();
             }
         };
 
@@ -54,6 +58,7 @@ public class pmediet extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pmediet.this, pmedicaldocs.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -62,6 +67,7 @@ public class pmediet extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pmediet.this, pmediet.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -70,6 +76,7 @@ public class pmediet extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pmediet.this, pabout.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -78,6 +85,7 @@ public class pmediet extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pmediet.this, pschedules.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -95,6 +103,7 @@ public class pmediet extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pmediet.this, phomedashboard.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -104,6 +113,7 @@ public class pmediet extends AppCompatActivity
                 Intent intent = new Intent(pmediet.this, petspage.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -112,6 +122,7 @@ public class pmediet extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pmediet.this, userprofilepage.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -121,6 +132,7 @@ public class pmediet extends AppCompatActivity
                 Intent intent = new Intent(pmediet.this, consolidatedsummary.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -130,6 +142,7 @@ public class pmediet extends AppCompatActivity
                 Intent intent = new Intent(pmediet.this, appointmentspage.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
     }

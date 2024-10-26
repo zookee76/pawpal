@@ -23,10 +23,14 @@ public class cmedicaldocs extends AppCompatActivity {
         View.OnClickListener backListnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 Intent intent = new Intent(cmedicaldocs.this, petspage.class);
                 intent.putExtra("IS_PET_OWNER", false);
                 intent.putExtra("PETS_PAGE_TITLE", "List of Pets");
                 cmedicaldocs.this.startActivity(intent);
+
+                 */
+                finish();
             }
         };
         backImg.setOnClickListener(backListnr);
@@ -48,6 +52,7 @@ public class cmedicaldocs extends AppCompatActivity {
                 Intent intent = new Intent(cmedicaldocs.this, cabout.class);
                 // handle data here
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -57,6 +62,7 @@ public class cmedicaldocs extends AppCompatActivity {
                 Intent intent = new Intent(cmedicaldocs.this, cmedicaldocs.class);
                 // handle data here
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -66,6 +72,7 @@ public class cmedicaldocs extends AppCompatActivity {
                 Intent intent = new Intent(cmedicaldocs.this, cmedicationdiet.class);
                 // handle data here
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -75,6 +82,7 @@ public class cmedicaldocs extends AppCompatActivity {
                 Intent intent = new Intent(cmedicaldocs.this, cschedules.class);
                 // handle data here
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -101,6 +109,7 @@ public class cmedicaldocs extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(cmedicaldocs.this, clinicpets.class);
                 startActivity(intent);
+                finish();
             }
         });
         home.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +117,7 @@ public class cmedicaldocs extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(cmedicaldocs.this, chomedashboard.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -116,6 +126,7 @@ public class cmedicaldocs extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(cmedicaldocs.this, userprofilepage.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -125,6 +136,7 @@ public class cmedicaldocs extends AppCompatActivity {
                 Intent intent = new Intent(cmedicaldocs.this, consolidatedsummary.class);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -134,6 +146,7 @@ public class cmedicaldocs extends AppCompatActivity {
                 Intent intent = new Intent(cmedicaldocs.this, appointmentspage.class);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
+                finish();
             }
         });
     }

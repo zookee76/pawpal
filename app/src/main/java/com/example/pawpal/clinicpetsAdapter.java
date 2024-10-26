@@ -1,6 +1,7 @@
 package com.example.pawpal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,24 @@ public class clinicpetsAdapter extends RecyclerView.Adapter<clinicpetsAdapter.cl
         pets clinicPets = clinicpetsList.get(position);
         holder.pet.setImageResource(clinicPets.getPetphoto());
         holder.petname.setText(clinicPets.getName());
+
+        holder.pet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(cxt, cabout.class);
+                // add logic for getting and passing specific pet data
+                cxt.startActivity(intent);
+            }
+        });
+
+        holder.petname.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(cxt, cabout.class);
+                // add logic for getting and passing specific pet data
+                cxt.startActivity(intent);
+            }
+        });
     }
 
     @Override

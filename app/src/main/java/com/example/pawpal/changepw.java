@@ -22,6 +22,7 @@ public class changepw extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(changepw.this, userprofilepage.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

@@ -24,6 +24,7 @@ public class pregister extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(pregister.this, plogin.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -32,6 +33,7 @@ public class pregister extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(pregister.this, plogin.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

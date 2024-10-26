@@ -26,6 +26,7 @@ public class clinicprofilepage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(clinicprofilepage.this, chomedashboard.class);
                 startActivity(intent);
+                finish();
             }
         };
 
@@ -36,8 +37,9 @@ public class clinicprofilepage extends AppCompatActivity {
         View.OnClickListener logoutLstnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(clinicprofilepage.this, clogin.class);
+                Intent intent = new Intent(clinicprofilepage.this, welcomerole.class);
                 startActivity(intent);
+                finish();
             }
         };
 
@@ -50,6 +52,7 @@ public class clinicprofilepage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(clinicprofilepage.this, ceditclinicprofile.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -58,6 +61,7 @@ public class clinicprofilepage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(clinicprofilepage.this, changepw.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -81,6 +85,7 @@ public class clinicprofilepage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(clinicprofilepage.this, clinicpets.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -90,6 +95,7 @@ public class clinicprofilepage extends AppCompatActivity {
                 Intent intent = new Intent(clinicprofilepage.this, chomedashboard.class);
 
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -98,6 +104,7 @@ public class clinicprofilepage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(clinicprofilepage.this, clinicprofilepage.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -107,6 +114,7 @@ public class clinicprofilepage extends AppCompatActivity {
                 Intent intent = new Intent(clinicprofilepage.this, consolidatedsummary.class);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -116,6 +124,7 @@ public class clinicprofilepage extends AppCompatActivity {
                 Intent intent = new Intent(clinicprofilepage.this, appointmentspage.class);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
+                finish();
             }
         });
     }

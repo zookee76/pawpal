@@ -45,6 +45,7 @@ public class shareqr extends AppCompatActivity {
                 Intent intent = new Intent(shareqr.this, phomedashboard.class);
 
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -54,6 +55,7 @@ public class shareqr extends AppCompatActivity {
                 Intent intent = new Intent(shareqr.this, petspage.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -62,6 +64,7 @@ public class shareqr extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(shareqr.this, userprofilepage.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -71,6 +74,7 @@ public class shareqr extends AppCompatActivity {
                 Intent intent = new Intent(shareqr.this, consolidatedsummary.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -80,6 +84,7 @@ public class shareqr extends AppCompatActivity {
                 Intent intent = new Intent(shareqr.this, appointmentspage.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
     }

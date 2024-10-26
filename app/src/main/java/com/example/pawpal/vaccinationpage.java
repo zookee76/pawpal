@@ -47,6 +47,7 @@ public class vaccinationpage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(vaccinationpage.this, chomedashboard.class);
                 vaccinationpage.this.startActivity(intent);
+                finish();
             }
         };
         backImg.setOnClickListener(backListnr);
@@ -66,6 +67,7 @@ public class vaccinationpage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(vaccinationpage.this, clinicpets.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -74,13 +76,16 @@ public class vaccinationpage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(vaccinationpage.this, chomedashboard.class);
                 startActivity(intent);
+                finish();
             }
         });
 
         pets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // add here
+                Intent intent = new Intent(vaccinationpage.this, clinicpets.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -89,6 +94,7 @@ public class vaccinationpage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(vaccinationpage.this, userprofilepage.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -98,6 +104,7 @@ public class vaccinationpage extends AppCompatActivity {
                 Intent intent = new Intent(vaccinationpage.this, consolidatedsummary.class);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -107,6 +114,7 @@ public class vaccinationpage extends AppCompatActivity {
                 Intent intent = new Intent(vaccinationpage.this, appointmentspage.class);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
+                finish();
             }
         });
 

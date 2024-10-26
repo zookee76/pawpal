@@ -57,6 +57,7 @@ public class appointmentspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, phomedashboard.class);
                     startActivity(intent);
+                    finish();
                 }
             };
             backImg.setOnClickListener(backListnr);
@@ -69,6 +70,7 @@ public class appointmentspage extends AppCompatActivity {
                     Intent intent = new Intent(appointmentspage.this, phomedashboard.class);
 
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -78,6 +80,7 @@ public class appointmentspage extends AppCompatActivity {
                     Intent intent = new Intent(appointmentspage.this, petspage.class);
                     intent.putExtra("IS_PET_OWNER", true);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -86,6 +89,7 @@ public class appointmentspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, userprofilepage.class);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -95,6 +99,7 @@ public class appointmentspage extends AppCompatActivity {
                     Intent intent = new Intent(appointmentspage.this, consolidatedsummary.class);
                     intent.putExtra("IS_PET_OWNER", true);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -103,6 +108,7 @@ public class appointmentspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, appointmentspage.class);
                     startActivity(intent);
+                    finish();
                 }
             });
         }
@@ -117,6 +123,7 @@ public class appointmentspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, chomedashboard.class);
                     startActivity(intent);
+                    finish();
                 }
             };
             backImg.setOnClickListener(backListnr);
@@ -129,6 +136,7 @@ public class appointmentspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, clinicpets.class);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -137,6 +145,7 @@ public class appointmentspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, chomedashboard.class);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -145,6 +154,7 @@ public class appointmentspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, clinicprofilepage.class);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -154,6 +164,7 @@ public class appointmentspage extends AppCompatActivity {
                     Intent intent = new Intent(appointmentspage.this, consolidatedsummary.class);
                     intent.putExtra("IS_PET_OWNER", false);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -163,6 +174,7 @@ public class appointmentspage extends AppCompatActivity {
                     Intent intent = new Intent(appointmentspage.this, appointmentspage.class);
                     intent.putExtra("IS_PET_OWNER", false);
                     startActivity(intent);
+                    finish();
                 }
             });
         }

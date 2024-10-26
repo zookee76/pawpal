@@ -22,6 +22,7 @@ public class pforgotpw extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(pforgotpw.this, plogin.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

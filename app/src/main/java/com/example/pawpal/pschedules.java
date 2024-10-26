@@ -26,8 +26,12 @@ public class pschedules extends AppCompatActivity
         View.OnClickListener backListnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 Intent intent = new Intent(pschedules.this, phomedashboard.class);
                 startActivity(intent);
+
+                 */
+                finish();
             }
         };
 
@@ -54,6 +58,7 @@ public class pschedules extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pschedules.this, pmedicaldocs.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -62,6 +67,7 @@ public class pschedules extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pschedules.this, pmediet.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -70,6 +76,7 @@ public class pschedules extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pschedules.this, pabout.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -78,6 +85,7 @@ public class pschedules extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pschedules.this, pschedules.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -96,6 +104,7 @@ public class pschedules extends AppCompatActivity
                 Intent intent = new Intent(pschedules.this, phomedashboard.class);
 
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -105,6 +114,7 @@ public class pschedules extends AppCompatActivity
                 Intent intent = new Intent(pschedules.this, petspage.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -113,6 +123,7 @@ public class pschedules extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pschedules.this, userprofilepage.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -122,6 +133,7 @@ public class pschedules extends AppCompatActivity
                 Intent intent = new Intent(pschedules.this, consolidatedsummary.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -131,6 +143,7 @@ public class pschedules extends AppCompatActivity
                 Intent intent = new Intent(pschedules.this, appointmentspage.class);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
+                finish();
             }
         });
     }

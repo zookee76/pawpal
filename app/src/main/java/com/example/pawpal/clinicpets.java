@@ -37,6 +37,7 @@ public class clinicpets extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(clinicpets.this, chomedashboard.class);
                 startActivity(intent);
+                finish();
             }
         };
 
@@ -57,6 +58,7 @@ public class clinicpets extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(clinicpets.this, chomedashboard.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -65,6 +67,7 @@ public class clinicpets extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(clinicpets.this, clinicprofilepage.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -74,6 +77,7 @@ public class clinicpets extends AppCompatActivity {
                 Intent intent = new Intent(clinicpets.this, consolidatedsummary.class);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -83,6 +87,7 @@ public class clinicpets extends AppCompatActivity {
                 Intent intent = new Intent(clinicpets.this, appointmentspage.class);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -91,6 +96,7 @@ public class clinicpets extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(clinicpets.this, clinicpets.class);
                 startActivity(intent);
+                finish();
             }
         });
 

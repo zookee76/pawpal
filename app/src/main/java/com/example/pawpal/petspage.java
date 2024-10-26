@@ -56,6 +56,7 @@ public class petspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(petspage.this, phomedashboard.class);
                     startActivity(intent);
+                    finish();
                 }
             };
 
@@ -69,6 +70,7 @@ public class petspage extends AppCompatActivity {
                     Intent intent = new Intent(petspage.this, phomedashboard.class);
 
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -78,6 +80,7 @@ public class petspage extends AppCompatActivity {
                     Intent intent = new Intent(petspage .this, petspage.class);
                     intent.putExtra("IS_PET_OWNER", true);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -86,6 +89,7 @@ public class petspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(petspage.this, userprofilepage.class);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -95,6 +99,7 @@ public class petspage extends AppCompatActivity {
                     Intent intent = new Intent(petspage.this, consolidatedsummary.class);
                     intent.putExtra("IS_PET_OWNER", true);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -104,6 +109,7 @@ public class petspage extends AppCompatActivity {
                     Intent intent = new Intent(petspage.this, appointmentspage.class);
                     intent.putExtra("IS_PET_OWNER", true);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -118,6 +124,7 @@ public class petspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(petspage.this, medrecordspage.class);
                     startActivity(intent);
+                    finish();
                 }
             };
 
@@ -136,6 +143,7 @@ public class petspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(petspage.this, chomedashboard.class);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -144,6 +152,7 @@ public class petspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(petspage.this, userprofilepage.class);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -152,6 +161,7 @@ public class petspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(petspage.this, consolidatedsummary.class);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -160,6 +170,7 @@ public class petspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(petspage.this, appointmentspage.class);
                     startActivity(intent);
+                    finish();
                 }
             });
         }
