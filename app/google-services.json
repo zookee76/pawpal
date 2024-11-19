@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "537753253248",
+    "project_id": "pawpal-mobdeve",
+    "storage_bucket": "pawpal-mobdeve.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:537753253248:android:d67898c954349c48c33d65",
+        "android_client_info": {
+          "package_name": "com.mobdeve.pawpal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKy6kQnuaaVvhiaQKfh4W3tWJpnjR-KDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

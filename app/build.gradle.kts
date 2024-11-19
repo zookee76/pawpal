@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -68,5 +69,9 @@ dependencies {
 
     // Optional: UI tooling for debugging previews
     debugImplementation(libs.androidx.compose.ui.tooling)
+
+    //Firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
+    implementation("com.google.firebase:firebase-analytics")
 
 }
