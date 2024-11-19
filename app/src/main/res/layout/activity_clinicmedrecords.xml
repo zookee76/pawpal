@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFBEC"
-    tools:context=".medrecordspage">
+    tools:context=".ClinicOwner.medrecordspage">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_profileheader"

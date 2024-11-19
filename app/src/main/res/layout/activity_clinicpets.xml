@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFBEC"
-    tools:context=".clinicpets">
+    tools:context=".ClinicOwner.clinicpets">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clinicpets_sublayout"

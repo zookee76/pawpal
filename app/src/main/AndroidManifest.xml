@@ -13,130 +13,130 @@
         android:theme="@style/Theme.Pawpal"
         tools:targetApi="31">
         <activity
-            android:name=".clinicpets"
+            android:name=".ClinicOwner.clinicpets"
             android:exported="false" />
         <activity
-            android:name=".addCertRequest"
+            android:name=".ClinicOwner.addCertRequest"
             android:exported="false" />
         <activity
-            android:name=".editCert"
+            android:name=".ClinicOwner.editCert"
             android:exported="false" />
         <activity
-            android:name=".editmedicaldocs"
+            android:name=".ClinicOwner.editmedicaldocs"
             android:exported="false" />
         <activity
-            android:name=".editmedicationdiet"
+            android:name=".ClinicOwner.editmedicationdiet"
             android:exported="false" />
         <activity
-            android:name=".editschedules"
+            android:name=".ClinicOwner.editschedules"
             android:exported="false" />
         <activity
-            android:name=".editclinicabout"
+            android:name=".ClinicOwner.editclinicabout"
             android:exported="false" />
         <activity
-            android:name=".cschedules"
+            android:name=".ClinicOwner.cschedules"
             android:exported="false" />
         <activity
-            android:name=".cmedicationdiet"
+            android:name=".ClinicOwner.cmedicationdiet"
             android:exported="false" />
         <activity
-            android:name=".cmedicaldocs"
+            android:name=".ClinicOwner.cmedicaldocs"
             android:exported="false" />
         <activity
-            android:name=".cabout"
+            android:name=".ClinicOwner.cabout"
             android:exported="false" />
         <activity
-            android:name=".petspage"
+            android:name=".Shared.petspage"
             android:exported="false" />
         <activity
-            android:name=".certreq"
+            android:name=".ClinicOwner.certreq"
             android:exported="false" />
         <activity
-            android:name=".medrecordspage"
+            android:name=".ClinicOwner.medrecordspage"
             android:exported="false" />
         <activity
-            android:name=".vaccinationpage"
+            android:name=".ClinicOwner.vaccinationpage"
             android:exported="false" />
         <activity
-            android:name=".appointmentspage"
+            android:name=".Shared.appointmentspage"
             android:exported="false" />
         <activity
-            android:name=".welcome"
+            android:name=".Welcome.welcome"
             android:exported="false" />
         <activity
-            android:name=".welcomeaccess"
+            android:name=".Welcome.welcomeaccess"
             android:exported="false" />
         <activity
-            android:name=".welcomegetstarted"
+            android:name=".Welcome.welcomegetstarted"
             android:exported="false" />
         <activity
-            android:name=".welcomerole"
+            android:name=".Welcome.welcomerole"
             android:exported="false" />
         <activity
-            android:name=".pmedicaldocs"
+            android:name=".PetOwner.pmedicaldocs"
             android:exported="false" />
         <activity
-            android:name=".pabout"
+            android:name=".PetOwner.pabout"
             android:exported="false" />
         <activity
-            android:name=".pmediet"
+            android:name=".PetOwner.pmediet"
             android:exported="false" />
         <activity
-            android:name=".pschedules"
+            android:name=".PetOwner.pschedules"
             android:exported="false" />
         <activity
-            android:name=".shareqr"
+            android:name=".PetOwner.shareqr"
             android:exported="false" />
         <activity
-            android:name=".cchangepw"
+            android:name=".ClinicOwner.cchangepw"
             android:exported="false" />
         <activity
-            android:name=".consolidatedrecords"
+            android:name=".Model.consolidatedrecords"
             android:exported="false" />
         <activity
-            android:name=".consolidatedsummary"
+            android:name=".Shared.consolidatedsummary"
             android:exported="false" />
         <activity
-            android:name=".chomedashboard"
+            android:name=".ClinicOwner.chomedashboard"
             android:exported="false" />
         <activity
-            android:name=".phomedashboard"
+            android:name=".PetOwner.phomedashboard"
             android:exported="false" />
         <activity
-            android:name=".petprofilepage"
+            android:name=".Shared.petprofilepage"
             android:exported="false" />
         <activity
-            android:name=".editprofilepage"
+            android:name=".PetOwner.editprofilepage"
             android:exported="false" />
         <activity
-            android:name=".clinicprofilepage"
+            android:name=".ClinicOwner.clinicprofilepage"
             android:exported="false" />
         <activity
-            android:name=".ceditclinicprofile"
+            android:name=".ClinicOwner.ceditclinicprofile"
             android:exported="false" />
         <activity
-            android:name=".pregister"
+            android:name=".PetOwner.pregister"
             android:exported="false" />
         <activity
-            android:name=".plogin"
+            android:name=".PetOwner.plogin"
             android:exported="false" />
         <activity
-            android:name=".cregister"
+            android:name=".ClinicOwner.cregister"
             android:exported="false" />
         <activity
-            android:name=".clogin"
+            android:name=".ClinicOwner.clogin"
             android:exported="false" />
         <activity
-            android:name=".pforgotpw"
+            android:name=".PetOwner.pforgotpw"
             android:exported="false" />
         <activity
-            android:name=".cforgotpw"
+            android:name=".ClinicOwner.cforgotpw"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".Welcome.SplashScreen"
             android:exported="true"
             android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
