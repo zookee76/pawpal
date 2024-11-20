@@ -4,8 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "PawPalDB";
@@ -23,12 +21,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "petOwnerName TEXT NOT NULL," +
                 "email TEXT NOT NULL," +
                 "password TEXT NOT NULL," +
-                "petProfile TEXT," +
+                "petProfile TEXT" +
                 ")";
 
         String petsTable = "CREATE TABLE pets (" +
                 "petID INTEGER PRIMARY KEY," +
-                "petNAME TEXT NOT NULL," +
+                "petName TEXT NOT NULL," +
                 "breed TEXT NOT NULL," +
                 "sex TEXT CHECK (sex IN ('M', 'F'))," +
                 "age INTEGER," +
@@ -131,22 +129,52 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "petID INTEGER NOT NULL," +
                 "vaccNo INTEGER NOT NULL," +
                 "FOREIGN KEY (petID) REFERENCES pets(petID) ON DELETE CASCADE," +
-                "FOREIGN KEY (appNo) REFERENCES vaccination(vaccNo) ON DELETE CASCADE," +
+                "FOREIGN KEY (vaccNo) REFERENCES vaccination(vaccNo) ON DELETE CASCADE," +
                 "PRIMARY KEY (petID, vaccNo))";
 
         String petMedicalDocsTable = "CREATE TABLE petMedicalDocs (" +
                 "petID INTEGER NOT NULL," +
                 "docuNo INTEGER NOT NULL," +
                 "FOREIGN KEY (petID) REFERENCES pets(petID) ON DELETE CASCADE," +
-                "FOREIGN KEY (appNo) REFERENCES medicaldoc(docuNo) ON DELETE CASCADE," +
-                "PRIMARY KEY (petID, appNo))";
+                "FOREIGN KEY (docuNo) REFERENCES medicaldoc(docuNo) ON DELETE CASCADE," +
+                "PRIMARY KEY (petID, docuNo))";
 
+        sqLiteDatabase.execSQL(petOwnerTable);
+        sqLiteDatabase.execSQL(petsTable);
+        sqLiteDatabase.execSQL(petDetailsTable);
+        sqLiteDatabase.execSQL(appointmentsTable);
+        sqLiteDatabase.execSQL(medicalDocTable);
+        sqLiteDatabase.execSQL(consolidatedRecordsTable);
+        sqLiteDatabase.execSQL(medicationTable);
+        sqLiteDatabase.execSQL(dietTable);
+        sqLiteDatabase.execSQL(vaccinationTable);
+        sqLiteDatabase.execSQL(certRequestTable);
+        sqLiteDatabase.execSQL(petDocumentsTable);
+        sqLiteDatabase.execSQL(petMedicationsTable);
+        sqLiteDatabase.execSQL(petAppointmentsTable);
+        sqLiteDatabase.execSQL(petVaccinationsTable);
+        sqLiteDatabase.execSQL(petMedicalDocsTable);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
 
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS petOwners");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS pets");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS petdetails");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS appointments");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS medicaldoc");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS consolidatedrecords");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS medication");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS diet");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS vaccination");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS certRequest");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS petDocuments");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS petMedications");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS petAppointments");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS petVaccinations");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS petMedicalDocs");
+
+        onCreate(sqLiteDatabase);
     }
 }
-
-
