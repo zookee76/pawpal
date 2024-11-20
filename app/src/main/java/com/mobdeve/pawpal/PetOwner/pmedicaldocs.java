@@ -173,8 +173,8 @@ public class pmedicaldocs extends AppCompatActivity {
     }
 
     private void loadMedicalDocs(){
-        medicaldocList.add(new medicaldoc("Title/Name of Document", "Type of Document", "19/10/2024", "Dr. QuackQuack", "casper_doc"));
-        medicaldocList.add(new medicaldoc("Title/Name of Document", "Type of Document", "19/10/2024", "Dr. QuackQuack", "casper_doc"));
-        medicaldocList.add(new medicaldoc("Title/Name of Document", "Type of Document", "19/10/2024", "Dr. QuackQuack", "casper_doc"));
+        medicaldocList.add(new medicaldoc(1,"Title/Name of Document", "Type of Document", "19/10/2024", "Dr. QuackQuack", "casper_doc"));
+        medicaldocList.add(new medicaldoc(2,"Title/Name of Document", "Type of Document", "19/10/2024", "Dr. QuackQuack", "casper_doc"));
+        medicaldocList.add(new medicaldoc(3,"Title/Name of Document", "Type of Document", "19/10/2024", "Dr. QuackQuack", "casper_doc"));
     }
 }

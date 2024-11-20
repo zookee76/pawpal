@@ -1,9 +1,10 @@
 package com.mobdeve.pawpal.Model;
 
 public class appointment {
-    private String appNo, petName, ownerName, appType, appDateTime, appVet, appStatus;
+    private int appNo;
+    private String petName, ownerName, appType, appDateTime, appVet, appStatus;
 
-    public appointment(String appNo, String petName, String ownerName, String appType, String appDateTime, String appVet, String appStatus) {
+    public appointment(int appNo, String petName, String ownerName, String appType, String appDateTime, String appVet, String appStatus) {
         this.appNo = appNo;
         this.petName = petName;
         this.ownerName = ownerName;
@@ -13,11 +14,11 @@ public class appointment {
         this.appStatus = appStatus;
     }
 
-    public String getAppNo() {
+    public int getAppNo() {
         return appNo;
     }
 
-    public void setAppNo(String appNo) {
+    public void setAppNo(int appNo) {
         this.appNo = appNo;
     }
 

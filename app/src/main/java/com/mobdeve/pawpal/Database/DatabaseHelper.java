@@ -64,9 +64,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String consolidatedRecordsTable = "CREATE TABLE consolidatedrecords (" +
                 "recordNo INTEGER PRIMARY KEY," +
                 "title TEXT NOT NULL," +
-                "type TEXT NOT NULL," +
-                "date DATETIME," +
-                "vet TEXT," +
+                "docType TEXT NOT NULL," +
+                "docDate DATETIME," +
+                "veterinarian TEXT," +
                 "fileName TEXT)";
 
         String medicationTable = "CREATE TABLE medication (" +

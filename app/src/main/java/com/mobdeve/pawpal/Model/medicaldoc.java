@@ -1,18 +1,28 @@
 package com.mobdeve.pawpal.Model;
 
 public class medicaldoc {
+    private int docuNo;
     private String title;
     private String type;
     private String date;
     private String veterinarian;
     private String fileName;
 
-    public medicaldoc(String title, String type, String date, String veterinarian, String fileName) {
+    public medicaldoc(int docuNo, String title, String type, String date, String veterinarian, String fileName) {
+        this.docuNo = docuNo;
         this.title = title;
         this.type = type;
         this.date = date;
         this.veterinarian = veterinarian;
         this.fileName = fileName;
+    }
+
+    public int getDocuNo() {
+        return docuNo;
+    }
+
+    public void setDocuNo(int docuNo) {
+        this.docuNo = docuNo;
     }
 
     public String getTitle() {

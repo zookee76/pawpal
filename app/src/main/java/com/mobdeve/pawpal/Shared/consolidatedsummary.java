@@ -185,11 +185,11 @@ public class consolidatedsummary extends AppCompatActivity {
     }
 
     private void loadConsolidatedSummaries() {
-        consolidatedrecordsList.add(new consolidatedrecords("Title", "Lab Results", "19/10/2024", "Dr. QuackQuack", "casper_results"));
+        consolidatedrecordsList.add(new consolidatedrecords(1,"Title", "Lab Results", "19/10/2024", "Dr. QuackQuack", "casper_results"));
     }
 
     private void loadClinicConsoSum(){
-        consolidatedrecordsList.add(new consolidatedrecords("Title", "Lab Results", "19/10/2024", "Dr. QuackQuack", "casper_results"));
-        consolidatedrecordsList.add(new consolidatedrecords("Title", "Lab Results", "19/10/2024", "Dr. QuackQuack", "casper_results"));
+        consolidatedrecordsList.add(new consolidatedrecords(2,"Title", "Lab Results", "19/10/2024", "Dr. QuackQuack", "casper_results"));
+        consolidatedrecordsList.add(new consolidatedrecords(3,"Title", "Lab Results", "19/10/2024", "Dr. QuackQuack", "casper_results"));
     }
 }

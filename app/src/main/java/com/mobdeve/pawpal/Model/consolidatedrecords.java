@@ -2,6 +2,7 @@ package com.mobdeve.pawpal.Model;
 
 public class consolidatedrecords {
 
+    private int recordNo;
     private String title;
     private String docType;
     private String docDate;
@@ -12,12 +13,21 @@ public class consolidatedrecords {
 
     }
 
-    public consolidatedrecords(String title, String docType, String docDate, String veterinarian, String file) {
+    public consolidatedrecords(int recordNo, String title, String docType, String docDate, String veterinarian, String file) {
+        this.recordNo = recordNo;
         this.title = title;
         this.docType = docType;
         this.docDate = docDate;
         this.veterinarian = veterinarian;
         this.file = file;
+    }
+
+    public int getRecordNo() {
+        return recordNo;
+    }
+
+    public void setRecordNo(int recordNo) {
+        this.recordNo = recordNo;
     }
 
     public String getTitle() {
