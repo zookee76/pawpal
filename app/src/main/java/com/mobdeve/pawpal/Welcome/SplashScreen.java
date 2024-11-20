@@ -1,7 +1,5 @@
 package com.mobdeve.pawpal.Welcome;
 
-import static com.mobdeve.pawpal.R.*;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,10 +17,10 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(layout.splashscreen); // Ensure this references your layout
+        setContentView(R.layout.splashscreen); // Ensure this references your layout
 
         final ImageView logo = findViewById(R.id.pawpal_logo);
-        final TextView pawpal = findViewById(id.pawpal);
+        final TextView pawpal = findViewById(R.id.pawpal);
         // Load animation
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.smart_animation);
         //hide pawpal text
