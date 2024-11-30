@@ -74,22 +74,43 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/tv_fullnam"
+                            android:id="@+id/tv_firstname"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
-                            android:text="Full Name"
+                            android:text="First Name"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
 
                         <EditText
-                            android:id="@+id/text_fullname"
+                            android:id="@+id/text_firstname"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_marginBottom="15dp"
                             android:background="@color/white"
                             android:ems="10"
-                            android:hint="First Name, Middle Initial, Last Name"
+                            android:hint="First Name"
+                            android:inputType="text"
+                            android:paddingLeft="5dp"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_lastname"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:text="Last Name"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <EditText
+                            android:id="@+id/text_lastname"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginBottom="15dp"
+                            android:background="@color/white"
+                            android:ems="10"
+                            android:hint="Last Name"
                             android:inputType="text"
                             android:paddingLeft="5dp"
                             android:textSize="16sp" />
