@@ -74,7 +74,7 @@ public class medrecordspage extends AppCompatActivity {
         Collections.sort(petOwnersList, new Comparator<petOwners>() {
             @Override
             public int compare(petOwners owner1, petOwners owner2) {
-                return owner1.getName().compareToIgnoreCase(owner2.getName());
+                return owner1.getFname().compareToIgnoreCase(owner2.getFname());
             }
         });
 

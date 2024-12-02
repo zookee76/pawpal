@@ -137,6 +137,27 @@
                             android:textSize="16sp" />
 
                         <TextView
+                            android:id="@+id/tv_contactno"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:text="Contact No"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <EditText
+                            android:id="@+id/text_contactno"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginBottom="15dp"
+                            android:background="@color/white"
+                            android:ems="10"
+                            android:hint="09xxxxxxxxx"
+                            android:inputType="phone"
+                            android:paddingLeft="5dp"
+                            android:textSize="16sp" />
+
+                        <TextView
                             android:id="@+id/tv_username"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

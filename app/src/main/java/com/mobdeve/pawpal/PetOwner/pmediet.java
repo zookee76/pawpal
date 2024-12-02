@@ -13,7 +13,6 @@ import com.mobdeve.pawpal.R;
 import com.mobdeve.pawpal.Shared.appointmentspage;
 import com.mobdeve.pawpal.Shared.consolidatedsummary;
 import com.mobdeve.pawpal.Shared.petspage;
-import com.mobdeve.pawpal.Shared.petprofilepage;
 
 public class pmediet extends AppCompatActivity
 {

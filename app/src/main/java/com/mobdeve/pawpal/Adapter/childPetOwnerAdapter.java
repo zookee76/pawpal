@@ -35,7 +35,7 @@ public class childPetOwnerAdapter extends RecyclerView.Adapter<childPetOwnerAdap
     @Override
     public void onBindViewHolder(@NonNull ChildViewHolder holder, int position) {
         petOwners owners = petOwnersList.get(position);
-        holder.ownerName.setText(owners.getName());
+        holder.ownerName.setText(owners.getFname());
 
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(cxt, petspage.class);

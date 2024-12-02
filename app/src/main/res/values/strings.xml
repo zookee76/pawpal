@@ -1,10 +1,15 @@
 <resources>
-    <string name="app_name">pawpal</string>
+    <string name="app_name" translatable="false">pawpal</string>
 
     <string-array name="status_array">
         <item>Select a status</item>
         <item>Pending</item>
         <item>Approved</item>
         <item>Rejected</item>
+    </string-array>
+
+    <string-array name="pet_gender">
+        <item>Female</item>
+        <item>Male</item>
     </string-array>
 </resources>

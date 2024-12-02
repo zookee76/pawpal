@@ -3,17 +3,23 @@ package com.mobdeve.pawpal.ClinicOwner;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mobdeve.pawpal.Adapter.clinicpetsAdapter;
+import com.mobdeve.pawpal.Database.DBHelper;
 import com.mobdeve.pawpal.Model.pets;
+import com.mobdeve.pawpal.Model.images;
 import com.mobdeve.pawpal.R;
 import com.mobdeve.pawpal.Shared.appointmentspage;
 import com.mobdeve.pawpal.Shared.consolidatedsummary;
@@ -25,12 +31,26 @@ public class clinicpets extends AppCompatActivity {
     private RecyclerView rvClinicPets;
     private clinicpetsAdapter adapter;
     private List<pets> clinicpetsList;
+    private DBHelper db;
+    private List<images> imagesList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_clinicpets);
+
+
+        FloatingActionButton addPets = findViewById(R.id.btn_addpets);
+        addPets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(clinicpets.this, addPets.class);
+                startActivityForResult(intent, 1);
+                //startActivity(intent);
+            }
+        });
+
 
         // back handle
         ImageView backImg = findViewById(R.id.iv_back);
@@ -103,16 +123,52 @@ public class clinicpets extends AppCompatActivity {
             }
         });
 
-        rvClinicPets = findViewById(R.id.rv_clinicpets);
-        clinicpetsList = new ArrayList<>();
-        adapter = new clinicpetsAdapter(clinicpetsList, this);
+        db = new DBHelper(getApplicationContext());
 
-        // grid layout
+        rvClinicPets = findViewById(R.id.rv_clinicpets);
+        if (clinicpetsList == null) {
+            clinicpetsList = new ArrayList<>();
+        }
+
+        loadAllPets();
+        TextView message = findViewById(R.id.tv_message);
+
+        List<images> imagesList = db.getAllImages();
+
+        adapter = new clinicpetsAdapter(clinicpetsList, this, db, imagesList);
+
+        if(clinicpetsList.isEmpty()){
+            message.setVisibility(View.VISIBLE);
+            message.setText("No Pets Available");
+        }
+        else{
+            // grid layout
+            message.setVisibility(View.GONE);
+        }
         int numOfCol = calculateNoOfCols(this, 150);
         rvClinicPets.setLayoutManager(new GridLayoutManager(this, numOfCol));
         rvClinicPets.setAdapter(adapter);
 
+        rvClinicPets.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                if(clinicpetsList.size() != imagesList.size()){
+                    adapter.updateLists(clinicpetsList, imagesList);
+                }
+                rvClinicPets.getViewTreeObserver().removeOnPreDrawListener(this);
+                return true;
+            }
+        });
+    }
+
+    protected void onResume() {
+        super.onResume();
+        clinicpetsList.clear();
         loadAllPets();
+        if (adapter != null) {
+            adapter.notifyDataSetChanged();
+            Log.d("RESUMING", "Checking");
+        }
     }
 
     private int calculateNoOfCols(Context cxt, float colWidthDp){
@@ -122,13 +178,40 @@ public class clinicpets extends AppCompatActivity {
     }
 
     private void loadAllPets(){
-        //Sample Data
-        clinicpetsList.add(new pets("Callie", "Domestic Short Hair", "Female", 4, R.drawable.callie));
-        clinicpetsList.add(new pets("Casper", "Domestic Short Hair", "Male", 3, R.drawable.casper));
-        clinicpetsList.add(new pets("Tyler", "Persian Cat", "Male", 3, R.drawable.tyler));
-        clinicpetsList.add(new pets("Callie", "Domestic Short Hair", "Female", 4, R.drawable.callie));
-        clinicpetsList.add(new pets("Casper", "Domestic Short Hair", "Male", 3, R.drawable.casper));
-        clinicpetsList.add(new pets("Tyler", "Persian Cat", "Male", 3, R.drawable.tyler));
+        clinicpetsList.clear();
+        if (db != null) {
+            List<pets> petsList = db.getAllPets();
+            Log.d("PETSSIZE", "Pets size: " + petsList.size());
+
+            if (petsList != null && !petsList.isEmpty()) {
+                clinicpetsList.addAll(petsList);
+            }
+        } else {
+            Log.e("PETSBNOT", "petsDB is not initialized.");
+        }
+
+        if(adapter != null){
+            adapter.notifyDataSetChanged();
+
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode == RESULT_OK){
+            reloadClinicPets();
+        }
+    }
+
+    private void reloadClinicPets(){
+        if (clinicpetsList != null && !clinicpetsList.isEmpty()) {
+            clinicpetsList.clear();
+        }
+        clinicpetsList.addAll(db.getAllPets());
+        imagesList.clear();
+        imagesList.addAll(db.getAllImages());
 
         adapter.notifyDataSetChanged();
     }

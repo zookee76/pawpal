@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobdeve.pawpal.Adapter.appointmentAdapter;
 import com.mobdeve.pawpal.Model.appointment;
+import com.mobdeve.pawpal.PetOwner.petprofilepage;
 import com.mobdeve.pawpal.R;
 import com.mobdeve.pawpal.ClinicOwner.chomedashboard;
 import com.mobdeve.pawpal.ClinicOwner.clinicpets;
@@ -186,11 +187,11 @@ public class appointmentspage extends AppCompatActivity {
 
     //petowner data
     private void loadappointments(){
-        appointmentList.add(new appointment("001", "Casper", "Ashley Corpuz", "General Checkup", "October 1, 2024. 9AM", "Dr. Vet", "Completed"));
+        //appointmentList.add(new appointment("001", "Casper", "Ashley Corpuz", "General Checkup", "October 1, 2024. 9AM", "Dr. Vet", "Completed"));
     }
     //clinic data
     private void loadclinicappointments(){
-        appointmentList.add(new appointment("001", "Casper", "Ashley Corpuz", "General Checkup", "October 1, 2024. 9AM", "Dr. Vet", "Completed"));
-        appointmentList.add(new appointment("002", "Casper", "Ashley Corpuz", "General Checkup", "October 1, 2024. 9AM", "Dr. Vet", "Scheduled"));
+        //appointmentList.add(new appointment("001", "Casper", "Ashley Corpuz", "General Checkup", "October 1, 2024. 9AM", "Dr. Vet", "Completed"));
+        //appointmentList.add(new appointment("002", "Casper", "Ashley Corpuz", "General Checkup", "October 1, 2024. 9AM", "Dr. Vet", "Scheduled"));
     }
 }

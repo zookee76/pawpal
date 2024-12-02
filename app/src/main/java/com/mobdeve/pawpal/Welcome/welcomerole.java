@@ -1,6 +1,7 @@
 package com.mobdeve.pawpal.Welcome;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -8,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.mobdeve.pawpal.Database.DBHelper;
+import com.mobdeve.pawpal.Database.DatabaseHelper;
 import com.mobdeve.pawpal.R;
 import com.mobdeve.pawpal.ClinicOwner.clogin;
 import com.mobdeve.pawpal.PetOwner.plogin;

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobdeve.pawpal.Adapter.consolidatedrecordadapter;
 import com.mobdeve.pawpal.Model.consolidatedrecords;
+import com.mobdeve.pawpal.PetOwner.petprofilepage;
 import com.mobdeve.pawpal.R;
 import com.mobdeve.pawpal.ClinicOwner.chomedashboard;
 import com.mobdeve.pawpal.ClinicOwner.clinicpets;

@@ -8,18 +8,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.utils.widget.ImageFilterView;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobdeve.pawpal.Adapter.dietmedAdapter;
 import com.mobdeve.pawpal.Model.dietmed;
+import com.mobdeve.pawpal.Model.petOwners;
 import com.mobdeve.pawpal.R;
 import com.mobdeve.pawpal.Shared.appointmentspage;
 import com.mobdeve.pawpal.Shared.consolidatedsummary;
 import com.mobdeve.pawpal.Shared.petspage;
-import com.mobdeve.pawpal.Shared.petprofilepage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class phomedashboard extends AppCompatActivity {
@@ -33,6 +31,16 @@ public class phomedashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_phomedashboard);
+
+        // Get Data
+        Intent intent = getIntent();
+        petOwners user = intent.getParcelableExtra("USER_DATA");
+
+        if(user != null){
+            String username = user.getUsername();
+            TextView tvName = findViewById(R.id.tv_name);
+            tvName.setText("Hello, " + username);
+        }
 
         // multipet dashboard
         // will change pa should handle the logic for displaying pets based on the number of pets owned
@@ -83,7 +91,7 @@ public class phomedashboard extends AppCompatActivity {
         });
 
         // RecyclerView Handle
-        rvDietMedList = findViewById(R.id.rv_medlist);
+        /*rvDietMedList = findViewById(R.id.rv_medlist);
         rvDietMedList.setLayoutManager(new LinearLayoutManager(this));
 
         dietmedList = new ArrayList<>();
@@ -91,7 +99,7 @@ public class phomedashboard extends AppCompatActivity {
 
         adapter = new dietmedAdapter(this, dietmedList);
         rvDietMedList.setAdapter(adapter);
-
+        */
         //Navigation Handle
         ImageView home, calendar, pets, files, profile;
         home = findViewById(R.id.iv_home);
@@ -105,9 +113,9 @@ public class phomedashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(phomedashboard.this, phomedashboard.class);
-
+                intent.putExtra("USER_DATA", user);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
 
@@ -116,8 +124,9 @@ public class phomedashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(phomedashboard.this, petspage.class);
                 intent.putExtra("IS_PET_OWNER", true);
+                intent.putExtra("USER_DATA", user);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
 
@@ -125,8 +134,9 @@ public class phomedashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(phomedashboard.this, petprofilepage.class);
+                intent.putExtra("USER_DATA", user);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
 
@@ -135,8 +145,9 @@ public class phomedashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(phomedashboard.this, consolidatedsummary.class);
                 intent.putExtra("IS_PET_OWNER", true);
+                intent.putExtra("USER_DATA", user);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
 
@@ -145,8 +156,9 @@ public class phomedashboard extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(phomedashboard.this, appointmentspage.class);
                 intent.putExtra("IS_PET_OWNER", true);
+                intent.putExtra("USER_DATA", user);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
     }

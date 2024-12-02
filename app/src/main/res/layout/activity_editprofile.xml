@@ -84,79 +84,124 @@
             android:orientation="vertical"
             android:padding="25dp">
 
-            <androidx.constraintlayout.utils.widget.ImageFilterView
-                android:id="@+id/iv_pfp"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_gravity="center|top"
-                android:layout_marginBottom="20dp"
-                android:scaleType="centerCrop"
-                app:round="100dp"
-                app:srcCompat="@drawable/ashley"/>
-
-            <TextView
-                android:id="@+id/tv_editfullname"
+            <RelativeLayout
+                android:id="@+id/layout_image"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
-                android:text="Full Name"
-                android:textAlignment="textStart"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true">
 
-            <EditText
-                android:id="@+id/text_editfullname"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/white"
-                android:ems="10"
-                android:inputType="text" />
+                <ImageView
+                    android:id="@+id/iv_pfp"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="106dp"
+                    app:srcCompat="@drawable/baseline_account_circle_24" />
 
-            <TextView
-                android:id="@+id/tv_editemailadd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
-                android:text="Email Address"
-                android:textAlignment="textStart"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/btn_addphoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@id/iv_pfp"
+                    android:layout_alignParentRight="false"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerInParent="false"
+                    android:layout_marginBottom="15dp"
+                    android:clickable="true"
+                    android:src="@drawable/cam"
+                    app:backgroundTint="#FFFFFF"
+                    tools:layout_editor_absoluteX="250dp"
+                    tools:layout_editor_absoluteY="144dp" />
+            </RelativeLayout>
 
-            <EditText
-                android:id="@+id/text_editemailadd"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/white"
-                android:ems="10"
-                android:inputType="text|textEmailAddress" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_editcontactno"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
-                android:text="Contact Number"
-                android:textAlignment="textStart"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/tv_editfullname2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="First Name"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
 
-            <EditText
-                android:id="@+id/text_editcontactno"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/white"
-                android:ems="10"
-                android:inputType="text|textPhonetic" />
+                <EditText
+                    android:id="@+id/text_editfirstname"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:inputType="text" />
+
+                <TextView
+                    android:id="@+id/tv_editfullname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Last Name"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/text_editlastname"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:inputType="text" />
+
+                <TextView
+                    android:id="@+id/tv_editemailadd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Email Address"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/text_editemailadd"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:inputType="text|textEmailAddress" />
+
+                <TextView
+                    android:id="@+id/tv_editcontactno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Contact Number"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/text_editcontactno"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/white"
+                    android:ems="10"
+                    android:inputType="phone" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btn_save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="5dp"
                 android:backgroundTint="#0C439E"
                 android:text="Save Profile"
                 android:textSize="20sp" />

@@ -69,7 +69,7 @@ public class petOwnerAdapter extends RecyclerView.Adapter<petOwnerAdapter.PetOwn
 
     public void groupOwners(){
         for(petOwners owner: petOwnersList){
-            String firstletter = owner.getName().substring(0,1).toUpperCase();
+            String firstletter = owner.getFname().substring(0,1).toUpperCase();
             if(!groupedOwners.containsKey(firstletter)){
                 groupedOwners.put(firstletter,  new ArrayList<>());
                 firstLetters.add(firstletter);

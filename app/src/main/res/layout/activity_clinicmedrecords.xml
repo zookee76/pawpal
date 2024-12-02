@@ -70,6 +70,7 @@
         android:id="@+id/layout_petnavigation"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:background="@color/white"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -187,7 +188,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingLeft="20dp"
-                android:paddingRight="20dp" />
+                android:paddingRight="20dp"
+                tools:listitem="@layout/rv_alphaowner" />
 
         </LinearLayout>
     </ScrollView>

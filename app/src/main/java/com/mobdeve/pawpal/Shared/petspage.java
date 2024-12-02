@@ -1,7 +1,9 @@
 package com.mobdeve.pawpal.Shared;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,7 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobdeve.pawpal.Adapter.petAdapter;
+import com.mobdeve.pawpal.Database.DBHelper;
+import com.mobdeve.pawpal.Model.petOwners;
 import com.mobdeve.pawpal.Model.pets;
+import com.mobdeve.pawpal.Model.images;
+import com.mobdeve.pawpal.PetOwner.petprofilepage;
 import com.mobdeve.pawpal.R;
 import com.mobdeve.pawpal.ClinicOwner.chomedashboard;
 import com.mobdeve.pawpal.ClinicOwner.clinicprofilepage;
@@ -23,6 +29,9 @@ import java.util.List;
 
 public class petspage extends AppCompatActivity {
 
+    private DBHelper DB;
+    private List<images> imagesList;
+
     private RecyclerView rvPets;
     private petAdapter adapter;
     private List<pets> petsList;
@@ -30,8 +39,10 @@ public class petspage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_mypets);
+
+        // DB
+        DB = new DBHelper(getApplicationContext());
 
         //Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
@@ -52,8 +63,11 @@ public class petspage extends AppCompatActivity {
         boolean isPetOwner = getIntent().getBooleanExtra("IS_PET_OWNER", false);
 
         if(isPetOwner){
-            loadPets();
-            adapter = new petAdapter(this, petsList);
+            Intent intent = getIntent();
+            petOwners petOwner = intent.getParcelableExtra("USER_DATA");
+            long ownerID = petOwner.getID();
+            loadPets(ownerID);
+            adapter = new petAdapter(this, petsList, DB, petOwner);
             rvPets.setAdapter(adapter);
 
             // back handle
@@ -61,6 +75,7 @@ public class petspage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(petspage.this, phomedashboard.class);
+                    intent.putExtra("USER_DATA", petOwner);
                     startActivity(intent);
                     finish();
                 }
@@ -74,7 +89,7 @@ public class petspage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(petspage.this, phomedashboard.class);
-
+                    intent.putExtra("USER_DATA", petOwner);
                     startActivity(intent);
                     finish();
                 }
@@ -85,6 +100,7 @@ public class petspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(petspage .this, petspage.class);
                     intent.putExtra("IS_PET_OWNER", true);
+                    intent.putExtra("USER_DATA", petOwner);
                     startActivity(intent);
                     finish();
                 }
@@ -94,6 +110,7 @@ public class petspage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(petspage.this, petprofilepage.class);
+                    intent.putExtra("USER_DATA", petOwner);
                     startActivity(intent);
                     finish();
                 }
@@ -103,6 +120,7 @@ public class petspage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(petspage.this, consolidatedsummary.class);
+                    intent.putExtra("USER_DATA", petOwner);
                     intent.putExtra("IS_PET_OWNER", true);
                     startActivity(intent);
                     finish();
@@ -114,6 +132,7 @@ public class petspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(petspage.this, appointmentspage.class);
                     intent.putExtra("IS_PET_OWNER", true);
+                    intent.putExtra("USER_DATA", petOwner);
                     startActivity(intent);
                     finish();
                 }
@@ -184,15 +203,23 @@ public class petspage extends AppCompatActivity {
     }
 
     // use this when logged as pet owner
-    private void loadPets(){
+    private void loadPets(long ownerID){
+        List<pets> pets = new ArrayList<>();
+        pets = DB.getPetsByOwner(ownerID);
+        petsList.clear();
+        this.petsList.addAll(pets);
+        Log.d("loadPets", "Loaded " + petsList.size() + " pets for owner ID " + ownerID);
         // sample data for pets change for getting pets according too pet owner
-        petsList.add(new pets("Casper", "Domestic Short Hair", "Male", 3, R.drawable.casper));
+        //petsList.add(new pets("Casper", "Domestic Short Hair", "Male", 3, R.drawable.casper));
     }
     // use this when logged as clinic owner
     private void loadpetsperowner(){
         // sample data for pets change  with logic for getting all pets
+        /*
         petsList.add(new pets("Callie", "Domestic Short Hair", "Female", 4, R.drawable.callie));
         petsList.add(new pets("Casper", "Domestic Short Hair", "Male", 3, R.drawable.casper));
         petsList.add(new pets("Tyler", "Persian Cat", "Male", 3, R.drawable.tyler));
+
+         */
     }
 }

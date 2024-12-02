@@ -4,11 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.mobdeve.pawpal.Model.petOwners;
 import com.mobdeve.pawpal.R;
-import com.mobdeve.pawpal.Shared.petprofilepage;
 
 public class pchangepw extends AppCompatActivity {
 
@@ -16,6 +17,19 @@ public class pchangepw extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_changepw);
+
+        // Get Data
+        Intent intent = getIntent();
+        petOwners user = intent.getParcelableExtra("USER_DATA");
+        if (user != null) {
+            String fullname = user.getFullname();
+            String email = user.getEmail();
+            TextView tvUserFName = findViewById(R.id.tv_userfullname);
+            tvUserFName.setText(fullname);
+
+            TextView tvEmail = findViewById(R.id.tv_useremail);
+            tvEmail.setText(email);
+        }
 
         Button savepw = findViewById(R.id.btn_savepw);
 

@@ -1,8 +1,11 @@
 package com.mobdeve.pawpal.Database;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.mobdeve.pawpal.IntentKeys;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -16,28 +19,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        String petOwnerTable = "CREATE TABLE petOwners (" +
-                "petOwnerID INTEGER PRIMARY KEY," +
-                "petOwnerName TEXT NOT NULL," +
-                "email TEXT NOT NULL," +
-                "password TEXT NOT NULL," +
-                "petProfile TEXT" +
+        String petOwnerTable = "CREATE TABLE IF NOT EXISTS petOwners (" +
+                "ID INTEGER PRIMARY KEY," +
+                IntentKeys.FIRST_NAME + " TEXT NOT NULL," +
+                IntentKeys.LAST_NAME + " TEXT NOT NULL," +
+                IntentKeys.EMAIL + " TEXT NOT NULL," +
+                IntentKeys.PASSWORD + " TEXT NOT NULL," +
+                IntentKeys.PET_DP + " BLOB" +
+                ")";
+
+        String clinicOwnerTable = "CREATE TABLE clinicOwners (" +
+                "ID INTEGER PRIMARY KEY," +
+                IntentKeys.FIRST_NAME + " TEXT NOT NULL," +
+                IntentKeys.LAST_NAME + " TEXT NOT NULL," +
+                IntentKeys.EMAIL + " TEXT NOT NULL," +
+                IntentKeys.PASSWORD + " TEXT NOT NULL" +
                 ")";
 
         String petsTable = "CREATE TABLE pets (" +
-                "petID INTEGER PRIMARY KEY," +
-                "petName TEXT NOT NULL," +
-                "breed TEXT NOT NULL," +
-                "sex TEXT CHECK (sex IN ('M', 'F'))," +
-                "age INTEGER," +
-                "petProfile TEXT NOT NULL," +
-                "birthdate DATE," +
-                "height DOUBLE NOT NULL," +
-                "weight DOUBLE NOT NULL," +
-                "color TEXT NOT NULL," +
-                "markings TEXT," +
-                "petOwnerID INTEGER NOT NULL," +
-                "FOREIGN KEY (petOwnerID) REFERENCES petOwners(petOwnerID) ON DELETE CASCADE)";
+                "ID INTEGER PRIMARY KEY," +
+                IntentKeys.PET_NAME + " TEXT NOT NULL," +
+                IntentKeys.PET_BREED + " TEXT NOT NULL," +
+                IntentKeys.PET_SEX + " TEXT CHECK (sex IN ('M', 'F'))," +
+                IntentKeys.PET_AGE + " INTEGER," +
+                IntentKeys.PET_PROFILE + " TEXT NOT NULL," +
+                IntentKeys.PET_BIRTHDATE + " DATE," +
+                IntentKeys.PET_HEIGHT + " DOUBLE NOT NULL," +
+                IntentKeys.PET_WEIGHT + " DOUBLE NOT NULL," +
+                IntentKeys.PET_COLOR + " TEXT NOT NULL," +
+                IntentKeys.PET_MARKINGS + " TEXT," +
+                IntentKeys.PET_OWNER_ID + " INTEGER NOT NULL," +
+                "FOREIGN KEY ("+IntentKeys.PET_OWNER_ID + ") REFERENCES petOwners(ID) ON DELETE CASCADE)";
 
         String petDetailsTable = "CREATE TABLE petdetails (" +
                 "petID INTEGER PRIMARY KEY," +
@@ -140,6 +152,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "PRIMARY KEY (petID, docuNo))";
 
         sqLiteDatabase.execSQL(petOwnerTable);
+        sqLiteDatabase.execSQL(clinicOwnerTable);
         sqLiteDatabase.execSQL(petsTable);
         sqLiteDatabase.execSQL(petDetailsTable);
         sqLiteDatabase.execSQL(appointmentsTable);

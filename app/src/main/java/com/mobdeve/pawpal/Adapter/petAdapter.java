@@ -2,6 +2,8 @@ package com.mobdeve.pawpal.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +13,15 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.utils.widget.ImageFilterView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.mobdeve.pawpal.Database.DBHelper;
+import com.mobdeve.pawpal.Model.petOwners;
 import com.mobdeve.pawpal.Model.pets;
 import com.mobdeve.pawpal.R;
 import com.mobdeve.pawpal.ClinicOwner.cabout;
 import com.mobdeve.pawpal.PetOwner.pabout;
 
+import java.io.File;
 import java.util.List;
 
 public class petAdapter extends RecyclerView.Adapter<petAdapter.petViewHolder> {
@@ -23,11 +29,15 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.petViewHolder> {
     private Context cxt;
     private List<pets> petsList;
     private String userType; // clinic or pet owner
+    private DBHelper DB;
+    private petOwners owner;
 
-    public petAdapter(Context cxt, List<pets> petsList) {
+    public petAdapter(Context cxt, List<pets> petsList, DBHelper db, petOwners owner) {
         this.cxt = cxt;
         this.petsList = petsList;
         this.userType = "pet owner";
+        this.DB = db;
+        this.owner = owner;
     }
 
     public petAdapter(Context cxt, List<pets> petsList, boolean isPetOwner) {
@@ -46,20 +56,36 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.petViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull petViewHolder holder, int position) {
         pets pet = petsList.get(position);
-        holder.petphoto.setImageResource(pet.getPetphoto());
+        long imageID = pet.getImageID();
+        if(imageID > 0){
+            String imagePath = DB.getImagePath(imageID);
+            if(imagePath != null){
+                File imgFile = new File(imagePath);
+                if(imgFile.exists()){
+                    Glide.with(cxt)
+                            .load(imgFile)
+                            .into(holder.petphoto);
+                }
+            }
+        }
+
         holder.name.setText(pet.getName());
         holder.age.setText(String.valueOf(pet.getAge()) + " years old");
         holder.sex.setText(pet.getSex());
+        holder.breed.setText(pet.getBreed());
 
         if ("clinic".equals(userType)) {
             holder.itemView.setOnClickListener(view -> {
                 Intent intent = new Intent(cxt, cabout.class);
+
                 cxt.startActivity(intent);
             });
         } else{
             //pet user
             holder.itemView.setOnClickListener(view -> {
                 Intent intent = new Intent(cxt, pabout.class);
+                intent.putExtra("OWNER_DATA", owner);
+                intent.putExtra("PET_DATA", pet);
                 cxt.startActivity(intent);
             });
         }

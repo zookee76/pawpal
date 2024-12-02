@@ -1,27 +1,66 @@
-package com.mobdeve.pawpal.Shared;
+package com.mobdeve.pawpal.PetOwner;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.mobdeve.pawpal.PetOwner.editprofilepage;
-import com.mobdeve.pawpal.PetOwner.pchangepw;
-import com.mobdeve.pawpal.PetOwner.phomedashboard;
+import com.bumptech.glide.Glide;
+import com.mobdeve.pawpal.Database.DBHelper;
+import com.mobdeve.pawpal.Model.petOwners;
 import com.mobdeve.pawpal.R;
+import com.mobdeve.pawpal.Shared.appointmentspage;
+import com.mobdeve.pawpal.Shared.consolidatedsummary;
+import com.mobdeve.pawpal.Shared.petspage;
 import com.mobdeve.pawpal.Welcome.welcomerole;
 
-public class petprofilepage extends AppCompatActivity {
+import java.io.File;
 
+public class petprofilepage extends AppCompatActivity {
+    private DBHelper DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_userprofile);
+
+        DB = new DBHelper(getApplicationContext());
+        // Get Data
+        Intent intent = getIntent();
+        petOwners user = intent.getParcelableExtra("USER_DATA");
+        if (user != null) {
+            String fullname = user.getFullname();
+            String email = user.getEmail();
+            String contact = user.getContactNo();
+            TextView tvUserFName = findViewById(R.id.tv_userfullname);
+            tvUserFName.setText(fullname);
+
+            TextView tvEmail = findViewById(R.id.tv_useremail);
+            tvEmail.setText(email);
+
+            TextView tvContact = findViewById(R.id.tv_contact);
+            tvContact.setText(contact);
+
+            ImageView pfp = findViewById(R.id.iv_userpfp);
+
+            long imageID = user.getImageID();
+            String imagePath = DB.getImagePath(imageID);
+
+            Log.d("CHECKIMAGE", "IMAGEID: " + imageID + " IMAGEPATH: " +imagePath);
+            if(imagePath!=null){
+                File imgFile = new File(imagePath);
+                if(imgFile.exists()){
+                    Glide.with(getApplicationContext())
+                            .load(imgFile)
+                            .into(pfp);
+                }
+            }
+        }
 
         //Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
@@ -57,6 +96,9 @@ public class petprofilepage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(petprofilepage.this, editprofilepage.class);
+                intent.putExtra("USER_DATA", user);
+                long userID = user.getID();
+                Log.d("CHECKUSERID", "User: " +userID);
                 startActivity(intent);
             }
         });
@@ -65,6 +107,7 @@ public class petprofilepage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(petprofilepage.this, pchangepw.class);
+                intent.putExtra("USER_DATA", user);
                 startActivity(intent);
                 finish();
             }
@@ -89,7 +132,7 @@ public class petprofilepage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(petprofilepage.this, phomedashboard.class);
-
+                intent.putExtra("USER_DATA", user);
                 startActivity(intent);
                 finish();
             }
@@ -100,6 +143,7 @@ public class petprofilepage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(petprofilepage.this, petspage.class);
                 intent.putExtra("IS_PET_OWNER", true);
+                intent.putExtra("USER_DATA", user);
                 startActivity(intent);
                 finish();
             }
@@ -109,6 +153,7 @@ public class petprofilepage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(petprofilepage.this, petprofilepage.class);
+                intent.putExtra("USER_DATA", user);
                 startActivity(intent);
                 finish();
             }
@@ -119,6 +164,7 @@ public class petprofilepage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(petprofilepage.this, consolidatedsummary.class);
                 intent.putExtra("IS_PET_OWNER", true);
+                intent.putExtra("USER_DATA", user);
                 startActivity(intent);
                 finish();
             }
@@ -129,6 +175,7 @@ public class petprofilepage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(petprofilepage.this, appointmentspage.class);
                 intent.putExtra("IS_PET_OWNER", true);
+                intent.putExtra("USER_DATA", user);
                 startActivity(intent);
                 finish();
             }

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.mobdeve.pawpal.Database.DBHelper;
 import com.mobdeve.pawpal.R;
 
 public class welcome extends AppCompatActivity {

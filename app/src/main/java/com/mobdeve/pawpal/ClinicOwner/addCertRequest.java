@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.mobdeve.pawpal.R;
 import com.mobdeve.pawpal.Shared.consolidatedsummary;
-import com.mobdeve.pawpal.Shared.petprofilepage;
+import com.mobdeve.pawpal.PetOwner.petprofilepage;
 import com.mobdeve.pawpal.PetOwner.pschedules;
 
 public class addCertRequest extends AppCompatActivity {
