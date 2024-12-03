@@ -37,6 +37,70 @@ public class dietmed {
         this.datetime = datetime;
     }
 
+    public long getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(long imageID) {
+        this.imageID = imageID;
+    }
+
+    public long getPresNo() {
+        return presNo;
+    }
+
+    public void setPresNo(long presNo) {
+        this.presNo = presNo;
+    }
+
+    public long getPetID() {
+        return petID;
+    }
+
+    public void setPetID(long petID) {
+        this.petID = petID;
+    }
+
+    public String getMedicationName() {
+        return medicationName;
+    }
+
+    public void setMedicationName(String medicationName) {
+        this.medicationName = medicationName;
+    }
+
+    public String getPurpose() {
+        return purpose;
+    }
+
+    public void setPurpose(String purpose) {
+        this.purpose = purpose;
+    }
+
+    public String getDosage() {
+        return dosage;
+    }
+
+    public void setDosage(String dosage) {
+        this.dosage = dosage;
+    }
+
+    public String getAdministration() {
+        return administration;
+    }
+
+    public void setAdministration(String administration) {
+        this.administration = administration;
+    }
+
+    public String getFreq_and_duration() {
+        return freq_and_duration;
+    }
+
+    public void setFreq_and_duration(String freq_and_duration) {
+        this.freq_and_duration = freq_and_duration;
+    }
+
     public long getImage() {
         return imageID;
     }

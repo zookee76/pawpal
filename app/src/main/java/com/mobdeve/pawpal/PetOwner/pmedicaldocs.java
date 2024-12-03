@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,14 +15,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.mobdeve.pawpal.Adapter.medicaldocadapter;
+import com.mobdeve.pawpal.Database.DBHelper;
 import com.mobdeve.pawpal.Model.medicaldoc;
+import com.mobdeve.pawpal.Model.petOwners;
+import com.mobdeve.pawpal.Model.pets;
 import com.mobdeve.pawpal.R;
 import com.mobdeve.pawpal.Shared.appointmentspage;
 import com.mobdeve.pawpal.Shared.consolidatedsummary;
 import com.mobdeve.pawpal.Shared.petspage;
 
 public class pmedicaldocs extends AppCompatActivity {
+
+    private DBHelper DB;
+    private TextView petName;
+    private pets petData;
 
     private RecyclerView rvMedDocs;
     private List<medicaldoc> medicaldocList;
@@ -29,8 +39,28 @@ public class pmedicaldocs extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_petprofilemedical);
+
+        DB = new DBHelper(getApplicationContext());
+        Intent intent = getIntent();
+        petData = intent.getParcelableExtra("PET_DATA");
+        petOwners ownerData = intent.getParcelableExtra("OWNER_DATA");
+
+        //ELEMENTS
+        ImageView petImage = findViewById(R.id.petImage);
+        petName = findViewById(R.id.petName);
+
+        long imageID = petData.getImageID();
+        String imagePath = DB.getImagePath(imageID);
+
+        if(imagePath!=null){
+            File imgFile = new File(imagePath);
+            if(imgFile.exists()){
+                Glide.with(getApplicationContext())
+                        .load(imgFile)
+                        .into(petImage);
+            }
+        }
 
         rvMedDocs = findViewById(R.id.rv_medicaldoccard);
         rvMedDocs.setLayoutManager(new LinearLayoutManager(this));
@@ -81,6 +111,8 @@ public class pmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(pmedicaldocs.this, pmedicaldocs.class);
+                intent.putExtra("USER_DATA", ownerData);
+                intent.putExtra("PET_DATA", petData);
                 startActivity(intent);
                 finish();
             }
@@ -90,6 +122,8 @@ public class pmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(pmedicaldocs.this, pmediet.class);
+                intent.putExtra("USER_DATA", ownerData);
+                intent.putExtra("PET_DATA", petData);
                 startActivity(intent);
                 finish();
             }
@@ -99,6 +133,8 @@ public class pmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(pmedicaldocs.this, pabout.class);
+                intent.putExtra("USER_DATA", ownerData);
+                intent.putExtra("PET_DATA", petData);
                 startActivity(intent);
                 finish();
             }
@@ -108,6 +144,8 @@ public class pmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(pmedicaldocs.this, pschedules.class);
+                intent.putExtra("USER_DATA", ownerData);
+                intent.putExtra("PET_DATA", petData);
                 startActivity(intent);
                 finish();
             }
@@ -126,6 +164,7 @@ public class pmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(pmedicaldocs.this, phomedashboard.class);
+                intent.putExtra("USER_DATA", ownerData);
                 startActivity(intent);
                 finish();
             }
@@ -135,6 +174,7 @@ public class pmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(pmedicaldocs.this, petspage.class);
+                intent.putExtra("USER_DATA", ownerData);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
                 finish();
@@ -145,6 +185,7 @@ public class pmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(pmedicaldocs.this, petprofilepage.class);
+                intent.putExtra("USER_DATA", ownerData);
                 startActivity(intent);
                 finish();
             }
@@ -154,6 +195,7 @@ public class pmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(pmedicaldocs.this, consolidatedsummary.class);
+                intent.putExtra("USER_DATA", ownerData);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
                 finish();
@@ -164,6 +206,7 @@ public class pmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(pmedicaldocs.this, appointmentspage.class);
+                intent.putExtra("USER_DATA", ownerData);
                 intent.putExtra("IS_PET_OWNER", true);
                 startActivity(intent);
                 finish();
@@ -171,7 +214,9 @@ public class pmedicaldocs extends AppCompatActivity {
         });
     }
 
+
     private void loadMedicalDocs(){
+        long petID = petData.getID();
         medicaldocList.add(new medicaldoc(1,"Title/Name of Document", "Type of Document", "19/10/2024", "Dr. QuackQuack", "casper_doc"));
         medicaldocList.add(new medicaldoc(2,"Title/Name of Document", "Type of Document", "19/10/2024", "Dr. QuackQuack", "casper_doc"));
         medicaldocList.add(new medicaldoc(3,"Title/Name of Document", "Type of Document", "19/10/2024", "Dr. QuackQuack", "casper_doc"));

@@ -35,6 +35,7 @@ public class clinicpets extends AppCompatActivity {
     private List<pets> clinicpetsList;
     private DBHelper db;
     private List<images> imagesList;
+    private long vetID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,7 @@ public class clinicpets extends AppCompatActivity {
         if(vet != null){
             String firstName = vet.getFirstName();
             TextView tvName = findViewById(R.id.tv_vetname);
+            vetID = vet.getVetID();
             tvName.setText(firstName);
             Log.d("CHECK clinicpets", "VET NAME: " + vet.getFirstName() + "VET ID: " + vet.getVetID());
 
@@ -139,17 +141,20 @@ public class clinicpets extends AppCompatActivity {
             }
         });
 
+        TextView message = findViewById(R.id.tv_message);
         db = new DBHelper(getApplicationContext());
+        message.setVisibility(View.GONE);
 
         rvClinicPets = findViewById(R.id.rv_clinicpets);
         if (clinicpetsList == null) {
             clinicpetsList = new ArrayList<>();
+        }else{
+            clinicpetsList.clear();
         }
 
         loadAllPets();
-        TextView message = findViewById(R.id.tv_message);
 
-        List<images> imagesList = db.getAllImages();
+        List<images> imagesList = db.getImagesbyVet(vetID);
 
         adapter = new clinicpetsAdapter(clinicpetsList, this, db, imagesList);
 
@@ -157,10 +162,7 @@ public class clinicpets extends AppCompatActivity {
             message.setVisibility(View.VISIBLE);
             message.setText("No Pets Available");
         }
-        else{
-            // grid layout
-            message.setVisibility(View.GONE);
-        }
+
         int numOfCol = calculateNoOfCols(this, 150);
         rvClinicPets.setLayoutManager(new GridLayoutManager(this, numOfCol));
         rvClinicPets.setAdapter(adapter);
@@ -169,7 +171,7 @@ public class clinicpets extends AppCompatActivity {
             @Override
             public boolean onPreDraw() {
                 if(clinicpetsList.size() != imagesList.size()){
-                    adapter.updateLists(clinicpetsList, imagesList);
+                    adapter.updateLists(clinicpetsList, imagesList, vetID);
                 }
                 rvClinicPets.getViewTreeObserver().removeOnPreDrawListener(this);
                 return true;
@@ -196,7 +198,7 @@ public class clinicpets extends AppCompatActivity {
     private void loadAllPets(){
         clinicpetsList.clear();
         if (db != null) {
-            List<pets> petsList = db.getAllPets();
+            List<pets> petsList = db.getPetsByVet(vetID);
             Log.d("PETSSIZE", "Pets size: " + petsList.size());
 
             if (petsList != null && !petsList.isEmpty()) {
@@ -225,9 +227,9 @@ public class clinicpets extends AppCompatActivity {
         if (clinicpetsList != null && !clinicpetsList.isEmpty()) {
             clinicpetsList.clear();
         }
-        clinicpetsList.addAll(db.getAllPets());
+        clinicpetsList.addAll(db.getPetsByVet(vetID));
         imagesList.clear();
-        imagesList.addAll(db.getAllImages());
+        imagesList.addAll(db.getImagesbyVet(vetID));
 
         adapter.notifyDataSetChanged();
     }

@@ -197,7 +197,7 @@ public class addPets extends AppCompatActivity implements AdapterView.OnItemSele
 
 
                 if (name.isEmpty() || breed.isEmpty() || color.isEmpty() || markings.isEmpty() ||
-                bdate.isEmpty() || sex.isEmpty() || owner.isEmpty() ) {
+                        bdate.isEmpty() || sex.isEmpty() || owner.isEmpty() ) {
                     Toast.makeText(addPets.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
                 }
                 else if (selectedPhotoUri == null) {
@@ -239,9 +239,9 @@ public class addPets extends AppCompatActivity implements AdapterView.OnItemSele
 
                     long ownerID = db.getOwnerID(owner);
                     long imageID = 0;
-                    long vet = vetID;
-                    Log.d("CHECK VET ID AGAIN", "ID: "+ vet);
-                    pets newPet = new pets(imageID, ownerID, vet, name, breed, sex, color, markings, bdate, age, height, weight);
+                    long retrievedVetID = vetID;
+                    Log.d("CHECK VET ID AGAIN", "ID: "+ retrievedVetID);
+                    pets newPet = new pets(imageID, ownerID, retrievedVetID, name, breed, sex, color, markings, bdate, age, height, weight);
                     long newPetID = db.addPet(newPet);
                     Log.d("NEWPETID", "ID: "+newPetID);
 
@@ -268,6 +268,7 @@ public class addPets extends AppCompatActivity implements AdapterView.OnItemSele
 
                         Log.d("REGISTRATION_RESULT", "Result: " + newPetID);
                         Intent intent = new Intent(addPets.this, clinicpets.class);
+                        intent.putExtra("USER_DATA", vet);
                         startActivity(intent);
                     } else {
                         Toast.makeText(addPets.this, "Failed to add pet.", Toast.LENGTH_SHORT).show();

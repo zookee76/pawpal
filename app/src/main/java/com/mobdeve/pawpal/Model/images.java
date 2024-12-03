@@ -16,6 +16,9 @@ public class images {
     private String imagePath;
     private userType userType;
 
+    public images(){
+
+    }
     public images(String imagePath, long ownerId, userType type) {
         this.imagePath = imagePath;
         this.ownerId = ownerId;

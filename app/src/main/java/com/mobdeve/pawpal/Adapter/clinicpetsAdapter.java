@@ -100,15 +100,13 @@ public class clinicpetsAdapter extends RecyclerView.Adapter<clinicpetsAdapter.cl
         return clinicpetsList.size();
     }
 
-    public void updateLists(List<pets> petsList, List<images> imagesList){
+    public void updateLists(List<pets> petsList, List<images> imagesList, long vetID){
         if(!(petsList.size()==imagesList.size())){
             petsList.clear();
             imagesList.clear();
 
-            List<pets> newPetList = db.getAllPets();
-            List<images> newImageList = db.getAllImages();
-
-            Log.d("NEWLISTS", "PETS: "+ newPetList.size() + " IMAGES: " + newImageList.size());
+            List<pets> newPetList = db.getPetsByVet(vetID);
+            List<images> newImageList = db.getImagesbyVet(vetID);
 
             petsList.addAll(newPetList);
             imagesList.addAll(newImageList);

@@ -40,19 +40,19 @@ public class pabout extends AppCompatActivity
 
         //ELEMENTS
         ImageView petImage = findViewById(R.id.petImage);
-         petName = findViewById(R.id.petName);
-         petDesc = findViewById(R.id.aboutdescription);
-         dateOfBirth = findViewById(R.id.dateofbirth);
-         age = findViewById(R.id.age);
-         gender = findViewById(R.id.gender);
-         breed = findViewById(R.id.breed);
-         height = findViewById(R.id.height);
-         weight = findViewById(R.id.weight);
-         petcolor = findViewById(R.id.petcolor);
-         markings = findViewById(R.id.markings);
-         ownername = findViewById(R.id.ownername);
-         cellno = findViewById(R.id.cellphonenumber);
-         address = findViewById(R.id.address);
+        petName = findViewById(R.id.petName);
+        petDesc = findViewById(R.id.aboutdescription);
+        dateOfBirth = findViewById(R.id.dateofbirth);
+        age = findViewById(R.id.age);
+        gender = findViewById(R.id.gender);
+        breed = findViewById(R.id.breed);
+        height = findViewById(R.id.height);
+        weight = findViewById(R.id.weight);
+        petcolor = findViewById(R.id.petcolor);
+        markings = findViewById(R.id.markings);
+        ownername = findViewById(R.id.ownername);
+        cellno = findViewById(R.id.cellphonenumber);
+        address = findViewById(R.id.address);
 
         long imageID = petData.getImageID();
         String imagePath = DB.getImagePath(imageID);
@@ -110,6 +110,7 @@ public class pabout extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pabout.this, pmedicaldocs.class);
                 intent.putExtra("USER_DATA", ownerData);
+                intent.putExtra("PET_DATA", petData);
                 startActivity(intent);
                 finish();
             }
@@ -120,6 +121,7 @@ public class pabout extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pabout.this, pmediet.class);
                 intent.putExtra("USER_DATA", ownerData);
+                intent.putExtra("PET_DATA", petData);
                 startActivity(intent);
                 finish();
             }
@@ -130,6 +132,7 @@ public class pabout extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pabout.this, pabout.class);
                 intent.putExtra("USER_DATA", ownerData);
+                intent.putExtra("PET_DATA", petData);
                 startActivity(intent);
                 finish();
             }
@@ -140,6 +143,7 @@ public class pabout extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(pabout.this, pschedules.class);
                 intent.putExtra("USER_DATA", ownerData);
+                intent.putExtra("PET_DATA", petData);
                 startActivity(intent);
                 finish();
             }

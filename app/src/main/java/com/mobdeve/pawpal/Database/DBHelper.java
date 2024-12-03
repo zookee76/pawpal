@@ -9,11 +9,14 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
 
+import com.mobdeve.pawpal.Model.appointment;
 import com.mobdeve.pawpal.Model.clinicVet;
 import com.mobdeve.pawpal.Model.consolidatedrecords;
+import com.mobdeve.pawpal.Model.dietmed;
 import com.mobdeve.pawpal.Model.petOwners;
 import com.mobdeve.pawpal.Model.pets;
 import com.mobdeve.pawpal.Model.images;
+import com.mobdeve.pawpal.Model.vaccination;
 import com.mobdeve.pawpal.Shared.userType;
 
 import java.util.ArrayList;
@@ -44,7 +47,7 @@ public class DBHelper extends SQLiteOpenHelper {
             RECORD_FILE = "file",
 
     // PetOwner and Vet Columns
-            COLUMN_FIRST_NAME = "firstName",
+    COLUMN_FIRST_NAME = "firstName",
             COLUMN_LAST_NAME = "lastName",
             COLUMN_EMAIL = "email",
             COLUMN_PASSWORD = "password",
@@ -52,13 +55,13 @@ public class DBHelper extends SQLiteOpenHelper {
             COLUMN_CONTACT_NO = "contactno",
 
     // Pet Owner Columns specific
-            COLUMN_OWNER_DP = "owner_dp",
+    COLUMN_OWNER_DP = "owner_dp",
 
     // Vet Columns specific
-            COLUMN_VET_DP = "vetDP",
+    COLUMN_VET_DP = "vetDP",
 
     // Pets Columns
-            COLUMN_PET_NAME ="petName",
+    COLUMN_PET_NAME ="petName",
             COLUMN_PET_BREED = "petBreed",
             COLUMN_PET_SEX = "petSex",
             COLUMN_PET_COLOR = "petColor",
@@ -71,17 +74,17 @@ public class DBHelper extends SQLiteOpenHelper {
             COLUMN_PETOWNER_ID = "ownerId",
             COLUMN_VET_ID = "vetID",
     // IMAGES
-            COLUMN_IMAGE_PATH = "path",
+    COLUMN_IMAGE_PATH = "path",
             COLUMN_USER_TYPE = "userType",
             COLUMN_OWNER_ID = "ownerID",
 
     // SHARED DIETMED, VACCINATION, APPOINTMENT
-            COLUMN_PET_ID = "petID", // petID
+    COLUMN_PET_ID = "petID", // petID
             COLUMN_OWNER_NAME = "ownerName", // ownerName
             COLUMN_VET_NAME = "vetName",
 
     // DIETMED
-            COLUMN_PET_IMG = "petImg", // imageID
+    COLUMN_PET_IMG = "petImg", // imageID
             COLUMN_MED_NAME = "mednName",
             COLUMN_PURPOSE = "purpose",
             COLUMN_DOSAGE = "dosage",
@@ -91,26 +94,26 @@ public class DBHelper extends SQLiteOpenHelper {
             COLUMN_DATETIME = "datetime",
 
     // VACINATION
-            // OWNER ID = COLUMN_OWNER_ID
-            // VET ID = COLUMN_VET_ID
-            // PETID = COLUMN_PET_ID
-            COLUMN_VAX_TYPE = "vaxType",
-            // petName = COLUMN_PET_NAME
-            // vaxDatetime = COLUMN_DATETIME
-            //COLUMN_OWNER_NAME = "ownerName",
-            // vaxVet = COLUMN_VET_NAME
-            COLUMN_VAX_STATUS = "vaxStatus",
+    // OWNER ID = COLUMN_OWNER_ID
+    // VET ID = COLUMN_VET_ID
+    // PETID = COLUMN_PET_ID
+    COLUMN_VAX_TYPE = "vaxType",
+    // petName = COLUMN_PET_NAME
+    // vaxDatetime = COLUMN_DATETIME
+    //COLUMN_OWNER_NAME = "ownerName",
+    // vaxVet = COLUMN_VET_NAME
+    COLUMN_VAX_STATUS = "vaxStatus",
 
     // APPOINTMENTS
-            //APP NO = _ID
-            // PETID = COLUMN_PET_ID
-            // OWNER ID = COLUMN_OWNER_ID
-            // VET ID = COLUMN_VET_ID
-            // petName = COLUMN_PET_NAME
-            //COLUMN_OWNER_NAME = "ownerName",
-            COLUMN_APP_TYPE = "appType",
-            // appVet = COLUMN_VET_NAME
-            COLUMN_APP_STATUS = "appStatus";
+    //APP NO = _ID
+    // PETID = COLUMN_PET_ID
+    // OWNER ID = COLUMN_OWNER_ID
+    // VET ID = COLUMN_VET_ID
+    // petName = COLUMN_PET_NAME
+    //COLUMN_OWNER_NAME = "ownerName",
+    COLUMN_APP_TYPE = "appType",
+    // appVet = COLUMN_VET_NAME
+    COLUMN_APP_STATUS = "appStatus";
 
 
     // CREATE STATEMENTS
@@ -124,7 +127,7 @@ public class DBHelper extends SQLiteOpenHelper {
                     COLUMN_USERNAME + " TEXT NOT NULL, " +
                     COLUMN_OWNER_DP + " INTEGER DEFAULT NULL, " +
                     COLUMN_CONTACT_NO + " TEXT NOT NULL, " +
-            "FOREIGN KEY (" + COLUMN_OWNER_DP + ") REFERENCES " + TABLE_IMAGES + " (" + _ID + "))";
+                    "FOREIGN KEY (" + COLUMN_OWNER_DP + ") REFERENCES " + TABLE_IMAGES + " (" + _ID + "))";
 
     public static final String CREATE_TABLE_VET =
             "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_VET + " (" +
@@ -174,6 +177,7 @@ public class DBHelper extends SQLiteOpenHelper {
                     COLUMN_DATETIME + " TEXT NOT NULL, " +
                     COLUMN_APP_TYPE + " TEXT NOT NULL, " +
                     COLUMN_APP_STATUS + " TEXT NOT NULL, " +
+                    COLUMN_OWNER_NAME + " TEXT NOT NULL, " +
                     "FOREIGN KEY (" + COLUMN_VET_ID + ") REFERENCES " + TABLE_NAME_VET + " (" + _ID + "), " +
                     "FOREIGN KEY (" + COLUMN_OWNER_ID + ") REFERENCES " + TABLE_NAME_PETOWNER + " (" + _ID + "), " +
                     "FOREIGN KEY (" + COLUMN_PET_ID + ") REFERENCES " + TABLE_NAME_PET + " (" + _ID + "))";
@@ -194,7 +198,7 @@ public class DBHelper extends SQLiteOpenHelper {
                     "FOREIGN KEY (" + COLUMN_PET_ID + ") REFERENCES " + TABLE_NAME_PET + " (" + _ID + "))";
 
     public static final String CREATE_TABLE_VACCINATIONS =
-            "CREATE TABLE IF NOT EXISTS " + TABLE_DIETMED + " (" +
+            "CREATE TABLE IF NOT EXISTS " + TABLE_VACCINATION + " (" +
                     _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COLUMN_PET_ID + " INTEGER NOT NULL, " +
                     COLUMN_OWNER_ID + " INTEGER NOT NULL, " +
@@ -208,6 +212,7 @@ public class DBHelper extends SQLiteOpenHelper {
                     "FOREIGN KEY (" + COLUMN_VET_ID + ") REFERENCES " + TABLE_NAME_VET + " (" + _ID + "), " +
                     "FOREIGN KEY (" + COLUMN_OWNER_ID + ") REFERENCES " + TABLE_NAME_PETOWNER + " (" + _ID + "), " +
                     "FOREIGN KEY (" + COLUMN_PET_ID + ") REFERENCES " + TABLE_NAME_PET + " (" + _ID + "))";
+
 
     public static final String CREATE_CONSOLIDATED_TABLE =
             "CREATE TABLE IF NOT EXISTS " + TABLE_CONSOLIDATED_RECORDS + " (" +
@@ -326,6 +331,63 @@ public class DBHelper extends SQLiteOpenHelper {
         return result;
     }
 
+    public synchronized long addAppointment(appointment app){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUMN_PET_ID, app.getPetID());
+        values.put(COLUMN_OWNER_ID, app.getOwnerID());
+        values.put(COLUMN_VET_ID, app.getVetID());
+        values.put(COLUMN_PET_NAME, app.getPetName());
+        values.put(COLUMN_OWNER_NAME, app.getOwnerName());
+        values.put(COLUMN_VAX_TYPE, app.getAppType());
+        values.put(COLUMN_DATETIME, app.getAppDateTime());
+        values.put(COLUMN_VET_NAME, app.getAppVet());
+        values.put(COLUMN_VAX_STATUS, app.getAppStatus());
+
+        long result = db.insert(TABLE_APPOINTMENTS, null, values);
+        db.close();
+        return result;
+    }
+
+    public synchronized long addDietmed(dietmed dimed){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUMN_PET_ID, dimed.getImage());
+        values.put(COLUMN_PET_IMG, dimed.getPetID());
+        values.put(COLUMN_MED_NAME, dimed.getMedicationName());
+        values.put(COLUMN_PURPOSE, dimed.getPurpose());
+        values.put(COLUMN_DOSAGE, dimed.getDosage());
+        values.put(COLUMN_ADMINISTRATION, dimed.getAdministration());
+        values.put(COLUMN_FREQ_DURATION, dimed.getFreq_and_duration());
+        values.put(COLUMN_NOTE, dimed.getNote());
+        values.put(COLUMN_DATETIME, dimed.getDatetime());
+
+        long result = db.insert(TABLE_DIETMED, null, values);
+        db.close();
+        return result;
+    }
+
+    public synchronized long addVaccination(vaccination vax){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUMN_PET_ID, vax.getPetID());
+        values.put(COLUMN_PETOWNER_ID, vax.getOwnerID());
+        values.put(COLUMN_VET_ID, vax.getVetID());
+        values.put(COLUMN_PET_NAME, vax.getPetName());
+        values.put(COLUMN_OWNER_NAME, vax.getOwnerName());
+        values.put(COLUMN_APP_TYPE, vax.getVaccType());
+        values.put(COLUMN_DATETIME, vax.getVaxVet());
+        values.put(COLUMN_VET_NAME, vax.getVaxDateTime());
+        values.put(COLUMN_APP_STATUS, vax.getVaxStatus());
+
+        long result = db.insert(TABLE_APPOINTMENTS, null, values);
+        db.close();
+        return result;
+    }
+
     public long addImage(String imagePath, long ownerID, int userType){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -336,6 +398,7 @@ public class DBHelper extends SQLiteOpenHelper {
         long result = db.insert(TABLE_IMAGES, null, values);
         return result;
     }
+
 
     // READ
     public boolean checkIfUserExists(String email){
@@ -431,7 +494,6 @@ public class DBHelper extends SQLiteOpenHelper {
         return ownerID;
     }
 
-
     public petOwners checkLogin(String logincredential, String password){
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -483,6 +545,136 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return vet;
+    }
+
+    public List<pets> getPetsByVet(long vetID){
+        List<pets> petsList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT * FROM " + TABLE_NAME_PET +
+                " WHERE " + COLUMN_VET_ID + " = ?";
+
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(vetID)});
+
+        if (cursor.moveToFirst()){
+            do{
+                long imageID = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_PET_PHOTO));
+
+                pets pet = new pets(
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_NAME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_BREED)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_SEX)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_COLOR)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_MARKINGS)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_BIRTHDATE)),
+                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_PET_AGE)),
+                        cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_PET_HEIGHT)),
+                        cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_PET_WEIGHT)),
+                        cursor.getLong(cursor.getColumnIndexOrThrow(_ID)),
+                        imageID,
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_OWNER_ID)),
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_VET_ID))
+                );
+                petsList.add(pet);
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return petsList;
+    }
+
+    public List<appointment> getPetAppointment(long petID){
+        List<appointment> appointmentList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT * FROM " + TABLE_APPOINTMENTS +
+                " WHERE " + COLUMN_PET_ID + " = ?";
+
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(petID)});
+
+        if (cursor.moveToFirst()){
+            do{
+                appointment app = new appointment(
+                        cursor.getLong(cursor.getColumnIndexOrThrow(_ID)),
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_PET_ID)),
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_OWNER_ID)),
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_VET_ID)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_NAME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_OWNER_NAME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_APP_TYPE)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATETIME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_VET_NAME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_APP_STATUS))
+                );
+                appointmentList.add(app);
+                Log.d("CHECK APPOINTMENT", " APPNO: " + app.getAppNo());
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return appointmentList;
+    }
+
+    public List<dietmed> getPetDietmed(long petID){
+        List<dietmed> dietmedList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT * FROM " + TABLE_DIETMED +
+                " WHERE " + COLUMN_PET_ID + " = ?";
+
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(petID)});
+
+        if (cursor.moveToFirst()){
+            do{
+                dietmed dmed = new dietmed(
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_PET_IMG)),
+                        cursor.getLong(cursor.getColumnIndexOrThrow(_ID)),
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_PET_ID)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_MED_NAME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PURPOSE)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DOSAGE)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ADMINISTRATION)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FREQ_DURATION)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NOTE)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATETIME))
+                );
+                dietmedList.add(dmed);
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return dietmedList;
+    }
+
+    public List<vaccination> getPetVaccination(long petID){
+        List<vaccination> vaccinationList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT * FROM " + TABLE_VACCINATION +
+                " WHERE " + COLUMN_PET_ID + " = ?";
+
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(petID)});
+
+        if (cursor.moveToFirst()){
+            do{
+                vaccination vaccination = new vaccination(
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_VAX_TYPE)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_NAME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_OWNER_NAME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATETIME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_VET_NAME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_VAX_STATUS)),
+                        cursor.getLong(cursor.getColumnIndexOrThrow(_ID)),
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_PET_ID)),
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_OWNER_ID)),
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_VET_ID))
+                );
+                vaccinationList.add(vaccination);
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return vaccinationList;
     }
 
     public List<pets> getAllPets(){
@@ -598,6 +790,32 @@ public class DBHelper extends SQLiteOpenHelper {
             cursor.close();
         }
         return  imagesList;
+    }
+
+    public List<images> getImagesbyVet(long petImgID){
+        List<images> imagesList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT * FROM " + TABLE_IMAGES +
+                " WHERE " + _ID + " = ?";
+
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(petImgID)});
+
+        if (cursor.moveToFirst()){
+            do{
+                images img = new images();
+                img.setId(cursor.getInt(cursor.getColumnIndexOrThrow(_ID)));
+                img.setOwnerId(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_OWNER_ID)));
+                img.setImagePath(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_IMAGE_PATH)));
+                int typeInt = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_USER_TYPE));
+                userType type = userType.values()[typeInt - 1];
+                img.setUserType(type);
+                imagesList.add(img);
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return imagesList;
     }
 
     public String getImagePath(long imageID){
