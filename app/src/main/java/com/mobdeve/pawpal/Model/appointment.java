@@ -1,11 +1,14 @@
 package com.mobdeve.pawpal.Model;
 
 public class appointment {
-    private int appNo, petID, ownerID, vetID;
+    private long appNo, petID, ownerID, vetID;
+
     private String petName, ownerName, appType, appDateTime, appVet, appStatus;
 
-    public appointment(int appNo, String petName, String ownerName, String appType, String appDateTime, String appVet, String appStatus) {
-        this.appNo = appNo;
+    public appointment(long petID, long ownerID, long vetID, String petName, String ownerName, String appType, String appDateTime, String appVet, String appStatus) {
+        this.petID = petID;
+        this.ownerID = ownerID;
+        this.vetID = vetID;
         this.petName = petName;
         this.ownerName = ownerName;
         this.appType = appType;
@@ -14,7 +17,7 @@ public class appointment {
         this.appStatus = appStatus;
     }
 
-    public appointment(int appNo, int petID, int ownerID, int vetID, String petName, String ownerName, String appType, String appDateTime, String appVet, String appStatus) {
+    public appointment(long appNo, long petID, long ownerID, long vetID, String petName, String ownerName, String appType, String appDateTime, String appVet, String appStatus) {
         this.appNo = appNo;
         this.petID = petID;
         this.ownerID = ownerID;
@@ -27,36 +30,36 @@ public class appointment {
         this.appStatus = appStatus;
     }
 
-    public int getPetID() {
-        return petID;
-    }
-
-    public void setPetID(int petID) {
-        this.petID = petID;
-    }
-
-    public int getOwnerID() {
-        return ownerID;
-    }
-
-    public void setOwnerID(int ownerID) {
-        this.ownerID = ownerID;
-    }
-
-    public int getVetID() {
-        return vetID;
-    }
-
-    public void setVetID(int vetID) {
-        this.vetID = vetID;
-    }
-
-    public int getAppNo() {
+    public long getAppNo() {
         return appNo;
     }
 
-    public void setAppNo(int appNo) {
+    public void setAppNo(long appNo) {
         this.appNo = appNo;
+    }
+
+    public long getPetID() {
+        return petID;
+    }
+
+    public void setPetID(long petID) {
+        this.petID = petID;
+    }
+
+    public long getOwnerID() {
+        return ownerID;
+    }
+
+    public void setOwnerID(long ownerID) {
+        this.ownerID = ownerID;
+    }
+
+    public long getVetID() {
+        return vetID;
+    }
+
+    public void setVetID(long vetID) {
+        this.vetID = vetID;
     }
 
     public String getPetName() {

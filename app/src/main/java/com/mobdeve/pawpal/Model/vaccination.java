@@ -2,7 +2,7 @@ package com.mobdeve.pawpal.Model;
 
 public class vaccination {
     private String vaccType, petName, ownerName, vaxDateTime, vaxVet, vaxStatus;
-    private int vaxID, petID, ownerID, vetID;
+    private long vaxID, petID, ownerID, vetID;
 
     public vaccination(String vaccType, String petName, String ownerName, String vaxDateTime, String vaxVet, String vaxStatus) {
         this.vaccType = vaccType;
@@ -13,7 +13,19 @@ public class vaccination {
         this.vaxStatus = vaxStatus;
     }
 
-    public vaccination(String vaccType, String petName, String ownerName, String vaxDateTime, String vaxVet, String vaxStatus, int vaxID, int petID, int ownerID, int vetID) {
+    public vaccination(String vaccType, String petName, String ownerName, String vaxDateTime, String vaxVet, String vaxStatus, long petID, long ownerID, long vetID) {
+        this.vaccType = vaccType;
+        this.petName = petName;
+        this.ownerName = ownerName;
+        this.vaxDateTime = vaxDateTime;
+        this.vaxVet = vaxVet;
+        this.vaxStatus = vaxStatus;
+        this.petID = petID;
+        this.ownerID = ownerID;
+        this.vetID = vetID;
+    }
+
+    public vaccination(String vaccType, String petName, String ownerName, String vaxDateTime, String vaxVet, String vaxStatus, long vaxID, long petID, long ownerID, long vetID) {
         this.vaccType = vaccType;
         this.petName = petName;
         this.ownerName = ownerName;
@@ -26,48 +38,35 @@ public class vaccination {
         this.vetID = vetID;
     }
 
-    public vaccination(String vaccType, String petName, String ownerName, String vaxDateTime, String vaxVet, String vaxStatus, int petID, int ownerID, int vetID) {
-
-        this.vaccType = vaccType;
-        this.petName = petName;
-        this.ownerName = ownerName;
-        this.vaxDateTime = vaxDateTime;
-        this.vaxVet = vaxVet;
-        this.vaxStatus = vaxStatus;
-        this.petID = petID;
-        this.ownerID = ownerID;
-        this.vetID = vetID;
-    }
-
-    public int getVaxID() {
+    public long getVaxID() {
         return vaxID;
     }
 
-    public void setVaxID(int vaxID) {
+    public void setVaxID(long vaxID) {
         this.vaxID = vaxID;
     }
 
-    public int getPetID() {
+    public long getPetID() {
         return petID;
     }
 
-    public void setPetID(int petID) {
+    public void setPetID(long petID) {
         this.petID = petID;
     }
 
-    public int getOwnerID() {
+    public long getOwnerID() {
         return ownerID;
     }
 
-    public void setOwnerID(int ownerID) {
+    public void setOwnerID(long ownerID) {
         this.ownerID = ownerID;
     }
 
-    public int getVetID() {
+    public long getVetID() {
         return vetID;
     }
 
-    public void setVetID(int vetID) {
+    public void setVetID(long vetID) {
         this.vetID = vetID;
     }
 

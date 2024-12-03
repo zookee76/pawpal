@@ -25,21 +25,25 @@ public class DBHelper extends SQLiteOpenHelper {
             _ID = "id",
     // Tables
             TABLE_NAME_PETOWNER = "petOwner",
-            TABLE_NAME_CLINICOWNER = "clinicOwner",
+            TABLE_NAME_VET = "veterinarians", // clinic owner/users
             TABLE_NAME_PET = "pets",
             TABLE_IMAGES = "images",
 
-    // PetOwner Columns
+    // PetOwner and Vet Columns
             COLUMN_FIRST_NAME = "firstName",
             COLUMN_LAST_NAME = "lastName",
             COLUMN_EMAIL = "email",
             COLUMN_PASSWORD = "password",
-            COLUMN_OWNER_DP = "owner_dp",
             COLUMN_USERNAME = "username",
             COLUMN_CONTACT_NO = "contactno",
 
+    // Pet Owner Columns specific
+            COLUMN_OWNER_DP = "owner_dp",
+
+    // Vet Columns specific
+            COLUMN_VET_DP = "vetDP",
+
     // Pets Columns
-            COLUMN_PET_ID = "petID",
             COLUMN_PET_NAME ="petName",
             COLUMN_PET_BREED = "petBreed",
             COLUMN_PET_SEX = "petSex",
@@ -51,6 +55,7 @@ public class DBHelper extends SQLiteOpenHelper {
             COLUMN_PET_PHOTO = "petPhoto",
             COLUMN_PET_BIRTHDATE = "petBirthdate",
             COLUMN_PETOWNER_ID = "ownerId",
+            COLUMN_VET_ID = "vetID",
     // IMAGES
             COLUMN_IMAGE_PATH = "path",
             COLUMN_USER_TYPE = "userType",

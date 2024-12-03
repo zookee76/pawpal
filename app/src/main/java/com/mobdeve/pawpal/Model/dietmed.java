@@ -1,19 +1,19 @@
 package com.mobdeve.pawpal.Model;
 
 public class dietmed {
-    private int image, presNo, petID;
+    private long imageID, presNo, petID;
     private String medicationName, purpose, dosage, administration, freq_and_duration;
     private String note;
     private String datetime;
 
-    public dietmed(int image, String note, String datetime) {
-        this.image = image;
+    public dietmed(long imageID, String note, String datetime) {
+        this.imageID = imageID;
         this.note = note;
         this.datetime = datetime;
     }
 
-    public dietmed(int image, int petID, String medicationName, String purpose, String dosage, String administration, String freq_and_duration, String note, String datetime) {
-        this.image = image;
+    public dietmed(long imageID, long petID, String medicationName, String purpose, String dosage, String administration, String freq_and_duration, String note, String datetime) {
+        this.imageID = imageID;
         this.petID = petID;
         this.medicationName = medicationName;
         this.purpose = purpose;
@@ -24,8 +24,8 @@ public class dietmed {
         this.datetime = datetime;
     }
 
-    public dietmed(int image, int presNo, int petID, String medicationName, String purpose, String dosage, String administration, String freq_and_duration, String note, String datetime) {
-        this.image = image;
+    public dietmed(long imageID, long presNo, long petID, String medicationName, String purpose, String dosage, String administration, String freq_and_duration, String note, String datetime) {
+        this.imageID = imageID;
         this.presNo = presNo;
         this.petID = petID;
         this.medicationName = medicationName;
@@ -37,12 +37,12 @@ public class dietmed {
         this.datetime = datetime;
     }
 
-    public int getImage() {
-        return image;
+    public long getImage() {
+        return imageID;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setImage(long image) {
+        this.imageID = image;
     }
 
     public String getNote() {

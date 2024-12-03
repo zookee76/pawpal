@@ -11,7 +11,23 @@ public class pets implements Parcelable {
     private String name, breed, sex, color, markings, birthdate;
     private int age;
     private Double height, weight;
-    private long ID, imageID, ownerID;
+    private long ID, imageID, ownerID, vetID;
+
+    public pets(String name, String breed, String sex, String color, String markings, String birthdate, int age, Double height, Double weight, long ID, long imageID, long ownerID, long vetID) {
+        this.name = name;
+        this.breed = breed;
+        this.sex = sex;
+        this.color = color;
+        this.markings = markings;
+        this.birthdate = birthdate;
+        this.age = age;
+        this.height = height;
+        this.weight = weight;
+        this.ID = ID;
+        this.imageID = imageID;
+        this.ownerID = ownerID;
+        this.vetID = vetID;
+    }
 
     public pets(String name, String breed, String sex, String color, String markings, String birthdate, int age, Double height, Double weight, long ID, long imageID, long ownerID) {
         this.name = name;
@@ -27,6 +43,8 @@ public class pets implements Parcelable {
         this.imageID = imageID;
         this.ownerID = ownerID;
     }
+
+
 
     public pets(String name, String breed, String sex, String color, String markings, String birthdate, int age, long ownerID, long imageID, Double height, Double weight) {
         this.name = name;
@@ -76,6 +94,14 @@ public class pets implements Parcelable {
             return new pets[size];
         }
     };
+
+    public long getVetID() {
+        return vetID;
+    }
+
+    public void setVetID(long vetID) {
+        this.vetID = vetID;
+    }
 
     public long getImageID() {
         return imageID;

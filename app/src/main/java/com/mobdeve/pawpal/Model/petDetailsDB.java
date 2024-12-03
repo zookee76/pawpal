@@ -1,27 +1,37 @@
 package com.mobdeve.pawpal.Model;
 
 public class petDetailsDB {
-    private int petID, petDetailsID;
+    private long petID, petDetailsID;
     private String description;
 
-    public petDetailsDB(int petID, String description) {
+    public petDetailsDB(long petID, String description) {
         this.petID = petID;
         this.description = description;
     }
 
-    public petDetailsDB(int petID, int petDetailsID, String description) {
+    public petDetailsDB(long petID, long petDetailsID, String description) {
         this.petID = petID;
         this.petDetailsID = petDetailsID;
         this.description = description;
     }
 
     // Getters and Setters
-    public int getPetID() {
+
+
+    public long getPetID() {
         return petID;
     }
 
-    public void setPetID(int petID) {
+    public void setPetID(long petID) {
         this.petID = petID;
+    }
+
+    public long getPetDetailsID() {
+        return petDetailsID;
+    }
+
+    public void setPetDetailsID(long petDetailsID) {
+        this.petDetailsID = petDetailsID;
     }
 
     public String getDescription() {
@@ -32,12 +42,6 @@ public class petDetailsDB {
         this.description = description;
     }
 
-    public int getPetDetailsID() {
-        return petDetailsID;
-    }
 
-    public void setPetDetailsID(int petDetailsID) {
-        this.petDetailsID = petDetailsID;
-    }
 }
 

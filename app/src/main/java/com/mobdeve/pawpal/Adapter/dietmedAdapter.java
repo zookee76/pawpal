@@ -35,7 +35,7 @@ public class dietmedAdapter extends RecyclerView.Adapter<dietmedAdapter.dietmedV
     @Override
     public void onBindViewHolder(@NonNull dietmedViewHolder holder, int position) {
         dietmed dietmeds = dietmedList.get(position);
-        holder.dietmedpic.setImageResource(dietmeds.getImage());
+        //holder.dietmedpic.setImageResource(dietmeds.getImage());
         holder.dietmednotes.setText(dietmeds.getNote());
         holder.dietmedtimedate.setText(dietmeds.getDatetime());
     }

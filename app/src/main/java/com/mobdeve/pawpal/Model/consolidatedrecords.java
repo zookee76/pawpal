@@ -3,7 +3,8 @@ package com.mobdeve.pawpal.Model;
 public class consolidatedrecords {
 
     // Medical Documents
-    private int recordNo, vetID, petID;
+    private int recordNo;
+    private long vetID, petID;
     private String title;
     private String docType;
     private String docDate;
@@ -23,7 +24,17 @@ public class consolidatedrecords {
         this.file = file;
     }
 
-    public consolidatedrecords(int recordNo, int vetID, int petID, String title, String docType, String docDate, String veterinarian, String file) {
+    public consolidatedrecords(long vetID, long petID, String title, String docType, String docDate, String veterinarian, String file) {
+        this.vetID = vetID;
+        this.petID = petID;
+        this.title = title;
+        this.docType = docType;
+        this.docDate = docDate;
+        this.veterinarian = veterinarian;
+        this.file = file;
+    }
+
+    public consolidatedrecords(int recordNo, long vetID, long petID, String title, String docType, String docDate, String veterinarian, String file) {
         this.recordNo = recordNo;
         this.vetID = vetID;
         this.petID = petID;
@@ -34,19 +45,19 @@ public class consolidatedrecords {
         this.file = file;
     }
 
-    public int getVetID() {
+    public long getVetID() {
         return vetID;
     }
 
-    public void setVetID(int vetID) {
+    public void setVetID(long vetID) {
         this.vetID = vetID;
     }
 
-    public int getPetID() {
+    public long getPetID() {
         return petID;
     }
 
-    public void setPetID(int petID) {
+    public void setPetID(long petID) {
         this.petID = petID;
     }
 

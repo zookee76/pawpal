@@ -2,14 +2,14 @@ package com.mobdeve.pawpal.Model;
 
 public class overviewentry {
 
-    private int petImage, overviewID, petID, ownerID, appID, vetID;
+    private long petImage, overviewID, petID, ownerID, appID, vetID;
     private String timeText;
     private String petName;
     private String ownerName;
     private String appointmentType;
     private String veterinarian;
 
-    public overviewentry(int petImage, String timeText, String petName, String ownerName,
+    public overviewentry(long petImage, String timeText, String petName, String ownerName,
                          String appointmentType, String veterinarian) {
         this.petImage = petImage;
         this.timeText = timeText;
@@ -19,7 +19,7 @@ public class overviewentry {
         this.veterinarian = veterinarian;
     }
 
-    public overviewentry(int petImage, int petID, int ownerID, int appID, int vetID, String timeText, String petName, String ownerName, String appointmentType, String veterinarian) {
+    public overviewentry(long petImage, long petID, long ownerID, long appID, long vetID, String timeText, String petName, String ownerName, String appointmentType, String veterinarian) {
         this.petImage = petImage;
         this.petID = petID;
         this.ownerID = ownerID;
@@ -32,7 +32,7 @@ public class overviewentry {
         this.veterinarian = veterinarian;
     }
 
-    public overviewentry(int petImage, int overviewID, int petID, int ownerID, int appID, int vetID, String timeText, String petName, String ownerName, String appointmentType, String veterinarian) {
+    public overviewentry(long petImage, long overviewID, long petID, long ownerID, long appID, long vetID, String timeText, String petName, String ownerName, String appointmentType, String veterinarian) {
         this.petImage = petImage;
         this.overviewID = overviewID;
         this.petID = petID;
@@ -46,52 +46,52 @@ public class overviewentry {
         this.veterinarian = veterinarian;
     }
 
-    public int getOverviewID() {
+    public long getOverviewID() {
         return overviewID;
     }
 
-    public void setOverviewID(int overviewID) {
+    public void setOverviewID(long overviewID) {
         this.overviewID = overviewID;
     }
 
-    public int getPetID() {
+    public long getPetID() {
         return petID;
     }
 
-    public void setPetID(int petID) {
+    public void setPetID(long petID) {
         this.petID = petID;
     }
 
-    public int getOwnerID() {
-        return ownerID;
-    }
-
-    public void setOwnerID(int ownerID) {
-        this.ownerID = ownerID;
-    }
-
-    public int getAppID() {
-        return appID;
-    }
-
-    public void setAppID(int appID) {
-        this.appID = appID;
-    }
-
-    public int getVetID() {
-        return vetID;
-    }
-
-    public void setVetID(int vetID) {
-        this.vetID = vetID;
-    }
-
-    public int getPetImage() {
+    public long getPetImage() {
         return petImage;
     }
 
-    public void setPetImage(int petImage) {
+    public void setPetImage(long petImage) {
         this.petImage = petImage;
+    }
+
+    public long getOwnerID() {
+        return ownerID;
+    }
+
+    public void setOwnerID(long ownerID) {
+        this.ownerID = ownerID;
+    }
+
+    public long getAppID() {
+        return appID;
+    }
+
+    public void setAppID(long appID) {
+        this.appID = appID;
+    }
+
+    public long getVetID() {
+        return vetID;
+    }
+
+    public void setVetID(long vetID) {
+        this.vetID = vetID;
     }
 
     public String getTimeText() {

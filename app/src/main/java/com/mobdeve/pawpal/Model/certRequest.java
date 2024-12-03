@@ -1,7 +1,7 @@
 package com.mobdeve.pawpal.Model;
 
 public class certRequest {
-    private int certID, petID, ownerID;
+    private long certID, petID, ownerID;
     private String requestNumber;
     private String petName;
     private String ownerName;
@@ -19,8 +19,7 @@ public class certRequest {
         this.status = status;
     }
 
-    public certRequest(int certID, int petID, int ownerID, String requestNumber, String petName, String ownerName, String requestType, String date, String status) {
-        this.certID = certID;
+    public certRequest(long petID, long ownerID, String requestNumber, String petName, String ownerName, String requestType, String date, String status) {
         this.petID = petID;
         this.ownerID = ownerID;
         this.requestNumber = requestNumber;
@@ -31,7 +30,8 @@ public class certRequest {
         this.status = status;
     }
 
-    public certRequest(int petID, int ownerID, String requestNumber, String petName, String ownerName, String requestType, String date, String status) {
+    public certRequest(long certID, long petID, long ownerID, String requestNumber, String petName, String ownerName, String requestType, String date, String status) {
+        this.certID = certID;
         this.petID = petID;
         this.ownerID = ownerID;
         this.requestNumber = requestNumber;
@@ -50,27 +50,27 @@ public class certRequest {
     public String getDate() { return date; }
     public String getStatus() { return status; }
 
-    public int getCertID() {
+    public long getCertID() {
         return certID;
     }
 
-    public void setCertID(int certID) {
+    public void setCertID(long certID) {
         this.certID = certID;
     }
 
-    public int getPetID() {
+    public long getPetID() {
         return petID;
     }
 
-    public void setPetID(int petID) {
+    public void setPetID(long petID) {
         this.petID = petID;
     }
 
-    public int getOwnerID() {
+    public long getOwnerID() {
         return ownerID;
     }
 
-    public void setOwnerID(int ownerID) {
+    public void setOwnerID(long ownerID) {
         this.ownerID = ownerID;
     }
 
