@@ -1,7 +1,7 @@
 package com.mobdeve.pawpal.Model;
 
 public class medicaldoc {
-    private int docuNo;
+    private int docuNo, vetID, petID;
     private String title;
     private String type;
     private String date;
@@ -15,6 +15,33 @@ public class medicaldoc {
         this.date = date;
         this.veterinarian = veterinarian;
         this.fileName = fileName;
+    }
+
+    public medicaldoc(int docuNo, int vetID, int petID, String title, String type, String date, String veterinarian, String fileName) {
+        this.docuNo = docuNo;
+        this.vetID = vetID;
+        this.petID = petID;
+        this.title = title;
+        this.type = type;
+        this.date = date;
+        this.veterinarian = veterinarian;
+        this.fileName = fileName;
+    }
+
+    public int getVetID() {
+        return vetID;
+    }
+
+    public void setVetID(int vetID) {
+        this.vetID = vetID;
+    }
+
+    public int getPetID() {
+        return petID;
+    }
+
+    public void setPetID(int petID) {
+        this.petID = petID;
     }
 
     public int getDocuNo() {
