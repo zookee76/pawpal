@@ -9,10 +9,6 @@ public class consolidatedrecords {
     private String veterinarian;
     private String file;
 
-    public consolidatedrecords() {
-
-    }
-
     public consolidatedrecords(String title, String docType, String docDate, String veterinarian, String file) {
         this.title = title;
         this.docType = docType;

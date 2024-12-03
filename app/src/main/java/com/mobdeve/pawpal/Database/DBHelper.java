@@ -10,6 +10,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 
 import com.mobdeve.pawpal.Model.clinicVet;
+import com.mobdeve.pawpal.Model.consolidatedrecords;
 import com.mobdeve.pawpal.Model.petOwners;
 import com.mobdeve.pawpal.Model.pets;
 import com.mobdeve.pawpal.Model.images;
@@ -723,6 +724,36 @@ public class DBHelper extends SQLiteOpenHelper {
     public void deleteImage(long imageID) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_IMAGES, _ID + " = ?", new String[]{String.valueOf(imageID)});
+    }
+
+    public long addRecord(consolidatedrecords record) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // Create content values
+        ContentValues values = new ContentValues();
+        values.put(RECORD_TITLE, record.getTitle());
+        values.put(DOC_TYPE, record.getDocType());
+        values.put(DOC_DATE, record.getDocDate());
+        values.put(VETERINARIAN, record.getVeterinarian());
+        values.put(RECORD_FILE, record.getFile());
+
+        // Insert the record into the database
+        long recordId = db.insert(TABLE_CONSOLIDATED_RECORDS, null, values);
+        db.close();
+
+        // Return the ID of the newly inserted record (or -1 if failed)
+        return recordId;
+    }
+
+    public Cursor getAllConsolidatedRecords() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Query to get all records from the table
+        String query = "SELECT * FROM " + TABLE_CONSOLIDATED_RECORDS;
+        Cursor cursor = db.rawQuery(query, null);
+
+        // Return the cursor containing all the records
+        return cursor;
     }
 
     // CLOSING

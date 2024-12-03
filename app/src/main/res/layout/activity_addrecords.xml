@@ -136,7 +136,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_clinicbody"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="20dp"
             android:background="#D6EAFC">
@@ -236,7 +236,7 @@
                     android:layout_marginRight="30dp"
                     android:layout_marginBottom="5dp"
                     android:background="@color/white"
-                    android:entries="@array/document_types"
+                    android:entries="@array/documenttypes"
                     android:textColor="#928A8A"
                     android:textSize="16sp"
                     android:backgroundTint="@color/white"/>
@@ -260,7 +260,7 @@
                     android:background="@color/white"
                     android:ems="10"
                     android:hint="Name of Veterinarian"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:textColor="#928A8A"
                     android:textSize="16sp" />
 
@@ -273,7 +273,7 @@
                     android:background="@color/white"
                     android:ems="10"
                     android:hint="File Path"
-                    android:inputType="date"
+                    android:inputType="text"
                     android:textColor="#928A8A"
                     android:textSize="16sp" />
             </LinearLayout>

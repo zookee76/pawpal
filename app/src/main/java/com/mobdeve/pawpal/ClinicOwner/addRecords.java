@@ -105,21 +105,21 @@ public class addRecords extends AppCompatActivity implements AdapterView.OnItemS
                 } else
                 {
                     // Creating new record object with the fields
-                    // consolidatedrecords newRecord = new consolidatedrecords(title, docType, date, veterinarian, file);
-                    // long newRecordID = db.addRecord(newRecord);  // Assuming a method to add records
-                    // Log.d("NEWRECORD", "Record ID: " + newRecordID);
+                    consolidatedrecords newRecord = new consolidatedrecords(title, docType, date, veterinarian, file);
+                    long newRecordID = db.addRecord(newRecord);  // Assuming a method to add records
+                    Log.d("NEWRECORD", "Record ID: " + newRecordID);
 
-                    // if (newRecordID > 0) {
-                    //  Toast.makeText(addRecords.this, "Record added successfully!", Toast.LENGTH_SHORT).show();
-                    //  Intent resultIntent = new Intent();
-                    //  setResult(RESULT_OK, resultIntent);
+                    if (newRecordID > 0) {
+                    Toast.makeText(addRecords.this, "Record added successfully!", Toast.LENGTH_SHORT).show();
+                    Intent resultIntent = new Intent();
+                    setResult(RESULT_OK, resultIntent);
 
-                    // Log.d("ADDRECORD_RESULT", "Result: " + newRecordID);
-                    // Intent intent = new Intent(addRecords.this, clinicpets.class);
-                    //  startActivity(intent);
-                    //} else {
+                    Log.d("ADDRECORD_RESULT", "Result: " + newRecordID);
+                    Intent intent = new Intent(addRecords.this, clinicpets.class);
+                    startActivity(intent);
+                    } else {
                         Toast.makeText(addRecords.this, "Failed to add record.", Toast.LENGTH_SHORT).show();
-                    //}
+                    }
                 }
             }
         });
@@ -139,7 +139,7 @@ public class addRecords extends AppCompatActivity implements AdapterView.OnItemS
         List<String> docTypes = new ArrayList<>();
         docTypes.add("Appointment");
         docTypes.add("Health Record");
-        docTypes.add("Treatment");
+        docTypes.add("Lab Results");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, docTypes);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

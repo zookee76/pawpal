@@ -3,6 +3,7 @@ package com.mobdeve.pawpal.Shared;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -238,12 +239,11 @@ public class consolidatedsummary extends AppCompatActivity {
 
     private void loadConsolidatedSummaries() {
         DBHelper dbHelper = new DBHelper(this);
-        /* Cursor cursor = dbHelper.getAllConsolidatedRecords();
+        Cursor cursor = dbHelper.getAllConsolidatedRecords();
 
         // Loop through the cursor and add records to the list
         if (cursor != null && cursor.moveToFirst()) {
             do {
-                int id = cursor.getInt(cursor.getColumnIndex(DBHelper.COLUMN_RECORD_NO));
                 String title = cursor.getString(cursor.getColumnIndex(DBHelper.RECORD_TITLE));
                 String docType = cursor.getString(cursor.getColumnIndex(DBHelper.DOC_TYPE));
                 String docDate = cursor.getString(cursor.getColumnIndex(DBHelper.DOC_DATE));
@@ -255,16 +255,16 @@ public class consolidatedsummary extends AppCompatActivity {
             } while (cursor.moveToNext());
 
             cursor.close();
-        }*/
+            Log.d("LOAD_SUMMARIES", "Number of records in the list: " + recordsList.size());
+        }
     }
 
     private void loadClinicConsoSum() {
-        /* Cursor cursor = db.getAllConsolidatedRecords();
+        Cursor cursor = db.getAllConsolidatedRecords();
 
         // Loop through the cursor and add records to the list
         if (cursor != null && cursor.moveToFirst()) {
             do {
-                int id = cursor.getInt(cursor.getColumnIndex(DBHelper.COLUMN_RECORD_NO));
                 String title = cursor.getString(cursor.getColumnIndex(DBHelper.RECORD_TITLE));
                 String docType = cursor.getString(cursor.getColumnIndex(DBHelper.DOC_TYPE));
                 String docDate = cursor.getString(cursor.getColumnIndex(DBHelper.DOC_DATE));
@@ -276,6 +276,7 @@ public class consolidatedsummary extends AppCompatActivity {
             } while (cursor.moveToNext());
 
             cursor.close();
-        } */
+            Log.d("LOAD_SUMMARIES", "Number of records in the list: " + recordsList.size());
+        }
     }
 }
