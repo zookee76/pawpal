@@ -83,6 +83,18 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
+                <!-- Empty State TextView (hidden by default) -->
+                <TextView
+                    android:id="@+id/empty_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="No records found"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:visibility="gone"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp" />
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -90,32 +102,17 @@
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="10dp">
 
-                    <LinearLayout
+                    <androidx.appcompat.widget.SearchView
+                        android:id="@+id/searchbartext"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_marginRight="12.5dp"
-                            android:src="@drawable/search" />
-
-                        <EditText
-                            android:id="@+id/searchbartext"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center_vertical"
-                            android:background="@color/white"
-                            android:ems="10"
-                            android:inputType="text"
-                            android:text="Search"
-                            android:textColor="#8A8A8E"
-                            android:textSize="17sp" />
-                    </LinearLayout>
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/white"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:text="Search"
+                        android:textColor="#8A8A8E"
+                        android:textSize="17sp" />
                 </androidx.cardview.widget.CardView>
 
                 <androidx.recyclerview.widget.RecyclerView
