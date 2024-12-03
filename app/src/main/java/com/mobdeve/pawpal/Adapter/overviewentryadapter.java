@@ -37,7 +37,7 @@ public class overviewentryadapter extends RecyclerView.Adapter<overviewentryadap
     public void onBindViewHolder(@NonNull AppointmentViewHolder holder, int position) {
         overviewentry overviewentry = overviewentryList.get(position);
 
-        holder.petImage.setImageResource(overviewentry.getPetImage());
+       //holder.petImage.setImageResource(overviewentry.getPetImage());
         holder.timeText.setText(overviewentry.getTimeText());
         holder.petNameText.setText(overviewentry.getPetName());
         holder.ownerNameText.setText(overviewentry.getOwnerName());
