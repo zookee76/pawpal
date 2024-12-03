@@ -7,10 +7,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.mobdeve.pawpal.Model.clinicVet;
+import com.mobdeve.pawpal.Model.petOwners;
 import com.mobdeve.pawpal.R;
 import com.mobdeve.pawpal.Shared.appointmentspage;
 import com.mobdeve.pawpal.Shared.consolidatedsummary;
@@ -29,8 +33,18 @@ public class chomedashboard extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_clinicdashboard);
+
+        // Get Data
+        Intent intent = getIntent();
+        clinicVet vet = intent.getParcelableExtra("USER_DATA");
+        if(vet != null){
+            String firstName = vet.getFirstName();
+            TextView tvName = findViewById(R.id.tv_vetname);
+            tvName.setText("Hello, " + firstName);
+            Log.d("CHECK LOGGED  VET", "VET NAME: " + vet.getFirstName() + "VET ID: " + vet.getVetID());
+
+        }
 
         rv_overviewentries = findViewById(R.id.rv_overviewentries);
         rv_overviewentries.setLayoutManager(new LinearLayoutManager(this));
@@ -51,6 +65,7 @@ public class chomedashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(chomedashboard.this, medrecordspage.class);
+                intent.putExtra("USER_DATA", vet);
                 startActivity(intent);
             }
         });
@@ -59,6 +74,7 @@ public class chomedashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(chomedashboard.this, appointmentspage.class);
+                intent.putExtra("USER_DATA", vet);
                 startActivity(intent);
             }
         });
@@ -67,6 +83,7 @@ public class chomedashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(chomedashboard.this, vaccinationpage.class);
+                intent.putExtra("USER_DATA", vet);
                 startActivity(intent);
             }
         });
@@ -75,6 +92,7 @@ public class chomedashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(chomedashboard.this, consolidatedsummary.class);
+                intent.putExtra("USER_DATA", vet);
                 startActivity(intent);
             }
         });
@@ -83,6 +101,8 @@ public class chomedashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(chomedashboard.this, certreq.class);
+                intent.putExtra("USER_DATA", vet);
+
                 startActivity(intent);
             }
         });
@@ -100,6 +120,8 @@ public class chomedashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(chomedashboard.this, clinicpets.class);
+                intent.putExtra("USER_DATA", vet);
+                Log.d("CHECK VET TO CLINICS", "VET NAME: " + vet.getFirstName() + "VET ID: " + vet.getVetID());
                 startActivity(intent);
                 finish();
             }
@@ -109,6 +131,7 @@ public class chomedashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(chomedashboard.this, chomedashboard.class);
+                intent.putExtra("USER_DATA", vet);
                 startActivity(intent);
                 finish();
             }
@@ -118,6 +141,7 @@ public class chomedashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(chomedashboard.this, clinicprofilepage.class);
+                intent.putExtra("USER_DATA", vet);
                 startActivity(intent);
                 finish();
             }
@@ -127,6 +151,7 @@ public class chomedashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(chomedashboard.this, consolidatedsummary.class);
+                intent.putExtra("USER_DATA", vet);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
                 finish();
@@ -137,6 +162,7 @@ public class chomedashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(chomedashboard.this, appointmentspage.class);
+                intent.putExtra("USER_DATA", vet);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
                 finish();

@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
 
+import com.mobdeve.pawpal.Model.clinicVet;
 import com.mobdeve.pawpal.Model.petOwners;
 import com.mobdeve.pawpal.Model.pets;
 import com.mobdeve.pawpal.Model.images;
@@ -28,6 +29,9 @@ public class DBHelper extends SQLiteOpenHelper {
             TABLE_NAME_VET = "veterinarians", // clinic owner/users
             TABLE_NAME_PET = "pets",
             TABLE_IMAGES = "images",
+            TABLE_VACCINATION = "vaccinations",
+            TABLE_APPOINTMENTS = "appointments",
+            TABLE_DIETMED = "dietmed",
 
     // PetOwner and Vet Columns
             COLUMN_FIRST_NAME = "firstName",
@@ -59,7 +63,45 @@ public class DBHelper extends SQLiteOpenHelper {
     // IMAGES
             COLUMN_IMAGE_PATH = "path",
             COLUMN_USER_TYPE = "userType",
-            COLUMN_OWNER_ID = "ownerID";
+            COLUMN_OWNER_ID = "ownerID",
+
+    // SHARED DIETMED, VACCINATION, APPOINTMENT
+            COLUMN_PET_ID = "petID", // petID
+            COLUMN_OWNER_NAME = "ownerName", // ownerName
+            COLUMN_VET_NAME = "vetName",
+
+    // DIETMED
+            COLUMN_PET_IMG = "petImg", // imageID
+            COLUMN_MED_NAME = "mednName",
+            COLUMN_PURPOSE = "purpose",
+            COLUMN_DOSAGE = "dosage",
+            COLUMN_ADMINISTRATION = "administration",
+            COLUMN_FREQ_DURATION = "freqAndDuration",
+            COLUMN_NOTE = "note",
+            COLUMN_DATETIME = "datetime",
+
+    // VACINATION
+            // OWNER ID = COLUMN_OWNER_ID
+            // VET ID = COLUMN_VET_ID
+            // PETID = COLUMN_PET_ID
+            COLUMN_VAX_TYPE = "vaxType",
+            // petName = COLUMN_PET_NAME
+            // vaxDatetime = COLUMN_DATETIME
+            //COLUMN_OWNER_NAME = "ownerName",
+            // vaxVet = COLUMN_VET_NAME
+            COLUMN_VAX_STATUS = "vaxStatus",
+
+    // APPOINTMENTS
+            //APP NO = _ID
+            // PETID = COLUMN_PET_ID
+            // OWNER ID = COLUMN_OWNER_ID
+            // VET ID = COLUMN_VET_ID
+            // petName = COLUMN_PET_NAME
+            //COLUMN_OWNER_NAME = "ownerName",
+            COLUMN_APP_TYPE = "appType",
+            // appVet = COLUMN_VET_NAME
+            COLUMN_APP_STATUS = "appStatus";
+
 
     // CREATE STATEMENTS
     public static final String CREATE_TABLE_PET_OWNER =
@@ -74,6 +116,16 @@ public class DBHelper extends SQLiteOpenHelper {
                     COLUMN_CONTACT_NO + " TEXT NOT NULL, " +
             "FOREIGN KEY (" + COLUMN_OWNER_DP + ") REFERENCES " + TABLE_IMAGES + " (" + _ID + "))";
 
+    public static final String CREATE_TABLE_VET =
+            "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_VET + " (" +
+                    _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_FIRST_NAME + " TEXT NOT NULL, " +
+                    COLUMN_LAST_NAME + " TEXT NOT NULL, " +
+                    COLUMN_EMAIL + " TEXT NOT NULL, " +
+                    COLUMN_PASSWORD + " TEXT NOT NULL, " +
+                    COLUMN_VET_DP + " INTEGER DEFAULT NULL, " +
+                    COLUMN_CONTACT_NO + " TEXT NOT NULL, " +
+                    "FOREIGN KEY (" + COLUMN_VET_DP + ") REFERENCES " + TABLE_IMAGES + " (" + _ID + "))";
 
     public static final String CREATE_TABLE_PETS =
             "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_PET + " (" +
@@ -89,7 +141,9 @@ public class DBHelper extends SQLiteOpenHelper {
                     COLUMN_PET_BIRTHDATE + " TEXT, " +
                     COLUMN_PET_PHOTO + " INTEGER DEFAULT NULL, " +
                     COLUMN_OWNER_ID + " INTEGER NOT NULL, " +
+                    COLUMN_VET_ID + " INTEGER NOT NULL, " +
                     "FOREIGN KEY (" + COLUMN_PET_PHOTO + ") REFERENCES " + TABLE_IMAGES + " (" + _ID + "), " +
+                    "FOREIGN KEY (" + COLUMN_VET_ID + ") REFERENCES " + TABLE_NAME_VET + " (" + _ID + "), " +
                     "FOREIGN KEY (" + COLUMN_PETOWNER_ID + ") REFERENCES " + TABLE_NAME_PETOWNER + " (" + _ID + "))";
 
     public static final String CREATE_TABLE_IMAGES =
@@ -98,6 +152,53 @@ public class DBHelper extends SQLiteOpenHelper {
                     COLUMN_IMAGE_PATH + " TEXT NOT NULL, " +
                     COLUMN_USER_TYPE + " INTEGER NOT NULL, " +
                     COLUMN_OWNER_ID + " INTEGER NOT NULL)";
+
+    public static final String CREATE_TABLE_APPOINTMENTS =
+            "CREATE TABLE IF NOT EXISTS " + TABLE_APPOINTMENTS + " (" +
+                    _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_PET_ID + " INTEGER NOT NULL, " +
+                    COLUMN_PET_NAME + " TEXT NOT NULL, " +
+                    COLUMN_OWNER_ID + " INTEGER NOT NULL, " +
+                    COLUMN_VET_ID + " INTEGER NOT NULL, " +
+                    COLUMN_VET_NAME + " TEXT NOT NULL, " +
+                    COLUMN_DATETIME + " TEXT NOT NULL, " +
+                    COLUMN_APP_TYPE + " TEXT NOT NULL, " +
+                    COLUMN_APP_STATUS + " TEXT NOT NULL, " +
+                    "FOREIGN KEY (" + COLUMN_VET_ID + ") REFERENCES " + TABLE_NAME_VET + " (" + _ID + "), " +
+                    "FOREIGN KEY (" + COLUMN_OWNER_ID + ") REFERENCES " + TABLE_NAME_PETOWNER + " (" + _ID + "), " +
+                    "FOREIGN KEY (" + COLUMN_PET_ID + ") REFERENCES " + TABLE_NAME_PET + " (" + _ID + "))";
+
+    public static final String CREATE_TABLE_DIETMED =
+            "CREATE TABLE IF NOT EXISTS " + TABLE_DIETMED + " (" +
+                    _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_PET_IMG + " INTEGER NOT NULL, " +
+                    COLUMN_PET_ID + " INTEGER NOT NULL, " +
+                    COLUMN_MED_NAME + " TEXT NOT NULL, " +
+                    COLUMN_PURPOSE + " TEXT NOT NULL, " +
+                    COLUMN_DOSAGE + " TEXT NOT NULL, " +
+                    COLUMN_ADMINISTRATION + " TEXT NOT NULL, " +
+                    COLUMN_FREQ_DURATION + " TEXT NOT NULL, " +
+                    COLUMN_NOTE + " TEXT NOT NULL, " +
+                    COLUMN_DATETIME + " TEXT NOT NULL, " +
+                    "FOREIGN KEY (" + COLUMN_PET_IMG + ") REFERENCES " + TABLE_IMAGES + " (" + _ID + "), " +
+                    "FOREIGN KEY (" + COLUMN_PET_ID + ") REFERENCES " + TABLE_NAME_PET + " (" + _ID + "))";
+
+    public static final String CREATE_TABLE_VACCINATIONS =
+            "CREATE TABLE IF NOT EXISTS " + TABLE_DIETMED + " (" +
+                    _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_PET_ID + " INTEGER NOT NULL, " +
+                    COLUMN_OWNER_ID + " INTEGER NOT NULL, " +
+                    COLUMN_VET_ID + " INTEGER NOT NULL, " +
+                    COLUMN_VAX_TYPE + " TEXT NOT NULL, " +
+                    COLUMN_PET_NAME + " TEXT NOT NULL, " +
+                    COLUMN_OWNER_NAME + " TEXT NOT NULL, " +
+                    COLUMN_VET_NAME + " TEXT NOT NULL, " +
+                    COLUMN_DATETIME + " TEXT NOT NULL, " +
+                    COLUMN_VAX_STATUS + " TEXT NOT NULL, " +
+                    "FOREIGN KEY (" + COLUMN_VET_ID + ") REFERENCES " + TABLE_NAME_VET + " (" + _ID + "), " +
+                    "FOREIGN KEY (" + COLUMN_OWNER_ID + ") REFERENCES " + TABLE_NAME_PETOWNER + " (" + _ID + "), " +
+                    "FOREIGN KEY (" + COLUMN_PET_ID + ") REFERENCES " + TABLE_NAME_PET + " (" + _ID + "))";
+
 
     public DBHelper(Context context){
         super(context, DB_NAME, null, DB_VER);
@@ -110,6 +211,10 @@ public class DBHelper extends SQLiteOpenHelper {
             db.execSQL(CREATE_TABLE_PETS);
             db.execSQL(CREATE_TABLE_PET_OWNER);
             db.execSQL(CREATE_TABLE_IMAGES);
+            db.execSQL(CREATE_TABLE_VET);
+            db.execSQL(CREATE_TABLE_APPOINTMENTS);
+            db.execSQL(CREATE_TABLE_DIETMED);
+            db.execSQL(CREATE_TABLE_VACCINATIONS);
             Log.d("DBHELPER", "Tables created successfully");
         } catch (Exception e) {
             Log.e("DBHELPER", "Error creating tables", e);
@@ -122,6 +227,10 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(DROP + " " + TABLE_NAME_PET);
         db.execSQL(DROP + " " + TABLE_NAME_PETOWNER);
         db.execSQL(DROP + " " + TABLE_IMAGES);
+        db.execSQL(DROP + " " + TABLE_NAME_VET);
+        db.execSQL(DROP + " " + TABLE_APPOINTMENTS);
+        db.execSQL(DROP + " " + TABLE_DIETMED);
+        db.execSQL(DROP + " " + TABLE_VACCINATION);
         onCreate(db);
     }
 
@@ -130,6 +239,10 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS petOwners");
         db.execSQL("DROP TABLE IF EXISTS clinicOwners");
         db.execSQL("DROP TABLE IF EXISTS images");
+        db.execSQL("DROP TABLE IF EXISTS " +TABLE_NAME_VET);
+        db.execSQL("DROP TABLE IF EXISTS " +TABLE_APPOINTMENTS);
+        db.execSQL("DROP TABLE IF EXISTS " +TABLE_DIETMED);
+        db.execSQL("DROP TABLE IF EXISTS " +TABLE_VACCINATION);
         // Drop other tables as needed
         onCreate(db); // Recreate tables
     }
@@ -155,6 +268,21 @@ public class DBHelper extends SQLiteOpenHelper {
         return rowID;
     }
 
+    public synchronized long addVet(clinicVet vet){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_FIRST_NAME, vet.getFirstName());
+        values.put(COLUMN_LAST_NAME, vet.getLastName());
+        values.put(COLUMN_EMAIL, vet.getEmailAdd());
+        values.put(COLUMN_PASSWORD, vet.getPassword());
+        values.put(COLUMN_CONTACT_NO, vet.getContactNo());
+        values.put(COLUMN_VET_DP, vet.getImageID());
+
+        long rowID = db.insert(TABLE_NAME_VET, null, values);
+        db.close();
+        return rowID;
+    }
+
     public synchronized long addPet(pets pet){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -170,6 +298,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(COLUMN_PET_PHOTO, pet.getImageID());
         values.put(COLUMN_PET_BIRTHDATE, pet.getBirthdate().toString());
         values.put(COLUMN_OWNER_ID, pet.getOwnerID());
+        values.put(COLUMN_VET_ID, pet.getVetID());
 
         long result = db.insert(TABLE_NAME_PET, null, values);
         db.close();
@@ -194,6 +323,25 @@ public class DBHelper extends SQLiteOpenHelper {
         try {
             cursor = db.query(
                     TABLE_NAME_PETOWNER,
+                    null,
+                    COLUMN_EMAIL + " =?",
+                    new String[]{email},
+                    null, null, null);
+
+            boolean exists = cursor.getCount() > 0;
+            return exists;
+        } finally {
+            if (cursor != null) cursor.close();
+            db.close();
+        }
+    }
+
+    public boolean checkIfVetExists(String email){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        try {
+            cursor = db.query(
+                    TABLE_NAME_VET,
                     null,
                     COLUMN_EMAIL + " =?",
                     new String[]{email},
@@ -262,6 +410,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return ownerID;
     }
 
+
     public petOwners checkLogin(String logincredential, String password){
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -287,6 +436,32 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return owner;
+    }
+
+    public clinicVet checkVetLogin(String logincredential, String password){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT * FROM " + TABLE_NAME_VET +
+                " WHERE " + COLUMN_EMAIL + " =? AND " +
+                COLUMN_PASSWORD + " =?";
+        Cursor cursor = db.rawQuery(query, new String[]{logincredential, password});
+
+        clinicVet vet = null;
+        if(cursor.moveToFirst()){
+            String email = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EMAIL));
+            String hashedpassword = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PASSWORD));
+            String fname = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FIRST_NAME));
+            String lname = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LAST_NAME));
+            String contact = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTACT_NO));
+            long imageID = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_VET_DP));
+            long vetID = cursor.getLong(cursor.getColumnIndexOrThrow(_ID));
+
+            Log.d("CHECK VET ID DB", "VETID: "+vetID);
+            vet = new clinicVet(vetID, imageID, fname, lname, email, hashedpassword, contact);
+        }
+        cursor.close();
+        db.close();
+        return vet;
     }
 
     public List<pets> getAllPets(){

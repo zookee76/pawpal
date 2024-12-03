@@ -29,6 +29,21 @@ public class pets implements Parcelable {
         this.vetID = vetID;
     }
 
+    public pets( long imageID, long ownerID, long vetID, String name, String breed, String sex, String color, String markings, String birthdate, int age, Double height, Double weight) {
+        this.name = name;
+        this.breed = breed;
+        this.sex = sex;
+        this.color = color;
+        this.markings = markings;
+        this.birthdate = birthdate;
+        this.age = age;
+        this.height = height;
+        this.weight = weight;
+        this.imageID = imageID;
+        this.ownerID = ownerID;
+        this.vetID = vetID;
+    }
+
     public pets(String name, String breed, String sex, String color, String markings, String birthdate, int age, Double height, Double weight, long ID, long imageID, long ownerID) {
         this.name = name;
         this.breed = breed;
@@ -44,8 +59,6 @@ public class pets implements Parcelable {
         this.ownerID = ownerID;
     }
 
-
-
     public pets(String name, String breed, String sex, String color, String markings, String birthdate, int age, long ownerID, long imageID, Double height, Double weight) {
         this.name = name;
         this.breed = breed;
@@ -59,6 +72,8 @@ public class pets implements Parcelable {
         this.height = height;
         this.weight = weight;
     }
+
+
 
     protected pets(Parcel in) {
         name = in.readString();
@@ -81,6 +96,7 @@ public class pets implements Parcelable {
         ID = in.readLong();
         imageID = in.readLong();
         ownerID = in.readLong();
+        vetID = in.readLong();
     }
 
     public static final Creator<pets> CREATOR = new Creator<pets>() {
@@ -232,6 +248,7 @@ public class pets implements Parcelable {
         parcel.writeLong(ID);
         parcel.writeLong(imageID);
         parcel.writeLong(ownerID);
+        parcel.writeLong(vetID);
     }
 }
 

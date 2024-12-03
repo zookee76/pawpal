@@ -70,7 +70,7 @@
             android:id="@+id/tv_userprofile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Clinic Profile"
+            android:text="PawPals"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -78,6 +78,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.744" />
+
+        <TextView
+            android:id="@+id/tv_vetname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vet Name"
+            android:textColor="#3F51B5"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.913"
+            app:layout_constraintStart_toEndOf="@+id/tv_userprofile"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.744" />
 

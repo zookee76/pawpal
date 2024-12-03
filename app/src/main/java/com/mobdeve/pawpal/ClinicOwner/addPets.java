@@ -2,12 +2,8 @@ package com.mobdeve.pawpal.ClinicOwner;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,21 +22,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mobdeve.pawpal.Database.DBHelper;
 import com.mobdeve.pawpal.IntentKeys;
+import com.mobdeve.pawpal.Model.clinicVet;
 import com.mobdeve.pawpal.Model.images;
 import com.mobdeve.pawpal.Model.petOwners;
 import com.mobdeve.pawpal.Model.pets;
-import com.mobdeve.pawpal.PetOwner.phomedashboard;
-import com.mobdeve.pawpal.PetOwner.pregister;
 import com.mobdeve.pawpal.R;
 import com.mobdeve.pawpal.Shared.appointmentspage;
 import com.mobdeve.pawpal.Shared.consolidatedsummary;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class addPets extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -49,12 +42,26 @@ public class addPets extends AppCompatActivity implements AdapterView.OnItemSele
     private Uri selectedPhotoUri;
     private ImageView petphoto;
     private DBHelper db;
+    private String firstName, lastName;
+    private long vetID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_addpets);
+        // Get Data
+        Intent intent = getIntent();
+        clinicVet vet = intent.getParcelableExtra("USER_DATA");
+        if(vet != null){
+            firstName = vet.getFirstName();
+            lastName = vet.getLastName();
+            vetID = vet.getVetID();
+            Log.d("VET ID", "VETID:" + vetID);
+
+            TextView tvName = findViewById(R.id.text_vetname);
+            tvName.setText(firstName + " " + lastName);
+        }
 
         db = new DBHelper(getApplicationContext());
 
@@ -230,11 +237,11 @@ public class addPets extends AppCompatActivity implements AdapterView.OnItemSele
                         return;
                     }
 
-                    Integer ownerID = db.getOwnerID(owner);
-
+                    long ownerID = db.getOwnerID(owner);
                     long imageID = 0;
-
-                    pets newPet = new pets(name, breed, sex, color, markings, bdate, age, ownerID, imageID, height, weight);
+                    long vet = vetID;
+                    Log.d("CHECK VET ID AGAIN", "ID: "+ vet);
+                    pets newPet = new pets(imageID, ownerID, vet, name, breed, sex, color, markings, bdate, age, height, weight);
                     long newPetID = db.addPet(newPet);
                     Log.d("NEWPETID", "ID: "+newPetID);
 
@@ -252,7 +259,7 @@ public class addPets extends AppCompatActivity implements AdapterView.OnItemSele
                         }
                     }
 
-                    Log.d("NEWPET", "Name=" + name + ", Breed=" + breed + ", Age=" + age + ", IMAGEID= " + imageID + " Owner ID=" + newPetID);
+                    Log.d("NEWPET", "Name=" + name + ", Breed=" + breed + ", Age=" + age + ", IMAGEID= " + imageID + " Owner ID=" + newPetID + "VET ID" + vetID);
 
                     if(newPetID>0){
                         Toast.makeText(addPets.this, "Pet added successfully!", Toast.LENGTH_SHORT).show();

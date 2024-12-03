@@ -18,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mobdeve.pawpal.Adapter.clinicpetsAdapter;
 import com.mobdeve.pawpal.Database.DBHelper;
+import com.mobdeve.pawpal.Model.clinicVet;
+import com.mobdeve.pawpal.Model.petOwners;
 import com.mobdeve.pawpal.Model.pets;
 import com.mobdeve.pawpal.Model.images;
 import com.mobdeve.pawpal.R;
@@ -40,12 +42,26 @@ public class clinicpets extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_clinicpets);
 
+        // Get Data
+        Intent intent = getIntent();
+        clinicVet vet = intent.getParcelableExtra("USER_DATA");
+        if(vet != null){
+            String firstName = vet.getFirstName();
+            TextView tvName = findViewById(R.id.tv_vetname);
+            tvName.setText(firstName);
+            Log.d("CHECK clinicpets", "VET NAME: " + vet.getFirstName() + "VET ID: " + vet.getVetID());
+
+        }else{
+            Log.d("CHECK clinicpets", "NO VET");
+
+        }
 
         FloatingActionButton addPets = findViewById(R.id.btn_addpets);
         addPets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(clinicpets.this, addPets.class);
+                intent.putExtra("USER_DATA", vet);
                 startActivityForResult(intent, 1);
                 //startActivity(intent);
             }

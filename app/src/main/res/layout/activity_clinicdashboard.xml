@@ -32,7 +32,7 @@
                     android:src="@drawable/fiimage" />
 
                 <TextView
-                    android:id="@+id/tv_cdashboard"
+                    android:id="@+id/tv_vetname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
