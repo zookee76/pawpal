@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobdeve.pawpal.Model.consolidatedrecords;
@@ -16,22 +17,26 @@ import com.mobdeve.pawpal.R;
 import com.mobdeve.pawpal.ClinicOwner.cmedicaldocs;
 import com.mobdeve.pawpal.PetOwner.pmedicaldocs;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class consolidatedrecordadapter extends RecyclerView.Adapter<consolidatedrecordadapter.consolidatedRecordViewHolder> {
 
     private Context context;
     private List<consolidatedrecords> recordsList;
+    private List<consolidatedrecords> recordsListFull; // A copy of the original list
     private String userType;
 
     public consolidatedrecordadapter(Context context, List<consolidatedrecords> recordsList) {
         this.context = context;
         this.recordsList = recordsList;
+        this.recordsListFull = new ArrayList<>(recordsList); // Create a copy of the original list
     }
 
     public consolidatedrecordadapter(Context context, List<consolidatedrecords> recordsList, boolean isPetOwner) {
         this.context = context;
         this.recordsList = recordsList;
+        this.recordsListFull = new ArrayList<>(recordsList); // Create a copy of the original list
         this.userType = isPetOwner ? "pet owner" : "clinic";
     }
 
@@ -54,17 +59,13 @@ public class consolidatedrecordadapter extends RecyclerView.Adapter<consolidated
 
         if ("clinic".equals(userType)){
             holder.seeDetailsButton.setOnClickListener(v -> {
-                // Handle button click (e.g., open details page, etc.)
                 Intent intent = new Intent(context, cmedicaldocs.class);
-                // Insert logic for handling of data
                 context.startActivity(intent);
             });
         }
         else{
             holder.seeDetailsButton.setOnClickListener(v -> {
-                // Handle button click (e.g., open details page, etc.)
                 Intent intent = new Intent(context, pmedicaldocs.class);
-                // Insert logic for handling of data
                 context.startActivity(intent);
             });
         }
@@ -73,6 +74,41 @@ public class consolidatedrecordadapter extends RecyclerView.Adapter<consolidated
     @Override
     public int getItemCount() {
         return recordsList.size();
+    }
+
+    public void filterList(String query) {
+        List<consolidatedrecords> filteredList = new ArrayList<>();
+
+        if (query.isEmpty()) {
+            recordsList.clear();
+            recordsList.addAll(recordsListFull);
+            notifyDataSetChanged();
+
+            if (context instanceof AppCompatActivity) {
+                ((AppCompatActivity) context).findViewById(R.id.rv_consolrecordscard).setVisibility(View.GONE);
+            }
+        } else {
+            for (consolidatedrecords record : recordsListFull) {
+                if (record.getTitle().toLowerCase().contains(query.toLowerCase()) ||
+                        record.getDocType().toLowerCase().contains(query.toLowerCase())) {
+                    filteredList.add(record);
+                }
+            }
+
+            if (filteredList.isEmpty()) {
+                if (context instanceof AppCompatActivity) {
+                    ((AppCompatActivity) context).findViewById(R.id.rv_consolrecordscard).setVisibility(View.GONE);
+                }
+            } else {
+                if (context instanceof AppCompatActivity) {
+                    ((AppCompatActivity) context).findViewById(R.id.rv_consolrecordscard).setVisibility(View.VISIBLE);
+                }
+
+                recordsList.clear();
+                recordsList.addAll(filteredList);
+                notifyDataSetChanged();
+            }
+        }
     }
 
     public static class consolidatedRecordViewHolder extends RecyclerView.ViewHolder {
@@ -92,3 +128,4 @@ public class consolidatedrecordadapter extends RecyclerView.Adapter<consolidated
         }
     }
 }
+

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.appcompat.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,38 +27,58 @@ public class consolidatedsummary extends AppCompatActivity {
 
     private RecyclerView rvConsolidatedRecordList;
     private consolidatedrecordadapter adapter;
-    private List<consolidatedrecords> consolidatedrecordsList;
+    private List<consolidatedrecords> recordsList;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_consolidatedsummary);
 
-        //Back Handle
+        // Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
         TextView backTxt = findViewById(R.id.tv_back);
 
-        //Navigation Handle
+        // Navigation Handle
         ImageView home, calendar, files, profile, pets;
         home = findViewById(R.id.iv_home);
         pets = findViewById(R.id.iv_pets);
         calendar = findViewById(R.id.iv_calendar);
-        files = findViewById((R.id.iv_files));
+        files = findViewById(R.id.iv_files);
         profile = findViewById(R.id.iv_userprofile);
 
-        //Recyclerview handle
+        // Search View setup
+        searchView = findViewById(R.id.searchbartext);  // Assuming search_view is added in your layout XML.
+
+        // Recyclerview handle
         rvConsolidatedRecordList = findViewById(R.id.rv_consolrecordscard);
         rvConsolidatedRecordList.setLayoutManager(new LinearLayoutManager(this));
-        consolidatedrecordsList = new ArrayList<>();
+        recordsList = new ArrayList<>();
+
+        rvConsolidatedRecordList.setVisibility(View.GONE);
+
         boolean isPetOwner = getIntent().getBooleanExtra("IS_PET_OWNER", false);
 
-        if(isPetOwner){
+        if (isPetOwner) {
             loadConsolidatedSummaries();
-            adapter = new consolidatedrecordadapter(this, consolidatedrecordsList);
+            adapter = new consolidatedrecordadapter(this, recordsList);
             rvConsolidatedRecordList.setAdapter(adapter);
 
-            // backhandle
+            // Search functionality
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    adapter.filterList(newText); // Call the filter method in adapter
+                    return false;
+                }
+            });
+
+            // back handle
             View.OnClickListener backListnr = new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -69,7 +90,7 @@ public class consolidatedsummary extends AppCompatActivity {
             backImg.setOnClickListener(backListnr);
             backTxt.setOnClickListener(backListnr);
 
-            //Link to navigation buttons
+            // Link to navigation buttons
             home.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -117,11 +138,24 @@ public class consolidatedsummary extends AppCompatActivity {
                     finish();
                 }
             });
-        }
-        else{
+        } else {
             loadClinicConsoSum();
-            adapter = new consolidatedrecordadapter(this, consolidatedrecordsList, isPetOwner);
+            adapter = new consolidatedrecordadapter(this, recordsList, isPetOwner);
             rvConsolidatedRecordList.setAdapter(adapter);
+
+            // Search functionality
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    adapter.filterList(newText); // Call the filter method in adapter
+                    return false;
+                }
+            });
 
             // back handle
             View.OnClickListener backListnr = new View.OnClickListener() {
@@ -135,7 +169,7 @@ public class consolidatedsummary extends AppCompatActivity {
             backImg.setOnClickListener(backListnr);
             backTxt.setOnClickListener(backListnr);
 
-            //Link to navigation buttons
+            // Link to navigation buttons
             pets.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -186,11 +220,12 @@ public class consolidatedsummary extends AppCompatActivity {
     }
 
     private void loadConsolidatedSummaries() {
-        consolidatedrecordsList.add(new consolidatedrecords(1,"Title", "Lab Results", "19/10/2024", "Dr. QuackQuack", "casper_results"));
+        recordsList.add(new consolidatedrecords(1, "Title", "Lab Results", "19/10/2024", "Dr. QuackQuack", "casper_results"));
+        recordsList.add(new consolidatedrecords(4, "Title222", "Lab Results", "19/10/2024", "Dr. QuackQuack", "meester_results"));
     }
 
-    private void loadClinicConsoSum(){
-        consolidatedrecordsList.add(new consolidatedrecords(2,"Title", "Lab Results", "19/10/2024", "Dr. QuackQuack", "casper_results"));
-        consolidatedrecordsList.add(new consolidatedrecords(3,"Title", "Lab Results", "19/10/2024", "Dr. QuackQuack", "casper_results"));
+    private void loadClinicConsoSum() {
+        recordsList.add(new consolidatedrecords(2, "Title", "Lab Results", "19/10/2024", "Dr. QuackQuack", "casper_results"));
+        recordsList.add(new consolidatedrecords(3, "Title", "Lab Results", "19/10/2024", "Dr. QuackQuack", "casper_results"));
     }
 }
