@@ -21,8 +21,11 @@ import com.mobdeve.pawpal.Shared.consolidatedsummary;
 import com.mobdeve.pawpal.Model.overviewentry;
 import com.mobdeve.pawpal.Adapter.overviewentryadapter;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class chomedashboard extends AppCompatActivity {
 
@@ -45,6 +48,10 @@ public class chomedashboard extends AppCompatActivity {
             Log.d("CHECK LOGGED  VET", "VET NAME: " + vet.getFirstName() + "VET ID: " + vet.getVetID());
 
         }
+
+        TextView overviewDate = findViewById(R.id.overviewDate);
+        String currentDate = new SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault()).format(new Date());
+        overviewDate.setText(currentDate);
 
         rv_overviewentries = findViewById(R.id.rv_overviewentries);
         rv_overviewentries.setLayoutManager(new LinearLayoutManager(this));
