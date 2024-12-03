@@ -121,7 +121,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     tools:listitem="@layout/rv_consolrecordscard" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/btn_addpets"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="55dp"
+                    android:clickable="true"
+                    android:foreground="@drawable/baseline_add_24"
+                    app:backgroundTint="#2195F1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
@@ -182,4 +195,18 @@
             android:padding="10dp"
             app:srcCompat="@drawable/profile" />
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_addrecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:clickable="true"
+        android:foreground="@drawable/baseline_add_24"
+        android:contentDescription="Add Pets"
+        android:src="@drawable/baseline_add_24"
+        app:backgroundTint="#2195F1" />
 </RelativeLayout>

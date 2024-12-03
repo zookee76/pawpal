@@ -32,6 +32,15 @@ public class DBHelper extends SQLiteOpenHelper {
             TABLE_VACCINATION = "vaccinations",
             TABLE_APPOINTMENTS = "appointments",
             TABLE_DIETMED = "dietmed",
+            TABLE_CONSOLIDATED_RECORDS = "consolidatedRecords",
+
+    // consolidated records columns
+            COLUMN_RECORD_NO = "recordNo",
+            RECORD_TITLE = "title",
+            DOC_TYPE = "docType",
+            DOC_DATE = "docDate",
+            VETERINARIAN = "veterinarian",
+            RECORD_FILE = "file",
 
     // PetOwner and Vet Columns
             COLUMN_FIRST_NAME = "firstName",
@@ -199,6 +208,14 @@ public class DBHelper extends SQLiteOpenHelper {
                     "FOREIGN KEY (" + COLUMN_OWNER_ID + ") REFERENCES " + TABLE_NAME_PETOWNER + " (" + _ID + "), " +
                     "FOREIGN KEY (" + COLUMN_PET_ID + ") REFERENCES " + TABLE_NAME_PET + " (" + _ID + "))";
 
+    public static final String CREATE_CONSOLIDATED_TABLE =
+            "CREATE TABLE IF NOT EXISTS " + TABLE_CONSOLIDATED_RECORDS + " (" +
+                    COLUMN_RECORD_NO + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    RECORD_TITLE + " TEXT NOT NULL, " +
+                    DOC_TYPE + " TEXT NOT NULL, " +
+                    DOC_DATE + " DATETIME NOT NULL, " +
+                    VETERINARIAN + " TEXT NOT NULL, " +
+                    RECORD_FILE + " TEXT NOT NULL)";
 
     public DBHelper(Context context){
         super(context, DB_NAME, null, DB_VER);
@@ -215,6 +232,7 @@ public class DBHelper extends SQLiteOpenHelper {
             db.execSQL(CREATE_TABLE_APPOINTMENTS);
             db.execSQL(CREATE_TABLE_DIETMED);
             db.execSQL(CREATE_TABLE_VACCINATIONS);
+            db.execSQL(CREATE_CONSOLIDATED_TABLE);
             Log.d("DBHELPER", "Tables created successfully");
         } catch (Exception e) {
             Log.e("DBHELPER", "Error creating tables", e);
@@ -231,6 +249,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(DROP + " " + TABLE_APPOINTMENTS);
         db.execSQL(DROP + " " + TABLE_DIETMED);
         db.execSQL(DROP + " " + TABLE_VACCINATION);
+        db.execSQL(DROP + " " + TABLE_CONSOLIDATED_RECORDS);
         onCreate(db);
     }
 
@@ -243,6 +262,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " +TABLE_APPOINTMENTS);
         db.execSQL("DROP TABLE IF EXISTS " +TABLE_DIETMED);
         db.execSQL("DROP TABLE IF EXISTS " +TABLE_VACCINATION);
+        db.execSQL("DROP TABLE IF EXISTS " +TABLE_CONSOLIDATED_RECORDS);
         // Drop other tables as needed
         onCreate(db); // Recreate tables
     }

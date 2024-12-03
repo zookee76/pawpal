@@ -1,6 +1,7 @@
 package com.mobdeve.pawpal.Shared;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,8 +11,9 @@ import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mobdeve.pawpal.Adapter.consolidatedrecordadapter;
+import com.mobdeve.pawpal.Database.DBHelper;
 import com.mobdeve.pawpal.Model.consolidatedrecords;
 import com.mobdeve.pawpal.PetOwner.petprofilepage;
 import com.mobdeve.pawpal.R;
@@ -29,11 +31,14 @@ public class consolidatedsummary extends AppCompatActivity {
     private consolidatedrecordadapter adapter;
     private List<consolidatedrecords> recordsList;
     private SearchView searchView;
+    private DBHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consolidatedsummary);
+
+        db = new DBHelper(getApplicationContext());
 
         // Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
@@ -48,7 +53,17 @@ public class consolidatedsummary extends AppCompatActivity {
         profile = findViewById(R.id.iv_userprofile);
 
         // Search View setup
-        searchView = findViewById(R.id.searchbartext);  // Assuming search_view is added in your layout XML.
+        searchView = findViewById(R.id.searchbartext);
+
+        FloatingActionButton addPets = findViewById(R.id.btn_addrecord);
+        addPets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(consolidatedsummary.this, com.mobdeve.pawpal.ClinicOwner.addRecords.class);
+                startActivityForResult(intent, 1);
+                //startActivity(intent);
+            }
+        });
 
         // Recyclerview handle
         rvConsolidatedRecordList = findViewById(R.id.rv_consolrecordscard);
@@ -140,6 +155,8 @@ public class consolidatedsummary extends AppCompatActivity {
             });
         } else {
             loadClinicConsoSum();
+
+
             adapter = new consolidatedrecordadapter(this, recordsList, isPetOwner);
             rvConsolidatedRecordList.setAdapter(adapter);
 
@@ -220,12 +237,45 @@ public class consolidatedsummary extends AppCompatActivity {
     }
 
     private void loadConsolidatedSummaries() {
-        recordsList.add(new consolidatedrecords(1, "Title", "Lab Results", "19/10/2024", "Dr. QuackQuack", "casper_results"));
-        recordsList.add(new consolidatedrecords(4, "Title222", "Lab Results", "19/10/2024", "Dr. QuackQuack", "meester_results"));
+        DBHelper dbHelper = new DBHelper(this);
+        /* Cursor cursor = dbHelper.getAllConsolidatedRecords();
+
+        // Loop through the cursor and add records to the list
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndex(DBHelper.COLUMN_RECORD_NO));
+                String title = cursor.getString(cursor.getColumnIndex(DBHelper.RECORD_TITLE));
+                String docType = cursor.getString(cursor.getColumnIndex(DBHelper.DOC_TYPE));
+                String docDate = cursor.getString(cursor.getColumnIndex(DBHelper.DOC_DATE));
+                String veterinarian = cursor.getString(cursor.getColumnIndex(DBHelper.VETERINARIAN));
+                String file = cursor.getString(cursor.getColumnIndex(DBHelper.RECORD_FILE));
+
+                // Add records to the list
+                recordsList.add(new consolidatedrecords(title, docType, docDate, veterinarian, file));
+            } while (cursor.moveToNext());
+
+            cursor.close();
+        }*/
     }
 
     private void loadClinicConsoSum() {
-        recordsList.add(new consolidatedrecords(2, "Title", "Lab Results", "19/10/2024", "Dr. QuackQuack", "casper_results"));
-        recordsList.add(new consolidatedrecords(3, "Title", "Lab Results", "19/10/2024", "Dr. QuackQuack", "casper_results"));
+        /* Cursor cursor = db.getAllConsolidatedRecords();
+
+        // Loop through the cursor and add records to the list
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndex(DBHelper.COLUMN_RECORD_NO));
+                String title = cursor.getString(cursor.getColumnIndex(DBHelper.RECORD_TITLE));
+                String docType = cursor.getString(cursor.getColumnIndex(DBHelper.DOC_TYPE));
+                String docDate = cursor.getString(cursor.getColumnIndex(DBHelper.DOC_DATE));
+                String veterinarian = cursor.getString(cursor.getColumnIndex(DBHelper.VETERINARIAN));
+                String file = cursor.getString(cursor.getColumnIndex(DBHelper.RECORD_FILE));
+
+                // Add records to the list
+                recordsList.add(new consolidatedrecords(title, docType, docDate, veterinarian, file));
+            } while (cursor.moveToNext());
+
+            cursor.close();
+        } */
     }
 }
