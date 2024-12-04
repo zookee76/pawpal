@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.mobdeve.pawpal.Database.DBHelper;
 import com.mobdeve.pawpal.Model.clinicVet;
 import com.mobdeve.pawpal.Model.petOwners;
@@ -15,6 +16,8 @@ import com.mobdeve.pawpal.Model.pets;
 import com.mobdeve.pawpal.R;
 import com.mobdeve.pawpal.Shared.appointmentspage;
 import com.mobdeve.pawpal.Shared.consolidatedsummary;
+
+import java.io.File;
 
 public class cmedicaldocs extends AppCompatActivity {
     private DBHelper DB;
@@ -29,13 +32,32 @@ public class cmedicaldocs extends AppCompatActivity {
         setContentView(R.layout.activity_clinicpetprofilemedical);
 
         // Get Data
+        DB = new DBHelper(getApplicationContext());
         Intent intent = getIntent();
         vetData = intent.getParcelableExtra("VET_DATA");
         petData = intent.getParcelableExtra("PET_DATA");
+        petOwnerData = intent.getParcelableExtra("PETOWNER_DATA");
 
         long petID = petData.getID();
         petOwnerData = DB.getPetOwner(petID);
 
+        // ELEMENTS
+        TextView petName = findViewById(R.id.petName);
+        ImageView petImage = findViewById(R.id.petImage);
+        petName = findViewById(R.id.petName);
+        petName.setText(petData.getName());
+
+        long imageID = petData.getImageID();
+        String imagePath = DB.getImagePath(imageID);
+
+        if(imagePath!=null){
+            File imgFile = new File(imagePath);
+            if(imgFile.exists()){
+                Glide.with(getApplicationContext())
+                        .load(imgFile)
+                        .into(petImage);
+            }
+        }
         //Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
         TextView backTxt = findViewById(R.id.tv_back);
@@ -63,8 +85,8 @@ public class cmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cmedicaldocs.this, cabout.class);
-                intent.putExtra("USER_DATA", vetData);
-                intent.putExtra("VET_DATA", petData);
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
                 intent.putExtra("PETOWNER_DATA", petOwnerData);
                 startActivity(intent);
                 finish();
@@ -75,8 +97,8 @@ public class cmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cmedicaldocs.this, cmedicaldocs.class);
-                intent.putExtra("USER_DATA", vetData);
-                intent.putExtra("VET_DATA", petData);
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
                 intent.putExtra("PETOWNER_DATA", petOwnerData);
                 startActivity(intent);
                 finish();
@@ -87,8 +109,8 @@ public class cmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cmedicaldocs.this, cmedicationdiet.class);
-                intent.putExtra("USER_DATA", vetData);
-                intent.putExtra("VET_DATA", petData);
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
                 intent.putExtra("PETOWNER_DATA", petOwnerData);
                 startActivity(intent);
                 finish();
@@ -99,8 +121,8 @@ public class cmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cmedicaldocs.this, cschedules.class);
-                intent.putExtra("USER_DATA", vetData);
-                intent.putExtra("VET_DATA", petData);
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
                 intent.putExtra("PETOWNER_DATA", petOwnerData);
                 startActivity(intent);
                 finish();
@@ -111,8 +133,8 @@ public class cmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cmedicaldocs.this, editmedicaldocs.class);
-                intent.putExtra("USER_DATA", vetData);
-                intent.putExtra("VET_DATA", petData);
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
                 intent.putExtra("PETOWNER_DATA", petOwnerData);
                 startActivity(intent);
             }
@@ -131,6 +153,7 @@ public class cmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cmedicaldocs.this, clinicpets.class);
+                intent.putExtra("USER_DATA", vetData);
                 startActivity(intent);
                 finish();
             }
@@ -139,6 +162,7 @@ public class cmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cmedicaldocs.this, chomedashboard.class);
+                intent.putExtra("USER_DATA", vetData);
                 startActivity(intent);
                 finish();
             }
@@ -148,6 +172,7 @@ public class cmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cmedicaldocs.this, clinicprofilepage.class);
+                intent.putExtra("USER_DATA", vetData);
                 startActivity(intent);
                 finish();
             }
@@ -157,6 +182,7 @@ public class cmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cmedicaldocs.this, consolidatedsummary.class);
+                intent.putExtra("USER_DATA", vetData);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
                 finish();
@@ -167,10 +193,13 @@ public class cmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cmedicaldocs.this, appointmentspage.class);
+                intent.putExtra("USER_DATA", vetData);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
                 finish();
             }
         });
     }
+
+
 }

@@ -99,7 +99,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/outerCardView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:elevation="6dp"
                 app:cardBackgroundColor="#FFFBEC"
                 app:cardCornerRadius="30dp">
@@ -399,6 +399,7 @@
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
         </LinearLayout>
     </ScrollView>
 
