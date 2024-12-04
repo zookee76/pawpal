@@ -23,7 +23,7 @@ public class ceditclinicprofile extends AppCompatActivity {
         //Save and Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
         TextView backTxt = findViewById(R.id.tv_back);
-        Button save = findViewById(R.id.btn_save);
+        Button save = findViewById(R.id.btn_saveprofile);
 
         View.OnClickListener backListnr = new View.OnClickListener() {
             @Override
