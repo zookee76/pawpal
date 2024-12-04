@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.mobdeve.pawpal.Database.DBHelper;
+import com.mobdeve.pawpal.Model.clinicVet;
 import com.mobdeve.pawpal.Model.pets;
 import com.mobdeve.pawpal.Model.images;
 import com.mobdeve.pawpal.R;
@@ -36,12 +37,14 @@ public class clinicpetsAdapter extends RecyclerView.Adapter<clinicpetsAdapter.cl
     public Context cxt;
     private DBHelper db;
     private List<images> imagesList;
+    private clinicVet vet;
 
-    public clinicpetsAdapter(List<pets> clinicpetsList, Context cxt, DBHelper db, List<images> images) {
+    public clinicpetsAdapter(List<pets> clinicpetsList, Context cxt, DBHelper db, List<images> images, clinicVet vet) {
         this.clinicpetsList = clinicpetsList;
         this.cxt = cxt;
         this.db = db;
         this.imagesList = images;
+        this.vet = vet;
     }
 
     @NonNull
@@ -77,7 +80,8 @@ public class clinicpetsAdapter extends RecyclerView.Adapter<clinicpetsAdapter.cl
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(cxt, cabout.class);
-                    // add logic for getting and passing specific pet data
+                    intent.putExtra("VET_DATA", vet);
+                    intent.putExtra("PET_DATA", clinicPets);
                     cxt.startActivity(intent);
                 }
             });
@@ -86,7 +90,8 @@ public class clinicpetsAdapter extends RecyclerView.Adapter<clinicpetsAdapter.cl
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(cxt, cabout.class);
-                    // add logic for getting and passing specific pet data
+                    intent.putExtra("VET_DATA", vet);
+                    intent.putExtra("PET_DATA", clinicPets);
                     cxt.startActivity(intent);
                 }
             });

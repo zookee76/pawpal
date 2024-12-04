@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobdeve.pawpal.Database.DBHelper;
+import com.mobdeve.pawpal.Model.clinicVet;
 import com.mobdeve.pawpal.Model.petOwners;
 import com.mobdeve.pawpal.Model.pets;
 import com.mobdeve.pawpal.R;
@@ -30,6 +31,7 @@ public class appointmentAdapter extends RecyclerView.Adapter<appointmentAdapter.
     private DBHelper DB;
     private int appointmentNumber = 1;
     private petOwners petowner;
+    private clinicVet vet;
 
     public appointmentAdapter(Context cxt, List<appointment> appointmentList, DBHelper DB, petOwners owner) {
         this.cxt = cxt;
@@ -39,9 +41,12 @@ public class appointmentAdapter extends RecyclerView.Adapter<appointmentAdapter.
         this.petowner = owner;
     }
 
-    public appointmentAdapter(Context cxt, List<appointment> appointmentList, boolean isPetOwner) {
+    public appointmentAdapter(Context cxt, List<appointment> appointmentList, boolean isPetOwner, DBHelper DB, clinicVet vet) {
         this.cxt = cxt;
         this.appointmentList = appointmentList;
+        this.filteredList = new ArrayList<>(appointmentList);
+        this.vet = vet;
+        this.DB = DB;
         this.userType = isPetOwner ? "pet owner" : "clinic";
     }
 

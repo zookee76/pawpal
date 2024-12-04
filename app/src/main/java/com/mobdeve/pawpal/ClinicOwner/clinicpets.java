@@ -77,6 +77,7 @@ public class clinicpets extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(clinicpets.this, chomedashboard.class);
+                intent.putExtra("USER_DATA", vet);
                 startActivity(intent);
                 finish();
             }
@@ -98,6 +99,7 @@ public class clinicpets extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(clinicpets.this, chomedashboard.class);
+                intent.putExtra("USER_DATA", vet);
                 startActivity(intent);
                 finish();
             }
@@ -107,6 +109,7 @@ public class clinicpets extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(clinicpets.this, clinicprofilepage.class);
+                intent.putExtra("USER_DATA", vet);
                 startActivity(intent);
                 finish();
             }
@@ -116,6 +119,7 @@ public class clinicpets extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(clinicpets.this, consolidatedsummary.class);
+                intent.putExtra("USER_DATA", vet);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
                 finish();
@@ -126,6 +130,7 @@ public class clinicpets extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(clinicpets.this, appointmentspage.class);
+                intent.putExtra("USER_DATA", vet);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
                 finish();
@@ -136,6 +141,7 @@ public class clinicpets extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(clinicpets.this, clinicpets.class);
+                intent.putExtra("USER_DATA", vet);
                 startActivity(intent);
                 finish();
             }
@@ -156,7 +162,7 @@ public class clinicpets extends AppCompatActivity {
 
         List<images> imagesList = db.getImagesbyVet(vetID);
 
-        adapter = new clinicpetsAdapter(clinicpetsList, this, db, imagesList);
+        adapter = new clinicpetsAdapter(clinicpetsList, this, db, imagesList, vet);
 
         if(clinicpetsList.isEmpty()){
             message.setVisibility(View.VISIBLE);

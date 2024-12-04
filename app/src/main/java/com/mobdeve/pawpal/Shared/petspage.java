@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobdeve.pawpal.Adapter.petAdapter;
 import com.mobdeve.pawpal.Database.DBHelper;
+import com.mobdeve.pawpal.Model.clinicVet;
 import com.mobdeve.pawpal.Model.petOwners;
 import com.mobdeve.pawpal.Model.pets;
 import com.mobdeve.pawpal.Model.images;
@@ -140,8 +141,8 @@ public class petspage extends AppCompatActivity {
 
         }
         else{
-            loadpetsperowner();
             Intent intent = getIntent();
+            clinicVet vet = intent.getParcelableExtra("USER_DATA");
 
             // back handle
             View.OnClickListener backListnr = new View.OnClickListener() {
@@ -167,6 +168,7 @@ public class petspage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(petspage.this, chomedashboard.class);
+                    intent.putExtra("USER_DATA", vet);
                     startActivity(intent);
                     finish();
                 }
@@ -176,6 +178,7 @@ public class petspage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(petspage.this, clinicprofilepage.class);
+                    intent.putExtra("USER_DATA", vet);
                     startActivity(intent);
                     finish();
                 }
@@ -185,6 +188,7 @@ public class petspage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(petspage.this, consolidatedsummary.class);
+                    intent.putExtra("USER_DATA", vet);
                     startActivity(intent);
                     finish();
                 }
@@ -194,6 +198,7 @@ public class petspage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(petspage.this, appointmentspage.class);
+                    intent.putExtra("USER_DATA", vet);
                     startActivity(intent);
                     finish();
                 }
@@ -214,6 +219,7 @@ public class petspage extends AppCompatActivity {
     }
     // use this when logged as clinic owner
     private void loadpetsperowner(){
+
         // sample data for pets change  with logic for getting all pets
         /*
         petsList.add(new pets("Callie", "Domestic Short Hair", "Female", 4, R.drawable.callie));

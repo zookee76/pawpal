@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.mobdeve.pawpal.Adapter.appointmentAdapter;
 import com.mobdeve.pawpal.Database.DBHelper;
 import com.mobdeve.pawpal.Model.appointment;
+import com.mobdeve.pawpal.Model.clinicVet;
 import com.mobdeve.pawpal.Model.petOwners;
 import com.mobdeve.pawpal.PetOwner.petprofilepage;
 import com.mobdeve.pawpal.R;
@@ -32,7 +33,8 @@ public class appointmentspage extends AppCompatActivity {
     private appointmentAdapter appAdapter;
     private List<appointment> appointmentList;
     private DBHelper DB;
-    private petOwners user;
+    private petOwners owner;
+    private clinicVet vet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +44,26 @@ public class appointmentspage extends AppCompatActivity {
         DB = new DBHelper(getApplicationContext());
         // Get Data
         Intent intent = getIntent();
-        user = intent.getParcelableExtra("USER_DATA");
+
         appointmentList = new ArrayList<>();
 
         // TEXT SEARCH
         SearchView search = findViewById(R.id.text_search);
+
+        // SEARCH FUNCTION
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                appAdapter.filter(s);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                appAdapter.filter(s);
+                return false;
+            }
+        });
 
         //Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
@@ -67,30 +84,10 @@ public class appointmentspage extends AppCompatActivity {
         appointmentList = new ArrayList<>();
 
         if(isPetOwner){
+            owner = intent.getParcelableExtra("USER_DATA");
             loadappointments();
-            // SEARCH FUNCTION
-            search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                @Override
-                public boolean onQueryTextSubmit(String s) {
-                    appAdapter.filter(s);
-                    return false;
-                }
 
-                @Override
-                public boolean onQueryTextChange(String s) {
-                    appAdapter.filter(s);
-                    return false;
-                }
-            });
-
-            search.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-
-            appAdapter = new appointmentAdapter(this, appointmentList, DB, user);
+            appAdapter = new appointmentAdapter(this, appointmentList, DB, owner);
             rvApp.setAdapter(appAdapter);
 
             //back handle for pet owner
@@ -98,7 +95,7 @@ public class appointmentspage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, phomedashboard.class);
-                    intent.putExtra("USER_DATA", user);
+                    intent.putExtra("USER_DATA", owner);
                     startActivity(intent);
                     finish();
                 }
@@ -111,7 +108,7 @@ public class appointmentspage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, phomedashboard.class);
-                    intent.putExtra("USER_DATA", user);
+                    intent.putExtra("USER_DATA", owner);
                     startActivity(intent);
                     finish();
                 }
@@ -122,7 +119,7 @@ public class appointmentspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, petspage.class);
                     intent.putExtra("IS_PET_OWNER", true);
-                    intent.putExtra("USER_DATA", user);
+                    intent.putExtra("USER_DATA", owner);
                     startActivity(intent);
                     finish();
                 }
@@ -132,7 +129,7 @@ public class appointmentspage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, petprofilepage.class);
-                    intent.putExtra("USER_DATA", user);
+                    intent.putExtra("USER_DATA", owner);
                     startActivity(intent);
                     finish();
                 }
@@ -143,7 +140,7 @@ public class appointmentspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, consolidatedsummary.class);
                     intent.putExtra("IS_PET_OWNER", true);
-                    intent.putExtra("USER_DATA", user);
+                    intent.putExtra("USER_DATA", owner);
                     startActivity(intent);
                     finish();
                 }
@@ -154,14 +151,15 @@ public class appointmentspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, appointmentspage.class);
                     startActivity(intent);
-                    intent.putExtra("USER_DATA", user);
+                    intent.putExtra("USER_DATA", owner);
                     finish();
                 }
             });
         }
         else{
+            vet = intent.getParcelableExtra("USER_DATA");
             loadclinicappointments();
-            appAdapter = new appointmentAdapter(this, appointmentList, isPetOwner);
+            appAdapter = new appointmentAdapter(this, appointmentList, isPetOwner, DB, vet);
             rvApp.setAdapter(appAdapter);
 
             // back handle
@@ -229,7 +227,7 @@ public class appointmentspage extends AppCompatActivity {
 
     //petowner data
     private void loadappointments(){
-        long ownerID = user.getID();
+        long ownerID = owner.getID();
 
         if (DB != null) {
             appointmentList.clear();
@@ -238,11 +236,16 @@ public class appointmentspage extends AppCompatActivity {
         } else {
             Log.e("APPOINTMENTS SIZE", "petsDB is not initialized.");
         }
-        //appointmentList.add(new appointment("001", "Casper", "Ashley Corpuz", "General Checkup", "October 1, 2024. 9AM", "Dr. Vet", "Completed"));
     }
     //clinic data
     private void loadclinicappointments(){
-        //appointmentList.add(new appointment("001", "Casper", "Ashley Corpuz", "General Checkup", "October 1, 2024. 9AM", "Dr. Vet", "Completed"));
-        //appointmentList.add(new appointment("002", "Casper", "Ashley Corpuz", "General Checkup", "October 1, 2024. 9AM", "Dr. Vet", "Scheduled"));
+        long vetID = vet.getVetID();
+        if(DB!=null){
+            appointmentList.clear();
+            appointmentList = DB.getAppointmentByVet(vetID);
+            Log.d("APPOINTMENTS SIZE", "VETID: "+vetID+ "Size: " + appointmentList.size());
+        }else{
+            Log.e("APPOINTMENTS SIZE", "DB is not initialized.");
+        }
     }
 }

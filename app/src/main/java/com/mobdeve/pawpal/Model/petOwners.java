@@ -11,11 +11,8 @@ public class petOwners implements Parcelable {
 
     private String fullname;
 
+
     public petOwners(){
-        this.fname = "";
-        this.lname = "";
-        this.email = "";
-        this.password = "";
     }
 
     public petOwners(String fname) {
@@ -154,7 +151,7 @@ public class petOwners implements Parcelable {
         return imageID;
     }
 
-    public void setImageID(int imageID) {
+    public void setImageID(long imageID) {
         this.imageID = imageID;
     }
 

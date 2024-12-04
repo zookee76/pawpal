@@ -8,17 +8,34 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.mobdeve.pawpal.Database.DBHelper;
+import com.mobdeve.pawpal.Model.clinicVet;
+import com.mobdeve.pawpal.Model.petOwners;
+import com.mobdeve.pawpal.Model.pets;
 import com.mobdeve.pawpal.R;
 import com.mobdeve.pawpal.Shared.appointmentspage;
 import com.mobdeve.pawpal.Shared.consolidatedsummary;
 
 public class cmedicationdiet extends AppCompatActivity {
+    private DBHelper DB;
+    private clinicVet vetData;
+    private pets petData;
+    private petOwners petOwnerData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_clinicpetprofilemediet);
+
+        // Get Data
+        Intent intent = getIntent();
+        vetData = intent.getParcelableExtra("VET_DATA");
+        petData = intent.getParcelableExtra("PET_DATA");
+
+        long petID = petData.getID();
+        petOwnerData = DB.getPetOwner(petID);
+
 
         //Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
@@ -27,13 +44,6 @@ public class cmedicationdiet extends AppCompatActivity {
         View.OnClickListener backListnr = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*
-                Intent intent = new Intent(cmedicationdiet.this, petspage.class);
-                intent.putExtra("IS_PET_OWNER", false);
-                intent.putExtra("PETS_PAGE_TITLE", "List of Pets");
-                cmedicationdiet.this.startActivity(intent);
-
-                 */
                 finish();
             }
         };
@@ -54,7 +64,9 @@ public class cmedicationdiet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cmedicationdiet.this, cabout.class);
-                // handle data here
+                intent.putExtra("USER_DATA", vetData);
+                intent.putExtra("VET_DATA", petData);
+                intent.putExtra("PETOWNER_DATA", petOwnerData);
                 startActivity(intent);
                 finish();
             }
@@ -64,7 +76,9 @@ public class cmedicationdiet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cmedicationdiet.this, cmedicaldocs.class);
-                // handle data here
+                intent.putExtra("USER_DATA", vetData);
+                intent.putExtra("VET_DATA", petData);
+                intent.putExtra("PETOWNER_DATA", petOwnerData);
                 startActivity(intent);
                 finish();
             }
@@ -74,7 +88,9 @@ public class cmedicationdiet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cmedicationdiet.this, cmedicationdiet.class);
-                // handle data here
+                intent.putExtra("USER_DATA", vetData);
+                intent.putExtra("VET_DATA", petData);
+                intent.putExtra("PETOWNER_DATA", petOwnerData);
                 startActivity(intent);
                 finish();
             }
@@ -84,7 +100,9 @@ public class cmedicationdiet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cmedicationdiet.this, cschedules.class);
-                // handle data here
+                intent.putExtra("USER_DATA", vetData);
+                intent.putExtra("VET_DATA", petData);
+                intent.putExtra("PETOWNER_DATA", petOwnerData);
                 startActivity(intent);
                 finish();
             }
@@ -94,7 +112,9 @@ public class cmedicationdiet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cmedicationdiet.this, editmedicationdiet.class);
-                // handle data here
+                intent.putExtra("USER_DATA", vetData);
+                intent.putExtra("VET_DATA", petData);
+                intent.putExtra("PETOWNER_DATA", petOwnerData);
                 startActivity(intent);
             }
         });
