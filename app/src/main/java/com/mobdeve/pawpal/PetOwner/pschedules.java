@@ -51,6 +51,7 @@ public class pschedules extends AppCompatActivity
         // ELEMENTS
         ImageView petImage = findViewById(R.id.petImage);
         petName = findViewById(R.id.petName);
+        petName.setText(petData.getName());
 
         long imageID = petData.getImageID();
         String imagePath = DB.getImagePath(imageID);

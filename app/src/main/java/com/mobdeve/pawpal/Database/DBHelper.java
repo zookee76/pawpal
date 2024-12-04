@@ -13,6 +13,9 @@ import com.mobdeve.pawpal.Model.appointment;
 import com.mobdeve.pawpal.Model.clinicVet;
 import com.mobdeve.pawpal.Model.consolidatedrecords;
 import com.mobdeve.pawpal.Model.dietmed;
+import com.mobdeve.pawpal.Model.nutinstructions;
+import com.mobdeve.pawpal.Model.nutritionfacts;
+import com.mobdeve.pawpal.Model.nutritionplan;
 import com.mobdeve.pawpal.Model.petOwners;
 import com.mobdeve.pawpal.Model.pets;
 import com.mobdeve.pawpal.Model.images;
@@ -37,6 +40,9 @@ public class DBHelper extends SQLiteOpenHelper {
             TABLE_APPOINTMENTS = "appointments",
             TABLE_DIETMED = "dietmed",
             TABLE_CONSOLIDATED_RECORDS = "consolidatedRecords",
+            TABLE_NUTRITION_PLANS = "nutritionPlans",
+            TABLE_NUTRITION_FACTS = "nutritionFacts",
+            TABLE_NUTRITION_STEPS = "nutritionSteps",
 
     // consolidated records columns
             COLUMN_RECORD_NO = "recordNo",
@@ -113,8 +119,26 @@ public class DBHelper extends SQLiteOpenHelper {
     //COLUMN_OWNER_NAME = "ownerName",
     COLUMN_APP_TYPE = "appType",
     // appVet = COLUMN_VET_NAME
-    COLUMN_APP_STATUS = "appStatus";
+    COLUMN_APP_STATUS = "appStatus",
 
+    // NUTRITION PLAN
+    // PET ID
+    // VET ID
+    COLUMN_FOOD_NAME = "diet",
+    COLUMN_SERVING_SIZE = "servingSize",
+    // note = COLUMN_NOTE
+
+    // NUTRITION FACTS
+    COLUMN_DIET_ID = "dietID",
+    COLUMN_CALORIES = "calories",
+    COLUMN_FAT = "fat",
+    COLUMN_FIBER = "fiber",
+    COLUMN_PROTEIN = "protein",
+    COLUMN_KEY_NUTRIENTS = "keyNutrients",
+
+    // NUTRITION INSTRUCTIONS (sTEPS)
+    //COLUMN_DIET_ID = "dietID",
+    COLUMN_STEP = "step";
 
     // CREATE STATEMENTS
     public static final String CREATE_TABLE_PET_OWNER =
@@ -223,6 +247,37 @@ public class DBHelper extends SQLiteOpenHelper {
                     VETERINARIAN + " TEXT NOT NULL, " +
                     RECORD_FILE + " TEXT NOT NULL)";
 
+    public static final String CREATE_TABLE_NUTRITION_PLANS =
+            "CREATE TABLE IF NOT EXISTS " + TABLE_NUTRITION_PLANS + " (" +
+                    _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_PET_ID + " INTEGER NOT NULL, " +
+                    COLUMN_VET_ID + " INTEGER NOT NULL, " +
+                    COLUMN_FOOD_NAME + " TEXT NOT NULL, " +
+                    COLUMN_SERVING_SIZE + " TEXT NOT NULL, " +
+                    COLUMN_NOTE + " TEXT NOT NULL, " +
+                    "FOREIGN KEY (" + COLUMN_PET_ID + ") REFERENCES " + TABLE_NAME_PET + " (" + _ID + "), " +
+                    "FOREIGN KEY (" + COLUMN_VET_ID + ") REFERENCES " + TABLE_NAME_VET + " (" + _ID + "))";
+
+
+    public static final String CREATE_TABLE_NUTRITION_FACTS =
+            "CREATE TABLE IF NOT EXISTS " + TABLE_NUTRITION_FACTS + " (" +
+                    _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_DIET_ID + " INTEGER NOT NULL, " +
+                    COLUMN_CALORIES + " TEXT NOT NULL, " +
+                    COLUMN_FAT + " TEXT NOT NULL, " +
+                    COLUMN_FIBER + " TEXT NOT NULL, " +
+                    COLUMN_PROTEIN + " TEXT NOT NULL, " +
+                    COLUMN_KEY_NUTRIENTS + " TEXT NOT NULL, " +
+                    "FOREIGN KEY (" + COLUMN_DIET_ID + ") REFERENCES " + TABLE_NUTRITION_PLANS + " (" + _ID + "))";
+
+    public static final String CREATE_TABLE_NUTRITION_STEPS =
+            "CREATE TABLE IF NOT EXISTS " + TABLE_NUTRITION_STEPS + " (" +
+                    _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COLUMN_DIET_ID + " INTEGER NOT NULL, " +
+                    COLUMN_STEP + " TEXT NOT NULL, " +
+                    "FOREIGN KEY (" + COLUMN_DIET_ID + ") REFERENCES " + TABLE_NUTRITION_PLANS + " (" + _ID + "))";
+
+
     public DBHelper(Context context){
         super(context, DB_NAME, null, DB_VER);
     }
@@ -239,6 +294,9 @@ public class DBHelper extends SQLiteOpenHelper {
             db.execSQL(CREATE_TABLE_DIETMED);
             db.execSQL(CREATE_TABLE_VACCINATIONS);
             db.execSQL(CREATE_CONSOLIDATED_TABLE);
+            db.execSQL(CREATE_TABLE_NUTRITION_PLANS);
+            db.execSQL(CREATE_TABLE_NUTRITION_FACTS);
+            db.execSQL(CREATE_TABLE_NUTRITION_STEPS);
             Log.d("DBHELPER", "Tables created successfully");
         } catch (Exception e) {
             Log.e("DBHELPER", "Error creating tables", e);
@@ -256,6 +314,9 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(DROP + " " + TABLE_DIETMED);
         db.execSQL(DROP + " " + TABLE_VACCINATION);
         db.execSQL(DROP + " " + TABLE_CONSOLIDATED_RECORDS);
+        db.execSQL(DROP + " " + TABLE_NUTRITION_PLANS);
+        db.execSQL(DROP + " " + TABLE_NUTRITION_FACTS);
+        db.execSQL(DROP + " " + TABLE_NUTRITION_STEPS);
         onCreate(db);
     }
 
@@ -269,6 +330,9 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " +TABLE_DIETMED);
         db.execSQL("DROP TABLE IF EXISTS " +TABLE_VACCINATION);
         db.execSQL("DROP TABLE IF EXISTS " +TABLE_CONSOLIDATED_RECORDS);
+        db.execSQL("DROP TABLE IF EXISTS " +TABLE_NUTRITION_PLANS);
+        db.execSQL("DROP TABLE IF EXISTS " +TABLE_NUTRITION_FACTS);
+        db.execSQL("DROP TABLE IF EXISTS " +TABLE_NUTRITION_STEPS);
         // Drop other tables as needed
         onCreate(db); // Recreate tables
     }
@@ -330,6 +394,53 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
         return result;
     }
+
+    public synchronized long addNutritionPlan(nutritionplan plan){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUMN_PET_ID, plan.getPetID());
+        values.put(COLUMN_VET_ID, plan.getVetID());
+        values.put(COLUMN_FOOD_NAME, plan.getDietname());
+        values.put(COLUMN_SERVING_SIZE, plan.getServingSize());
+        values.put(COLUMN_NOTE, plan.getNote());
+
+        long result = db.insert(TABLE_NUTRITION_PLANS, null, values);
+        db.close();
+        return result;
+    }
+
+    public synchronized long addNutritionFact(nutritionfacts fact){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUMN_DIET_ID, fact.getNutplanID());
+        values.put(COLUMN_CALORIES, fact.getCalories());
+        values.put(COLUMN_FAT, fact.getFat());
+        values.put(COLUMN_FIBER, fact.getFiber());
+        values.put(COLUMN_PROTEIN, fact.getProtein());
+        values.put(COLUMN_KEY_NUTRIENTS, fact.getKeyNutrients());
+
+
+        long result = db.insert(TABLE_NUTRITION_FACTS, null, values);
+        db.close();
+        return result;
+    }
+
+
+    public synchronized long addNutritionStep(nutinstructions step){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUMN_DIET_ID, step.getNutplanID());
+        values.put(COLUMN_STEP, step.getStep());
+
+        long result = db.insert(TABLE_NUTRITION_STEPS, null, values);
+        db.close();
+        return result;
+    }
+
+
 
     public synchronized long addAppointment(appointment app){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -835,6 +946,91 @@ public class DBHelper extends SQLiteOpenHelper {
         return imagePath;
     }
 
+    public nutritionplan getNutritionPlanByPet(long retrievedPetID){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT * FROM " + TABLE_NUTRITION_PLANS +
+                " WHERE " + COLUMN_PET_ID + " =? ";
+
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(retrievedPetID)});
+
+        if(cursor.moveToFirst()){
+            nutritionplan plan = new nutritionplan();
+            plan.setDietname(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FOOD_NAME)));
+            plan.setServingSize(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SERVING_SIZE)));
+            plan.setNote(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NOTE)));
+            plan.setPetID(cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_PET_ID)));
+            plan.setVetID(cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_VET_ID)));
+            plan.setID(cursor.getLong(cursor.getColumnIndexOrThrow(_ID)));
+            /*
+            String foodName = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FOOD_NAME));
+            String servingsize = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SERVING_SIZE));
+            String note = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NOTE));
+            long petID = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_PET_ID));
+            long vetID = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_VET_ID));
+            long dietID = cursor.getLong(cursor.getColumnIndexOrThrow(_ID));
+             */
+
+            cursor.close();
+            db.close();
+            Log.d("NUTPLANCHECK", "NUTID: "+plan.getID());
+            return plan;
+        }else{
+            cursor.close();
+            db.close();
+            Log.d("NUTPLANCHECK", "NO NUT PLAN");
+            return null;
+        }
+    }
+
+    public nutritionfacts getFactsByDiet(long dietID){
+        nutritionfacts fact = new nutritionfacts();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT * FROM " + TABLE_NUTRITION_FACTS +
+                " WHERE " + COLUMN_DIET_ID + " = ?";
+
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(dietID)});
+
+        if (cursor.moveToFirst()){
+            do{
+                fact.setID(cursor.getLong(cursor.getColumnIndexOrThrow(_ID)));
+                fact.setNutplanID(cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_DIET_ID)));
+                fact.setCalories(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CALORIES)));
+                fact.setFat(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FAT)));
+                fact.setFiber(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FIBER)));
+                fact.setProtein(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PROTEIN)));
+                fact.setKeyNutrients(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_KEY_NUTRIENTS)));
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return fact;
+    }
+
+    public List<nutinstructions> getStepsByDiet(long dietID){
+        List<nutinstructions> nutSteps = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT * FROM " + TABLE_NUTRITION_STEPS +
+                " WHERE " + COLUMN_DIET_ID + " = ?";
+
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(dietID)});
+
+        if (cursor.moveToFirst()){
+            do{
+                nutinstructions step = new nutinstructions();
+                step.setID(cursor.getLong(cursor.getColumnIndexOrThrow(_ID)));
+                step.setNutplanID(cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_DIET_ID)));
+                step.setStep(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_STEP)));
+
+                nutSteps.add(step);
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return nutSteps;
+    }
 
     // UPDATE
     public synchronized boolean updatePetOwner(petOwners updated, long ownerID){

@@ -3,6 +3,7 @@ package com.mobdeve.pawpal.PetOwner;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,7 +27,9 @@ import java.io.File;
 public class pabout extends AppCompatActivity
 {
     private DBHelper DB;
-    private TextView petName,petDesc,dateOfBirth,age,gender,breed,height,weight,petcolor,markings,ownername,cellno,address;
+    private TextView petName,petDesc,dateOfBirth,age,gender,breed,height,weight,petcolor,markings,ownername,cellno,address, aboutTitle;
+    private pets petData;
+    private petOwners ownerData;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,12 +38,13 @@ public class pabout extends AppCompatActivity
 
         DB = new DBHelper(getApplicationContext());
         Intent intent = getIntent();
-        pets petData = intent.getParcelableExtra("PET_DATA");
-        petOwners ownerData = intent.getParcelableExtra("OWNER_DATA");
-
-        //ELEMENTS
+        petData = intent.getParcelableExtra("PET_DATA");
+        petOwners retrievedOwnerData = intent.getParcelableExtra("OWNER_DATA");
+        Log.d("CHECKpabout", "ownerData: " + ownerData);
+        // ELEMENTS
         ImageView petImage = findViewById(R.id.petImage);
         petName = findViewById(R.id.petName);
+        petName.setText(petData.getName());
         petDesc = findViewById(R.id.aboutdescription);
         dateOfBirth = findViewById(R.id.dateofbirth);
         age = findViewById(R.id.age);
@@ -53,7 +57,13 @@ public class pabout extends AppCompatActivity
         ownername = findViewById(R.id.ownername);
         cellno = findViewById(R.id.cellphonenumber);
         address = findViewById(R.id.address);
+        aboutTitle = findViewById(R.id.aboutTitle);
 
+        if(retrievedOwnerData != null){
+            ownerData = retrievedOwnerData;
+            populatePetDetails(petData);
+            populatePetOwnerDetails(ownerData);
+        }
         long imageID = petData.getImageID();
         String imagePath = DB.getImagePath(imageID);
 
@@ -66,9 +76,9 @@ public class pabout extends AppCompatActivity
             }
         }
 
-        populatePetDetails(petData);
-        populatePetOwnerDetails(ownerData);
-
+        if(petData != null){
+            petName.setText(petData.getName());
+        }
         //Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
         TextView backTxt = findViewById(R.id.tv_back);
@@ -212,7 +222,7 @@ public class pabout extends AppCompatActivity
     }
 
     private void populatePetDetails(pets pet){
-        petName.setText(pet.getName());
+        aboutTitle.setText("About "+ pet.getName());
         dateOfBirth.setText("Date of Birth: "+pet.getBirthdate());
         age.setText("Age: "+pet.getAge());
         gender.setText("Sex: "+pet.getSex());
