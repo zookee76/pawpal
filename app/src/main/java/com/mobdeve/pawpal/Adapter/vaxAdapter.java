@@ -62,11 +62,11 @@ public class vaxAdapter extends RecyclerView.Adapter<vaxAdapter.VaxViewHolder> {
         public VaxViewHolder(@NonNull View itemView) {
             super(itemView);
             vaxType = itemView.findViewById(R.id.tv_vacctype);
-            petName = itemView.findViewById(R.id.tv_vaxpet);
-            ownerName = itemView.findViewById(R.id.tv_vaxowner);
-            datetime = itemView.findViewById(R.id.tv_vaxdatetime);
-            vet = itemView.findViewById(R.id.tv_vaxvet);
-            status = itemView.findViewById(R.id.tv_vaxstatus);
+            petName = itemView.findViewById(R.id.tv_inpet);
+            ownerName = itemView.findViewById(R.id.tv_inowner);
+            datetime = itemView.findViewById(R.id.tv_indatetime);
+            vet = itemView.findViewById(R.id.tv_invet);
+            status = itemView.findViewById(R.id.tv_instatus);
             seeDeets = itemView.findViewById(R.id.btn_seedeets);
         }
     }

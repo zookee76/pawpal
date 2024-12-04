@@ -209,7 +209,7 @@ public class addAppointments extends AppCompatActivity implements AdapterView.On
     }
 
     private void populateAppTypes() {
-        List<String> appTypes = List.of("General Checkup", "Lab Testing", "Extraction");
+        List<String> appTypes = List.of("General Checkup", "Lab Testing", "Vaccination");
         setupSpinner(appTypeSpinner, appTypes, "No Types Available");
     }
 

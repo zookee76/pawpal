@@ -12,18 +12,23 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobdeve.pawpal.Adapter.vaxAdapter;
+import com.mobdeve.pawpal.Model.clinicVet;
 import com.mobdeve.pawpal.Model.vaccination;
 import com.mobdeve.pawpal.R;
-import com.mobdeve.pawpal.Shared.appointmentspage;
+import com.mobdeve.pawpal.Database.DBHelper;
+import com.mobdeve.pawpal.Model.appointment;
 import com.mobdeve.pawpal.Shared.consolidatedsummary;
+import com.mobdeve.pawpal.Shared.appointmentspage;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class vaccinationpage extends AppCompatActivity {
     private RecyclerView rvVax;
-    private com.mobdeve.pawpal.Adapter.vaxAdapter vaxAdapter;
+    private vaxAdapter vaxAdapter;
     private List<vaccination> vaccinationList;
+    private DBHelper DB;
+    private clinicVet vet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,21 +36,26 @@ public class vaccinationpage extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_vaccinationpage);
 
+        // Initialize the database helper
+        DB = new DBHelper(getApplicationContext());
+
+        // Get the current vet data from the intent
+        vet = getIntent().getParcelableExtra("USER_DATA");
+
         rvVax = findViewById(R.id.rv_vaccinations);
         rvVax.setLayoutManager(new LinearLayoutManager(this));
 
-        //Sample Data
+        // Initialize the vaccination list
         vaccinationList = new ArrayList<>();
-        /*
-        vaccinationList.add(new vaccination("Heatworm Vaccination", "Casper", "Ash Corpuz",
-                        "October 28, 2024", "Dr. Abcdef Ghijklmnop", "Upcoming"));
 
-         */
+        // Load vaccinations (appointments with appType "Vaccination")
+        loadVaccinations();
 
+        // Set up the adapter
         vaxAdapter = new vaxAdapter(this, vaccinationList);
         rvVax.setAdapter(vaxAdapter);
 
-        //Back Handle
+        // Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
         TextView backTxt = findViewById(R.id.tv_back);
         View.OnClickListener backListnr = new View.OnClickListener() {
@@ -59,7 +69,7 @@ public class vaccinationpage extends AppCompatActivity {
         backImg.setOnClickListener(backListnr);
         backTxt.setOnClickListener(backListnr);
 
-        //Navigation Handle
+        // Navigation Handle
         ImageView home, calendar, pets, files, profile;
         home = findViewById(R.id.iv_home);
         calendar = findViewById(R.id.iv_calendar);
@@ -67,7 +77,7 @@ public class vaccinationpage extends AppCompatActivity {
         files = findViewById((R.id.iv_files));
         profile = findViewById(R.id.iv_userprofile);
 
-        //Link to navigation buttons
+        // Link to navigation buttons
         pets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,15 +91,6 @@ public class vaccinationpage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(vaccinationpage.this, chomedashboard.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        pets.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(vaccinationpage.this, clinicpets.class);
                 startActivity(intent);
                 finish();
             }
@@ -124,5 +125,29 @@ public class vaccinationpage extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void loadVaccinations() {
+            if (DB != null) {
+                List<appointment> appointments = DB.getAllAppointments();
+                for (appointment app : appointments) {
+                    if ("Vaccination".equals(app.getAppType())) {
+                        vaccination vax = new vaccination(
+                                "Vaccine",
+                                app.getPetName(),
+                                app.getOwnerName(),
+                                app.getAppDateTime(),
+                                app.getAppVet(),
+                                app.getAppStatus(),
+                                0,
+                                app.getPetID(),
+                                app.getOwnerID(),
+                                app.getVetID()
+                        );
+                        vaccinationList.add(vax);
+                    }
+                }
+            } else {
+            }
     }
 }
