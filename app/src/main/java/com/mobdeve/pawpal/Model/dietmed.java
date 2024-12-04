@@ -1,25 +1,15 @@
 package com.mobdeve.pawpal.Model;
 
 public class dietmed {
-    private long imageID, presNo, petID;
+    private long imageID, presNo, petID, ownerID;
     private String medicationName, purpose, dosage, administration, freq_and_duration;
     private String note;
     private String datetime;
 
+    public dietmed(){}
+
     public dietmed(long imageID, String note, String datetime) {
         this.imageID = imageID;
-        this.note = note;
-        this.datetime = datetime;
-    }
-
-    public dietmed(long imageID, long petID, String medicationName, String purpose, String dosage, String administration, String freq_and_duration, String note, String datetime) {
-        this.imageID = imageID;
-        this.petID = petID;
-        this.medicationName = medicationName;
-        this.purpose = purpose;
-        this.dosage = dosage;
-        this.administration = administration;
-        this.freq_and_duration = freq_and_duration;
         this.note = note;
         this.datetime = datetime;
     }
@@ -35,6 +25,41 @@ public class dietmed {
         this.freq_and_duration = freq_and_duration;
         this.note = note;
         this.datetime = datetime;
+    }
+
+    public dietmed(long imageID, long petID, String medicationName, String purpose, String dosage, String administration, String freq_and_duration, String note, String datetime, long ownerID) {
+        this.imageID = imageID;
+        this.petID = petID;
+        this.medicationName = medicationName;
+        this.purpose = purpose;
+        this.dosage = dosage;
+        this.administration = administration;
+        this.freq_and_duration = freq_and_duration;
+        this.note = note;
+        this.datetime = datetime;
+        this.ownerID = ownerID;
+    }
+
+    public dietmed(long imageID, long presNo, long petID, long ownerID, String medicationName, String purpose, String dosage, String administration, String freq_and_duration, String note, String datetime) {
+        this.imageID = imageID;
+        this.presNo = presNo;
+        this.petID = petID;
+        this.ownerID = ownerID;
+        this.medicationName = medicationName;
+        this.purpose = purpose;
+        this.dosage = dosage;
+        this.administration = administration;
+        this.freq_and_duration = freq_and_duration;
+        this.note = note;
+        this.datetime = datetime;
+    }
+
+    public long getOwnerID() {
+        return ownerID;
+    }
+
+    public void setOwnerID(long ownerID) {
+        this.ownerID = ownerID;
     }
 
     public long getImageID() {

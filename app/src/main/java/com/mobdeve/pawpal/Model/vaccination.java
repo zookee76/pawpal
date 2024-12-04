@@ -2,28 +2,9 @@ package com.mobdeve.pawpal.Model;
 
 public class vaccination {
     private String vaccType, petName, ownerName, vaxDateTime, vaxVet, vaxStatus;
-    private long vaxID, petID, ownerID, vetID;
+    private long vaxID, petID, ownerID, vetID, appID;
 
-    public vaccination(String vaccType, String petName, String ownerName, String vaxDateTime, String vaxVet, String vaxStatus) {
-        this.vaccType = vaccType;
-        this.petName = petName;
-        this.ownerName = ownerName;
-        this.vaxDateTime = vaxDateTime;
-        this.vaxVet = vaxVet;
-        this.vaxStatus = vaxStatus;
-    }
-
-    public vaccination(String vaccType, String petName, String ownerName, String vaxDateTime, String vaxVet, String vaxStatus, long petID, long ownerID, long vetID) {
-        this.vaccType = vaccType;
-        this.petName = petName;
-        this.ownerName = ownerName;
-        this.vaxDateTime = vaxDateTime;
-        this.vaxVet = vaxVet;
-        this.vaxStatus = vaxStatus;
-        this.petID = petID;
-        this.ownerID = ownerID;
-        this.vetID = vetID;
-    }
+    public vaccination(){}
 
     public vaccination(String vaccType, String petName, String ownerName, String vaxDateTime, String vaxVet, String vaxStatus, long vaxID, long petID, long ownerID, long vetID) {
         this.vaccType = vaccType;
@@ -36,6 +17,28 @@ public class vaccination {
         this.petID = petID;
         this.ownerID = ownerID;
         this.vetID = vetID;
+    }
+
+    public vaccination(String vaccType, String petName, String ownerName, String vaxDateTime, String vaxVet, String vaxStatus, long vaxID, long petID, long ownerID, long vetID, long appID) {
+        this.vaccType = vaccType;
+        this.petName = petName;
+        this.ownerName = ownerName;
+        this.vaxDateTime = vaxDateTime;
+        this.vaxVet = vaxVet;
+        this.vaxStatus = vaxStatus;
+        this.vaxID = vaxID;
+        this.petID = petID;
+        this.ownerID = ownerID;
+        this.vetID = vetID;
+        this.appID = appID;
+    }
+
+    public long getAppID() {
+        return appID;
+    }
+
+    public void setAppID(long appID) {
+        this.appID = appID;
     }
 
     public long getVaxID() {

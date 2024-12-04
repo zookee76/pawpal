@@ -36,8 +36,11 @@ public class vaccinationpage extends AppCompatActivity {
 
         //Sample Data
         vaccinationList = new ArrayList<>();
+        /*
         vaccinationList.add(new vaccination("Heatworm Vaccination", "Casper", "Ash Corpuz",
                         "October 28, 2024", "Dr. Abcdef Ghijklmnop", "Upcoming"));
+
+         */
 
         vaxAdapter = new vaxAdapter(this, vaccinationList);
         rvVax.setAdapter(vaxAdapter);

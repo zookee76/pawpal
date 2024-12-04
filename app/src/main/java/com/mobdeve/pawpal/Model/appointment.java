@@ -5,6 +5,8 @@ public class appointment {
 
     private String petName, ownerName, appType, appDateTime, appVet, appStatus;
 
+    public appointment(){}
+
     public appointment(long petID, long ownerID, long vetID, String petName, String ownerName, String appType, String appDateTime, String appVet, String appStatus) {
         this.petID = petID;
         this.ownerID = ownerID;

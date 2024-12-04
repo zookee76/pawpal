@@ -221,6 +221,13 @@
                     </LinearLayout>
 
 
+                    <TextView
+                        android:id="@+id/tv_message"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="No Upcoming Appointment"
+                        android:visibility="invisible" />
+
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cv_vaccdeets"
                         android:layout_width="match_parent"
@@ -242,14 +249,14 @@
                             android:background="#D6EAFC">
 
                             <TextView
-                                android:id="@+id/tv_vaxdate"
+                                android:id="@+id/tv_apptype"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Vaccination"
+                                android:layout_marginLeft="5dp"
+                                android:text="Appointment Type"
                                 android:textColor="#0C439E"
                                 android:textSize="16sp"
-                                android:textStyle="bold"
-                                android:layout_marginLeft="5dp"/>
+                                android:textStyle="bold" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -260,10 +267,10 @@
                                 android:padding="10dp">
 
                                 <TextView
-                                    android:id="@+id/tv_vaxtype"
+                                    android:id="@+id/tv_apptypedetail"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Rabies Vaccination"
+                                    android:text="Vaccination Type"
                                     android:textStyle="bold" />
 
                                 <TextView

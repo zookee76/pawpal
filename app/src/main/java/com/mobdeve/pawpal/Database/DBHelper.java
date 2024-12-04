@@ -22,8 +22,11 @@ import com.mobdeve.pawpal.Model.images;
 import com.mobdeve.pawpal.Model.vaccination;
 import com.mobdeve.pawpal.Shared.userType;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final int DB_VER = 1;
@@ -91,7 +94,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // DIETMED
     COLUMN_PET_IMG = "petImg", // imageID
-            COLUMN_MED_NAME = "mednName",
+            COLUMN_MED_NAME = "medName",
             COLUMN_PURPOSE = "purpose",
             COLUMN_DOSAGE = "dosage",
             COLUMN_ADMINISTRATION = "administration",
@@ -109,6 +112,7 @@ public class DBHelper extends SQLiteOpenHelper {
     //COLUMN_OWNER_NAME = "ownerName",
     // vaxVet = COLUMN_VET_NAME
     COLUMN_VAX_STATUS = "vaxStatus",
+    COLUMN_APP_ID = "appID",
 
     // APPOINTMENTS
     //APP NO = _ID
@@ -233,7 +237,9 @@ public class DBHelper extends SQLiteOpenHelper {
                     COLUMN_VET_NAME + " TEXT NOT NULL, " +
                     COLUMN_DATETIME + " TEXT NOT NULL, " +
                     COLUMN_VAX_STATUS + " TEXT NOT NULL, " +
+                    COLUMN_APP_ID + " INTEGER NOT NULL, " +
                     "FOREIGN KEY (" + COLUMN_VET_ID + ") REFERENCES " + TABLE_NAME_VET + " (" + _ID + "), " +
+                    "FOREIGN KEY (" + COLUMN_APP_ID + ") REFERENCES " + TABLE_APPOINTMENTS + " (" + _ID + "), " +
                     "FOREIGN KEY (" + COLUMN_OWNER_ID + ") REFERENCES " + TABLE_NAME_PETOWNER + " (" + _ID + "), " +
                     "FOREIGN KEY (" + COLUMN_PET_ID + ") REFERENCES " + TABLE_NAME_PET + " (" + _ID + "))";
 
@@ -427,7 +433,6 @@ public class DBHelper extends SQLiteOpenHelper {
         return result;
     }
 
-
     public synchronized long addNutritionStep(nutinstructions step){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -439,8 +444,6 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
         return result;
     }
-
-
 
     public synchronized long addAppointment(appointment app){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -788,6 +791,103 @@ public class DBHelper extends SQLiteOpenHelper {
         return vaccinationList;
     }
 
+    public vaccination getSpecificVaccination(long appID){
+        SQLiteDatabase db = this.getReadableDatabase();
+        vaccination vax = null;
+
+        String query = "SELECT * FROM " + TABLE_VACCINATION +
+                " WHERE " + COLUMN_APP_ID + " = ?";
+
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(appID)});
+        if (cursor != null && cursor.moveToFirst()){
+            vax = new vaccination();
+            vax.setVaxID(cursor.getLong(cursor.getColumnIndexOrThrow(_ID)));
+            vax.setPetID(cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_PET_ID)));
+            vax.setOwnerID(cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_OWNER_ID)));
+            vax.setVetID(cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_VET_ID)));
+            vax.setAppID(cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_APP_ID)));
+            vax.setVaccType(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_VAX_TYPE)));
+            vax.setPetName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_NAME)));
+            vax.setOwnerName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_OWNER_NAME)));
+            vax.setVaxVet(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_VET_NAME)));
+            vax.setVaxDateTime(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATETIME)));
+            vax.setVaxStatus(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_VAX_STATUS)));
+        }
+        if (cursor != null) {
+            cursor.close();
+        }
+        return vax;
+    }
+
+    public appointment getLatestAppByPetOwner(long ownerID){
+        SQLiteDatabase db = this.getReadableDatabase();
+        List<appointment> upcomingAppointments = new ArrayList<>();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
+        String query = "SELECT * FROM " + TABLE_APPOINTMENTS +
+                " INNER JOIN " + TABLE_VACCINATION +
+                " ON " + TABLE_APPOINTMENTS + "." + COLUMN_DATETIME + " = " + TABLE_VACCINATION + "." + COLUMN_DATETIME +
+                " AND " + TABLE_APPOINTMENTS + "." + COLUMN_OWNER_ID + " = " + TABLE_VACCINATION + "." + COLUMN_OWNER_ID +
+                " WHERE " + TABLE_APPOINTMENTS + "." + COLUMN_OWNER_ID + " = ?";
+
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(ownerID)});
+
+        if (cursor != null && cursor.moveToFirst()) {
+            Date currentDate = new Date();
+            do {
+                appointment app = new appointment();
+                app.setAppNo(cursor.getLong(cursor.getColumnIndexOrThrow(_ID)));
+                app.setPetID(cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_PET_ID)));
+                app.setVetID(cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_VET_ID)));
+                app.setOwnerID(cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_OWNER_ID)));
+                app.setPetName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_NAME)));
+                app.setAppVet(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_VET_NAME)));
+                app.setOwnerName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_OWNER_NAME)));
+                app.setAppType(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_APP_TYPE)));
+                app.setAppDateTime(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATETIME)));
+                app.setAppStatus(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_APP_STATUS)));
+
+                try {
+                    Date appointmentDate = dateFormat.parse(app.getAppDateTime());
+                    Log.d("CHECK APPOINTMENT", "APP DATETIME: "+ app.getAppDateTime() + "currentdate: "+currentDate);
+                    if (appointmentDate != null && appointmentDate.after(currentDate)) {
+                        upcomingAppointments.add(app);
+                    }
+                } catch (Exception e) {
+                    Log.d("CHECK APPOINTMENT", "ERROR");
+                    e.printStackTrace();
+                }
+            } while (cursor.moveToNext());
+        }
+
+        if (cursor != null) {
+            cursor.close();
+        }
+        if (!upcomingAppointments.isEmpty()) {
+            appointment earliestApp = upcomingAppointments.get(0);
+            long earliestTimeStamp = 0;
+
+            for (appointment app : upcomingAppointments) {
+                try {
+                    Date appointmentDate = dateFormat.parse(app.getAppDateTime());
+
+                    if (appointmentDate != null && appointmentDate.getTime() < earliestTimeStamp || earliestTimeStamp == 0) {
+                        earliestTimeStamp = appointmentDate.getTime();
+                        earliestApp = app;
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            Log.d("CHECK APPOINTMENTS ", "APPOINTMENT: "+ earliestApp.getAppNo());
+            return earliestApp;
+        } else {
+            Log.d("CHECK APPOINTMENTS ", "NO APPOINTMENTS");
+            return null;  // No upcoming appointments
+        }
+    }
+
     public List<pets> getAllPets(){
         List<pets> petsList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -1030,6 +1130,37 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return nutSteps;
+    }
+
+    public List<dietmed> getDietmedByPetOwner(long ownerID){
+        List<dietmed> dietmedList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT * FROM " + TABLE_DIETMED +
+                " WHERE " + COLUMN_OWNER_ID + " = ?";
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(ownerID)});
+
+        if (cursor.moveToFirst()){
+            do{
+                dietmed dmed = new dietmed();
+                dmed.setPresNo(cursor.getLong(cursor.getColumnIndexOrThrow(_ID)));
+                dmed.setOwnerID(cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_OWNER_ID)));
+                dmed.setPetID(cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_PET_ID)));
+                dmed.setImageID(cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_PET_IMG)));
+                dmed.setMedicationName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_MED_NAME)));
+                dmed.setPurpose(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PURPOSE)));
+                dmed.setDosage(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DOSAGE)));
+                dmed.setAdministration(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ADMINISTRATION)));
+                dmed.setFreq_and_duration(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FREQ_DURATION)));
+                dmed.setNote(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NOTE)));
+                dmed.setDatetime(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATETIME)));
+
+                dietmedList.add(dmed);
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return dietmedList;
     }
 
     // UPDATE
