@@ -19,6 +19,15 @@ public class appointment {
         this.appStatus = appStatus;
     }
 
+    public appointment(String petName, String ownerName, String appType, String appDateTime, String appVet, String appStatus) {
+        this.petName = petName;
+        this.ownerName = ownerName;
+        this.appType = appType;
+        this.appDateTime = appDateTime;
+        this.appVet = appVet;
+        this.appStatus = appStatus;
+    }
+
     public appointment(long appNo, long petID, long ownerID, long vetID, String petName, String ownerName, String appType, String appDateTime, String appVet, String appStatus) {
         this.appNo = appNo;
         this.petID = petID;

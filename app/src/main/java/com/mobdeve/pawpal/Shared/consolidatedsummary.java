@@ -56,16 +56,6 @@ public class consolidatedsummary extends AppCompatActivity {
         // Search View setup
         searchView = findViewById(R.id.searchbartext);
 
-        FloatingActionButton addPets = findViewById(R.id.btn_addrecord);
-        addPets.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(consolidatedsummary.this, com.mobdeve.pawpal.ClinicOwner.addRecords.class);
-                startActivityForResult(intent, 1);
-                //startActivity(intent);
-            }
-        });
-
         // Recyclerview handle
         rvConsolidatedRecordList = findViewById(R.id.rv_consolrecordscard);
         rvConsolidatedRecordList.setLayoutManager(new LinearLayoutManager(this));
@@ -155,8 +145,18 @@ public class consolidatedsummary extends AppCompatActivity {
                 }
             });
         } else {
-            loadClinicConsoSum();
 
+            FloatingActionButton addPets = findViewById(R.id.btn_addrecord);
+            addPets.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(consolidatedsummary.this, com.mobdeve.pawpal.ClinicOwner.addRecords.class);
+                    startActivityForResult(intent, 1);
+                    //startActivity(intent);
+                }
+            });
+
+            loadClinicConsoSum();
 
             adapter = new consolidatedrecordadapter(this, recordsList, isPetOwner);
             rvConsolidatedRecordList.setAdapter(adapter);

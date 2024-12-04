@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".ClinicOwner.addRecords">
+    tools:context=".ClinicOwner.addAppointments">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_petsheader"
@@ -153,27 +153,38 @@
                 app:layout_constraintWidth_percent="0.35">
 
                 <TextView
-                    android:id="@+id/tv_addTitle"
+                    android:id="@+id/tv_addPetName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:text="Title:"
+                    android:text="Pet Name:"
                     android:textAlignment="textEnd"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tv_addType"
+                    android:id="@+id/tv_addPetOwner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:text="Document Type:"
+                    android:text="Owner Name:"
                     android:textAlignment="textEnd"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tv_date"
+                    android:id="@+id/tv_addAppointmentType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Appointment Type:"
+                    android:textAlignment="textEnd"
+                    android:textSize="14.5sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_appointmentdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
@@ -184,7 +195,7 @@
                     android:layout_marginTop="10dp"/>
 
                 <TextView
-                    android:id="@+id/tv_veterinarian"
+                    android:id="@+id/tv_appointmentveterinarian"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
@@ -195,11 +206,11 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tv_file"
+                    android:id="@+id/tv_appointmentstatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:text="File:"
+                    android:text="Status:"
                     android:textAlignment="textEnd"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -216,21 +227,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent="0.65">
 
-                <EditText
-                    android:id="@+id/add_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@color/white"
-                    android:ems="10"
-                    android:hint="Title"
-                    android:inputType="text"
-                    android:textColor="#928A8A"
-                    android:textSize="16sp" />
-
                 <Spinner
-                    android:id="@+id/add_record_type_spinner"
+                    android:id="@+id/pet_name_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="30dp"
@@ -241,9 +239,33 @@
                     android:textSize="16sp"
                     android:backgroundTint="@color/white"/>
 
+                <Spinner
+                    android:id="@+id/add_owner_name_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/white"
+                    android:entries="@array/documenttypes"
+                    android:textColor="#928A8A"
+                    android:textSize="16sp"
+                    android:backgroundTint="@color/white"/>
+
+                <Spinner
+                    android:id="@+id/apptype_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@color/white"
+                    android:entries="@array/documenttypes"
+                    android:textColor="#928A8A"
+                    android:textSize="16sp"
+                    android:backgroundTint="@color/white"/>
 
                 <EditText
-                    android:id="@+id/add_date"
+                    android:id="@+id/appadd_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="0dp"
@@ -252,7 +274,7 @@
                     android:inputType="none"/>
 
                 <EditText
-                    android:id="@+id/add_vet"
+                    android:id="@+id/appadd_vet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="30dp"
@@ -264,22 +286,22 @@
                     android:textColor="#928A8A"
                     android:textSize="16sp" />
 
-                <EditText
-                    android:id="@+id/add_filepath"
+                <Spinner
+                    android:id="@+id/add_appointment_status_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="30dp"
                     android:layout_marginBottom="5dp"
+                    android:layout_marginTop="3dp"
                     android:background="@color/white"
-                    android:ems="10"
-                    android:hint="File Path"
-                    android:inputType="text"
+                    android:entries="@array/documenttypes"
                     android:textColor="#928A8A"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:backgroundTint="@color/white"/>
             </LinearLayout>
 
             <Button
-                android:id="@+id/btn_addrecord"
+                android:id="@+id/btn_addappointment"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="5dp"

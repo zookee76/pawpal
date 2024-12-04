@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mobdeve.pawpal.Adapter.appointmentAdapter;
 import com.mobdeve.pawpal.Model.appointment;
 import com.mobdeve.pawpal.PetOwner.petprofilepage;
@@ -53,6 +54,7 @@ public class appointmentspage extends AppCompatActivity {
 
         if(isPetOwner){
             loadappointments();
+
             appAdapter = new appointmentAdapter(this,appointmentList);
             rvApp.setAdapter(appAdapter);
 
@@ -118,6 +120,17 @@ public class appointmentspage extends AppCompatActivity {
             });
         }
         else{
+
+            FloatingActionButton addPets = findViewById(R.id.btn_addappointments);
+            addPets.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(appointmentspage.this, com.mobdeve.pawpal.ClinicOwner.addRecords.class);
+                    startActivityForResult(intent, 1);
+                    //startActivity(intent);
+                }
+            });
+
             loadclinicappointments();
             appAdapter = new appointmentAdapter(this, appointmentList, isPetOwner);
             rvApp.setAdapter(appAdapter);

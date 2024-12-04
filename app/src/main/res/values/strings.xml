@@ -18,4 +18,18 @@
         <item>Health Record</item>
         <item>Lab Results</item>
     </string-array>
+
+    <string-array name="appStatus_array">
+        <item>Select a status</item>
+        <item>Pending</item>
+        <item>Completed</item>
+        <item>Canceled</item>
+    </string-array>
+
+    <string-array name="appType_array">
+        <item>Select a Type</item>
+        <item>General Checkup</item>
+        <item>Lab Testing</item>
+        <item>Extraction</item>
+    </string-array>
 </resources>
