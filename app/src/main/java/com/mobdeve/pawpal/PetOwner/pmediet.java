@@ -53,6 +53,7 @@ public class pmediet extends AppCompatActivity
     private List<nutinstructions> instructions;
     private pets petData;
     private petOwners ownerData;
+    private CardView nutritionplancard;
     private boolean isCalSelected = false, isFatsSelected = false, isFiberSelected = false, isProtSelected = false, isKeyNutSelected = false;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -90,6 +91,7 @@ public class pmediet extends AppCompatActivity
         Fiber = findViewById(R.id.fiber);
         Protein = findViewById(R.id.protein);
         KeyNutrients = findViewById(R.id.keyNutrients);
+        nutritionplancard = findViewById(R.id.nutritionplancard);
 
         TextView note = findViewById(R.id.nutplanotebody);
 
@@ -399,6 +401,7 @@ public class pmediet extends AppCompatActivity
                 loadInstructions();
             }else{
                 Log.d("CHECKDIETPLAN: ", "NO DIET PLAN");
+                nutritionplancard.setVisibility(View.GONE);
             }
         }else{
             Log.d("CHECKDIETPLANDB: ", "NO DB");

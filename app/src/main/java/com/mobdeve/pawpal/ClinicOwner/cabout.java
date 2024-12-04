@@ -3,12 +3,14 @@ package com.mobdeve.pawpal.ClinicOwner;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.mobdeve.pawpal.Database.DBHelper;
 import com.mobdeve.pawpal.Model.clinicVet;
 import com.mobdeve.pawpal.Model.petOwners;
@@ -17,32 +19,31 @@ import com.mobdeve.pawpal.R;
 import com.mobdeve.pawpal.Shared.appointmentspage;
 import com.mobdeve.pawpal.Shared.consolidatedsummary;
 
-public class cabout extends AppCompatActivity {
+import java.io.File;
 
+public class cabout extends AppCompatActivity {
     private DBHelper DB;
-    private clinicVet vetData;
+    private TextView petName,petDesc,dateOfBirth,age,gender,breed,height,weight,petcolor,markings,ownername,cellno,address, aboutTitle;
     private pets petData;
-    private petOwners petOwnerData;
-    private TextView petProfile, petName, aboutTitle, aboutDesc,dateOfBirth,age,gender,breed,height,weight,petcolor,markings,ownername,cellno,address;
+    private petOwners ownerData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clinicpetprofileabout);
 
-        // Get Data
+        DB = new DBHelper(getApplicationContext());
         Intent intent = getIntent();
-        vetData = intent.getParcelableExtra("VET_DATA");
         petData = intent.getParcelableExtra("PET_DATA");
-
+        clinicVet vetData = intent.getParcelableExtra("VET_DATA");
         long petID = petData.getID();
-        petOwnerData = DB.getPetOwner(petID);
+        petOwners retrievedOwnerData = DB.getPetOwner(petID);
 
+        Log.d("CHECKpabout", "ownerData: " + ownerData);
         // ELEMENTS
         ImageView petImage = findViewById(R.id.petImage);
-        aboutDesc = findViewById(R.id.aboutdescription);
         petName = findViewById(R.id.petName);
         petName.setText(petData.getName());
-
+        petDesc = findViewById(R.id.aboutdescription);
         dateOfBirth = findViewById(R.id.dateofbirth);
         age = findViewById(R.id.age);
         gender = findViewById(R.id.gender);
@@ -54,7 +55,28 @@ public class cabout extends AppCompatActivity {
         ownername = findViewById(R.id.ownername);
         cellno = findViewById(R.id.cellphonenumber);
         address = findViewById(R.id.address);
-        aboutTitle = findViewById(R.id.aboutTitle2);
+        aboutTitle = findViewById(R.id.aboutTitle);
+
+        if(retrievedOwnerData != null){
+            ownerData = retrievedOwnerData;
+            populatePetDetails(petData);
+            populatePetOwnerDetails(ownerData);
+        }
+        long imageID = petData.getImageID();
+        String imagePath = DB.getImagePath(imageID);
+
+        if(imagePath!=null){
+            File imgFile = new File(imagePath);
+            if(imgFile.exists()){
+                Glide.with(getApplicationContext())
+                        .load(imgFile)
+                        .into(petImage);
+            }
+        }
+
+        if(petData != null){
+            petName.setText(petData.getName());
+        }
 
         //Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
@@ -83,9 +105,9 @@ public class cabout extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cabout.this, cabout.class);
-                intent.putExtra("USER_DATA", vetData);
-                intent.putExtra("VET_DATA", petData);
-                intent.putExtra("PETOWNER_DATA", petOwnerData);
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
+                intent.putExtra("PETOWNER_DATA", ownerData);
                 startActivity(intent);
                 finish();
             }
@@ -95,9 +117,9 @@ public class cabout extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cabout.this, cmedicaldocs.class);
-                intent.putExtra("USER_DATA", vetData);
-                intent.putExtra("VET_DATA", petData);
-                intent.putExtra("PETOWNER_DATA", petOwnerData);
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
+                intent.putExtra("PETOWNER_DATA", ownerData);
                 startActivity(intent);
                 finish();
             }
@@ -107,9 +129,9 @@ public class cabout extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cabout.this, cmedicationdiet.class);
-                intent.putExtra("USER_DATA", vetData);
-                intent.putExtra("VET_DATA", petData);
-                intent.putExtra("PETOWNER_DATA", petOwnerData);
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
+                intent.putExtra("PETOWNER_DATA", ownerData);
                 startActivity(intent);
                 finish();
             }
@@ -119,9 +141,9 @@ public class cabout extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cabout.this, cschedules.class);
-                intent.putExtra("USER_DATA", vetData);
-                intent.putExtra("VET_DATA", petData);
-                intent.putExtra("PETOWNER_DATA", petOwnerData);
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
+                intent.putExtra("PETOWNER_DATA", ownerData);
                 startActivity(intent);
                 finish();
             }
@@ -131,9 +153,9 @@ public class cabout extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cabout.this, editclinicabout.class);
-                intent.putExtra("USER_DATA", vetData);
-                intent.putExtra("VET_DATA", petData);
-                intent.putExtra("PETOWNER_DATA", petOwnerData);
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
+                intent.putExtra("PETOWNER_DATA", ownerData);
                 startActivity(intent);
             }
         });
@@ -151,6 +173,7 @@ public class cabout extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cabout.this, clinicpets.class);
+                intent.putExtra("USER_DATA", vetData);
                 startActivity(intent);
                 finish();
             }
@@ -160,6 +183,7 @@ public class cabout extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cabout.this, chomedashboard.class);
+                intent.putExtra("USER_DATA", vetData);
                 startActivity(intent);
                 finish();
             }
@@ -169,6 +193,7 @@ public class cabout extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cabout.this, clinicprofilepage.class);
+                intent.putExtra("USER_DATA", vetData);
                 startActivity(intent);
                 finish();
             }
@@ -178,6 +203,7 @@ public class cabout extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cabout.this, consolidatedsummary.class);
+                intent.putExtra("USER_DATA", vetData);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
                 finish();
@@ -188,10 +214,28 @@ public class cabout extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(cabout.this, appointmentspage.class);
+                intent.putExtra("USER_DATA", vetData);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
                 finish();
             }
         });
+    }
+    private void populatePetDetails(pets pet){
+     //   aboutTitle.setText("About "+ pet.getName());
+        dateOfBirth.setText("Date of Birth: "+ pet.getBirthdate());
+        age.setText("Age: "+pet.getAge());
+        gender.setText("Sex: "+pet.getSex());
+        breed.setText("Breed: "+pet.getBreed());
+        height.setText("Height: "+pet.getHeight());
+        weight.setText("Weight: "+pet.getWeight());
+        petcolor.setText("Color: "+pet.getColor());
+        markings.setText("Markings: "+pet.getMarkings());
+    }
+
+    private void populatePetOwnerDetails(petOwners owner){
+        ownername.setText("Name: "+owner.getFullname());
+        cellno.setText("Cell No.: "+owner.getContactNo());
+        address.setText("Address: "+owner.getEmail());
     }
 }

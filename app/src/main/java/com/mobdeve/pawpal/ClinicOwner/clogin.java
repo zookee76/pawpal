@@ -70,7 +70,6 @@ public class clogin extends AppCompatActivity {
                     }
 
                     clinicVet vet = DB.checkVetLogin(loginDetails, password);
-                    Log.d("CHECK VET LOGIN", "VET NAME: " + vet.getFirstName() + "VET ID: " + vet.getVetID());
 
                     if(vet !=  null){
                         navigateToDashboard(vet);

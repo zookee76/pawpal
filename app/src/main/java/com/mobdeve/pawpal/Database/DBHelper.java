@@ -599,7 +599,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public petOwners getPetOwner(long petID){
         SQLiteDatabase db = this.getReadableDatabase();
-        List<petOwners> owners = new ArrayList<>();
 
         String query = "SELECT p.* FROM " + TABLE_NAME_PETOWNER + " p " +
                 "JOIN " + TABLE_NAME_PET + " a ON p." + _ID + " = a." + COLUMN_OWNER_ID + " " +
