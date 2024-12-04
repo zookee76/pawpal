@@ -454,10 +454,10 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(COLUMN_VET_ID, app.getVetID());
         values.put(COLUMN_PET_NAME, app.getPetName());
         values.put(COLUMN_OWNER_NAME, app.getOwnerName());
-        values.put(COLUMN_VAX_TYPE, app.getAppType());
+        values.put(COLUMN_APP_TYPE, app.getAppType());
         values.put(COLUMN_DATETIME, app.getAppDateTime());
         values.put(COLUMN_VET_NAME, app.getAppVet());
-        values.put(COLUMN_VAX_STATUS, app.getAppStatus());
+        values.put(COLUMN_APP_STATUS, app.getAppStatus());
 
         long result = db.insert(TABLE_APPOINTMENTS, null, values);
         db.close();

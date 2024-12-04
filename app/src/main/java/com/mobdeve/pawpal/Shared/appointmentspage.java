@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mobdeve.pawpal.Adapter.appointmentAdapter;
 import com.mobdeve.pawpal.Database.DBHelper;
 import com.mobdeve.pawpal.Model.appointment;
@@ -40,6 +41,8 @@ public class appointmentspage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clinicappointment);
+
+        vet = getIntent().getParcelableExtra("USER_DATA");
 
         DB = new DBHelper(getApplicationContext());
         // Get Data
@@ -162,12 +165,24 @@ public class appointmentspage extends AppCompatActivity {
             appAdapter = new appointmentAdapter(this, appointmentList, isPetOwner, DB, vet);
             rvApp.setAdapter(appAdapter);
 
+            FloatingActionButton addPets = findViewById(R.id.btn_addappointments);
+            addPets.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(appointmentspage.this, com.mobdeve.pawpal.ClinicOwner.addAppointments.class);
+                    startActivityForResult(intent, 1);
+                    intent.putExtra("USER_DATA", vet);
+                    //startActivity(intent);
+                }
+            });
+
             // back handle
             View.OnClickListener backListnr = new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, chomedashboard.class);
                     startActivity(intent);
+                    intent.putExtra("USER_DATA", vet);
                     finish();
                 }
             };
@@ -181,6 +196,7 @@ public class appointmentspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, clinicpets.class);
                     startActivity(intent);
+                    intent.putExtra("USER_DATA", vet);
                     finish();
                 }
             });
@@ -190,6 +206,7 @@ public class appointmentspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, chomedashboard.class);
                     startActivity(intent);
+                    intent.putExtra("USER_DATA", vet);
                     finish();
                 }
             });
@@ -199,6 +216,7 @@ public class appointmentspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, clinicprofilepage.class);
                     startActivity(intent);
+                    intent.putExtra("USER_DATA", vet);
                     finish();
                 }
             });
@@ -209,6 +227,7 @@ public class appointmentspage extends AppCompatActivity {
                     Intent intent = new Intent(appointmentspage.this, consolidatedsummary.class);
                     intent.putExtra("IS_PET_OWNER", false);
                     startActivity(intent);
+                    intent.putExtra("USER_DATA", vet);
                     finish();
                 }
             });
@@ -219,6 +238,7 @@ public class appointmentspage extends AppCompatActivity {
                     Intent intent = new Intent(appointmentspage.this, appointmentspage.class);
                     intent.putExtra("IS_PET_OWNER", false);
                     startActivity(intent);
+                    intent.putExtra("USER_DATA", vet);
                     finish();
                 }
             });
@@ -239,13 +259,17 @@ public class appointmentspage extends AppCompatActivity {
     }
     //clinic data
     private void loadclinicappointments(){
-        long vetID = vet.getVetID();
-        if(DB!=null){
-            appointmentList.clear();
-            appointmentList = DB.getAppointmentByVet(vetID);
-            Log.d("APPOINTMENTS SIZE", "VETID: "+vetID+ "Size: " + appointmentList.size());
-        }else{
-            Log.e("APPOINTMENTS SIZE", "DB is not initialized.");
+        if (vet != null) {
+            long vetID = vet.getVetID();
+            if(DB != null){
+                appointmentList.clear();
+                appointmentList = DB.getAppointmentByVet(vetID);
+                Log.d("APPOINTMENTS SIZE", "VETID: " + vetID + " Size: " + appointmentList.size());
+            } else {
+                Log.e("APPOINTMENTS SIZE", "DB is not initialized.");
+            }
+        } else {
+            Log.e("LOAD_APPOINTMENTS", "vet object is null");
         }
     }
 }

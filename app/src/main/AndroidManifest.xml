@@ -75,6 +75,9 @@
             android:name=".ClinicOwner.addRecords"
             android:exported="false" />
         <activity
+            android:name=".ClinicOwner.addAppointments"
+            android:exported="false" />
+        <activity
             android:name=".Welcome.welcomeaccess"
             android:exported="false" />
         <activity
