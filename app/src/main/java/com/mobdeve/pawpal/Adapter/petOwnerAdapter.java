@@ -1,5 +1,6 @@
 package com.mobdeve.pawpal.Adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.content.Context;
@@ -67,16 +68,41 @@ public class petOwnerAdapter extends RecyclerView.Adapter<petOwnerAdapter.PetOwn
         }
     }
 
-    public void groupOwners(){
-        for(petOwners owner: petOwnersList){
-            String firstletter = owner.getFname().substring(0,1).toUpperCase();
-            if(!groupedOwners.containsKey(firstletter)){
-                groupedOwners.put(firstletter,  new ArrayList<>());
+    public void groupOwners() {
+        if (petOwnersList != null) {
+            Log.d("groupOwners", "Size of petOwnersList: " + petOwnersList.size());
+
+            for (int i = 0; i < petOwnersList.size(); i++) {
+                petOwners owner = petOwnersList.get(i);
+                if (owner != null) {
+                    Log.d("groupOwners", "Owner " + i + ": " + owner.toString());
+                } else {
+                    Log.e("groupOwners", "Owner " + i + " is null.");
+                }
+            }
+        } else {
+            Log.e("groupOwners", "petOwnersList is null.");
+            return;
+        }
+
+        for (petOwners owner : petOwnersList) {
+            String firstletter = null;
+            if (owner != null && owner.getFname() != null && !owner.getFname().isEmpty()) {
+                firstletter = owner.getFname().substring(0, 1).toUpperCase();
+            } else {
+                Log.e("groupOwners", "Owner or owner's first name is null or empty, skipping.");
+                continue;
+            }
+
+            if (!groupedOwners.containsKey(firstletter)) {
+                groupedOwners.put(firstletter, new ArrayList<>());
                 firstLetters.add(firstletter);
             }
+
             groupedOwners.get(firstletter).add(owner);
         }
+
+        // Sort the list of first letters
         Collections.sort(firstLetters);
     }
-
 }

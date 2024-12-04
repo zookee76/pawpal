@@ -16,6 +16,7 @@ import com.mobdeve.pawpal.Model.petOwners;
 import com.mobdeve.pawpal.R;
 import com.mobdeve.pawpal.Shared.appointmentspage;
 import com.mobdeve.pawpal.Shared.consolidatedsummary;
+import com.mobdeve.pawpal.Database.DBHelper;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,12 +31,15 @@ public class medrecordspage extends AppCompatActivity {
     private List<petOwners> petOwnersList;
     private Map<String, List<petOwners>> groupedOwners;
     private List<String> firstletters;
+    private DBHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_clinicmedrecords);
+
+        db = new DBHelper(getApplicationContext());
 
         //Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
@@ -51,32 +55,34 @@ public class medrecordspage extends AppCompatActivity {
         backImg.setOnClickListener(backListnr);
         backTxt.setOnClickListener(backListnr);
 
-        rvOwners = findViewById(R.id.rv_owners);
+        rvOwners = findViewById(R.id.rv_petownerss);
         rvOwners.setLayoutManager(new LinearLayoutManager(this));
 
         petOwnersList = new ArrayList<>();
         groupedOwners = new HashMap<>();
         firstletters = new ArrayList<>();
 
-        //Sample Data
-        petOwnersList = new ArrayList<>();
-        petOwnersList.add(new petOwners("Ashley Corpuz"));
-        petOwnersList.add(new petOwners("Herise Visto"));
-        petOwnersList.add(new petOwners("Nicole "));
-        petOwnersList.add(new petOwners("Janah"));
-        petOwnersList.add(new petOwners("Javi Del Rosario"));
-        petOwnersList.add(new petOwners("Harry"));
-        petOwnersList.add(new petOwners("Niall"));
-        petOwnersList.add(new petOwners("Zayn"));
-        petOwnersList.add(new petOwners("Louis"));
-        petOwnersList.add(new petOwners("Liam"));
+        petOwnersList = db.getPetOwners();
 
         Collections.sort(petOwnersList, new Comparator<petOwners>() {
             @Override
             public int compare(petOwners owner1, petOwners owner2) {
-                return owner1.getFname().compareToIgnoreCase(owner2.getFname());
+                String fname1 = owner1.getFname();
+                String fname2 = owner2.getFname();
+
+                if (fname1 == null && fname2 == null) {
+                    return 0;
+                }
+                if (fname1 == null) {
+                    return -1;
+                }
+                if (fname2 == null) {
+                    return 1;
+                }
+                return fname1.compareToIgnoreCase(fname2);
             }
         });
+
 
         ownerAdapter = new petOwnerAdapter(this, petOwnersList, groupedOwners, firstletters);
         ownerAdapter.groupOwners();

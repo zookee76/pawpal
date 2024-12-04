@@ -200,4 +200,16 @@ public class petOwners implements Parcelable {
         }
     };
 
+    @Override
+    public String toString() {
+        return "petOwners{" +
+                "ID=" + ID +
+                ", imageID=" + imageID +
+                ", fname='" + fname + '\'' +
+                ", lname='" + lname + '\'' +
+                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", contactNo='" + contactNo + '\'' +
+                '}';
+    }
 }
