@@ -9,7 +9,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_appointment"
         android:layout_width="match_parent"
-        android:layout_height="225dp"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
         app:cardCornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -47,120 +47,169 @@
             <LinearLayout
                 android:id="@+id/layout_appointmentdeets"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="10dp">
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp">
 
-                <LinearLayout
-                    android:id="@+id/layout_appfields"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:paddingLeft="5dp">
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/tv_apppet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pet Name:"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tv_appowner"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Owner Name:"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tv_apptype"
+                    <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Appointment Type:"
-                        android:textStyle="bold" />
+                        android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/tv_appdatetime"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Date and Time:"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/tv_apppet"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingRight="5dp"
+                            android:text="Pet Name:"
+                            android:textAlignment="textStart"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/tv_appvet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Veterinarian:"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/tv_inpet"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:text="Casper" />
+                    </TableRow>
 
-                    <TextView
-                        android:id="@+id/tv_appstatus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Status:"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/layout_appdata"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.5"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp">
-
-                    <TextView
-                        android:id="@+id/tv_inpet"
+                    <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Casper" />
+                        android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/tv_inowner"
+                        <TextView
+                            android:id="@+id/tv_appowner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingRight="5dp"
+                            android:text="Owner Name:"
+                            android:textAlignment="textStart"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_inowner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:text="Ashley Corpuz" />
+
+                    </TableRow>
+
+                    <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Ashley Corpuz" />
+                        android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/tv_inapptype"
+                        <TextView
+                            android:id="@+id/tv_apptype"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingRight="5dp"
+                            android:text="Appointment Type:"
+                            android:textAlignment="textStart"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_inapptype"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:text="General Checkup" />
+                    </TableRow>
+
+                    <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="General Checkup" />
+                        android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/tv_indatetime"
+                        <TextView
+                            android:id="@+id/tv_appdatetime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingRight="5dp"
+                            android:text="Date and Time:"
+                            android:textAlignment="textStart"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_indatetime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:text="Octtober 1, 2024 9AM" />
+
+                    </TableRow>
+
+                    <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Octtober 1, 2024 9AM" />
+                        android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/tv_invet"
+                        <TextView
+                            android:id="@+id/tv_appvet"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingRight="5dp"
+                            android:text="Veterinarian:"
+                            android:textAlignment="textStart"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_invet"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:text="Dr. Vet" />
+                    </TableRow>
+
+                    <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Dr. Vet" />
+                        android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/tv_instatus"
+                        <TextView
+                            android:id="@+id/tv_appstatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingRight="5dp"
+                            android:text="Status:"
+                            android:textAlignment="textStart"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_instatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:text="Completed" />
+
+                    </TableRow>
+
+                    <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Completed" />
+                        android:layout_height="match_parent"
+                        android:gravity="end">
 
-                    <Button
-                        android:id="@+id/btn_seedeets"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:layout_gravity="end"
-                        android:layout_marginTop="10dp"
-                        android:backgroundTint="#D6EAFC"
-                        android:clickable="true"
-                        android:gravity="fill_vertical"
-                        android:text="See Details"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
+                        <Button
+                            android:id="@+id/btn_seedeets"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_gravity="clip_horizontal|center_horizontal"
+                            android:backgroundTint="#D6EAFC"
+                            android:clickable="true"
+                            android:text="See Details"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+                    </TableRow>
+                </TableLayout>
 
             </LinearLayout>
 

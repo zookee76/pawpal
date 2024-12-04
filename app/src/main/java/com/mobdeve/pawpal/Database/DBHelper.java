@@ -729,6 +729,38 @@ public class DBHelper extends SQLiteOpenHelper {
         return appointmentList;
     }
 
+    public List<appointment> getAppointmentByPetOwner(long ownerID){
+        List<appointment> appointmentList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT * FROM " + TABLE_APPOINTMENTS +
+                " WHERE " + COLUMN_OWNER_ID + " = ?";
+
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(ownerID)});
+
+        if (cursor.moveToFirst()){
+            do{
+                appointment app = new appointment(
+                        cursor.getLong(cursor.getColumnIndexOrThrow(_ID)),
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_PET_ID)),
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_OWNER_ID)),
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_VET_ID)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_NAME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_OWNER_NAME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_APP_TYPE)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATETIME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_VET_NAME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_APP_STATUS))
+                );
+                appointmentList.add(app);
+                Log.d("CHECK APPOINTMENT", " APPNO: " + app.getAppNo());
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return appointmentList;
+    }
+
     public List<dietmed> getPetDietmed(long petID){
         List<dietmed> dietmedList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -958,6 +990,41 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.d("loadPets", "Loaded " + pets.size() + " pets for owner ID " + ownerID);
 
         return pets;
+    }
+
+    public pets getPetByAppointment(long appID){
+        SQLiteDatabase db = this.getReadableDatabase();
+        List<pets> pets = new ArrayList<>();
+
+        String query = "SELECT p.* FROM " + TABLE_NAME_PET + " p " +
+                "JOIN " + TABLE_APPOINTMENTS + " a ON p." + _ID + " = a." + COLUMN_PET_ID + " " +
+                "WHERE a." + _ID + " = ?";
+
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(appID)});
+
+        if (cursor != null && cursor.moveToFirst()){
+            pets pet = new pets();
+            pet.setID(cursor.getLong(cursor.getColumnIndexOrThrow(_ID)));
+            pet.setOwnerID(cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_OWNER_ID)));
+            pet.setImageID(cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_PET_PHOTO)));
+            pet.setVetID(cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_VET_ID)));
+            pet.setName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_NAME)));
+            pet.setColor(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_COLOR)));
+            pet.setBreed(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_BREED)));
+            pet.setSex(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_SEX)));
+            pet.setMarkings(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_MARKINGS)));
+            pet.setBirthdate(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_BIRTHDATE)));
+            pet.setAge(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_PET_AGE)));
+            pet.setWeight(cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_PET_WEIGHT)));
+            pet.setHeight(cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_PET_HEIGHT)));
+
+            cursor.close();
+            return pet;
+        }
+        if (cursor != null) {
+            cursor.close();
+        }
+        return null;
     }
 
     public  boolean isPetsTableEmpty(){

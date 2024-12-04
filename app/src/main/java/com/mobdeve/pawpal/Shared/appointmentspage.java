@@ -2,17 +2,20 @@ package com.mobdeve.pawpal.Shared;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mobdeve.pawpal.Adapter.appointmentAdapter;
+import com.mobdeve.pawpal.Database.DBHelper;
 import com.mobdeve.pawpal.Model.appointment;
+import com.mobdeve.pawpal.Model.petOwners;
 import com.mobdeve.pawpal.PetOwner.petprofilepage;
 import com.mobdeve.pawpal.R;
 import com.mobdeve.pawpal.ClinicOwner.chomedashboard;
@@ -28,11 +31,22 @@ public class appointmentspage extends AppCompatActivity {
     private RecyclerView  rvApp;
     private appointmentAdapter appAdapter;
     private List<appointment> appointmentList;
+    private DBHelper DB;
+    private petOwners user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clinicappointment);
+
+        DB = new DBHelper(getApplicationContext());
+        // Get Data
+        Intent intent = getIntent();
+        user = intent.getParcelableExtra("USER_DATA");
+        appointmentList = new ArrayList<>();
+
+        // TEXT SEARCH
+        SearchView search = findViewById(R.id.text_search);
 
         //Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
@@ -54,8 +68,29 @@ public class appointmentspage extends AppCompatActivity {
 
         if(isPetOwner){
             loadappointments();
+            // SEARCH FUNCTION
+            search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String s) {
+                    appAdapter.filter(s);
+                    return false;
+                }
 
-            appAdapter = new appointmentAdapter(this,appointmentList);
+                @Override
+                public boolean onQueryTextChange(String s) {
+                    appAdapter.filter(s);
+                    return false;
+                }
+            });
+
+            search.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+
+            appAdapter = new appointmentAdapter(this, appointmentList, DB, user);
             rvApp.setAdapter(appAdapter);
 
             //back handle for pet owner
@@ -63,6 +98,7 @@ public class appointmentspage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, phomedashboard.class);
+                    intent.putExtra("USER_DATA", user);
                     startActivity(intent);
                     finish();
                 }
@@ -75,7 +111,7 @@ public class appointmentspage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, phomedashboard.class);
-
+                    intent.putExtra("USER_DATA", user);
                     startActivity(intent);
                     finish();
                 }
@@ -86,6 +122,7 @@ public class appointmentspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, petspage.class);
                     intent.putExtra("IS_PET_OWNER", true);
+                    intent.putExtra("USER_DATA", user);
                     startActivity(intent);
                     finish();
                 }
@@ -95,6 +132,7 @@ public class appointmentspage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, petprofilepage.class);
+                    intent.putExtra("USER_DATA", user);
                     startActivity(intent);
                     finish();
                 }
@@ -105,6 +143,7 @@ public class appointmentspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, consolidatedsummary.class);
                     intent.putExtra("IS_PET_OWNER", true);
+                    intent.putExtra("USER_DATA", user);
                     startActivity(intent);
                     finish();
                 }
@@ -115,22 +154,12 @@ public class appointmentspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, appointmentspage.class);
                     startActivity(intent);
+                    intent.putExtra("USER_DATA", user);
                     finish();
                 }
             });
         }
         else{
-
-            FloatingActionButton addPets = findViewById(R.id.btn_addappointments);
-            addPets.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(appointmentspage.this, com.mobdeve.pawpal.ClinicOwner.addRecords.class);
-                    startActivityForResult(intent, 1);
-                    //startActivity(intent);
-                }
-            });
-
             loadclinicappointments();
             appAdapter = new appointmentAdapter(this, appointmentList, isPetOwner);
             rvApp.setAdapter(appAdapter);
@@ -200,6 +229,15 @@ public class appointmentspage extends AppCompatActivity {
 
     //petowner data
     private void loadappointments(){
+        long ownerID = user.getID();
+
+        if (DB != null) {
+            appointmentList.clear();
+            appointmentList = DB.getAppointmentByPetOwner(ownerID);
+            Log.d("APPOINTMENTS SIZE", "Size: " + appointmentList.size());
+        } else {
+            Log.e("APPOINTMENTS SIZE", "petsDB is not initialized.");
+        }
         //appointmentList.add(new appointment("001", "Casper", "Ashley Corpuz", "General Checkup", "October 1, 2024. 9AM", "Dr. Vet", "Completed"));
     }
     //clinic data

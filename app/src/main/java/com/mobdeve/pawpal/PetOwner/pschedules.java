@@ -37,6 +37,7 @@ public class pschedules extends AppCompatActivity
     private scheduleAdapter adapter;
     private List<appointment> appointmentList;
     private pets petData;
+    private petOwners ownerData;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,7 +47,7 @@ public class pschedules extends AppCompatActivity
         DB = new DBHelper(getApplicationContext());
         Intent intent = getIntent();
         petData = intent.getParcelableExtra("PET_DATA");
-        petOwners ownerData = intent.getParcelableExtra("OWNER_DATA");
+        ownerData = intent.getParcelableExtra("OWNER_DATA");
 
         // ELEMENTS
         ImageView petImage = findViewById(R.id.petImage);

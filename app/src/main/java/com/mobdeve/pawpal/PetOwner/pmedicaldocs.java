@@ -31,6 +31,7 @@ public class pmedicaldocs extends AppCompatActivity {
     private DBHelper DB;
     private TextView petName;
     private pets petData;
+    private petOwners ownerData;
 
     private RecyclerView rvMedDocs;
     private List<medicaldoc> medicaldocList;
@@ -44,7 +45,7 @@ public class pmedicaldocs extends AppCompatActivity {
         DB = new DBHelper(getApplicationContext());
         Intent intent = getIntent();
         petData = intent.getParcelableExtra("PET_DATA");
-        petOwners ownerData = intent.getParcelableExtra("OWNER_DATA");
+        ownerData = intent.getParcelableExtra("OWNER_DATA");
 
         //ELEMENTS
         ImageView petImage = findViewById(R.id.petImage);
@@ -175,8 +176,8 @@ public class pmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(pmedicaldocs.this, petspage.class);
-                intent.putExtra("USER_DATA", ownerData);
                 intent.putExtra("IS_PET_OWNER", true);
+                intent.putExtra("USER_DATA", ownerData);
                 startActivity(intent);
                 finish();
             }
@@ -196,9 +197,8 @@ public class pmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(pmedicaldocs.this, consolidatedsummary.class);
-                intent.putExtra("USER_DATA", ownerData);
                 intent.putExtra("IS_PET_OWNER", true);
-                startActivity(intent);
+                intent.putExtra("USER_DATA", ownerData);
                 finish();
             }
         });
@@ -207,8 +207,8 @@ public class pmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(pmedicaldocs.this, appointmentspage.class);
-                intent.putExtra("USER_DATA", ownerData);
                 intent.putExtra("IS_PET_OWNER", true);
+                intent.putExtra("USER_DATA", ownerData);
                 startActivity(intent);
                 finish();
             }

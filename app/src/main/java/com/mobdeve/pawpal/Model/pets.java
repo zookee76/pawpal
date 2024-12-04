@@ -13,6 +13,7 @@ public class pets implements Parcelable {
     private Double height, weight;
     private long ID, imageID, ownerID, vetID;
 
+    public  pets(){}
     public pets(String name, String breed, String sex, String color, String markings, String birthdate, int age, Double height, Double weight, long ID, long imageID, long ownerID, long vetID) {
         this.name = name;
         this.breed = breed;
