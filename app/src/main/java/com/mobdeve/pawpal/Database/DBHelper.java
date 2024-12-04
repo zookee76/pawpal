@@ -847,6 +847,37 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     // APPOINTMENT
+    public List<appointment> getAllAppointments() {
+        List<appointment> appointmentList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT * FROM " + TABLE_APPOINTMENTS;
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                appointment app = new appointment(
+                        cursor.getLong(cursor.getColumnIndexOrThrow(_ID)),
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_PET_ID)),
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_OWNER_ID)),
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_VET_ID)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_NAME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_OWNER_NAME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_APP_TYPE)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATETIME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_VET_NAME)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_APP_STATUS))
+                );
+                appointmentList.add(app);
+                Log.d("CHECK APPOINTMENT", " APPNO: " + app.getAppNo());
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return appointmentList;
+    }
+
     public List<appointment> getPetAppointment(long petID){
         List<appointment> appointmentList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
