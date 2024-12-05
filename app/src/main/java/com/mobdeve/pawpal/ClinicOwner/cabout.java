@@ -26,6 +26,7 @@ public class cabout extends AppCompatActivity {
     private TextView petName,petDesc,dateOfBirth,age,gender,breed,height,weight,petcolor,markings,ownername,cellno,address, aboutTitle;
     private pets petData;
     private petOwners ownerData;
+    private clinicVet vetData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +35,7 @@ public class cabout extends AppCompatActivity {
         DB = new DBHelper(getApplicationContext());
         Intent intent = getIntent();
         petData = intent.getParcelableExtra("PET_DATA");
-        clinicVet vetData = intent.getParcelableExtra("VET_DATA");
+        vetData = intent.getParcelableExtra("VET_DATA");
         long petID = petData.getID();
         petOwners retrievedOwnerData = DB.getPetOwner(petID);
 
@@ -156,7 +157,7 @@ public class cabout extends AppCompatActivity {
                 intent.putExtra("PET_DATA", petData);
                 intent.putExtra("VET_DATA", vetData);
                 intent.putExtra("PETOWNER_DATA", ownerData);
-                startActivity(intent);
+                startActivityForResult(intent, 1001);
             }
         });
 
@@ -237,5 +238,22 @@ public class cabout extends AppCompatActivity {
         ownername.setText("Name: "+owner.getFullname());
         cellno.setText("Cell No.: "+owner.getContactNo());
         address.setText("Address: "+owner.getEmail());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1001 && resultCode == RESULT_OK && data != null) {
+            // Retrieve updated pet data
+            petData = data.getParcelableExtra("PET_DATA");
+            ownerData = data.getParcelableExtra("OWNER_DATA");
+            vetData = data.getParcelableExtra("VET_DATA");
+            refreshUI();
+        }
+    }
+
+    private void refreshUI() {
+        populatePetDetails(petData);
+        populatePetOwnerDetails(ownerData);
     }
 }

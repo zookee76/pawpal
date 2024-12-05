@@ -197,7 +197,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
-                                    android:text="About Casper"
+                                    android:text="About"
                                     android:textColor="#0C439E"
                                     android:textSize="16sp"
                                     android:textStyle="bold" />
@@ -363,42 +363,7 @@
                                     android:layout_marginBottom="3dp">
 
                                     <TextView
-                                        android:id="@+id/tv_apptype"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:paddingRight="5dp"
-                                        android:text="Appointment Type:"
-                                        android:textAlignment="textStart"
-                                        android:textStyle="bold" />
-
-                                    <FrameLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="5"
-                                        android:background="#696971"
-                                        android:padding="1dp">
-
-                                        <EditText
-                                            android:id="@+id/text_gender"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:background="@color/white"
-                                            android:ems="10"
-                                            android:hint="Gender"
-                                            android:inputType="text"
-                                            android:textSize="14sp" />
-                                    </FrameLayout>
-
-                                </TableRow>
-
-                                <TableRow
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_marginBottom="3dp">
-
-                                    <TextView
-                                        android:id="@+id/text_height"
+                                        android:id="@+id/text_editheight"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
@@ -491,7 +456,7 @@
                                             android:background="@color/white"
                                             android:ems="10"
                                             android:hint="Weight in lbs"
-                                            android:inputType="date"
+                                            android:inputType="number|numberDecimal"
                                             android:textSize="14sp" />
                                     </FrameLayout>
 
@@ -526,7 +491,7 @@
                                             android:background="@color/white"
                                             android:ems="10"
                                             android:hint="Color"
-                                            android:inputType="date"
+                                            android:inputType="text"
                                             android:textSize="14sp" />
                                     </FrameLayout>
 
@@ -561,7 +526,7 @@
                                             android:background="@color/white"
                                             android:ems="10"
                                             android:hint="Marking"
-                                            android:inputType="date"
+                                            android:inputType="text"
                                             android:textSize="14sp" />
                                     </FrameLayout>
 

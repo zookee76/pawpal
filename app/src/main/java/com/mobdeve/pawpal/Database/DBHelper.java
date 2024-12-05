@@ -1364,7 +1364,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public synchronized void updatePet(pets pet){
+    public synchronized boolean updatePet(pets pet){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -1380,13 +1380,16 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(COLUMN_OWNER_ID, pet.getOwnerID());
         values.put(COLUMN_PET_PHOTO, pet.getImageID());
 
-        db.update(
+        Log.d("DBUpdate", "Updating pet with ID: " + pet.getID());
+        Log.d("DBUpdate", "ContentValues: " + values.toString());
+       int rowsAffected = db.update(
                 TABLE_NAME_PET,
                 values,
                 _ID + " = ?",
                 new String[]{String.valueOf(pet.getID())}
         );
         db.close();
+        return rowsAffected > 0;
     }
 
     public synchronized void addPetPhoto(long petID, long imageID){
@@ -1413,6 +1416,28 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
+    public boolean updateDietMed(dietmed dietItem){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUMN_MED_NAME, dietItem.getMedicationName());
+        values.put(COLUMN_PURPOSE, dietItem.getPurpose());
+        values.put(COLUMN_DOSAGE, dietItem.getDosage());
+        values.put(COLUMN_ADMINISTRATION, dietItem.getAdministration());
+        values.put(COLUMN_FREQ_DURATION, dietItem.getFreq_and_duration());
+        values.put(COLUMN_NOTE, dietItem.getNote());
+        values.put(COLUMN_DATETIME, dietItem.getDatetime()); // Ensure this contains the updated datetime
+
+        int rowsAffected = db.update(
+                TABLE_DIETMED,                // Table name
+                values,                       // Updated values
+                _ID + " = ?",                 // WHERE clause
+                new String[]{String.valueOf(dietItem.getPresNo())} // WHERE clause arguments
+        );
+
+        db.close();
+        return rowsAffected > 0;
+    }
 
     // DELETE
     public synchronized void deletePetOwner(long id){
