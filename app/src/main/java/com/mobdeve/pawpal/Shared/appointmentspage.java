@@ -42,8 +42,6 @@ public class appointmentspage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clinicappointment);
 
-        vet = getIntent().getParcelableExtra("USER_DATA");
-
         DB = new DBHelper(getApplicationContext());
         // Get Data
         Intent intent = getIntent();

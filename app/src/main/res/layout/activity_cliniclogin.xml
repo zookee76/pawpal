@@ -11,7 +11,7 @@
         android:id="@+id/tv_welcomeclinic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome, [Clinic Name]!"
+        android:text="Welcome to PawPal!"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="28sp"
