@@ -95,18 +95,37 @@
                 app:srcCompat="@drawable/fiimage"/>
 
             <TextView
-                android:id="@+id/tv_editfullname"
+                android:id="@+id/tv_editfname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
-                android:text="Clinic Name"
+                android:text="First Name"
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/text_editlastname"
+                android:id="@+id/text_editfname"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:ems="10"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/tv_editlname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="Last Name"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/text_editlname"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@color/white"

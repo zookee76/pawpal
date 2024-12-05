@@ -139,7 +139,7 @@
                     android:inputType="text" />
 
                 <TextView
-                    android:id="@+id/tv_editfullname"
+                    android:id="@+id/tv_editfname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

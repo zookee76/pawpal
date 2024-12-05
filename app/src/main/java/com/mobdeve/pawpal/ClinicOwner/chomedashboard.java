@@ -127,9 +127,7 @@ public class chomedashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(chomedashboard.this, clinicpets.class);
-                intent.putExtra("USER_DATA", vet);
-                Log.d("CHECK VET TO CLINICS", "VET NAME: " + vet.getFirstName() + "VET ID: " + vet.getVetID());
-                startActivity(intent);
+                intent.putExtra("USER_DATA", vet);startActivity(intent);
                 finish();
             }
         });

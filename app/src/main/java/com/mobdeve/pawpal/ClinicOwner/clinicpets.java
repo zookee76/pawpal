@@ -55,7 +55,6 @@ public class clinicpets extends AppCompatActivity {
 
         }else{
             Log.d("CHECK clinicpets", "NO VET");
-
         }
 
         FloatingActionButton addPets = findViewById(R.id.btn_addpets);

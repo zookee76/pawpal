@@ -719,6 +719,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return null;
     }
 
+
     // PETS
     public List<pets> getPetsByVet(long vetID){
         List<pets> petsList = new ArrayList<>();
@@ -1389,6 +1390,26 @@ public class DBHelper extends SQLiteOpenHelper {
                 new String[]{String.valueOf(owner.getID())}
         );
         db.close();
+    }
+
+    public synchronized boolean updateVet(clinicVet vet, long vetID){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUMN_FIRST_NAME, vet.getFirstName());
+        values.put(COLUMN_LAST_NAME, vet.getLastName());
+        values.put(COLUMN_EMAIL, vet.getEmailAdd());
+        values.put(COLUMN_CONTACT_NO, vet.getContactNo());
+        Log.d("DBUpdate", "Updating vet with ID: " +vet.getVetID());
+        Log.d("DBUpdate", "ContentValues: " + values.toString());
+        int rowsAffected = db.update(
+                TABLE_NAME_VET,
+                values,
+                _ID + " = ?",
+                new String[]{String.valueOf(vetID)}
+        );
+        db.close();
+        return rowsAffected > 0;
     }
 
     public synchronized boolean updatePet(pets pet){
