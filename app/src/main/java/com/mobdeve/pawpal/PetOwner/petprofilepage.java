@@ -97,8 +97,6 @@ public class petprofilepage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(petprofilepage.this, editprofilepage.class);
                 intent.putExtra("USER_DATA", user);
-                long userID = user.getID();
-                Log.d("CHECKUSERID", "User: " +userID);
                 startActivity(intent);
             }
         });
@@ -109,7 +107,6 @@ public class petprofilepage extends AppCompatActivity {
                 Intent intent = new Intent(petprofilepage.this, pchangepw.class);
                 intent.putExtra("USER_DATA", user);
                 startActivity(intent);
-                finish();
             }
         });
 

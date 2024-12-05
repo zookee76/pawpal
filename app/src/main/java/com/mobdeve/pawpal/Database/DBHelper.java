@@ -626,6 +626,19 @@ public class DBHelper extends SQLiteOpenHelper {
         return null;
     }
 
+    public boolean doesPetOwnerEmailMatch(String email, long ownerID){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME_PETOWNER+ " WHERE " + COLUMN_EMAIL + " = ? AND " + _ID + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{email, String.valueOf(ownerID)});
+        boolean emailMatches = cursor != null && cursor.moveToFirst();
+        if (cursor != null) {
+            cursor.close();
+        }
+        db.close();
+
+        return emailMatches;
+    }
+
     // CLINIC POV
     public boolean checkIfVetExists(String email){
         SQLiteDatabase db = this.getReadableDatabase();
@@ -719,6 +732,43 @@ public class DBHelper extends SQLiteOpenHelper {
         return null;
     }
 
+    public clinicVet getVetBy(long vetID){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT * FROM " + TABLE_NAME_VET + " WHERE " + _ID + " = ?";
+
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(vetID)});
+
+        if (cursor != null && cursor.moveToFirst()){
+            clinicVet vet = new clinicVet();
+            vet.setVetID(cursor.getLong(cursor.getColumnIndexOrThrow(_ID)));
+            vet.setImageID(cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_VET_DP)));
+            vet.setFirstName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FIRST_NAME)));
+            vet.setLastName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LAST_NAME)));
+            vet.setEmailAdd(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EMAIL)));
+            vet.setPassword(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PASSWORD)));
+            vet.setContactNo(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTACT_NO)));
+            cursor.close();
+            return vet;
+        }
+        if (cursor != null) {
+            cursor.close();
+        }
+        return null;
+    }
+
+    public boolean doesVetEmailMatch(String email, long vetID){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME_VET + " WHERE " + COLUMN_EMAIL + " = ? AND " + _ID + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{email, String.valueOf(vetID)});
+        boolean emailMatches = cursor != null && cursor.moveToFirst();
+        if (cursor != null) {
+            cursor.close();
+        }
+        db.close();
+
+        return emailMatches;
+    }
 
     // PETS
     public List<pets> getPetsByVet(long vetID){
@@ -1379,17 +1429,35 @@ public class DBHelper extends SQLiteOpenHelper {
         return rowsAffected > 0;
     }
 
-    public synchronized  void changePetOwnerPW(petOwners owner){
+    public synchronized boolean changePwPetowner(String email, String oldPw, String newPw){
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_PASSWORD, owner.getPassword());
-        db.update(
-                TABLE_NAME_PETOWNER,
-                values,
-                _ID + " = ?",
-                new String[]{String.valueOf(owner.getID())}
-        );
+
+        String query = "SELECT * FROM " + TABLE_NAME_PETOWNER +
+                " WHERE " + COLUMN_EMAIL + " = ? AND " + COLUMN_PASSWORD + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{email, oldPw});
+
+        if (cursor != null && cursor.moveToFirst()) {
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_PASSWORD, newPw);
+
+            int rowsAffected = db.update(
+                    TABLE_NAME_PETOWNER,
+                    values,
+                    COLUMN_EMAIL + " = ? AND " + COLUMN_PASSWORD + " = ?",
+                    new String[]{email, oldPw}
+            );
+
+            cursor.close();
+            db.close();
+
+            return rowsAffected > 0;
+        }
+        if (cursor != null) {
+            cursor.close();
+        }
         db.close();
+
+        return false;
     }
 
     public synchronized boolean updateVet(clinicVet vet, long vetID){
@@ -1397,10 +1465,12 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(COLUMN_FIRST_NAME, vet.getFirstName());
-        values.put(COLUMN_LAST_NAME, vet.getLastName());
-        values.put(COLUMN_EMAIL, vet.getEmailAdd());
-        values.put(COLUMN_CONTACT_NO, vet.getContactNo());
-        Log.d("DBUpdate", "Updating vet with ID: " +vet.getVetID());
+        values.put(COLUMN_FIRST_NAME, vet.getLastName());
+        values.put(COLUMN_FIRST_NAME, vet.getEmailAdd());
+        values.put(COLUMN_FIRST_NAME, vet.getPassword());
+        values.put(COLUMN_FIRST_NAME, vet.getContactNo());
+        values.put(COLUMN_FIRST_NAME, vet.getImageID());
+        Log.d("DBUpdate", "Updating it with ID: " +vet.getVetID());
         Log.d("DBUpdate", "ContentValues: " + values.toString());
         int rowsAffected = db.update(
                 TABLE_NAME_VET,
@@ -1410,6 +1480,37 @@ public class DBHelper extends SQLiteOpenHelper {
         );
         db.close();
         return rowsAffected > 0;
+    }
+
+    public synchronized boolean changePwVet(String email, String oldPw, String newPw) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * FROM " + TABLE_NAME_VET +
+                " WHERE " + COLUMN_EMAIL + " = ? AND " + COLUMN_PASSWORD + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{email, oldPw});
+
+        if (cursor != null && cursor.moveToFirst()) {
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_PASSWORD, newPw);
+
+            int rowsAffected = db.update(
+                    TABLE_NAME_VET,
+                    values,
+                    COLUMN_EMAIL + " = ? AND " + COLUMN_PASSWORD + " = ?",
+                    new String[]{email, oldPw}
+            );
+
+            cursor.close();
+            db.close();
+
+            return rowsAffected > 0;
+        }
+        if (cursor != null) {
+            cursor.close();
+        }
+        db.close();
+
+        return false;
     }
 
     public synchronized boolean updatePet(pets pet){

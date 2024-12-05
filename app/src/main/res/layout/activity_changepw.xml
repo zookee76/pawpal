@@ -64,7 +64,7 @@
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/text_logincredentials"
+                        android:id="@+id/email"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:background="@color/white"
@@ -81,7 +81,7 @@
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/text_loginpw"
+                        android:id="@+id/oldpw"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginBottom="15dp"
@@ -101,7 +101,7 @@
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/text_changepw"
+                        android:id="@+id/newpw"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginBottom="15dp"
