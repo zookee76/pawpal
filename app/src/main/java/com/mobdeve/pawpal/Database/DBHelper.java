@@ -692,6 +692,33 @@ public class DBHelper extends SQLiteOpenHelper {
         return vet;
     }
 
+    public clinicVet getVetByAppointment(long appID){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT p.* FROM " + TABLE_NAME_VET + " p " +
+                "JOIN " + TABLE_APPOINTMENTS + " a ON p." + _ID + " = a." + COLUMN_VET_ID + " " +
+                "WHERE a." + _ID + " = ?";
+
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(appID)});
+
+        if (cursor != null && cursor.moveToFirst()){
+            clinicVet vet = new clinicVet();
+            vet.setVetID(cursor.getLong(cursor.getColumnIndexOrThrow(_ID)));
+            vet.setImageID(cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_VET_DP)));
+            vet.setFirstName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FIRST_NAME)));
+            vet.setLastName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LAST_NAME)));
+            vet.setEmailAdd(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EMAIL)));
+            vet.setPassword(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PASSWORD)));
+            vet.setContactNo(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTACT_NO)));
+            cursor.close();
+            return vet;
+        }
+        if (cursor != null) {
+            cursor.close();
+        }
+        return null;
+    }
+
     // PETS
     public List<pets> getPetsByVet(long vetID){
         List<pets> petsList = new ArrayList<>();
@@ -1415,6 +1442,20 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    public boolean updateAppStatus(long appID, String status){
+        SQLiteDatabase db = this.getWritableDatabase(); // Open the database for writing.
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_APP_STATUS, status);
+
+        int rowsAffected = db.update(
+                TABLE_APPOINTMENTS,
+                values,
+                _ID + " = ?",
+                new String[]{String.valueOf(appID)}
+        );
+        db.close();
+        return rowsAffected > 0;
+    }
 
     public boolean updateDietMed(dietmed dietItem){
         SQLiteDatabase db = this.getWritableDatabase();

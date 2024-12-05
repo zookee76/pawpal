@@ -9,6 +9,7 @@ public class clinicVet implements Parcelable {
     private long vetID, imageID;
     private String firstName, lastName, emailAdd, password, contactNo;
 
+    public clinicVet(){}
     public clinicVet(long imageID, String firstName, String lastName, String emailAdd, String password, String contactNo) {
         this.imageID = imageID;
         this.firstName = firstName;

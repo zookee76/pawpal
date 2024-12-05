@@ -97,7 +97,7 @@
                 android:translationY="23dp" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/outerCardView"
+                android:id="@+id/cv_addapp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="6dp"
@@ -166,14 +166,175 @@
                     </LinearLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_appointments"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        tools:itemCount="1"
                         tools:listitem="@layout/rv_editschedule" />
 
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv_appointment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:visibility="visible"
+                        app:cardCornerRadius="25dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+                            android:id="@+id/layout_appointment"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:id="@+id/layout_appointmentno"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:background="#D6EAFC"
+                                android:orientation="horizontal"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/tv_appointmentno"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_weight="1"
+                                    android:text="Appointment Number: xxxx"
+                                    android:textColor="#0C439E"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layout_appointmentdeets"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="20dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="10dp">
+
+                                <TableLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <TableRow
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginBottom="3dp">
+
+                                        <TextView
+                                            android:id="@+id/tv_birthdate"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:paddingRight="5dp"
+                                            android:text="Appointment Type:"
+                                            android:textAlignment="textStart"
+                                            android:textStyle="bold" />
+
+                                        <FrameLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="5"
+                                            android:background="#696971"
+                                            android:padding="1dp">
+
+                                            <EditText
+                                                android:id="@+id/text_apptype"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:background="@color/white"
+                                                android:ems="10"
+                                                android:hint="Vaccine, Check up"
+                                                android:inputType="text"
+                                                android:textSize="14sp" />
+                                        </FrameLayout>
+
+                                    </TableRow>
+
+                                    <TableRow
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginBottom="3dp">
+
+                                        <TextView
+                                            android:id="@+id/tv_appowner"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:paddingRight="5dp"
+                                            android:text="Date and Time:"
+                                            android:textAlignment="textStart"
+                                            android:textStyle="bold" />
+
+                                        <FrameLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="5"
+                                            android:background="#696971"
+                                            android:padding="1dp">
+
+                                            <EditText
+                                                android:id="@+id/text_datetime"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:background="@color/white"
+                                                android:ems="10"
+                                                android:hint="Date and time"
+                                                android:inputType="datetime"
+                                                android:textSize="14sp" />
+                                        </FrameLayout>
+
+                                    </TableRow>
+
+                                    <TableRow
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="end">
+
+                                        <Button
+                                            android:id="@+id/btn_addprofile"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="40dp"
+                                            android:layout_gravity="clip_horizontal|center_horizontal"
+                                            android:backgroundTint="#D6EAFC"
+                                            android:clickable="true"
+                                            android:text="Add"
+                                            android:textAlignment="center"
+                                            android:textColor="@color/black"
+                                            android:textSize="12sp" />
+                                    </TableRow>
+                                </TableLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_appointment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/layout_petnavigation"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        app:backgroundTint="#0C439E"
+        app:srcCompat="@drawable/baseline_add_24" />
 
     <LinearLayout
         android:id="@+id/layout_petnavigation"

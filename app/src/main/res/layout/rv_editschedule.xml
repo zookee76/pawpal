@@ -53,16 +53,60 @@
 
                 <TableLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
 
                     <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="3dp">
+                        android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/tv_birthdate"
+                            android:id="@+id/tv_apppet"
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingRight="5dp"
+                            android:text="Pet Name:"
+                            android:textAlignment="textStart"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_inpet"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:text="Casper" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/tv_appowner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingRight="5dp"
+                            android:text="Owner Name:"
+                            android:textAlignment="textStart"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_inowner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:text="Ashley Corpuz" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/tv_apptype"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingRight="5dp"
@@ -70,33 +114,20 @@
                             android:textAlignment="textStart"
                             android:textStyle="bold" />
 
-                        <FrameLayout
+                        <TextView
+                            android:id="@+id/tv_inapptype"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="5"
-                            android:background="#696971"
-                            android:padding="1dp">
-
-                            <EditText
-                                android:id="@+id/text_apptype"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@color/white"
-                                android:ems="10"
-                                android:hint="Vaccine, Check up"
-                                android:inputType="date"
-                                android:textSize="14sp" />
-                        </FrameLayout>
-
+                            android:text="General Checkup" />
                     </TableRow>
 
                     <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="3dp">
+                        android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/tv_appowner"
+                            android:id="@+id/text_height"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -105,34 +136,22 @@
                             android:textAlignment="textStart"
                             android:textStyle="bold" />
 
-                        <FrameLayout
+                        <TextView
+                            android:id="@+id/tv_indatetime"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="5"
-                            android:background="#696971"
-                            android:padding="1dp">
-
-                            <EditText
-                                android:id="@+id/text_datetime"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@color/white"
-                                android:ems="10"
-                                android:hint="Date and time"
-                                android:inputType="number"
-                                android:textSize="14sp" />
-                        </FrameLayout>
+                            android:text="Octtober 1, 2024 9AM" />
 
                     </TableRow>
 
                     <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="3dp">
+                        android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/tv_apptype"
-                            android:layout_width="match_parent"
+                            android:id="@+id/tv_appvet"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingRight="5dp"
@@ -140,32 +159,20 @@
                             android:textAlignment="textStart"
                             android:textStyle="bold" />
 
-                        <FrameLayout
+                        <TextView
+                            android:id="@+id/tv_invet"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="5"
-                            android:background="#696971"
-                            android:padding="1dp">
-
-                            <EditText
-                                android:id="@+id/text_vet"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@color/white"
-                                android:ems="10"
-                                android:hint="Dr. Ash Corpuz"
-                                android:inputType="text"
-                                android:textSize="14sp" />
-                        </FrameLayout>
-
+                            android:text="Dr. Vet" />
                     </TableRow>
 
                     <TableRow
                         android:layout_width="match_parent"
-                        android:layout_marginBottom="3dp">
+                        android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/text_height"
+                            android:id="@+id/tv_appstatus"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -174,36 +181,12 @@
                             android:textAlignment="textStart"
                             android:textStyle="bold" />
 
-                        <FrameLayout
+                        <TextView
+                            android:id="@+id/tv_instatus"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="5"
-                            android:padding="1dp">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical">
-
-                                <RadioButton
-                                    android:id="@+id/rad_completed"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="20dp"
-                                    android:layout_marginBottom="5dp"
-                                    android:text="Completed"
-                                    android:textSize="12sp" />
-
-                                <RadioButton
-                                    android:id="@+id/rad_scheduled"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="20dp"
-                                    android:layout_marginBottom="5dp"
-                                    android:text="Scheduled"
-                                    android:textSize="12sp" />
-
-                            </LinearLayout>
-
-                        </FrameLayout>
+                            android:text="Completed" />
 
                     </TableRow>
 
@@ -213,13 +196,13 @@
                         android:gravity="end">
 
                         <Button
-                            android:id="@+id/btn_saveprofile"
+                            android:id="@+id/btn_seedeets"
                             android:layout_width="wrap_content"
                             android:layout_height="40dp"
                             android:layout_gravity="clip_horizontal|center_horizontal"
                             android:backgroundTint="#D6EAFC"
                             android:clickable="true"
-                            android:text="Save"
+                            android:text="Mark as Complete"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="12sp" />

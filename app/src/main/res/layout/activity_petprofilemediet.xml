@@ -95,7 +95,7 @@
                 android:translationY="23dp" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/outerCardView"
+                android:id="@+id/cv_addapp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="6dp"
