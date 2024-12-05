@@ -40,10 +40,12 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.petViewHolder> {
         this.owner = owner;
     }
 
-    public petAdapter(Context cxt, List<pets> petsList, boolean isPetOwner) {
+    public petAdapter(Context cxt, List<pets> petsList, DBHelper db, petOwners owner, boolean isPetOwner) {
         this.cxt = cxt;
         this.petsList = petsList;
+        this.DB = db;
         this.userType = isPetOwner ? "pet owner" : "clinic";
+        this.owner = owner;
     }
 
     @NonNull
@@ -77,7 +79,8 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.petViewHolder> {
         if ("clinic".equals(userType)) {
             holder.itemView.setOnClickListener(view -> {
                 Intent intent = new Intent(cxt, cabout.class);
-
+                intent.putExtra("OWNER_DATA", owner);
+                intent.putExtra("PET_DATA", pet);
                 cxt.startActivity(intent);
             });
         } else{

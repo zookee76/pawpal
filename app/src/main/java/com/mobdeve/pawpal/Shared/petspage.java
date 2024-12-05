@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -138,11 +139,26 @@ public class petspage extends AppCompatActivity {
                     finish();
                 }
             });
-
         }
         else{
             Intent intent = getIntent();
             clinicVet vet = intent.getParcelableExtra("USER_DATA");
+            long ownerID = getIntent().getLongExtra("OWNERID", -1);
+
+            if(ownerID != -1){
+                loadPets(ownerID);
+            }
+            else{
+
+            }
+
+            petOwners selectedOwner = DB.getPetOwnerByID(ownerID);
+
+            adapter = new petAdapter(this, petsList, DB, selectedOwner, isPetOwner);
+            rvPets.setAdapter(adapter);
+            TextView pagetitle = findViewById(R.id.tv_mypets);
+            String title = intent.getStringExtra("PETS_PAGE_TITLE");
+            pagetitle.setText(title);
 
             // back handle
             View.OnClickListener backListnr = new View.OnClickListener() {
@@ -156,13 +172,6 @@ public class petspage extends AppCompatActivity {
 
             backImg.setOnClickListener(backListnr);
             backTxt.setOnClickListener(backListnr);
-
-            adapter = new petAdapter(this, petsList, isPetOwner);
-            rvPets.setAdapter(adapter);
-            TextView pagetitle = findViewById(R.id.tv_mypets);
-            String title = intent.getStringExtra("PETS_PAGE_TITLE");
-            pagetitle.setText(title);
-
             //Link to navigation buttons
             home.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -218,14 +227,7 @@ public class petspage extends AppCompatActivity {
         //petsList.add(new pets("Casper", "Domestic Short Hair", "Male", 3, R.drawable.casper));
     }
     // use this when logged as clinic owner
-    private void loadpetsperowner(){
+    private void loadpetsperowner(long ownerID){
 
-        // sample data for pets change  with logic for getting all pets
-        /*
-        petsList.add(new pets("Callie", "Domestic Short Hair", "Female", 4, R.drawable.callie));
-        petsList.add(new pets("Casper", "Domestic Short Hair", "Male", 3, R.drawable.casper));
-        petsList.add(new pets("Tyler", "Persian Cat", "Male", 3, R.drawable.tyler));
-
-         */
     }
 }

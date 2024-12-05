@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobdeve.pawpal.Adapter.petOwnerAdapter;
+import com.mobdeve.pawpal.Model.clinicVet;
 import com.mobdeve.pawpal.Model.petOwners;
 import com.mobdeve.pawpal.R;
 import com.mobdeve.pawpal.Shared.appointmentspage;
@@ -40,6 +41,8 @@ public class medrecordspage extends AppCompatActivity {
         setContentView(R.layout.activity_clinicmedrecords);
 
         db = new DBHelper(getApplicationContext());
+        Intent intent = getIntent();
+        clinicVet vet = intent.getParcelableExtra("USER_DATA");
 
         //Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
@@ -48,6 +51,7 @@ public class medrecordspage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(medrecordspage.this, chomedashboard.class);
+                intent.putExtra("USER_DATA", vet);
                 medrecordspage.this.startActivity(intent);
                 finish();
             }
@@ -102,6 +106,7 @@ public class medrecordspage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(medrecordspage.this, clinicpets.class);
+                intent.putExtra("USER_DATA", vet);
                 startActivity(intent);
                 finish();
             }
@@ -111,6 +116,7 @@ public class medrecordspage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(medrecordspage.this, chomedashboard.class);
+                intent.putExtra("USER_DATA", vet);
                 startActivity(intent);
                 finish();
             }
@@ -120,6 +126,7 @@ public class medrecordspage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(medrecordspage.this, appointmentspage.class);
+                intent.putExtra("USER_DATA", vet);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
                 finish();
@@ -130,6 +137,7 @@ public class medrecordspage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(medrecordspage.this, consolidatedsummary.class);
+                intent.putExtra("USER_DATA", vet);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
                 finish();
@@ -140,6 +148,7 @@ public class medrecordspage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(medrecordspage.this, clinicprofilepage.class);
+                intent.putExtra("USER_DATA", vet);
                 startActivity(intent);
                 finish();
             }

@@ -2,6 +2,7 @@ package com.mobdeve.pawpal.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,9 +38,12 @@ public class childPetOwnerAdapter extends RecyclerView.Adapter<childPetOwnerAdap
         petOwners owners = petOwnersList.get(position);
         holder.ownerName.setText(owners.getFname());
 
+        long ownerID = owners.getID();
+        Log.d("CHILD PET OWNER ", "OWNER ID: " +  ownerID);
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(cxt, petspage.class);
             intent.putExtra("IS_PET_OWNER", false);
+            intent.putExtra("OWNERID", ownerID);
             intent.putExtra("PETS_PAGE_TITLE", "List of Pets");
             cxt.startActivity(intent);
         });

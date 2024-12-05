@@ -639,6 +639,31 @@ public class DBHelper extends SQLiteOpenHelper {
         return emailMatches;
     }
 
+    public petOwners getPetOwnerByID(long ownerID){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT * FROM " + TABLE_NAME_PETOWNER + " WHERE " + _ID + " = ?";
+
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(ownerID)});
+
+        if (cursor != null && cursor.moveToFirst()){
+            petOwners owner = new petOwners();
+            owner.setID(cursor.getLong(cursor.getColumnIndexOrThrow(_ID)));
+            owner.setImageID(cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_OWNER_DP)));
+            owner.setFname(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FIRST_NAME)));
+            owner.setLname(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LAST_NAME)));
+            owner.setEmail(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EMAIL)));
+            owner.setPassword(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PASSWORD)));
+            owner.setUsername(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_USERNAME)));
+            owner.setContactNo(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTACT_NO)));
+            return owner;
+        }
+        if (cursor != null) {
+            cursor.close();
+        }
+        return null;
+    }
+
     // CLINIC POV
     public boolean checkIfVetExists(String email){
         SQLiteDatabase db = this.getReadableDatabase();
