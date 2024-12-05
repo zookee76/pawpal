@@ -8,17 +8,32 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.mobdeve.pawpal.Database.DBHelper;
+import com.mobdeve.pawpal.Model.clinicVet;
+import com.mobdeve.pawpal.Model.petOwners;
+import com.mobdeve.pawpal.Model.pets;
 import com.mobdeve.pawpal.R;
 import com.mobdeve.pawpal.Shared.appointmentspage;
 import com.mobdeve.pawpal.Shared.consolidatedsummary;
 
 public class editmedicationdiet extends AppCompatActivity {
-
+    private DBHelper DB;
+    private pets petData;
+    private clinicVet vetData;
+    private petOwners ownerData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_cliniceditmediet);
+        // Get Data
+        DB = new DBHelper(getApplicationContext());
+        Intent intent = getIntent();
+        petData = intent.getParcelableExtra("PET_DATA");
+        vetData = intent.getParcelableExtra("VET_DATA");
+        long petID = petData.getID();
+        ownerData = DB.getPetOwner(petID);
+
         //Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
         TextView backTxt = findViewById(R.id.tv_back);
@@ -44,7 +59,9 @@ public class editmedicationdiet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editmedicationdiet.this, cabout.class);
-                // handle data here
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
+                intent.putExtra("PETOWNER_DATA", ownerData);
                 startActivity(intent);
                 finish();
             }
@@ -54,7 +71,9 @@ public class editmedicationdiet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editmedicationdiet.this, cmedicaldocs.class);
-                // handle data here
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
+                intent.putExtra("PETOWNER_DATA", ownerData);
                 startActivity(intent);
                 finish();
             }
@@ -64,7 +83,9 @@ public class editmedicationdiet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editmedicationdiet.this, cmedicationdiet.class);
-                // handle data here
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
+                intent.putExtra("PETOWNER_DATA", ownerData);
                 startActivity(intent);
                 finish();
             }
@@ -74,7 +95,9 @@ public class editmedicationdiet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editmedicationdiet.this, cschedules.class);
-                // handle data here
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
+                intent.putExtra("PETOWNER_DATA", ownerData);
                 startActivity(intent);
                 finish();
             }
@@ -93,6 +116,7 @@ public class editmedicationdiet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editmedicationdiet.this, clinicpets.class);
+                intent.putExtra("USER_DATA", vetData);
                 startActivity(intent);
                 finish();
             }
@@ -101,6 +125,7 @@ public class editmedicationdiet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editmedicationdiet.this, chomedashboard.class);
+                intent.putExtra("USER_DATA", vetData);
                 startActivity(intent);
                 finish();
             }
@@ -110,6 +135,7 @@ public class editmedicationdiet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editmedicationdiet.this, clinicprofilepage.class);
+                intent.putExtra("USER_DATA", vetData);
                 startActivity(intent);
                 finish();
             }
@@ -119,6 +145,7 @@ public class editmedicationdiet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editmedicationdiet.this, consolidatedsummary.class);
+                intent.putExtra("USER_DATA", vetData);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
                 finish();
@@ -129,6 +156,7 @@ public class editmedicationdiet extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editmedicationdiet.this, appointmentspage.class);
+                intent.putExtra("USER_DATA", vetData);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
                 finish();

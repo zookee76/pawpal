@@ -71,7 +71,11 @@ public class appointmentAdapter extends RecyclerView.Adapter<appointmentAdapter.
 
         if("clinic".equals(userType)){
             holder.seeDeets.setOnClickListener(view -> {
+                long appID = Appointment.getAppNo();
+                pets pet = DB.getPetByAppointment(appID);
                 Intent intent = new Intent(cxt, cschedules.class);
+                intent.putExtra("PET_DATA", pet);
+                intent.putExtra("USER_DATA", vet);
                 cxt.startActivity(intent);
             });
         }else{

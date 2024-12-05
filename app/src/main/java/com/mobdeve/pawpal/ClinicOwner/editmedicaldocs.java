@@ -8,16 +8,32 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.mobdeve.pawpal.Database.DBHelper;
+import com.mobdeve.pawpal.Model.clinicVet;
+import com.mobdeve.pawpal.Model.petOwners;
+import com.mobdeve.pawpal.Model.pets;
 import com.mobdeve.pawpal.R;
 import com.mobdeve.pawpal.Shared.appointmentspage;
 import com.mobdeve.pawpal.Shared.consolidatedsummary;
 
 public class editmedicaldocs extends AppCompatActivity {
+    private DBHelper DB;
+    private pets petData;
+    private clinicVet vetData;
+    private petOwners ownerData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliniceditmedical);
+        // Get Data
+        DB = new DBHelper(getApplicationContext());
+        Intent intent = getIntent();
+        petData = intent.getParcelableExtra("PET_DATA");
+        vetData = intent.getParcelableExtra("VET_DATA");
+        long petID = petData.getID();
+        ownerData = DB.getPetOwner(petID);
+
         //Back Handle
         ImageView backImg = findViewById(R.id.iv_back);
         TextView backTxt = findViewById(R.id.tv_back);
@@ -43,7 +59,9 @@ public class editmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editmedicaldocs.this, cabout.class);
-                // handle data here
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
+                intent.putExtra("PETOWNER_DATA", ownerData);
                 startActivity(intent);
                 finish();
             }
@@ -53,7 +71,9 @@ public class editmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editmedicaldocs.this, cmedicaldocs.class);
-                // handle data here
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
+                intent.putExtra("PETOWNER_DATA", ownerData);
                 startActivity(intent);
                 finish();
             }
@@ -63,7 +83,9 @@ public class editmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editmedicaldocs.this, cmedicationdiet.class);
-                // handle data here
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
+                intent.putExtra("PETOWNER_DATA", ownerData);
                 startActivity(intent);
                 finish();
             }
@@ -73,7 +95,9 @@ public class editmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editmedicaldocs.this, cschedules.class);
-                // handle data here
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
+                intent.putExtra("PETOWNER_DATA", ownerData);
                 startActivity(intent);
                 finish();
             }
@@ -92,6 +116,7 @@ public class editmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editmedicaldocs.this, clinicpets.class);
+                intent.putExtra("USER_DATA", vetData);
                 startActivity(intent);
                 finish();
             }
@@ -100,6 +125,7 @@ public class editmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editmedicaldocs.this, chomedashboard.class);
+                intent.putExtra("USER_DATA", vetData);
                 startActivity(intent);
                 finish();
             }
@@ -109,6 +135,7 @@ public class editmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editmedicaldocs.this, clinicprofilepage.class);
+                intent.putExtra("USER_DATA", vetData);
                 startActivity(intent);
                 finish();
             }
@@ -118,6 +145,7 @@ public class editmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editmedicaldocs.this, consolidatedsummary.class);
+                intent.putExtra("USER_DATA", vetData);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
                 finish();
@@ -128,6 +156,7 @@ public class editmedicaldocs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editmedicaldocs.this, appointmentspage.class);
+                intent.putExtra("USER_DATA", vetData);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
                 finish();

@@ -184,7 +184,9 @@ public class editschedules extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editschedules.this, cabout.class);
-                // handle data here
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
+                intent.putExtra("PETOWNER_DATA", ownerData);
                 startActivity(intent);
                 finish();
             }
@@ -194,7 +196,9 @@ public class editschedules extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editschedules.this, cmedicaldocs.class);
-                // handle data here
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
+                intent.putExtra("PETOWNER_DATA", ownerData);
                 startActivity(intent);
                 finish();
             }
@@ -204,7 +208,9 @@ public class editschedules extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editschedules.this, cmedicationdiet.class);
-                // handle data here
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
+                intent.putExtra("PETOWNER_DATA", ownerData);
                 startActivity(intent);
                 finish();
             }
@@ -214,7 +220,9 @@ public class editschedules extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editschedules.this, cschedules.class);
-                // handle data here
+                intent.putExtra("PET_DATA", petData);
+                intent.putExtra("VET_DATA", vetData);
+                intent.putExtra("PETOWNER_DATA", ownerData);
                 startActivity(intent);
                 finish();
             }
@@ -233,6 +241,7 @@ public class editschedules extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editschedules.this, clinicpets.class);
+                intent.putExtra("USER_DATA", vetData);
                 startActivity(intent);
                 finish();
             }
@@ -241,6 +250,7 @@ public class editschedules extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editschedules.this, chomedashboard.class);
+                intent.putExtra("USER_DATA", vetData);
                 startActivity(intent);
                 finish();
             }
@@ -250,6 +260,7 @@ public class editschedules extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editschedules.this, clinicprofilepage.class);
+                intent.putExtra("USER_DATA", vetData);
                 startActivity(intent);
                 finish();
             }
@@ -259,6 +270,7 @@ public class editschedules extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editschedules.this, consolidatedsummary.class);
+                intent.putExtra("USER_DATA", vetData);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
                 finish();
@@ -269,6 +281,7 @@ public class editschedules extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(editschedules.this, appointmentspage.class);
+                intent.putExtra("USER_DATA", vetData);
                 intent.putExtra("IS_PET_OWNER", false);
                 startActivity(intent);
                 finish();
