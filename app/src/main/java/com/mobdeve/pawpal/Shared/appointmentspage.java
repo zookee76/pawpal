@@ -168,8 +168,8 @@ public class appointmentspage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, com.mobdeve.pawpal.ClinicOwner.addAppointments.class);
-                    startActivityForResult(intent, 1);
                     intent.putExtra("USER_DATA", vet);
+                    startActivityForResult(intent, 1);
                     //startActivity(intent);
                 }
             });
@@ -179,8 +179,8 @@ public class appointmentspage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, chomedashboard.class);
-                    startActivity(intent);
                     intent.putExtra("USER_DATA", vet);
+                    startActivity(intent);
                     finish();
                 }
             };
@@ -193,8 +193,8 @@ public class appointmentspage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, clinicpets.class);
-                    startActivity(intent);
                     intent.putExtra("USER_DATA", vet);
+                    startActivity(intent);
                     finish();
                 }
             });
@@ -203,8 +203,8 @@ public class appointmentspage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, chomedashboard.class);
-                    startActivity(intent);
                     intent.putExtra("USER_DATA", vet);
+                    startActivity(intent);
                     finish();
                 }
             });
@@ -213,8 +213,8 @@ public class appointmentspage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, clinicprofilepage.class);
-                    startActivity(intent);
                     intent.putExtra("USER_DATA", vet);
+                    startActivity(intent);
                     finish();
                 }
             });
@@ -224,8 +224,8 @@ public class appointmentspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, consolidatedsummary.class);
                     intent.putExtra("IS_PET_OWNER", false);
-                    startActivity(intent);
                     intent.putExtra("USER_DATA", vet);
+                    startActivity(intent);
                     finish();
                 }
             });
@@ -235,8 +235,8 @@ public class appointmentspage extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(appointmentspage.this, appointmentspage.class);
                     intent.putExtra("IS_PET_OWNER", false);
-                    startActivity(intent);
                     intent.putExtra("USER_DATA", vet);
+                    startActivity(intent);
                     finish();
                 }
             });
