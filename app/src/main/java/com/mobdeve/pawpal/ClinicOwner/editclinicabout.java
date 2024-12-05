@@ -164,7 +164,7 @@ public class editclinicabout extends AppCompatActivity {
                         Toast.makeText(editclinicabout.this, "Pet updated successfully.", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(editclinicabout.this, cabout.class);
                         Log.d("CHECKEDIT ABOUT", "Updated petID: " + updatePet.getID());
-                        intent.putExtra("PET_DATA", petData);
+                        intent.putExtra("PET_DATA", updatePet);
                         intent.putExtra("VET_DATA", vetData);
                         setResult(RESULT_OK, intent);
                         startActivity(intent);
